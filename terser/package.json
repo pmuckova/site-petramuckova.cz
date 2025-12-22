@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "terser": "^5.44.1"
+  },
+  "scripts": {
+    "build:js": "terser ../index.js -o ../release/index.js -c -m && terser ../blog.js -o ../release/blog.js -c -m",
+    "build": "npm run build:js"
+  }
+}

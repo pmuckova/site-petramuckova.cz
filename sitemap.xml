@@ -1,0 +1,1993 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://www.petramuckova.cz/cs/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>Vačkové hřídele</image:title>
+      <image:caption>Vačkové hřídele</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Zakázková výroba</image:title>
+      <image:caption>Zakázková výroba</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>Mechanicko-optický přístroj na měření vaček</image:title>
+      <image:caption>Mechanicko-optický přístroj na měření vaček</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>SW a HW vybavení pro Chiptuning</image:title>
+      <image:caption>SW a HW vybavení pro Chiptuning</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>Přístroj pro měření odstředivé křivky rozdělovače</image:title>
+      <image:caption>Přístroj pro měření odstředivé křivky rozdělovače</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/en/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>Camshafts</image:title>
+      <image:caption>Camshafts</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Custom Manufacturing</image:title>
+      <image:caption>Custom Manufacturing</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>Mechanical-optical cam measuring device</image:title>
+      <image:caption>Mechanical-optical cam measuring device</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>SW and HW equipment for Chiptuning</image:title>
+      <image:caption>SW and HW equipment for Chiptuning</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>Distributor centrifugal curve measuring device</image:title>
+      <image:caption>Distributor centrifugal curve measuring device</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/de/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>Nockenwellen</image:title>
+      <image:caption>Nockenwellen</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Auftragsfertigung</image:title>
+      <image:caption>Auftragsfertigung</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>Mechanisch-optisches Nockenmessgerät</image:title>
+      <image:caption>Mechanisch-optisches Nockenmessgerät</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>SW- und HW-Ausrüstung für Chiptuning</image:title>
+      <image:caption>SW- und HW-Ausrüstung für Chiptuning</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>Gerät zur Messung der Zündverteilerkennlinie</image:title>
+      <image:caption>Gerät zur Messung der Zündverteilerkennlinie</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/fr/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>Arbres à cames</image:title>
+      <image:caption>Arbres à cames</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Fabrication sur mesure</image:title>
+      <image:caption>Fabrication sur mesure</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>Appareil opto-mécanique de mesure des cames</image:title>
+      <image:caption>Appareil opto-mécanique de mesure des cames</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>Équipement logiciel et matériel pour le Chiptuning</image:title>
+      <image:caption>Équipement logiciel et matériel pour le Chiptuning</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>Appareil de mesure de la courbe centrifuge de l&apos;allumeur</image:title>
+      <image:caption>Appareil de mesure de la courbe centrifuge de l&apos;allumeur</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/it/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>Alberi a camme</image:title>
+      <image:caption>Alberi a camme</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Produzione su misura</image:title>
+      <image:caption>Produzione su misura</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>Dispositivo ottico-meccanico per la misurazione delle camme</image:title>
+      <image:caption>Dispositivo ottico-meccanico per la misurazione delle camme</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>Attrezzatura SW e HW per Chiptuning</image:title>
+      <image:caption>Attrezzatura SW e HW per Chiptuning</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>Dispositivo per la misurazione della curva centrifuga dello spinterogeno</image:title>
+      <image:caption>Dispositivo per la misurazione della curva centrifuga dello spinterogeno</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/es/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>Árboles de levas</image:title>
+      <image:caption>Árboles de levas</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Fabricación a medida</image:title>
+      <image:caption>Fabricación a medida</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>Dispositivo óptico-mecánico de medición de levas</image:title>
+      <image:caption>Dispositivo óptico-mecánico de medición de levas</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>Equipo SW y HW para Chiptuning</image:title>
+      <image:caption>Equipo SW y HW para Chiptuning</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>Dispositivo de medición de la curva centrífuga del distribuidor</image:title>
+      <image:caption>Dispositivo de medición de la curva centrífuga del distribuidor</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/pl/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>Wałki rozrządu</image:title>
+      <image:caption>Wałki rozrządu</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Produkcja na zamówienie</image:title>
+      <image:caption>Produkcja na zamówienie</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>Mechaniczno-optyczne urządzenie do pomiaru wałków</image:title>
+      <image:caption>Mechaniczno-optyczne urządzenie do pomiaru wałków</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>Sprzęt SW i HW do Chiptuningu</image:title>
+      <image:caption>Sprzęt SW i HW do Chiptuningu</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>Urządzenie do pomiaru krzywej regulatora odśrodkowego aparatu zapłonowego</image:title>
+      <image:caption>Urządzenie do pomiaru krzywej regulatora odśrodkowego aparatu zapłonowego</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/ru/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>Распределительные валы</image:title>
+      <image:caption>Распределительные валы</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Производство на заказ</image:title>
+      <image:caption>Производство на заказ</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>Механико-оптический прибор для измерения валов</image:title>
+      <image:caption>Механико-оптический прибор для измерения валов</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>ПО и оборудование для Чип-тюнинга</image:title>
+      <image:caption>ПО и оборудование для Чип-тюнинга</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>Прибор для измерения центробежной характеристики распределителя</image:title>
+      <image:caption>Прибор для измерения центробежной характеристики распределителя</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/ja/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>カムシャフト</image:title>
+      <image:caption>カムシャフト</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>オーダーメイド製造</image:title>
+      <image:caption>オーダーメイド製造</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>カム測定用機械光学機器</image:title>
+      <image:caption>カム測定用機械光学機器</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>チップチューニング用SWおよびHW</image:title>
+      <image:caption>チップチューニング用SWおよびHW</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>ディストリビューター進角曲線測定器</image:title>
+      <image:caption>ディストリビューター進角曲線測定器</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/zh/index.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/index.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/index.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/index.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-1.jpg</image:loc>
+      <image:title>凸轮轴</image:title>
+      <image:caption>凸轮轴</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>定制生产</image:title>
+      <image:caption>定制生产</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-1.jpg</image:loc>
+      <image:title>机械光学凸轮测量仪</image:title>
+      <image:caption>机械光学凸轮测量仪</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-2.jpg</image:loc>
+      <image:title>芯片调校软硬件设备</image:title>
+      <image:caption>芯片调校软硬件设备</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-equipment-3.webp</image:loc>
+      <image:title>分电器离心曲线测量仪</image:title>
+      <image:caption>分电器离心曲线测量仪</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-petra.jpg</image:loc>
+      <image:title>Ing. Petra Mücková</image:title>
+      <image:caption>Ing. Petra Mücková</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-aboutus-tomas.webp</image:loc>
+      <image:title>Ing. Tomáš Mück</image:title>
+      <image:caption>Ing. Tomáš Mück</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/cs/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>Obrázek 1: Průběh otáček motoru při výtlaku v závislosti na čase</image:title>
+      <image:caption>Obrázek 1: Průběh otáček motoru při výtlaku v závislosti na čase</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>Obrázek 2: Porovnání výtlaku při použití litinových svodů s rezonančním tlumičem TOMMÜ (modrá křivka) vs. nové výfukové svody TAZ 1,43 (čtyři různá opakovaná měření)</image:title>
+      <image:caption>Obrázek 2: Porovnání výtlaku při použití litinových svodů s rezonančním tlumičem TOMMÜ (modrá křivka) vs. nové výfukové svody TAZ 1,43 (čtyři různá opakovaná měření)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>Obrázek 3: Nové laděné výfukové svody TAZ 1,43 na agregátu PS12</image:title>
+      <image:caption>Obrázek 3: Nové laděné výfukové svody TAZ 1,43 na agregátu PS12</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>Start závodu automobilů Havířov-Šenov 1972 (zdroj:Roman Krejčí)</image:title>
+      <image:caption>Start závodu automobilů Havířov-Šenov 1972 (zdroj:Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>Balcarův memoriál Ostrava (zdroj:Facebook)</image:title>
+      <image:caption>Balcarův memoriál Ostrava (zdroj:Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>Mercedes Benz W25E, Monaco Grand Prix 1936 (Andrea Del Pesco) – výfukové potrubí svedeno nejkratší cestou do společné roury</image:title>
+      <image:caption>Mercedes Benz W25E, Monaco Grand Prix 1936 (Andrea Del Pesco) – výfukové potrubí svedeno nejkratší cestou do společné roury</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>Connaught C-Type Formula 1 z roku 1957 s laděnými výfukovými svody 4-2-1 (zdroj:racecarsdirect.com)</image:title>
+      <image:caption>Connaught C-Type Formula 1 z roku 1957 s laděnými výfukovými svody 4-2-1 (zdroj:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>Maserati 250F z roku 1954 s laděnými výfukovými svody 6-2-1, vítězný vůz mnohých závodů Grand Prix, za jehož volant usedli velikáni jako Juan Manuel Fangio a Stirling Moss (zdroj:postwarclassic.com)</image:title>
+      <image:caption>Maserati 250F z roku 1954 s laděnými výfukovými svody 6-2-1, vítězný vůz mnohých závodů Grand Prix, za jehož volant usedli velikáni jako Juan Manuel Fangio a Stirling Moss (zdroj:postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958) s motorem vzadu a laděnými výfukovými svody 4-2-1, Britové byli průkopníky samonosných konstrukcí a motorů vzadu (zdroj:racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958) s motorem vzadu a laděnými výfukovými svody 4-2-1, Britové byli průkopníky samonosných konstrukcí a motorů vzadu (zdroj:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>Ferrari 312 s 3 litrovým motorem V12 umístěným vzadu (1967), na dnešní dobu netradiční uspořádání s výfuky uvnitř a sáním vně V-konstrukce, není pochyb, že zde již konstruktéři věděli, že délka potrubí hraje u motoru velkou roli (zdroj:bestcarmag.com</image:title>
+      <image:caption>Ferrari 312 s 3 litrovým motorem V12 umístěným vzadu (1967), na dnešní dobu netradiční uspořádání s výfuky uvnitř a sáním vně V-konstrukce, není pochyb, že zde již konstruktéři věděli, že délka potrubí hraje u motoru velkou roli (zdroj:bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>Hlava válců Škoda 130 RS (zdroj:skoda.virt.cz)</image:title>
+      <image:caption>Hlava válců Škoda 130 RS (zdroj:skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>Rozměry sacích kanálů Škoda 130 RS (zdroj: dokumentace Autoklubu ČR)</image:title>
+      <image:caption>Rozměry sacích kanálů Škoda 130 RS (zdroj: dokumentace Autoklubu ČR)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>Výrobci a závodní okruhy v italském Motor Valley u Bologne.</image:title>
+      <image:caption>Výrobci a závodní okruhy v italském Motor Valley u Bologne.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>Nezaměnitelná koncovka výfuku vozidel Pagani (zdroj:fstylephoto.com</image:title>
+      <image:caption>Nezaměnitelná koncovka výfuku vozidel Pagani (zdroj:fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>Pagani Zonda Cinque – 1210 kg živé váhy, která na stovku vystřelí za 3,4 sekundy (zdroj:idnes.cz</image:title>
+      <image:caption>Pagani Zonda Cinque – 1210 kg živé váhy, která na stovku vystřelí za 3,4 sekundy (zdroj:idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-4.jpg</image:loc>
+      <image:title>Collezione Umberto Panini</image:title>
+      <image:caption>Collezione Umberto Panini</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>Muzeum Enza Ferrariho v Modeně</image:title>
+      <image:caption>Muzeum Enza Ferrariho v Modeně</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>Interiér futuristické budovy muzea se během chvilky proměnil v kinosál</image:title>
+      <image:caption>Interiér futuristické budovy muzea se během chvilky proměnil v kinosál</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>Muzeum Ferrari v Maranellu (expozice F1)</image:title>
+      <image:caption>Muzeum Ferrari v Maranellu (expozice F1)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>Muzeum Ferrari v Maranellu (expozice 24H Le Mans)</image:title>
+      <image:caption>Muzeum Ferrari v Maranellu (expozice 24H Le Mans)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>Cílová rovinka závodního okruhu Autodromo Enzo i Dino Ferrari v Imole</image:title>
+      <image:caption>Cílová rovinka závodního okruhu Autodromo Enzo i Dino Ferrari v Imole</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>Posádka Rallye Paříž-Dakar 1988 (zprava: Tomáš Mück, Radomír Stachura a Karel Loprais)</image:title>
+      <image:caption>Posádka Rallye Paříž-Dakar 1988 (zprava: Tomáš Mück, Radomír Stachura a Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Rallye Paříž-Dakar 1988</video:title>
+      <video:description>aneb Tomáš Mück naviguje a vyhrává!</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/en/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>Figure 1: Engine speed course during water delivery versus time</image:title>
+      <image:caption>Figure 1: Engine speed course during water delivery versus time</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>Figure 2: Comparison of water delivery using cast iron manifolds with TOMMÜ resonance muffler (blue curve) vs. new TAZ 1.43 exhaust headers (four different repeated measurements)</image:title>
+      <image:caption>Figure 2: Comparison of water delivery using cast iron manifolds with TOMMÜ resonance muffler (blue curve) vs. new TAZ 1.43 exhaust headers (four different repeated measurements)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>Figure 3: New tuned exhaust headers TAZ 1.43 on PS12 aggregate</image:title>
+      <image:caption>Figure 3: New tuned exhaust headers TAZ 1.43 on PS12 aggregate</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>Start of the Havířov-Šenov car race 1972 (source:Roman Krejčí)</image:title>
+      <image:caption>Start of the Havířov-Šenov car race 1972 (source:Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>Balcar Memorial Ostrava (source:Facebook)</image:title>
+      <image:caption>Balcar Memorial Ostrava (source:Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>Mercedes Benz W25E, Monaco Grand Prix 1936 (Andrea Del Pesco) – exhaust piping led by the shortest route into a common pipe</image:title>
+      <image:caption>Mercedes Benz W25E, Monaco Grand Prix 1936 (Andrea Del Pesco) – exhaust piping led by the shortest route into a common pipe</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>Connaught C-Type Formula 1 from 1957 with tuned 4-2-1 exhaust headers (source:racecarsdirect.com)</image:title>
+      <image:caption>Connaught C-Type Formula 1 from 1957 with tuned 4-2-1 exhaust headers (source:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>Maserati 250F from 1954 with tuned 6-2-1 exhaust headers, the winning car of many Grand Prix races, driven by greats such as Juan Manuel Fangio and Stirling Moss (source:postwarclassic.com)</image:title>
+      <image:caption>Maserati 250F from 1954 with tuned 6-2-1 exhaust headers, the winning car of many Grand Prix races, driven by greats such as Juan Manuel Fangio and Stirling Moss (source:postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958) with rear engine and tuned 4-2-1 exhaust headers, the British were pioneers of monocoque structures and rear engines (source:racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958) with rear engine and tuned 4-2-1 exhaust headers, the British were pioneers of monocoque structures and rear engines (source:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>Ferrari 312 with a 3-liter V12 engine mounted at the rear (1967), an unconventional layout for today with exhausts inside and intake outside the V-structure; there is no doubt that designers already knew here that pipe length plays a big role in the </image:title>
+      <image:caption>Ferrari 312 with a 3-liter V12 engine mounted at the rear (1967), an unconventional layout for today with exhausts inside and intake outside the V-structure; there is no doubt that designers already knew here that pipe length plays a big role in the engine (source:bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>Cylinder head Škoda 130 RS (source:skoda.virt.cz)</image:title>
+      <image:caption>Cylinder head Škoda 130 RS (source:skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>Dimensions of intake ports Škoda 130 RS (source: documentation of the Autoclub of the Czech Republic)</image:title>
+      <image:caption>Dimensions of intake ports Škoda 130 RS (source: documentation of the Autoclub of the Czech Republic)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>Manufacturers and racing circuits in the Italian Motor Valley near Bologna.</image:title>
+      <image:caption>Manufacturers and racing circuits in the Italian Motor Valley near Bologna.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>Unmistakable exhaust tip of Pagani vehicles (source:fstylephoto.com</image:title>
+      <image:caption>Unmistakable exhaust tip of Pagani vehicles (source:fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>Pagani Zonda Cinque – 1210 kg live weight, which shoots to a hundred in 3.4 seconds (source:idnes.cz</image:title>
+      <image:caption>Pagani Zonda Cinque – 1210 kg live weight, which shoots to a hundred in 3.4 seconds (source:idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-4.jpg</image:loc>
+      <image:title>Collezione Umberto Panini</image:title>
+      <image:caption>Collezione Umberto Panini</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>Enzo Ferrari Museum in Modena</image:title>
+      <image:caption>Enzo Ferrari Museum in Modena</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>The interior of the futuristic museum building transformed into a cinema hall in a moment</image:title>
+      <image:caption>The interior of the futuristic museum building transformed into a cinema hall in a moment</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>Ferrari Museum in Maranello (F1 exhibition)</image:title>
+      <image:caption>Ferrari Museum in Maranello (F1 exhibition)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>Ferrari Museum in Maranello (24H Le Mans exhibition)</image:title>
+      <image:caption>Ferrari Museum in Maranello (24H Le Mans exhibition)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>Finish straight of the Autodromo Enzo e Dino Ferrari racing circuit in Imola</image:title>
+      <image:caption>Finish straight of the Autodromo Enzo e Dino Ferrari racing circuit in Imola</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>Crew of Rally Paris-Dakar 1988 (from right: Tomáš Mück, Radomír Stachura and Karel Loprais)</image:title>
+      <image:caption>Crew of Rally Paris-Dakar 1988 (from right: Tomáš Mück, Radomír Stachura and Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Rally Paris-Dakar 1988</video:title>
+      <video:description>or Tomáš Mück navigates and wins!</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/de/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>Abbildung 1: Drehzahlverlauf des Motors während der Förderung in Abhängigkeit von der Zeit</image:title>
+      <image:caption>Abbildung 1: Drehzahlverlauf des Motors während der Förderung in Abhängigkeit von der Zeit</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>Abbildung 2: Vergleich der Förderung bei Verwendung von Gusseisenkrümmern mit TOMMÜ Resonanzschalldämpfer (blaue Kurve) vs. neue Fächerkrümmer TAZ 1,43 (vier verschiedene wiederholte Messungen)</image:title>
+      <image:caption>Abbildung 2: Vergleich der Förderung bei Verwendung von Gusseisenkrümmern mit TOMMÜ Resonanzschalldämpfer (blaue Kurve) vs. neue Fächerkrümmer TAZ 1,43 (vier verschiedene wiederholte Messungen)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>Abbildung 3: Neue abgestimmte Fächerkrümmer TAZ 1,43 am Aggregat PS12</image:title>
+      <image:caption>Abbildung 3: Neue abgestimmte Fächerkrümmer TAZ 1,43 am Aggregat PS12</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>Start des Autorennens Havířov-Šenov 1972 (Quelle:Roman Krejčí)</image:title>
+      <image:caption>Start des Autorennens Havířov-Šenov 1972 (Quelle:Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>Balcar-Memorial Ostrava (Quelle:Facebook)</image:title>
+      <image:caption>Balcar-Memorial Ostrava (Quelle:Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>Mercedes Benz W25E, Monaco Grand Prix 1936 (Andrea Del Pesco) – Abgasrohr auf kürzestem Weg in ein gemeinsames Rohr geführt</image:title>
+      <image:caption>Mercedes Benz W25E, Monaco Grand Prix 1936 (Andrea Del Pesco) – Abgasrohr auf kürzestem Weg in ein gemeinsames Rohr geführt</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>Connaught C-Type Formula 1 aus dem Jahr 1957 mit abgestimmten Fächerkrümmern 4-2-1 (Quelle:racecarsdirect.com)</image:title>
+      <image:caption>Connaught C-Type Formula 1 aus dem Jahr 1957 mit abgestimmten Fächerkrümmern 4-2-1 (Quelle:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>Maserati 250F aus dem Jahr 1954 mit abgestimmten Fächerkrümmern 6-2-1, Siegerwagen vieler Grand-Prix-Rennen, an dessen Steuer Größen wie Juan Manuel Fangio und Stirling Moss saßen (Quelle:postwarclassic.com)</image:title>
+      <image:caption>Maserati 250F aus dem Jahr 1954 mit abgestimmten Fächerkrümmern 6-2-1, Siegerwagen vieler Grand-Prix-Rennen, an dessen Steuer Größen wie Juan Manuel Fangio und Stirling Moss saßen (Quelle:postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958) mit Heckmotor und abgestimmten Fächerkrümmern 4-2-1, die Briten waren Pioniere selbsttragender Konstruktionen und Heckmotoren (Quelle:racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958) mit Heckmotor und abgestimmten Fächerkrümmern 4-2-1, die Briten waren Pioniere selbsttragender Konstruktionen und Heckmotoren (Quelle:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>Ferrari 312 mit 3-Liter-V12-Motor im Heck (1967), für die heutige Zeit untraditionelle Anordnung mit Auspuffen innen und Ansaugung außerhalb der V-Konstruktion, es besteht kein Zweifel, dass die Konstrukteure hier bereits wussten, dass die Rohrlänge </image:title>
+      <image:caption>Ferrari 312 mit 3-Liter-V12-Motor im Heck (1967), für die heutige Zeit untraditionelle Anordnung mit Auspuffen innen und Ansaugung außerhalb der V-Konstruktion, es besteht kein Zweifel, dass die Konstrukteure hier bereits wussten, dass die Rohrlänge beim Motor eine große Rolle spielt (Quelle:bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>Zylinderkopf Škoda 130 RS (Quelle:skoda.virt.cz)</image:title>
+      <image:caption>Zylinderkopf Škoda 130 RS (Quelle:skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>Abmessungen der Ansaugkanäle Škoda 130 RS (Quelle: Dokumentation des Autoklubs der ČR)</image:title>
+      <image:caption>Abmessungen der Ansaugkanäle Škoda 130 RS (Quelle: Dokumentation des Autoklubs der ČR)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>Hersteller und Rennstrecken im italienischen Motor Valley bei Bologna.</image:title>
+      <image:caption>Hersteller und Rennstrecken im italienischen Motor Valley bei Bologna.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>Unverwechselbares Auspuffendrohr der Fahrzeuge Pagani (Quelle:fstylephoto.com</image:title>
+      <image:caption>Unverwechselbares Auspuffendrohr der Fahrzeuge Pagani (Quelle:fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>Pagani Zonda Cinque – 1210 kg Lebendgewicht, das in 3,4 Sekunden auf Hundert schießt (Quelle:idnes.cz</image:title>
+      <image:caption>Pagani Zonda Cinque – 1210 kg Lebendgewicht, das in 3,4 Sekunden auf Hundert schießt (Quelle:idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-4.jpg</image:loc>
+      <image:title>Collezione Umberto Panini</image:title>
+      <image:caption>Collezione Umberto Panini</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>Enzo Ferrari Museum in Modena</image:title>
+      <image:caption>Enzo Ferrari Museum in Modena</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>Das Interieur des futuristischen Museumsgebäudes verwandelte sich in einem Augenblick in einen Kinosaal</image:title>
+      <image:caption>Das Interieur des futuristischen Museumsgebäudes verwandelte sich in einem Augenblick in einen Kinosaal</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>Ferrari Museum in Maranello (Ausstellung F1)</image:title>
+      <image:caption>Ferrari Museum in Maranello (Ausstellung F1)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>Ferrari Museum in Maranello (Ausstellung 24H Le Mans)</image:title>
+      <image:caption>Ferrari Museum in Maranello (Ausstellung 24H Le Mans)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>Zielgerade der Rennstrecke Autodromo Enzo e Dino Ferrari in Imola</image:title>
+      <image:caption>Zielgerade der Rennstrecke Autodromo Enzo e Dino Ferrari in Imola</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>Crew der Rallye Paris-Dakar 1988 (von rechts: Tomáš Mück, Radomír Stachura und Karel Loprais)</image:title>
+      <image:caption>Crew der Rallye Paris-Dakar 1988 (von rechts: Tomáš Mück, Radomír Stachura und Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Rallye Paris-Dakar 1988</video:title>
+      <video:description>oder Tomáš Mück navigiert und gewinnt!</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/fr/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>Figure 1 : Évolution du régime moteur lors du refoulement en fonction du temps</image:title>
+      <image:caption>Figure 1 : Évolution du régime moteur lors du refoulement en fonction du temps</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>Figure 2 : Comparaison du refoulement en utilisant des collecteurs en fonte avec silencieux à résonance TOMMÜ (courbe bleue) vs. nouveaux collecteurs d&apos;échappement TAZ 1,43 (quatre mesures répétées différentes)</image:title>
+      <image:caption>Figure 2 : Comparaison du refoulement en utilisant des collecteurs en fonte avec silencieux à résonance TOMMÜ (courbe bleue) vs. nouveaux collecteurs d&apos;échappement TAZ 1,43 (quatre mesures répétées différentes)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>Figure 3 : Nouveaux collecteurs d&apos;échappement accordés TAZ 1,43 sur agrégat PS12</image:title>
+      <image:caption>Figure 3 : Nouveaux collecteurs d&apos;échappement accordés TAZ 1,43 sur agrégat PS12</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>Départ de la course automobile Havířov-Šenov 1972 (source :Roman Krejčí)</image:title>
+      <image:caption>Départ de la course automobile Havířov-Šenov 1972 (source :Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>Mémorial Balcar Ostrava (source :Facebook)</image:title>
+      <image:caption>Mémorial Balcar Ostrava (source :Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>Mercedes Benz W25E, Monaco Grand Prix 1936 (Andrea Del Pesco) – tuyauterie d&apos;échappement conduite par le chemin le plus court dans un tuyau commun</image:title>
+      <image:caption>Mercedes Benz W25E, Monaco Grand Prix 1936 (Andrea Del Pesco) – tuyauterie d&apos;échappement conduite par le chemin le plus court dans un tuyau commun</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>Connaught C-Type Formula 1 de 1957 avec collecteurs d&apos;échappement accordés 4-2-1 (source :racecarsdirect.com)</image:title>
+      <image:caption>Connaught C-Type Formula 1 de 1957 avec collecteurs d&apos;échappement accordés 4-2-1 (source :racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>Maserati 250F de 1954 avec collecteurs d&apos;échappement accordés 6-2-1, la voiture gagnante de nombreux Grands Prix, conduite par des grands tels que Juan Manuel Fangio et Stirling Moss (source :postwarclassic.com)</image:title>
+      <image:caption>Maserati 250F de 1954 avec collecteurs d&apos;échappement accordés 6-2-1, la voiture gagnante de nombreux Grands Prix, conduite par des grands tels que Juan Manuel Fangio et Stirling Moss (source :postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958) avec moteur arrière et collecteurs d&apos;échappement accordés 4-2-1, les Britanniques étaient les pionniers des structures monocoques et des moteurs arrière (source :racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958) avec moteur arrière et collecteurs d&apos;échappement accordés 4-2-1, les Britanniques étaient les pionniers des structures monocoques et des moteurs arrière (source :racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>Ferrari 312 avec un moteur V12 de 3 litres monté à l&apos;arrière (1967), une disposition non conventionnelle pour aujourd&apos;hui avec des échappements à l&apos;intérieur et l&apos;admission à l&apos;extérieur de la structure en V ; il ne fait aucun doute que les concepteu</image:title>
+      <image:caption>Ferrari 312 avec un moteur V12 de 3 litres monté à l&apos;arrière (1967), une disposition non conventionnelle pour aujourd&apos;hui avec des échappements à l&apos;intérieur et l&apos;admission à l&apos;extérieur de la structure en V ; il ne fait aucun doute que les concepteurs savaient déjà ici que la longueur du tuyau joue un grand rôle dans le moteur (source :bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>Culasse Škoda 130 RS (source :skoda.virt.cz)</image:title>
+      <image:caption>Culasse Škoda 130 RS (source :skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>Dimensions des conduits d&apos;admission Škoda 130 RS (source : documentation de l&apos;Autoclub de la République tchèque)</image:title>
+      <image:caption>Dimensions des conduits d&apos;admission Škoda 130 RS (source : documentation de l&apos;Autoclub de la République tchèque)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>Constructeurs et circuits de course dans la Motor Valley italienne près de Bologne.</image:title>
+      <image:caption>Constructeurs et circuits de course dans la Motor Valley italienne près de Bologne.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>Embout d&apos;échappement indubitable des véhicules Pagani (source :fstylephoto.com</image:title>
+      <image:caption>Embout d&apos;échappement indubitable des véhicules Pagani (source :fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>Pagani Zonda Cinque – 1210 kg de poids vif, qui atteint les 100 km/h en 3,4 secondes (source :idnes.cz</image:title>
+      <image:caption>Pagani Zonda Cinque – 1210 kg de poids vif, qui atteint les 100 km/h en 3,4 secondes (source :idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-4.jpg</image:loc>
+      <image:title>Collezione Umberto Panini</image:title>
+      <image:caption>Collezione Umberto Panini</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>Musée Enzo Ferrari à Modène</image:title>
+      <image:caption>Musée Enzo Ferrari à Modène</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>L&apos;intérieur du bâtiment futuriste du musée transformé en salle de cinéma en un instant</image:title>
+      <image:caption>L&apos;intérieur du bâtiment futuriste du musée transformé en salle de cinéma en un instant</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>Musée Ferrari à Maranello (exposition F1)</image:title>
+      <image:caption>Musée Ferrari à Maranello (exposition F1)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>Musée Ferrari à Maranello (exposition 24H Le Mans)</image:title>
+      <image:caption>Musée Ferrari à Maranello (exposition 24H Le Mans)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>Ligne droite d&apos;arrivée du circuit de course Autodromo Enzo e Dino Ferrari à Imola</image:title>
+      <image:caption>Ligne droite d&apos;arrivée du circuit de course Autodromo Enzo e Dino Ferrari à Imola</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>Équipage du Rallye Paris-Dakar 1988 (de droite : Tomáš Mück, Radomír Stachura et Karel Loprais)</image:title>
+      <image:caption>Équipage du Rallye Paris-Dakar 1988 (de droite : Tomáš Mück, Radomír Stachura et Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Rallye Paris-Dakar 1988</video:title>
+      <video:description>ou Tomáš Mück navigue et gagne !</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/it/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>Figura 1: Andamento del regime del motore durante la mandata in funzione del tempo</image:title>
+      <image:caption>Figura 1: Andamento del regime del motore durante la mandata in funzione del tempo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>Figura 2: Confronto della mandata utilizzando collettori in ghisa con silenziatore a risonanza TOMMÜ (curva blu) vs. nuovi collettori di scarico TAZ 1.43 (quattro diverse misurazioni ripetute)</image:title>
+      <image:caption>Figura 2: Confronto della mandata utilizzando collettori in ghisa con silenziatore a risonanza TOMMÜ (curva blu) vs. nuovi collettori di scarico TAZ 1.43 (quattro diverse misurazioni ripetute)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>Figura 3: Nuovi collettori di scarico accordati TAZ 1.43 su aggregato PS12</image:title>
+      <image:caption>Figura 3: Nuovi collettori di scarico accordati TAZ 1.43 su aggregato PS12</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>Partenza della gara automobilistica Havířov-Šenov 1972 (fonte:Roman Krejčí)</image:title>
+      <image:caption>Partenza della gara automobilistica Havířov-Šenov 1972 (fonte:Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>Memorial Balcar Ostrava (fonte:Facebook)</image:title>
+      <image:caption>Memorial Balcar Ostrava (fonte:Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>Mercedes Benz W25E, Gran Premio di Monaco 1936 (Andrea Del Pesco) – tubazioni di scarico condotte per la via più breve in un tubo comune</image:title>
+      <image:caption>Mercedes Benz W25E, Gran Premio di Monaco 1936 (Andrea Del Pesco) – tubazioni di scarico condotte per la via più breve in un tubo comune</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>Connaught C-Type Formula 1 del 1957 con collettori di scarico accordati 4-2-1 (fonte:racecarsdirect.com)</image:title>
+      <image:caption>Connaught C-Type Formula 1 del 1957 con collettori di scarico accordati 4-2-1 (fonte:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>Maserati 250F del 1954 con collettori di scarico accordati 6-2-1, l&apos;auto vincitrice di molti Gran Premi, guidata da grandi come Juan Manuel Fangio e Stirling Moss (fonte:postwarclassic.com)</image:title>
+      <image:caption>Maserati 250F del 1954 con collettori di scarico accordati 6-2-1, l&apos;auto vincitrice di molti Gran Premi, guidata da grandi come Juan Manuel Fangio e Stirling Moss (fonte:postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958) con motore posteriore e collettori di scarico accordati 4-2-1, i britannici erano i pionieri delle strutture monoscocca e dei motori posteriori (fonte:racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958) con motore posteriore e collettori di scarico accordati 4-2-1, i britannici erano i pionieri delle strutture monoscocca e dei motori posteriori (fonte:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>Ferrari 312 con un motore V12 da 3 litri montato posteriormente (1967), una disposizione non convenzionale per oggi con scarichi all&apos;interno e aspirazione all&apos;esterno della struttura a V; non c&apos;è dubbio che i progettisti sapessero già qui che la lung</image:title>
+      <image:caption>Ferrari 312 con un motore V12 da 3 litri montato posteriormente (1967), una disposizione non convenzionale per oggi con scarichi all&apos;interno e aspirazione all&apos;esterno della struttura a V; non c&apos;è dubbio che i progettisti sapessero già qui che la lunghezza del tubo gioca un ruolo importante nel motore (fonte:bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>Testata cilindri Škoda 130 RS (fonte:skoda.virt.cz)</image:title>
+      <image:caption>Testata cilindri Škoda 130 RS (fonte:skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>Dimensioni dei condotti di aspirazione Škoda 130 RS (fonte: documentazione dell&apos;Autoclub della Repubblica Ceca)</image:title>
+      <image:caption>Dimensioni dei condotti di aspirazione Škoda 130 RS (fonte: documentazione dell&apos;Autoclub della Repubblica Ceca)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>Produttori e circuiti di gara nella Motor Valley italiana vicino a Bologna.</image:title>
+      <image:caption>Produttori e circuiti di gara nella Motor Valley italiana vicino a Bologna.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>Terminale di scarico inconfondibile dei veicoli Pagani (fonte:fstylephoto.com</image:title>
+      <image:caption>Terminale di scarico inconfondibile dei veicoli Pagani (fonte:fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>Pagani Zonda Cinque – 1210 kg di peso vivo, che scatta a 100 km/h in 3,4 secondi (fonte:idnes.cz</image:title>
+      <image:caption>Pagani Zonda Cinque – 1210 kg di peso vivo, che scatta a 100 km/h in 3,4 secondi (fonte:idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-4.jpg</image:loc>
+      <image:title>Collezione Umberto Panini</image:title>
+      <image:caption>Collezione Umberto Panini</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>Museo Enzo Ferrari a Modena</image:title>
+      <image:caption>Museo Enzo Ferrari a Modena</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>L&apos;interno dell&apos;edificio futuristico del museo trasformato in sala cinematografica in un istante</image:title>
+      <image:caption>L&apos;interno dell&apos;edificio futuristico del museo trasformato in sala cinematografica in un istante</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>Museo Ferrari a Maranello (esposizione F1)</image:title>
+      <image:caption>Museo Ferrari a Maranello (esposizione F1)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>Museo Ferrari a Maranello (esposizione 24H Le Mans)</image:title>
+      <image:caption>Museo Ferrari a Maranello (esposizione 24H Le Mans)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>Rettilineo del traguardo del circuito di gara Autodromo Enzo e Dino Ferrari a Imola</image:title>
+      <image:caption>Rettilineo del traguardo del circuito di gara Autodromo Enzo e Dino Ferrari a Imola</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>Equipaggio del Rally Parigi-Dakar 1988 (da destra: Tomáš Mück, Radomír Stachura e Karel Loprais)</image:title>
+      <image:caption>Equipaggio del Rally Parigi-Dakar 1988 (da destra: Tomáš Mück, Radomír Stachura e Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Rally Parigi-Dakar 1988</video:title>
+      <video:description>o Tomáš Mück naviga e vince!</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/es/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>Figura 1: Curso de las revoluciones del motor durante la descarga en función del tiempo</image:title>
+      <image:caption>Figura 1: Curso de las revoluciones del motor durante la descarga en función del tiempo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>Figura 2: Comparación de la descarga utilizando colectores de hierro fundido con silenciador de resonancia TOMMÜ (curva azul) vs. nuevos colectores de escape TAZ 1.43 (cuatro mediciones repetidas diferentes)</image:title>
+      <image:caption>Figura 2: Comparación de la descarga utilizando colectores de hierro fundido con silenciador de resonancia TOMMÜ (curva azul) vs. nuevos colectores de escape TAZ 1.43 (cuatro mediciones repetidas diferentes)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>Figura 3: Nuevos colectores de escape afinados TAZ 1.43 en agregado PS12</image:title>
+      <image:caption>Figura 3: Nuevos colectores de escape afinados TAZ 1.43 en agregado PS12</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>Salida de la carrera de coches Havířov-Šenov 1972 (fuente:Roman Krejčí)</image:title>
+      <image:caption>Salida de la carrera de coches Havířov-Šenov 1972 (fuente:Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>Memorial Balcar Ostrava (fuente:Facebook)</image:title>
+      <image:caption>Memorial Balcar Ostrava (fuente:Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>Mercedes Benz W25E, Gran Premio de Mónaco 1936 (Andrea Del Pesco) – tuberías de escape conducidas por el camino más corto en un tubo común</image:title>
+      <image:caption>Mercedes Benz W25E, Gran Premio de Mónaco 1936 (Andrea Del Pesco) – tuberías de escape conducidas por el camino más corto en un tubo común</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>Connaught C-Type Formula 1 de 1957 con colectores de escape afinados 4-2-1 (fuente:racecarsdirect.com)</image:title>
+      <image:caption>Connaught C-Type Formula 1 de 1957 con colectores de escape afinados 4-2-1 (fuente:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>Maserati 250F de 1954 con colectores de escape afinados 6-2-1, el coche ganador de muchos Grandes Premios, conducido por grandes como Juan Manuel Fangio y Stirling Moss (fuente:postwarclassic.com)</image:title>
+      <image:caption>Maserati 250F de 1954 con colectores de escape afinados 6-2-1, el coche ganador de muchos Grandes Premios, conducido por grandes como Juan Manuel Fangio y Stirling Moss (fuente:postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958) con motor trasero y colectores de escape afinados 4-2-1, los británicos fueron los pioneros de las estructuras monocasco y los motores traseros (fuente:racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958) con motor trasero y colectores de escape afinados 4-2-1, los británicos fueron los pioneros de las estructuras monocasco y los motores traseros (fuente:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>Ferrari 312 con un motor V12 de 3 litros montado en la parte trasera (1967), una disposición no convencional para hoy con escapes en el interior y admisión en el exterior de la estructura en V; no hay duda de que los diseñadores ya sabían aquí que la</image:title>
+      <image:caption>Ferrari 312 con un motor V12 de 3 litros montado en la parte trasera (1967), una disposición no convencional para hoy con escapes en el interior y admisión en el exterior de la estructura en V; no hay duda de que los diseñadores ya sabían aquí que la longitud del tubo juega un papel importante en el motor (fuente:bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>Culata Škoda 130 RS (fuente:skoda.virt.cz)</image:title>
+      <image:caption>Culata Škoda 130 RS (fuente:skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>Dimensiones de los conductos de admisión Škoda 130 RS (fuente: documentación del Autoclub de la República Checa)</image:title>
+      <image:caption>Dimensiones de los conductos de admisión Škoda 130 RS (fuente: documentación del Autoclub de la República Checa)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>Fabricantes y circuitos de carreras en el Motor Valley italiano cerca de Bolonia.</image:title>
+      <image:caption>Fabricantes y circuitos de carreras en el Motor Valley italiano cerca de Bolonia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>Punta de escape inconfundible de los vehículos Pagani (fuente:fstylephoto.com</image:title>
+      <image:caption>Punta de escape inconfundible de los vehículos Pagani (fuente:fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>Pagani Zonda Cinque – 1210 kg de peso vivo, que dispara a 100 km/h en 3,4 segundos (fuente:idnes.cz</image:title>
+      <image:caption>Pagani Zonda Cinque – 1210 kg de peso vivo, que dispara a 100 km/h en 3,4 segundos (fuente:idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-4.jpg</image:loc>
+      <image:title>Collezione Umberto Panini</image:title>
+      <image:caption>Collezione Umberto Panini</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>Museo Enzo Ferrari en Módena</image:title>
+      <image:caption>Museo Enzo Ferrari en Módena</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>El interior del edificio futurista del museo transformado en sala de cine en un instante</image:title>
+      <image:caption>El interior del edificio futurista del museo transformado en sala de cine en un instante</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>Museo Ferrari en Maranello (exposición F1)</image:title>
+      <image:caption>Museo Ferrari en Maranello (exposición F1)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>Museo Ferrari en Maranello (exposición 24H Le Mans)</image:title>
+      <image:caption>Museo Ferrari en Maranello (exposición 24H Le Mans)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>Recta de meta del circuito de carreras Autodromo Enzo e Dino Ferrari en Imola</image:title>
+      <image:caption>Recta de meta del circuito de carreras Autodromo Enzo e Dino Ferrari en Imola</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>Tripulación del Rally París-Dakar 1988 (desde la derecha: Tomáš Mück, Radomír Stachura y Karel Loprais)</image:title>
+      <image:caption>Tripulación del Rally París-Dakar 1988 (desde la derecha: Tomáš Mück, Radomír Stachura y Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Rally París-Dakar 1988</video:title>
+      <video:description>o ¡Tomáš Mück navega y gana!</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/pl/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>Rysunek 1: Przebieg obrotów silnika podczas tłoczenia w zależności od czasu</image:title>
+      <image:caption>Rysunek 1: Przebieg obrotów silnika podczas tłoczenia w zależności od czasu</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>Rysunek 2: Porównanie tłoczenia przy użyciu kolektorów żeliwnych z tłumikiem rezonansowym TOMMÜ (niebieska krzywa) vs. nowe kolektory wydechowe TAZ 1.43 (cztery różne powtórne pomiary)</image:title>
+      <image:caption>Rysunek 2: Porównanie tłoczenia przy użyciu kolektorów żeliwnych z tłumikiem rezonansowym TOMMÜ (niebieska krzywa) vs. nowe kolektory wydechowe TAZ 1.43 (cztery różne powtórne pomiary)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>Rysunek 3: Nowe sportowe kolektory wydechowe TAZ 1.43 na agregacie PS12</image:title>
+      <image:caption>Rysunek 3: Nowe sportowe kolektory wydechowe TAZ 1.43 na agregacie PS12</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>Start wyścigu samochodowego Havířov-Šenov 1972 (źródło:Roman Krejčí)</image:title>
+      <image:caption>Start wyścigu samochodowego Havířov-Šenov 1972 (źródło:Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>Memoriał Balcara Ostrawa (źródło:Facebook)</image:title>
+      <image:caption>Memoriał Balcara Ostrawa (źródło:Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>Mercedes Benz W25E, Grand Prix Monako 1936 (Andrea Del Pesco) – układ wydechowy poprowadzony najkrótszą drogą do wspólnej rury</image:title>
+      <image:caption>Mercedes Benz W25E, Grand Prix Monako 1936 (Andrea Del Pesco) – układ wydechowy poprowadzony najkrótszą drogą do wspólnej rury</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>Connaught C-Type Formula 1 z 1957 roku z dostrojonymi kolektorami wydechowymi 4-2-1 (źródło:racecarsdirect.com)</image:title>
+      <image:caption>Connaught C-Type Formula 1 z 1957 roku z dostrojonymi kolektorami wydechowymi 4-2-1 (źródło:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>Maserati 250F z 1954 roku z dostrojonymi kolektorami wydechowymi 6-2-1, zwycięski samochód wielu wyścigów Grand Prix, za którego kierownicą zasiadali wielcy tacy jak Juan Manuel Fangio i Stirling Moss (źródło:postwarclassic.com)</image:title>
+      <image:caption>Maserati 250F z 1954 roku z dostrojonymi kolektorami wydechowymi 6-2-1, zwycięski samochód wielu wyścigów Grand Prix, za którego kierownicą zasiadali wielcy tacy jak Juan Manuel Fangio i Stirling Moss (źródło:postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958) z silnikiem z tyłu i dostrojonymi kolektorami wydechowymi 4-2-1, Brytyjczycy byli pionierami konstrukcji samonośnych i silników z tyłu (źródło:racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958) z silnikiem z tyłu i dostrojonymi kolektorami wydechowymi 4-2-1, Brytyjczycy byli pionierami konstrukcji samonośnych i silników z tyłu (źródło:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>Ferrari 312 z 3-litrowym silnikiem V12 umieszczonym z tyłu (1967), jak na dzisiejsze czasy nietypowy układ z wydechami wewnątrz i dolotem na zewnątrz konstrukcji V; nie ma wątpliwości, że konstruktorzy już tutaj wiedzieli, że długość rur odgrywa w si</image:title>
+      <image:caption>Ferrari 312 z 3-litrowym silnikiem V12 umieszczonym z tyłu (1967), jak na dzisiejsze czasy nietypowy układ z wydechami wewnątrz i dolotem na zewnątrz konstrukcji V; nie ma wątpliwości, że konstruktorzy już tutaj wiedzieli, że długość rur odgrywa w silniku dużą rolę (źródło:bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>Głowica cylindrów Škoda 130 RS (źródło:skoda.virt.cz)</image:title>
+      <image:caption>Głowica cylindrów Škoda 130 RS (źródło:skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>Wymiary kanałów ssących Škoda 130 RS (źródło: dokumentacja Autoklubu ČR)</image:title>
+      <image:caption>Wymiary kanałów ssących Škoda 130 RS (źródło: dokumentacja Autoklubu ČR)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>Producenci i tory wyścigowe we włoskiej Motor Valley koło Bolonii.</image:title>
+      <image:caption>Producenci i tory wyścigowe we włoskiej Motor Valley koło Bolonii.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>Niezaprzeczalna końcówka wydechu pojazdów Pagani (źródło:fstylephoto.com</image:title>
+      <image:caption>Niezaprzeczalna końcówka wydechu pojazdów Pagani (źródło:fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>Pagani Zonda Cinque – 1210 kg żywej wagi, która wystrzeliwuje do setki w 3,4 sekundy (źródło:idnes.cz</image:title>
+      <image:caption>Pagani Zonda Cinque – 1210 kg żywej wagi, która wystrzeliwuje do setki w 3,4 sekundy (źródło:idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-4.jpg</image:loc>
+      <image:title>Collezione Umberto Panini</image:title>
+      <image:caption>Collezione Umberto Panini</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>Muzeum Enzo Ferrariego w Modenie</image:title>
+      <image:caption>Muzeum Enzo Ferrariego w Modenie</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>Wnętrze futurystycznego budynku muzeum w jednej chwili zmieniło się w salę kinową</image:title>
+      <image:caption>Wnętrze futurystycznego budynku muzeum w jednej chwili zmieniło się w salę kinową</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>Muzeum Ferrari w Maranello (ekspozycja F1)</image:title>
+      <image:caption>Muzeum Ferrari w Maranello (ekspozycja F1)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>Muzeum Ferrari w Maranello (ekspozycja 24H Le Mans)</image:title>
+      <image:caption>Muzeum Ferrari w Maranello (ekspozycja 24H Le Mans)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>Prosta startowa toru wyścigowego Autodromo Enzo e Dino Ferrari w Imoli</image:title>
+      <image:caption>Prosta startowa toru wyścigowego Autodromo Enzo e Dino Ferrari w Imoli</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>Załoga Rajdu Paryż-Dakar 1988 (od prawej: Tomáš Mück, Radomír Stachura i Karel Loprais)</image:title>
+      <image:caption>Załoga Rajdu Paryż-Dakar 1988 (od prawej: Tomáš Mück, Radomír Stachura i Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Rajd Paryż-Dakar 1988</video:title>
+      <video:description>czyli Tomáš Mück nawiguje i wygrywa!</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/ru/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>Рисунок 1: График оборотов двигателя при подаче воды в зависимости от времени</image:title>
+      <image:caption>Рисунок 1: График оборотов двигателя при подаче воды в зависимости от времени</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>Рисунок 2: Сравнение подачи при использовании чугунных коллекторов с резонансным глушителем TOMMÜ (синяя кривая) против новых выпускных коллекторов TAZ 1,43 (четыре разных повторных измерения)</image:title>
+      <image:caption>Рисунок 2: Сравнение подачи при использовании чугунных коллекторов с резонансным глушителем TOMMÜ (синяя кривая) против новых выпускных коллекторов TAZ 1,43 (четыре разных повторных измерения)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>Рисунок 3: Новые настроенные выпускные коллекторы TAZ 1,43 на агрегате PS12</image:title>
+      <image:caption>Рисунок 3: Новые настроенные выпускные коллекторы TAZ 1,43 на агрегате PS12</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>Старт гонки автомобилей Гавиржов-Шенов 1972 (источник:Roman Krejčí)</image:title>
+      <image:caption>Старт гонки автомобилей Гавиржов-Шенов 1972 (источник:Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>Мемориал Бальцара Острава (источник:Facebook)</image:title>
+      <image:caption>Мемориал Бальцара Острава (источник:Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>Mercedes Benz W25E, Гран-при Монако 1936 (Andrea Del Pesco) – выпускной трубопровод сведен по кратчайшему пути в общую трубу</image:title>
+      <image:caption>Mercedes Benz W25E, Гран-при Монако 1936 (Andrea Del Pesco) – выпускной трубопровод сведен по кратчайшему пути в общую трубу</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>Connaught C-Type Formula 1 1957 года с настроенными выпускными коллекторами 4-2-1 (источник:racecarsdirect.com)</image:title>
+      <image:caption>Connaught C-Type Formula 1 1957 года с настроенными выпускными коллекторами 4-2-1 (источник:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>Maserati 250F 1954 года с настроенными выпускными коллекторами 6-2-1, автомобиль-победитель многих гонок Гран-при, за рулем которого сидели такие великие гонщики, как Хуан Мануэль Фанхио и Стирлинг Мосс (источник:postwarclassic.com)</image:title>
+      <image:caption>Maserati 250F 1954 года с настроенными выпускными коллекторами 6-2-1, автомобиль-победитель многих гонок Гран-при, за рулем которого сидели такие великие гонщики, как Хуан Мануэль Фанхио и Стирлинг Мосс (источник:postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958) с двигателем сзади и настроенными выпускными коллекторами 4-2-1, британцы были пионерами несущих конструкций и двигателей сзади (источник:racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958) с двигателем сзади и настроенными выпускными коллекторами 4-2-1, британцы были пионерами несущих конструкций и двигателей сзади (источник:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>Ferrari 312 с 3-литровым двигателем V12, расположенным сзади (1967), нетрадиционная для сегодняшнего дня компоновка с выхлопом внутри и впуском снаружи V-образной конструкции, нет сомнений, что здесь конструкторы уже знали, что длина трубопровода игр</image:title>
+      <image:caption>Ferrari 312 с 3-литровым двигателем V12, расположенным сзади (1967), нетрадиционная для сегодняшнего дня компоновка с выхлопом внутри и впуском снаружи V-образной конструкции, нет сомнений, что здесь конструкторы уже знали, что длина трубопровода играет большую роль в двигателе (источник:bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>Головка блока цилиндров Škoda 130 RS (источник:skoda.virt.cz)</image:title>
+      <image:caption>Головка блока цилиндров Škoda 130 RS (источник:skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>Размеры впускных каналов Škoda 130 RS (источник: документация Автоклуба ЧР)</image:title>
+      <image:caption>Размеры впускных каналов Škoda 130 RS (источник: документация Автоклуба ЧР)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>Производители и гоночные трассы в итальянской Motor Valley у Болоньи.</image:title>
+      <image:caption>Производители и гоночные трассы в итальянской Motor Valley у Болоньи.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>Неповторимый патрубок выхлопной системы автомобилей Pagani (источник:fstylephoto.com</image:title>
+      <image:caption>Неповторимый патрубок выхлопной системы автомобилей Pagani (источник:fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>Pagani Zonda Cinque – 1210 кг живого веса, который выстреливает до сотни за 3,4 секунды (источник:idnes.cz</image:title>
+      <image:caption>Pagani Zonda Cinque – 1210 кг живого веса, который выстреливает до сотни за 3,4 секунды (источник:idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-4.jpg</image:loc>
+      <image:title>Collezione Umberto Panini</image:title>
+      <image:caption>Collezione Umberto Panini</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>Музей Энцо Феррари в Модене</image:title>
+      <image:caption>Музей Энцо Феррари в Модене</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>Интерьер футуристического здания музея в одно мгновение превратился в кинозал</image:title>
+      <image:caption>Интерьер футуристического здания музея в одно мгновение превратился в кинозал</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>Музей Ferrari в Маранелло (экспозиция F1)</image:title>
+      <image:caption>Музей Ferrari в Маранелло (экспозиция F1)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>Музей Ferrari в Маранелло (экспозиция 24H Le Mans)</image:title>
+      <image:caption>Музей Ferrari в Маранелло (экспозиция 24H Le Mans)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>Финишная прямая гоночной трассы Autodromo Enzo i Dino Ferrari в Имоле</image:title>
+      <image:caption>Финишная прямая гоночной трассы Autodromo Enzo i Dino Ferrari в Имоле</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>Экипаж Ралли Париж-Дакар 1988 (справа: Tomáš Mück, Radomír Stachura и Karel Loprais)</image:title>
+      <image:caption>Экипаж Ралли Париж-Дакар 1988 (справа: Tomáš Mück, Radomír Stachura и Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Ралли Париж-Дакар 1988</video:title>
+      <video:description>или Tomáš Mück штурманит и выигрывает!</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/ja/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>図1：時間経過に伴う放水時のエンジン回転数の推移</image:title>
+      <image:caption>図1：時間経過に伴う放水時のエンジン回転数の推移</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>図2：TOMMÜレゾネーターマフラー付き鋳鉄製マニホールド（青線）と新しいTAZ 1.43エキゾーストマニホールド（4回の異なる繰り返し測定）を使用した放水の比較</image:title>
+      <image:caption>図2：TOMMÜレゾネーターマフラー付き鋳鉄製マニホールド（青線）と新しいTAZ 1.43エキゾーストマニホールド（4回の異なる繰り返し測定）を使用した放水の比較</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>図3：PS12ユニットに装着された新しいTAZ 1.43チューニングエキゾーストマニホールド</image:title>
+      <image:caption>図3：PS12ユニットに装着された新しいTAZ 1.43チューニングエキゾーストマニホールド</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>ハヴィジョフ・シェノフの自動車レースのスタート 1972 (出典:Roman Krejčí)</image:title>
+      <image:caption>ハヴィジョフ・シェノフの自動車レースのスタート 1972 (出典:Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>バルカル記念オストラヴァ (出典:Facebook)</image:title>
+      <image:caption>バルカル記念オストラヴァ (出典:Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>メルセデス・ベンツ W25E、モナコグランプリ 1936 (Andrea Del Pesco) – 最短経路で共通パイプにまとめられた排気管</image:title>
+      <image:caption>メルセデス・ベンツ W25E、モナコグランプリ 1936 (Andrea Del Pesco) – 最短経路で共通パイプにまとめられた排気管</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>1957年のConnaught C-Type Formula 1、4-2-1チューニングエキゾーストマニホールド付き (出典:racecarsdirect.com)</image:title>
+      <image:caption>1957年のConnaught C-Type Formula 1、4-2-1チューニングエキゾーストマニホールド付き (出典:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>1954年のマセラティ 250F、6-2-1チューニングエキゾーストマニホールド付き。多くのグランプリレースで優勝し、ファン・マヌエル・ファンジオやスターリング・モスなどの巨人がステアリングを握った車 (出典:postwarclassic.com)</image:title>
+      <image:caption>1954年のマセラティ 250F、6-2-1チューニングエキゾーストマニホールド付き。多くのグランプリレースで優勝し、ファン・マヌエル・ファンジオやスターリング・モスなどの巨人がステアリングを握った車 (出典:postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958)、リアエンジンと4-2-1チューニングエキゾーストマニホールド付き。英国人はモノコック構造とリアエンジンのパイオニアでした (出典:racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958)、リアエンジンと4-2-1チューニングエキゾーストマニホールド付き。英国人はモノコック構造とリアエンジンのパイオニアでした (出典:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>フェラーリ 312、リアに配置された3リットルV12エンジン (1967)。排気が内側、吸気がV構造の外側にあるという今日では珍しい配置。設計者がここで配管の長さがエンジンにとって大きな役割を果たすことをすでに知っていたことは間違いありません (出典:bestcarmag.com)</image:title>
+      <image:caption>フェラーリ 312、リアに配置された3リットルV12エンジン (1967)。排気が内側、吸気がV構造の外側にあるという今日では珍しい配置。設計者がここで配管の長さがエンジンにとって大きな役割を果たすことをすでに知っていたことは間違いありません (出典:bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>シュコダ 130 RS シリンダーヘッド (出典:skoda.virt.cz)</image:title>
+      <image:caption>シュコダ 130 RS シリンダーヘッド (出典:skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>シュコダ 130 RS 吸気ポート寸法 (出典: チェコ共和国オートクラブ文書)</image:title>
+      <image:caption>シュコダ 130 RS 吸気ポート寸法 (出典: チェコ共和国オートクラブ文書)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>ボローニャ近郊のイタリア・モーターバレーのメーカーとサーキット。</image:title>
+      <image:caption>ボローニャ近郊のイタリア・モーターバレーのメーカーとサーキット。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>パガーニ車の紛れもないエキゾーストエンド (出典:fstylephoto.com</image:title>
+      <image:caption>パガーニ車の紛れもないエキゾーストエンド (出典:fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>パガーニ ゾンダ チンクエ – 1210kgの車重で、3.4秒で時速100kmに達します (出典:idnes.cz</image:title>
+      <image:caption>パガーニ ゾンダ チンクエ – 1210kgの車重で、3.4秒で時速100kmに達します (出典:idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>モデナのエンツォ・フェラーリ博物館</image:title>
+      <image:caption>モデナのエンツォ・フェラーリ博物館</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>博物館の未来的な建物の内部は瞬く間に映画館に変身しました</image:title>
+      <image:caption>博物館の未来的な建物の内部は瞬く間に映画館に変身しました</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>マラネロのフェラーリ博物館 (F1展示)</image:title>
+      <image:caption>マラネロのフェラーリ博物館 (F1展示)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>マラネロのフェラーリ博物館 (ル・マン24時間展示)</image:title>
+      <image:caption>マラネロのフェラーリ博物館 (ル・マン24時間展示)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>イモラのアウトドローモ・エンツォ・エ・ディーノ・フェラーリ・サーキットのホームストレート</image:title>
+      <image:caption>イモラのアウトドローモ・エンツォ・エ・ディーノ・フェラーリ・サーキットのホームストレート</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>パリ・ダカール・ラリー 1988 クルー (右から: Tomáš Mück, Radomír Stachura, Karel Loprais)</image:title>
+      <image:caption>パリ・ダカール・ラリー 1988 クルー (右から: Tomáš Mück, Radomír Stachura, Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>パリ・ダカール・ラリー 1988</video:title>
+      <video:description>あるいはトマシュ・ミュックがナビゲートし、勝利する！</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/zh/blog.html</loc>
+    <lastmod>2025-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/blog.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/blog.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/blog.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/blog.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/blog.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/blog.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
+      <image:title>图 1：出水时发动机转速随时间的变化过程</image:title>
+      <image:caption>图 1：出水时发动机转速随时间的变化过程</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-2.png</image:loc>
+      <image:title>图 2：使用带 TOMMÜ 谐振消声器的铸铁歧管（蓝色曲线）与新型 TAZ 1.43 排气歧管（四次不同的重复测量）的出水比较</image:title>
+      <image:caption>图 2：使用带 TOMMÜ 谐振消声器的铸铁歧管（蓝色曲线）与新型 TAZ 1.43 排气歧管（四次不同的重复测量）的出水比较</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-3.jpg</image:loc>
+      <image:title>图 3：安装在 PS12 机组上的新型 TAZ 1.43 高性能排气歧管</image:title>
+      <image:caption>图 3：安装在 PS12 机组上的新型 TAZ 1.43 高性能排气歧管</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-1.jpg</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article3-2.png</image:loc>
+      <image:title>Image</image:title>
+      <image:caption>Image</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-1.jpg</image:loc>
+      <image:title>1972年 哈维若夫-舍诺夫 汽车赛起跑 (来源:Roman Krejčí)</image:title>
+      <image:caption>1972年 哈维若夫-舍诺夫 汽车赛起跑 (来源:Roman Krejčí)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article4-2.jpg</image:loc>
+      <image:title>奥斯特拉瓦 巴尔卡尔纪念赛 (来源:Facebook)</image:title>
+      <image:caption>奥斯特拉瓦 巴尔卡尔纪念赛 (来源:Facebook)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-1.webp</image:loc>
+      <image:title>梅赛德斯-奔驰 W25E，1936 年摩纳哥大奖赛 (Andrea Del Pesco) – 排气管通过最短路径汇入公用管</image:title>
+      <image:caption>梅赛德斯-奔驰 W25E，1936 年摩纳哥大奖赛 (Andrea Del Pesco) – 排气管通过最短路径汇入公用管</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-2.jpg</image:loc>
+      <image:title>1957 年的 Connaught C-Type Formula 1，配备 4-2-1 高性能排气歧管 (来源:racecarsdirect.com)</image:title>
+      <image:caption>1957 年的 Connaught C-Type Formula 1，配备 4-2-1 高性能排气歧管 (来源:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-3.jpg</image:loc>
+      <image:title>1954 年的玛莎拉蒂 250F，配备 6-2-1 高性能排气歧管，这是许多大奖赛的获胜赛车，像胡安·曼努埃尔·方吉奥和斯特林·莫斯这样的伟人都曾驾驶过它 (来源:postwarclassic.com)</image:title>
+      <image:caption>1954 年的玛莎拉蒂 250F，配备 6-2-1 高性能排气歧管，这是许多大奖赛的获胜赛车，像胡安·曼努埃尔·方吉奥和斯特林·莫斯这样的伟人都曾驾驶过它 (来源:postwarclassic.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-4.webp</image:loc>
+      <image:title>Cooper Climac Type 45 (1958)，后置发动机和 4-2-1 高性能排气歧管，英国人是硬壳式结构和后置发动机的先驱 (来源:racecarsdirect.com)</image:title>
+      <image:caption>Cooper Climac Type 45 (1958)，后置发动机和 4-2-1 高性能排气歧管，英国人是硬壳式结构和后置发动机的先驱 (来源:racecarsdirect.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article5-5.jpg</image:loc>
+      <image:title>法拉利 312，配备 3 升 V12 发动机，后置 (1967)，对于今天来说非传统的布局，排气在内侧，进气在 V 型结构外侧，毫无疑问，这里的设计者已经知道管道长度对发动机起着重要作用 (来源:bestcarmag.com)</image:title>
+      <image:caption>法拉利 312，配备 3 升 V12 发动机，后置 (1967)，对于今天来说非传统的布局，排气在内侧，进气在 V 型结构外侧，毫无疑问，这里的设计者已经知道管道长度对发动机起着重要作用 (来源:bestcarmag.com)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-1.jpg</image:loc>
+      <image:title>斯柯达 130 RS 气缸盖 (来源:skoda.virt.cz)</image:title>
+      <image:caption>斯柯达 130 RS 气缸盖 (来源:skoda.virt.cz)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article6-2.webp</image:loc>
+      <image:title>斯柯达 130 RS 进气道尺寸 (来源: 捷克共和国汽车俱乐部文件)</image:title>
+      <image:caption>斯柯达 130 RS 进气道尺寸 (来源: 捷克共和国汽车俱乐部文件)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-1.png</image:loc>
+      <image:title>位于博洛尼亚附近的意大利汽车谷的制造商和赛车场。</image:title>
+      <image:caption>位于博洛尼亚附近的意大利汽车谷的制造商和赛车场。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-2.webp</image:loc>
+      <image:title>帕加尼车辆标志性的排气尾管 (来源:fstylephoto.com</image:title>
+      <image:caption>帕加尼车辆标志性的排气尾管 (来源:fstylephoto.com</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-3.jpg</image:loc>
+      <image:title>帕加尼 Zonda Cinque – 1210 公斤整备质量，百公里加速仅需 3.4 秒 (来源:idnes.cz</image:title>
+      <image:caption>帕加尼 Zonda Cinque – 1210 公斤整备质量，百公里加速仅需 3.4 秒 (来源:idnes.cz</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-5.jpg</image:loc>
+      <image:title>摩德纳的恩佐·法拉利博物馆</image:title>
+      <image:caption>摩德纳的恩佐·法拉利博物馆</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-6.jpg</image:loc>
+      <image:title>博物馆未来主义建筑的内部瞬间变成了电影院</image:title>
+      <image:caption>博物馆未来主义建筑的内部瞬间变成了电影院</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-7.jpg</image:loc>
+      <image:title>马拉内罗的法拉利博物馆 (F1 展览)</image:title>
+      <image:caption>马拉内罗的法拉利博物馆 (F1 展览)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-8.jpg</image:loc>
+      <image:title>马拉内罗的法拉利博物馆 (勒芒 24 小时耐力赛展览)</image:title>
+      <image:caption>马拉内罗的法拉利博物馆 (勒芒 24 小时耐力赛展览)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article7-9.jpg</image:loc>
+      <image:title>伊莫拉恩佐和迪诺·法拉利赛道的终点直道</image:title>
+      <image:caption>伊莫拉恩佐和迪诺·法拉利赛道的终点直道</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article8-1.jpg</image:loc>
+      <image:title>1988 年巴黎-达喀尔拉力赛车组 (右起: Tomáš Mück, Radomír Stachura 和 Karel Loprais)</image:title>
+      <image:caption>1988 年巴黎-达喀尔拉力赛车组 (右起: Tomáš Mück, Radomír Stachura 和 Karel Loprais)</image:caption>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/e8USvpfeNeQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>1988 年巴黎-达喀尔拉力赛</video:title>
+      <video:description>或者说托马斯·穆克领航并获胜！</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
+    </video:video>
+  </url>
+</urlset>

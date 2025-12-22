@@ -1,0 +1,430 @@
+/* ==========================================================================
+   III. BLOG STYLES (/blog)
+   ========================================================================== */
+
+.hero-block-wrapper-mobile {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 255, 255, 0.05);
+}
+.hero-visual-mobile {
+    min-height: auto;
+    height: auto;
+    grid-template-rows: 1fr;
+    display: block;
+    padding-bottom: 20px;
+}
+
+/* 13. BLOG LAYOUT */
+.blog-wrapper { min-height: 100vh; background: transparent; position: relative; z-index: 5; }
+.blog-layout { display: grid; grid-template-columns: 1fr 280px; gap: 40px; padding-bottom: 80px; align-items: stretch; }
+.blog-content {
+    margin-top: calc(var(--navbar-height) + 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.blog-card {
+    background: rgba(5, 5, 5, 0.75); border: 1px solid var(--border-color); padding: 50px;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: var(--box-shadow-static);
+}
+.blog-sidebar { position: relative; }
+.toc-wrapper {
+    position: fixed;
+    top: calc(var(--navbar-height) + 40px);
+    background: rgba(5, 5, 5, 0.75); border: 1px solid var(--border-color);
+    border-top: 3px solid var(--accent); padding: 25px; box-shadow: var(--box-shadow-static); backdrop-filter: blur(10px);
+}
+.toc-title { display: block; font-family: 'Chakra Petch', sans-serif; font-weight: 700; color: white; margin-bottom: 15px; font-size: 1rem; letter-spacing: 1px; }
+.toc-nav { display: flex; flex-direction: column; border-left: 1px solid #333; }
+.toc-link, .toc-sub-link {
+    display: block; /* Ensure it takes full width/height behavior */
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    padding: 10px 0 10px 15px; /* Added vertical padding */
+    transition: 0.3s;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+}
+.toc-sub-link { padding-left: 30px; font-size: 0.75rem; color: #888; }
+.toc-link {
+    color: white;
+    font-weight: 600;
+}
+.toc-link:first-child { margin-top: 0; }
+@media (hover: hover) {
+    .toc-link:hover, .toc-sub-link:hover {
+        color: white;
+        border-left-color: #555;
+    }
+}
+.toc-link.active, .toc-sub-link.active { color: var(--accent); border-left-color: var(--accent); }
+
+@media (min-width: 1400px) {
+    .toc-link.is-active {
+        color: var(--accent); /* Uses your site's accent color (e.g. red/orange) */
+        font-weight: 700;
+        border-left: 2px solid var(--accent); /* Optional: nice visual indicator */
+        padding-left: 8px; /* Make space for the border */
+        transition: all 0.2s ease;
+    }
+    /* Optional: Ensure normal state has transition for smoothness */
+    .toc-link {
+        transition: all 0.2s ease;
+        border-left: 2px solid transparent; /* Prevents jumping when border appears */
+    }
+}
+
+
+/* 14. ARTICLE CONTENT */
+.meta-tags { margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.sys-tag {
+    font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--accent);
+    border: 1px solid var(--border-color); padding: 4px 10px; background: rgba(255, 51, 51, 0.05);
+}
+.sys-tag.date { color: var(--text-dim); border-color: #333; background: transparent; }
+.sys-tag.updated {
+    color: #ffffff; border-color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.08);
+    font-weight: 600; letter-spacing: 0.5px; text-shadow: 0 0 8px rgba(255, 255, 255, 0.3); display: inline-flex; align-items: center;
+}
+.sys-tag.updated .mdi { font-size: 1.2em; margin-right: 4px; line-height: 1; }
+
+.article-header h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 20px; color: white; }
+.article-header .lead { font-size: 1.1rem; color: #aaa; line-height: 1.6; border-left: 3px solid var(--accent); padding-left: 20px; }
+.tech-divider { border: 0; height: 1px; background: var(--border-color); margin: 30px 0; position: relative; }
+.tech-divider::after { content: ''; position: absolute; top: -1px; left: 0; width: 50px; height: 3px; background: var(--accent); }
+
+.article-body { font-size: 0.95rem; color: #ccc; line-height: 1.7; }
+.article-body p { margin-bottom: 20px; text-align: justify; }
+.article-body h2 { font-size: 1.5rem; color: white; margin-top: 50px; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 5px; display: table; }
+.article-body h3 { font-size: 1.2rem; color: white; margin-top: 30px; margin-bottom: 10px; }
+.article-body ul { margin-bottom: 25px; padding-left: 20px; }
+.article-body ul li { margin-bottom: 8px; color: #bbb; }
+.article-body ul li::marker { color: var(--accent); content: '>> '; }
+
+/* 15. BLOG COMPONENTS (Tech) */
+.tech-quote {
+    background: rgba(255, 204, 0, 0.05); border: 1px solid var(--warning); border-left-width: 4px;
+    padding: 20px; margin: 30px 0; color: #ddd; font-size: 0.9rem;
+}
+.tech-quote .mdi { font-size: 1.2rem; vertical-align: middle; margin-right: 10px; color: var(--warning); }
+.tech-quote strong { display: block; margin-bottom: 5px; color: var(--warning); font-family: 'Chakra Petch'; letter-spacing: 1px; }
+
+.code-block { background: rgba(0, 0, 0, 0.8); border: 1px solid var(--border-color); margin: 30px 0; }
+.code-header { background: #111; color: #666; font-size: 0.7rem; padding: 5px 15px; border-bottom: 1px solid var(--border-color); font-family: 'Chakra Petch'; }
+.code-block pre { padding: 15px; overflow-x: auto; color: var(--success); font-size: 0.8rem; line-height: 1.5; margin: 0; }
+
+.tech-table th {
+    text-align: left; padding: 15px; background: rgba(255, 51, 51, 0.1); color: var(--accent);
+    border-bottom: 2px solid var(--border-color); text-transform: uppercase; letter-spacing: 1px;
+}
+@media (min-width: 1400px) {
+    .table-responsive { overflow-x: auto; margin: 30px 0; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); -webkit-overflow-scrolling: touch; }
+    .tech-table { width: 100%; border-collapse: collapse; font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #ccc; }
+    .tech-table td { padding: 12px 15px; border-bottom: 1px solid #222; }
+    .tech-table td span {
+        font-size: 0.75rem; color: #888;
+    }
+    .tech-table tr:last-child td { border-bottom: none; }
+    .tech-table .price-col { text-align: right; color: white; font-weight: bold; white-space: nowrap; }
+    .tech-table .wholesale-col { text-align: right; color: var(--text-dim); font-family: 'Fira Code', monospace; white-space: nowrap; border-left: 1px dashed #333; }
+    .tech-table .min-col { text-align: center; color: var(--text-dim); border-left: 1px dashed #333; }
+    .tech-table .note-row td { font-size: 0.75rem; color: #666; font-style: italic; padding-top: 5px; border-top: none; }
+}
+@media (hover: hover) {
+    .tech-table tr:hover {background: rgba(255, 255, 255, 0.03);}
+}
+.table-footer { font-size: 0.75rem; padding: 10px; background: #000; border-top: 1px solid var(--border-color); color: #666; text-align: right; }
+
+.tech-math-block {
+    background: rgba(0, 0, 0, 0.6); border: 1px solid var(--border-color); border-left: 3px solid var(--accent);
+    padding: 30px; margin: 40px 0; font-family: 'Fira Code', monospace;
+}
+.equation-display {
+    font-size: 1.3rem; color: white; text-align: center; margin-bottom: 25px; padding-bottom: 20px;
+    border-bottom: 1px dashed #333; letter-spacing: 0; font-weight: 500;
+}
+.tech-math-block .equation-display:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.equation-display .math-op { margin: 0 2px; }
+.equation-display .long-eq { display: inline-block; transform: scaleX(1.5); margin: 0 5px; color: var(--accent); }
+.equation-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; font-size: 0.9rem; }
+.legend-item { display: flex; align-items: baseline; gap: 10px; color: #ccc; }
+.var-symbol { color: var(--accent); font-weight: bold; min-width: 30px; text-align: right; }
+.var-desc { color: #888; }
+
+ul.tech-list { list-style: none; padding: 0; margin: 30px 0; border-top: 1px solid #222; }
+ul.tech-list li::marker { content: none; }
+ul.tech-list li { position: relative; padding: 12px 0 12px 30px; border-bottom: 1px solid #222; color: #ccc; transition: color 0.3s; }
+ul.tech-list li::before {
+    content: '>'; position: absolute; left: 0; top: 12px; font-family: 'Fira Code', monospace; font-weight: bold; color: var(--accent); transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+@media (hover: hover) {
+    ul.tech-list li:hover {
+        color: white;
+    }
+    ul.tech-list li:hover::before {
+        transform: translateX(5px);
+        text-shadow: 0 0 8px var(--accent);
+    }
+}
+
+/* Utilities (Text, Links, Signature) */
+.txt-em { font-weight: 700; background: rgba(255, 51, 51, 0.20); }
+.txt-mark {
+    background: rgba(255, 51, 51, 0.15); color: white; padding: 0 6px; border-radius: 2px;
+    font-family: 'Fira Code', monospace; border-bottom: 1px solid var(--accent); white-space: nowrap;
+}
+.tech-signature {
+    display: block; text-align: right; margin-top: 40px; padding-top: 10px; border-top: 1px solid #222;
+    font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #666;
+}
+.tech-signature strong { color: #ccc; letter-spacing: 0.5px; }
+
+/* 16. BLOG MEDIA */
+.blog-figure { margin: 40px 0; display: block; cursor: zoom-in; }
+.blog-figure.no-zoom { cursor: default; }
+.blog-figure figcaption { font-size: 0.75rem; color: var(--text-dim); text-align: center; margin-top: 10px; font-family: 'Fira Code', monospace; }
+.blog-figure figcaption a { font-size: 0.75rem; color: var(--accent); }
+
+.blog-img-frame {
+    position: relative; padding: 10px; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); width: 100%; box-sizing: border-box;
+}
+.blog-img { display: block; width: 100%; height: auto; max-height: 600px; object-fit: contain; border: 1px solid #222; }
+.blog-img-frame::before, .blog-img-frame::after {
+    content: ''; position: absolute; width: 20px; height: 20px; border-color: var(--accent); border-style: solid;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); pointer-events: none; z-index: 10;
+}
+.blog-img-frame::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.blog-img-frame::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+@media (hover: hover) {
+    .blog-img-frame:hover::before {
+        width: 30px;
+        height: 30px;
+        top: -6px;
+        left: -6px;
+    }
+    .blog-img-frame:hover::after {
+        width: 30px;
+        height: 30px;
+        bottom: -6px;
+        right: -6px;
+    }
+}
+
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border: 1px solid #333; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.plyr { --plyr-color-main: var(--accent); font-family: 'Fira Code', monospace; border-radius: 0; }
+.blog-img-frame .plyr { height: 100%; width: 100%; }
+
+/* ==========================================================================
+   MOBILE ADAPTATION (Max-Width: 1000px)
+   ========================================================================== */
+
+@media (max-width: 1399px) {
+
+    /* --- 1. Visibility Toggles --- */
+    /* Hide desktop-specific elements (Navbar, TOC Sidebar, etc.) */
+    .view-desktop {
+        display: none !important;
+    }
+    /* Show mobile-specific elements (Hamburger menu, Mobile nav) */
+    .view-mobile {
+        display: block !important;
+    }
+
+    /* --- 2. Layout Structure --- */
+    /* Remove the grid system and switch to a single column flow */
+    .blog-layout {
+        display: block;
+        padding-bottom: 40px;
+    }
+
+    /* Adjust the main content wrapper */
+    .blog-content {
+        margin-top: 0; /* Reset the large desktop margin */
+        padding-top: 60px; /* Add space for the mobile menu trigger */
+        gap: 30px; /* Reduce vertical gap between articles */
+        width: 100%;
+    }
+
+    /* --- 3. Card Styling --- */
+    /* Make cards more compact for mobile screens */
+    .blog-card {
+        padding: 25px 20px; /* Reduced padding (Top/Bottom: 25px, Sides: 20px) */
+        border-left: 0; /* Optional: Remove side borders for a cleaner look */
+        border-right: 0;
+        border-radius: 0; /* Flush edges usually look better on narrow screens */
+        background: rgba(5, 5, 5, 0.85); /* Slightly higher opacity for readability */
+    }
+
+    /* --- 4. Typography Adjustments --- */
+    /* Scale down large headings */
+    .article-header h1 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+        word-wrap: break-word; /* Prevent long words from breaking layout */
+    }
+
+    /* Adjust the lead text */
+    .article-header .lead {
+        font-size: 0.95rem;
+        padding-left: 15px;
+        border-left-width: 2px;
+    }
+
+    /* Adjust body text alignment */
+    .article-body p {
+        text-align: left; /* Switch from 'justify' to 'left' for better mobile reading spacing */
+        font-size: 0.9rem;
+    }
+
+    /* --- 5. Component Adjustments --- */
+
+    /* Mobile "Card View" for Tables */
+    /* 1. Force the table components to act like block elements */
+    .tech-table,
+    .tech-table tbody,
+    .tech-table thead,
+    .tech-table tr,
+    .tech-table td,
+    .tech-table th {
+        display: block;
+        width: 100%;
+        flex-wrap: wrap; /* Allows items to drop to next line */
+    }
+
+    /* 3. Style each Row as a "Card" */
+    .tech-table tr {
+        margin-bottom: 20px;
+        border: 1px solid var(--border-color);
+        background: rgba(0, 0, 0, 0.3); /* Match your original bg */
+    }
+
+    /* 4. Style the Cells to look like list items */
+    .tech-table :is(td, th) {
+        display: flex; /* Use flexbox to align Label and Value */
+        justify-content: space-between; /* Push Label to left, Value to right */
+        align-items: center; /* Vertically center align */
+        text-align: right; /* Ensure multi-line text aligns right */
+        padding: 10px; /* Vertical spacing */
+        border-bottom: 1px solid #333;
+        position: relative;
+
+        width: auto;
+    }
+
+    /* Optional: Fix the Heading Alignment */
+    /* Since the span pushed down, the heading might need to align right/left */
+    .tech-table td:first-of-type {
+        /* If you want the Heading to stay next to the Label */
+        justify-content: flex-start;
+        text-align: left;          /* Ensure multi-line text aligns left */
+    }
+
+    /* Target the description span specifically */
+    .tech-table td span {
+        flex-basis: 100%;     /* Force it to take the full width (new line) */
+        width: 100%;          /* Fallback for safety */
+        margin-top: 8px;      /* Spacing between Heading and Description */
+
+        /* Optional Styling for the Description */
+        text-align: left;     /* Usually looks better left-aligned than right */
+        font-size: 0.8em;     /* Make it slightly smaller */
+        color: #999;          /* Dim the text color */
+        line-height: 1.4;     /* Improve readability */
+    }
+
+    /* Remove border from the last item in the card */
+    .tech-table :is(td, th):last-child {
+        border-bottom: none;
+    }
+
+    /* 5. Inject the Label (The "Header") via CSS */
+    .tech-table td::before {
+        content: attr(data-label);  /* Pulls the header text from HTML */
+        font-family: 'Fira Code', monospace;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--accent);       /* Match your original header color */
+        margin-right: 20px;         /* Space between label and value */
+        text-align: left;
+        white-space: nowrap;        /* Keep label on one line */
+    }
+    .tech-table td:first-of-type::before {
+        content: none;
+    }
+
+    /* 6. Override specific column alignments from your desktop CSS */
+    .tech-table .price-col {
+        text-align: right;
+        border-left: none;
+        white-space: nowrap;
+        color: white;
+        font-weight: bold;
+    }
+    .tech-table .wholesale-col {
+        text-align: right;
+        border-left: none;
+        white-space: nowrap;
+        color: var(--text-dim);
+        font-family: 'Fira Code', monospace;
+    }
+    .tech-table .min-col {
+        text-align: right;
+        border-left: none;
+        color: var(--text-dim);
+    }
+    .tech-table th:first-of-type {
+        color: white;
+    }
+    .tech-table thead .price-col {
+        justify-content: flex-end;
+    }
+    .tech-table thead .wholesale-col {
+        justify-content: flex-end;
+    }
+    .tech-table thead .min-col {
+        justify-content: flex-end;
+    }
+
+    .table-footer { border: 1px solid var(--border-color); border-bottom: 0; }
+    .table-footer:last-of-type { border-bottom: 1px solid var(--border-color); }
+
+    /* Math Blocks */
+    .tech-math-block {
+        padding: 15px;
+        margin: 25px 0;
+        overflow-x: auto; /* Allow horizontal scrolling for long formulas */
+    }
+    .equation-display {
+        font-size: 1rem;
+        white-space: nowrap; /* Keep equations on one line (force scroll) */
+        text-align: left;
+    }
+    .equation-legend {
+        grid-template-columns: 1fr; /* Stack legend items vertically */
+    }
+
+    /* Images */
+    .blog-figure {
+        margin: 25px 0;
+    }
+    .blog-img-frame {
+        padding: 5px; /* Thinner frame on mobile */
+    }
+
+    /* Meta Tags */
+    .meta-tags {
+        gap: 5px;
+    }
+    .sys-tag {
+        font-size: 0.65rem;
+        padding: 4px 8px;
+    }
+
+    /* Quotes */
+    .tech-quote {
+        padding: 15px;
+        margin: 20px 0;
+        font-size: 0.85rem;
+    }
+}

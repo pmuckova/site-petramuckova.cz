@@ -1,0 +1,17 @@
+{
+  "name": "html-minifier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "minify-lang": "node minify-lang.js",
+    "build": "npm run minify-lang -- sitemap && npm run minify-lang -- cs && npm run minify-lang -- en && npm run minify-lang -- de && npm run minify-lang -- fr && npm run minify-lang -- it && npm run minify-lang -- es && npm run minify-lang -- pl && npm run minify-lang -- ru && npm run minify-lang -- ja && npm run minify-lang -- zh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0"
+  }
+}

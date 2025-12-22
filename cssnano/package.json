@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.4.23",
+    "cssnano": "^7.1.2",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "browserslist": [
+      "> 0.5%",
+      "last 2 versions",
+      "not dead"
+    ]
+  },
+  "scripts": {
+    "build:css": "postcss ../main.css -o ../release/main.css --no-map --config ./postcss.config.js && postcss ../blog.css -o ../release/blog.css --no-map --config ./postcss.config.js",
+    "build": "npm run build:css"
+  }
+}
