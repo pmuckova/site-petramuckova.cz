@@ -6,6 +6,7 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
+    <xhtml:link rel="canonical" hreflang="cs" href="https://www.petramuckova.cz/cs/index.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/index.html" />
     <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/index.html" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/index.html" />

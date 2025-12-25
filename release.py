@@ -386,10 +386,12 @@ def generate_sitemap():
       # Alternates (Hreflang)
       for alt_page in records:
         xml_lines.append(f'    <xhtml:link rel="alternate" hreflang="{alt_page.lang}" href="{escape_xml(alt_page.loc)}" />')
+        xml_lines.append(f'    <xhtml:link rel="canonical" hreflang="{alt_page.lang}" href="{escape_xml(alt_page.loc)}" />')
 
       # X-Default
       x_default = next((p for p in records if p.lang == 'cs'), records[0])
       xml_lines.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{escape_xml(x_default.loc)}" />')
+      xml_lines.append(f'    <xhtml:link rel="canonical" hreflang="x-default" href="{escape_xml(x_default.loc)}" />')
 
       # Images
       for img in page.images:
