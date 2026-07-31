@@ -1,0 +1,92 @@
+# Enable Rewrite Engine
+RewriteEngine On
+RewriteBase /
+
+# Set the environment variable
+SetEnv PETRAMUCKOVA_CZ_SMTP_PASSWORD "mpePqjCHNF119l7oMXPRMN"
+
+# ----------------------------------------------------------------------
+# 1. Headers: Cache Static Assets for 1 Year
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Replaced by release.py in the generated release/.htaccess file
+    Header always set X-Site-Release "2026-07-31"
+
+    # 1. Default: Cache everything in assets for 1 year
+    <FilesMatch "^assets/.*$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # 2. OVERRIDE: Do NOT cache HTML
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+    </FilesMatch>
+
+    # 3. OVERRIDE: Do NOT JS, CSS (even if they are in assets)
+    #<FilesMatch "\.(html|js|css)$">
+    #    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    #    Header set Pragma "no-cache"
+    #</FilesMatch>
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 2. Language Redirects (Root URL only)
+# ----------------------------------------------------------------------
+# Only apply these rules to the root URL (example.com/)
+# [cite_start]The [NC] flag means "No Case" (case insensitive) [cite: 2]
+# The [L] flag means "Last Rule" (stop processing if this matches)
+# The [R=302] flag means "Temporary Redirect"
+
+# Czech (cs, sk, etc.)
+RewriteCond %{HTTP:Accept-Language} (cs|sk) [NC]
+RewriteRule ^$ /cs/?v=2026-07-31 [L,R=302,NE]
+
+# English (en)
+RewriteCond %{HTTP:Accept-Language} (en) [NC]
+RewriteRule ^$ /en/?v=2026-07-31 [L,R=302,NE]
+
+# German (de, gsw, bar, als)
+RewriteCond %{HTTP:Accept-Language} (de|gsw|bar|als) [NC]
+RewriteRule ^$ /de/?v=2026-07-31 [L,R=302,NE]
+
+# French (fr, br, oc, co, wa)
+RewriteCond %{HTTP:Accept-Language} (fr|br|oc|co|wa) [NC]
+RewriteRule ^$ /fr/?v=2026-07-31 [L,R=302,NE]
+
+# Italian (it, sc, nap, vec, lmo, lij, pms, fur)
+RewriteCond %{HTTP:Accept-Language} (it|sc|nap|vec|lmo|lij|pms|fur) [NC]
+RewriteRule ^$ /it/?v=2026-07-31 [L,R=302,NE]
+
+# Spanish (es, ca, gl, eu, ast)
+RewriteCond %{HTTP:Accept-Language} (es|ca|gl|eu|ast) [NC]
+RewriteRule ^$ /es/?v=2026-07-31 [L,R=302,NE]
+
+# Polish (pl, szl, csb)
+RewriteCond %{HTTP:Accept-Language} (pl|szl|csb) [NC]
+RewriteRule ^$ /pl/?v=2026-07-31 [L,R=302,NE]
+
+# Russian (ru, uk, be, kk, ky, uz, tg, tk, hy, az, ka, mo, ro, mn)
+RewriteCond %{HTTP:Accept-Language} (ru|uk|be|kk|ky|uz|tg|tk|hy|az|ka|mo|ro|mn) [NC]
+RewriteRule ^$ /ru/?v=2026-07-31 [L,R=302,NE]
+
+# Japanese (ja, ryu)
+RewriteCond %{HTTP:Accept-Language} (ja|ryu) [NC]
+RewriteRule ^$ /ja/?v=2026-07-31 [L,R=302,NE]
+
+# Chinese (zh)
+RewriteCond %{HTTP:Accept-Language} (zh) [NC]
+RewriteRule ^$ /zh/?v=2026-07-31 [L,R=302,NE]
+
+# ----------------------------------------------------------------------
+# 3. Blog Clean URLs (NEW)
+# ----------------------------------------------------------------------
+# Rewrite /<lang>/blog to /<lang>/blog.html
+# This allows users to visit ".../en/blog" while the server loads ".../en/blog.html"
+RewriteRule ^([a-z]{2})/blog/?$ $1/blog.html [L]
+
+# ----------------------------------------------------------------------
+# 4. Fallback Redirect
+# ----------------------------------------------------------------------
+# If we are at root "^$" and no language matched above, go to /en/
+RewriteRule ^$ /en/?v=2026-07-31 [L,R=302,NE]
