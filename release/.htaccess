@@ -10,7 +10,7 @@ SetEnv PETRAMUCKOVA_CZ_SMTP_PASSWORD "mpePqjCHNF119l7oMXPRMN"
 # ----------------------------------------------------------------------
 <IfModule mod_headers.c>
     # Replaced by release.py in the generated release/.htaccess file
-    Header always set X-Site-Release "v2026-07-31"
+    Header always set X-Site-Release "v2026-07"
 
     # 1. Default: Cache everything in assets for 1 year
     <FilesMatch "^assets/.*$">
@@ -40,43 +40,43 @@ SetEnv PETRAMUCKOVA_CZ_SMTP_PASSWORD "mpePqjCHNF119l7oMXPRMN"
 
 # Czech (cs, sk, etc.)
 RewriteCond %{HTTP:Accept-Language} (cs|sk) [NC]
-RewriteRule ^$ /cs/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /cs/?v=v2026-07 [L,R=302,NE]
 
 # English (en)
 RewriteCond %{HTTP:Accept-Language} (en) [NC]
-RewriteRule ^$ /en/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /en/?v=v2026-07 [L,R=302,NE]
 
 # German (de, gsw, bar, als)
 RewriteCond %{HTTP:Accept-Language} (de|gsw|bar|als) [NC]
-RewriteRule ^$ /de/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /de/?v=v2026-07 [L,R=302,NE]
 
 # French (fr, br, oc, co, wa)
 RewriteCond %{HTTP:Accept-Language} (fr|br|oc|co|wa) [NC]
-RewriteRule ^$ /fr/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /fr/?v=v2026-07 [L,R=302,NE]
 
 # Italian (it, sc, nap, vec, lmo, lij, pms, fur)
 RewriteCond %{HTTP:Accept-Language} (it|sc|nap|vec|lmo|lij|pms|fur) [NC]
-RewriteRule ^$ /it/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /it/?v=v2026-07 [L,R=302,NE]
 
 # Spanish (es, ca, gl, eu, ast)
 RewriteCond %{HTTP:Accept-Language} (es|ca|gl|eu|ast) [NC]
-RewriteRule ^$ /es/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /es/?v=v2026-07 [L,R=302,NE]
 
 # Polish (pl, szl, csb)
 RewriteCond %{HTTP:Accept-Language} (pl|szl|csb) [NC]
-RewriteRule ^$ /pl/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /pl/?v=v2026-07 [L,R=302,NE]
 
 # Russian (ru, uk, be, kk, ky, uz, tg, tk, hy, az, ka, mo, ro, mn)
 RewriteCond %{HTTP:Accept-Language} (ru|uk|be|kk|ky|uz|tg|tk|hy|az|ka|mo|ro|mn) [NC]
-RewriteRule ^$ /ru/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /ru/?v=v2026-07 [L,R=302,NE]
 
 # Japanese (ja, ryu)
 RewriteCond %{HTTP:Accept-Language} (ja|ryu) [NC]
-RewriteRule ^$ /ja/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /ja/?v=v2026-07 [L,R=302,NE]
 
 # Chinese (zh)
 RewriteCond %{HTTP:Accept-Language} (zh) [NC]
-RewriteRule ^$ /zh/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /zh/?v=v2026-07 [L,R=302,NE]
 
 # ----------------------------------------------------------------------
 # 3. Blog Clean URLs (NEW)
@@ -89,4 +89,4 @@ RewriteRule ^([a-z]{2})/blog/?$ $1/blog.html [L]
 # 4. Fallback Redirect
 # ----------------------------------------------------------------------
 # If we are at root "^$" and no language matched above, go to /en/
-RewriteRule ^$ /en/?v=v2026-07-31 [L,R=302,NE]
+RewriteRule ^$ /en/?v=v2026-07 [L,R=302,NE]
