@@ -4,6 +4,8 @@ import shutil
 import sys
 import re
 import datetime
+import html
+from urllib.parse import parse_qsl, quote, urlencode, urlsplit, urlunsplit
 
 # --- 1. VIRTUAL ENVIRONMENT CHECK ---
 VENV_DIR_NAME = ".venv"
@@ -60,8 +62,8 @@ CSS_DIR = 'cssnano'
 JS_DIR = 'terser'
 HTML_DIR = 'html-minifier'
 
-# The npm command to run inside those directories
-NPM_CMD = "npm run build"
+# The npm arguments to run inside each build-tool directory
+NPM_ARGS = ['run', 'build']
 
 # Name of the output directory
 RELEASE_DIR = 'release'
@@ -84,6 +86,15 @@ FILES_TO_COPY = [
   'seznam-wmt-XHLjQ4Fw7qAJj5SlvYqiVkfXyuTnpAUT.txt',
   'BingSiteAuth.xml'
 ]
+
+# Files stored outside the public root in the source tree, but copied to the
+# release root under a different name.
+RELEASE_ROOT_FILE_MAPPINGS = {
+  os.path.join('backend', '.htaccess'): '.htaccess'
+}
+
+RELEASE_VERSION_PLACEHOLDER = '{{RELEASE_VERSION}}'
+RELEASE_VERSION_URL_PLACEHOLDER = '{{RELEASE_VERSION_URL}}'
 
 # 2. Directories to COPY entirely (Structure + Content preserved)
 STATIC_DIRS = [
@@ -217,17 +228,107 @@ def escape_xml(data):
 
 # --- BUILD FUNCTIONS ---
 
-def run_npm_in_dir(directory, command):
-  """Runs an npm command inside a specific directory."""
+def _tool_version(executable, environment):
+  """Returns a command's version string without changing the active process."""
+  try:
+    result = subprocess.run(
+      [executable, '--version'],
+      env=environment,
+      capture_output=True,
+      text=True,
+      check=True
+    )
+    return result.stdout.strip()
+  except (OSError, subprocess.CalledProcessError):
+    return 'unknown'
+
+def ensure_node_tooling():
+  """Finds Node/npm on PATH or activates an installed NVM Node version."""
+  print("\n🔎 Checking Node.js tooling...")
+
+  environment = os.environ.copy()
+  node_executable = shutil.which('node', path=environment.get('PATH'))
+  npm_executable = shutil.which('npm', path=environment.get('PATH'))
+
+  if node_executable and npm_executable:
+    print(f"   ✅ Node.js {_tool_version(node_executable, environment)}")
+    print(f"   ✅ npm {_tool_version(npm_executable, environment)}")
+    return npm_executable, environment
+
+  nvm_dir = os.path.expanduser(environment.get('NVM_DIR', '~/.nvm'))
+  nvm_script = os.path.join(nvm_dir, 'nvm.sh')
+  shell_executable = shutil.which('bash') or shutil.which('zsh')
+
+  if not shell_executable or not os.path.isfile(nvm_script):
+    print("   ❌ Error: Node.js/npm are not on PATH and NVM could not be loaded.")
+    print(f"      Expected NVM script: {nvm_script}")
+    sys.exit(1)
+
+  nvm_environment = environment.copy()
+  nvm_environment['NVM_DIR'] = nvm_dir
+  nvm_command = r'''
+    . "$NVM_DIR/nvm.sh"
+    if nvm use --silent >/dev/null 2>&1; then
+      :
+    elif nvm use default --silent >/dev/null 2>&1; then
+      :
+    elif nvm use --lts --silent >/dev/null 2>&1; then
+      :
+    else
+      exit 1
+    fi
+    command -v node
+    command -v npm
+  '''
+
+  try:
+    result = subprocess.run(
+      [shell_executable, '-c', nvm_command],
+      cwd=os.getcwd(),
+      env=nvm_environment,
+      capture_output=True,
+      text=True,
+      check=True
+    )
+  except (OSError, subprocess.CalledProcessError):
+    print("   ❌ Error: NVM was found, but no usable project, default, or LTS Node.js version is installed.")
+    sys.exit(1)
+
+  resolved_paths = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+  if len(resolved_paths) < 2:
+    print("   ❌ Error: NVM loaded, but Node.js/npm paths could not be resolved.")
+    sys.exit(1)
+
+  node_executable, npm_executable = resolved_paths[-2:]
+  node_bin_dir = os.path.dirname(node_executable)
+  current_path = nvm_environment.get('PATH', '')
+  nvm_environment['PATH'] = os.pathsep.join(filter(None, [node_bin_dir, current_path]))
+
+  if not os.path.isfile(node_executable) or not os.path.isfile(npm_executable):
+    print("   ❌ Error: NVM returned invalid Node.js/npm executable paths.")
+    sys.exit(1)
+
+  print(f"   ✅ Loaded Node.js {_tool_version(node_executable, nvm_environment)} through NVM")
+  print(f"   ✅ Loaded npm {_tool_version(npm_executable, nvm_environment)} through NVM")
+  return npm_executable, nvm_environment
+
+def run_npm_in_dir(directory, npm_executable, environment):
+  """Runs the configured npm command inside a specific directory."""
+  display_command = 'npm ' + ' '.join(NPM_ARGS)
   print(f"📂 Entering directory: ./{directory}")
-  print(f"   🚀 Running: '{command}'...")
+  print(f"   🚀 Running: '{display_command}'...")
 
   if not os.path.isdir(directory):
     print(f"   ❌ Error: Directory '{directory}' not found.")
     sys.exit(1)
 
   try:
-    subprocess.run(command, cwd=directory, shell=True, check=True)
+    subprocess.run(
+      [npm_executable, *NPM_ARGS],
+      cwd=directory,
+      env=environment,
+      check=True
+    )
     print("   ✅ Success.")
   except subprocess.CalledProcessError:
     print(f"   ❌ Error: Command failed in {directory}.")
@@ -260,7 +361,17 @@ def create_release_dir():
     else:
       print(f"     ⚠️  Warning: Source file not found: {filename}")
 
-  # 4. Copy Static Directories
+  # 4. Copy mapped files to the release root
+  print("   + Copying release-root configuration files...")
+  for source, destination in RELEASE_ROOT_FILE_MAPPINGS.items():
+    if os.path.exists(source):
+      dest = os.path.join(RELEASE_DIR, destination)
+      shutil.copy2(source, dest)
+      print(f"     -> Copied: {source} -> {destination}")
+    else:
+      print(f"     ⚠️  Warning: Source file not found: {source}")
+
+  # 5. Copy Static Directories
   print("   + Copying static directories...")
   for directory in STATIC_DIRS:
     if os.path.exists(directory):
@@ -270,7 +381,7 @@ def create_release_dir():
     else:
       print(f"     ⚠️  Warning: Static directory not found: {directory}/")
 
-  # 5. Process Content Directories
+  # 6. Process Content Directories
   print("   + Processing content directories...")
   for directory in CONTENT_DIRS:
     if os.path.exists(directory):
@@ -292,6 +403,56 @@ def create_release_dir():
       pass
 
   print(f"\n🎉 Success! Files copied to: {os.path.abspath(RELEASE_DIR)}")
+
+def render_release_htaccess(version=None):
+  """Replaces release metadata placeholders in the copied .htaccess file."""
+  print("\n🏷️  Rendering release metadata in .htaccess...")
+
+  htaccess_path = os.path.join(RELEASE_DIR, '.htaccess')
+  if not os.path.isfile(htaccess_path):
+    print(f"   ❌ Error: Release configuration not found: {htaccess_path}")
+    sys.exit(1)
+
+  with open(htaccess_path, 'r', encoding='utf-8') as f:
+    content = f.read()
+
+  if not version:
+    filtered_lines = [
+      line for line in content.splitlines()
+      if RELEASE_VERSION_PLACEHOLDER not in line
+    ]
+    rendered_content = '\n'.join(filtered_lines) + '\n'
+    rendered_content = rendered_content.replace(
+      f'?v={RELEASE_VERSION_URL_PLACEHOLDER}',
+      ''
+    )
+    print("   ℹ️  No target version provided; the release header was omitted and redirects remain unversioned.")
+  else:
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/+@-]*', version):
+      print(f"   ❌ Error: Invalid target version for .htaccess metadata: {version!r}")
+      sys.exit(1)
+
+    missing_placeholders = [
+      placeholder for placeholder in (
+        RELEASE_VERSION_PLACEHOLDER,
+        RELEASE_VERSION_URL_PLACEHOLDER
+      )
+      if placeholder not in content
+    ]
+    if missing_placeholders:
+      print("   ❌ Error: Required release-version placeholders are missing from backend/.htaccess.")
+      sys.exit(1)
+
+    rendered_content = content.replace(RELEASE_VERSION_PLACEHOLDER, version)
+    rendered_content = rendered_content.replace(
+      RELEASE_VERSION_URL_PLACEHOLDER,
+      quote(version, safe='')
+    )
+    print(f"   ✅ Added X-Site-Release: {version}")
+    print(f"   ✅ Added version '{version}' to all root language redirects")
+
+  with open(htaccess_path, 'w', encoding='utf-8') as f:
+    f.write(rendered_content)
 
 def update_asset_paths(git_tag=None):
   """Updates /assets/ paths to jsDelivr CDN URLs in HTML and CSS files."""
@@ -333,6 +494,96 @@ def update_asset_paths(git_tag=None):
           print(f"     ❌ Error processing {file}: {e}")
 
   print(f"   ✅ Updated asset paths in {count} files.")
+
+def append_version_to_public_urls(version=None):
+  """Adds the release version to same-site navigation URLs in release HTML."""
+  print("\n🏷️  Adding the release version to public navigation URLs...")
+
+  if not version:
+    print("   ℹ️  No target version provided. Public navigation URLs were not changed.")
+    return
+
+  if version.lower() in ('main', 'master'):
+    print("   ⚠️  The target is a mutable branch name, so its URL cache key will not change between releases.")
+
+  public_hosts = {'petramuckova.cz', 'www.petramuckova.cz'}
+  language_pattern = '|'.join(re.escape(lang) for lang in CONTENT_DIRS)
+  public_page_pattern = re.compile(
+    rf'/(?:{language_pattern})(?:/?|/(?:index|blog)(?:\.html)?)'
+  )
+  anchor_href_pattern = re.compile(
+    r'(?P<prefix><a\b[^>]*?\bhref\s*=\s*)(?P<quote>["\'])(?P<url>.*?)(?P=quote)',
+    re.IGNORECASE
+  )
+
+  def add_version(url):
+    decoded_url = html.unescape(url)
+    parsed = urlsplit(decoded_url)
+
+    if parsed.scheme and parsed.scheme.lower() not in ('http', 'https'):
+      return url
+    if parsed.hostname and parsed.hostname.lower() not in public_hosts:
+      return url
+    if not parsed.hostname and not parsed.path.startswith('/'):
+      return url
+    if not public_page_pattern.fullmatch(parsed.path):
+      return url
+
+    query = [
+      (key, value)
+      for key, value in parse_qsl(parsed.query, keep_blank_values=True)
+      if key != 'v'
+    ]
+    query.append(('v', version))
+
+    versioned_url = urlunsplit((
+      parsed.scheme,
+      parsed.netloc,
+      parsed.path,
+      urlencode(query),
+      parsed.fragment
+    ))
+    return html.escape(versioned_url, quote=False)
+
+  updated_files = 0
+  updated_urls = 0
+
+  for root, dirs, files in os.walk(RELEASE_DIR):
+    for file in files:
+      if not file.endswith('.html'):
+        continue
+
+      file_path = os.path.join(root, file)
+      try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+          content = f.read()
+
+        file_url_count = 0
+
+        def replace_anchor_href(match):
+          nonlocal file_url_count
+          original_url = match.group('url')
+          versioned_url = add_version(original_url)
+          if versioned_url == original_url:
+            return match.group(0)
+
+          file_url_count += 1
+          return (
+            f"{match.group('prefix')}{match.group('quote')}"
+            f"{versioned_url}{match.group('quote')}"
+          )
+
+        new_content = anchor_href_pattern.sub(replace_anchor_href, content)
+
+        if new_content != content:
+          with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+          updated_files += 1
+          updated_urls += file_url_count
+      except Exception as e:
+        print(f"     ❌ Error processing {file}: {e}")
+
+  print(f"   ✅ Added version '{version}' to {updated_urls} public URLs in {updated_files} files.")
 
 def generate_sitemap():
   """Generates sitemap.xml by scanning the SOURCE content directories."""
@@ -426,20 +677,29 @@ if __name__ == "__main__":
   if len(sys.argv) > 1:
     tag_arg = sys.argv[1]
 
+  # Resolve Node.js/npm before replacing an existing release.
+  npm_executable, node_environment = ensure_node_tooling()
+
   # 1. Create Release Folder
   create_release_dir()
 
+  # Render the release version into the copied server configuration.
+  render_release_htaccess(tag_arg)
+
   # 2. Run CSS Build
-  run_npm_in_dir(CSS_DIR, NPM_CMD)
+  run_npm_in_dir(CSS_DIR, npm_executable, node_environment)
 
   # 3. Run JS Build
-  run_npm_in_dir(JS_DIR, NPM_CMD)
+  run_npm_in_dir(JS_DIR, npm_executable, node_environment)
 
   # 4. Generate Sitemap (New Step)
   generate_sitemap()
 
   # 5. Run HTML Build
-  run_npm_in_dir(HTML_DIR, NPM_CMD)
+  run_npm_in_dir(HTML_DIR, npm_executable, node_environment)
 
   # 6. Update Asset Paths to CDN
   update_asset_paths(tag_arg)
+
+  # 7. Add the target version to same-site navigation URLs
+  append_version_to_public_urls(tag_arg)
