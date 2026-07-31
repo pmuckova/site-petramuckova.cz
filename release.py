@@ -454,17 +454,17 @@ def render_release_htaccess(version=None):
   with open(htaccess_path, 'w', encoding='utf-8') as f:
     f.write(rendered_content)
 
-def update_asset_paths(git_tag=None):
+def update_asset_paths(asset_ref=None):
   """Updates /assets/ paths to jsDelivr CDN URLs in HTML and CSS files."""
   print("\n🔗 Updating asset paths to CDN in release files...")
 
   base_cdn = "https://cdn.jsdelivr.net/gh/pmuckova/site-petramuckova.cz"
 
-  if git_tag:
-    print(f"   ℹ️  Git tag provided: '{git_tag}'. Using versioned CDN URLs.")
-    base_cdn += f"@{git_tag}"
+  if asset_ref:
+    print(f"   ℹ️  Asset ref provided: '{asset_ref}'. Using it for jsDelivr URLs.")
+    base_cdn += f"@{asset_ref}"
   else:
-    print("   ℹ️  No Git tag provided. Using default (latest) CDN URLs.")
+    print("   ℹ️  No asset ref provided. Using default (latest) CDN URLs.")
 
   replacements = {
     '/assets/desktop/': f'{base_cdn}/assets/desktop/',
@@ -671,11 +671,38 @@ def generate_sitemap():
 
   print(f"   ✅ Generated sitemap.xml in {RELEASE_DIR} with {sum(len(v) for v in pages_by_type.values())} URLs.")
 
+def parse_release_arguments():
+  """Parses the jsDelivr asset ref and the independent site release version."""
+  if len(sys.argv) != 3:
+    print("❌ Error: Two release arguments are required.")
+    print("   Usage: python3 release.py <asset-ref> <site-version>")
+    print("   Example: python3 release.py main 1.0.3")
+    sys.exit(1)
+
+  asset_ref = sys.argv[1].strip()
+  site_version_input = sys.argv[2].strip()
+
+  version_token_pattern = r'[A-Za-z0-9][A-Za-z0-9._/+@-]*'
+  if not re.fullmatch(version_token_pattern, asset_ref):
+    print(f"❌ Error: Invalid jsDelivr asset ref: {asset_ref!r}")
+    sys.exit(1)
+  if not re.fullmatch(version_token_pattern, site_version_input):
+    print(f"❌ Error: Invalid site release version: {site_version_input!r}")
+    sys.exit(1)
+
+  site_version = (
+    site_version_input
+    if site_version_input.lower().startswith('v')
+    else f'v{site_version_input}'
+  )
+
+  print("\n📌 Release configuration:")
+  print(f"   - jsDelivr asset ref: {asset_ref}")
+  print(f"   - Site release version: {site_version}")
+  return asset_ref, site_version
+
 if __name__ == "__main__":
-  # Get command line argument for tag (optional)
-  tag_arg = None
-  if len(sys.argv) > 1:
-    tag_arg = sys.argv[1]
+  asset_ref, site_version = parse_release_arguments()
 
   # Resolve Node.js/npm before replacing an existing release.
   npm_executable, node_environment = ensure_node_tooling()
@@ -684,7 +711,7 @@ if __name__ == "__main__":
   create_release_dir()
 
   # Render the release version into the copied server configuration.
-  render_release_htaccess(tag_arg)
+  render_release_htaccess(site_version)
 
   # 2. Run CSS Build
   run_npm_in_dir(CSS_DIR, npm_executable, node_environment)
@@ -699,7 +726,7 @@ if __name__ == "__main__":
   run_npm_in_dir(HTML_DIR, npm_executable, node_environment)
 
   # 6. Update Asset Paths to CDN
-  update_asset_paths(tag_arg)
+  update_asset_paths(asset_ref)
 
-  # 7. Add the target version to same-site navigation URLs
-  append_version_to_public_urls(tag_arg)
+  # 7. Add the site release version to same-site navigation URLs
+  append_version_to_public_urls(site_version)
