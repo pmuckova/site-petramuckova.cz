@@ -32,10 +32,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/styles/choices.min.css">
   <link rel="stylesheet" href="/main.css">
   <link rel="stylesheet" href="/blog.css?v=c87d129dc6cb">
-  <link rel="stylesheet" href="/shop.css?v=6104e39b63ec">
+  <link rel="stylesheet" href="/shop.css?v=da0884ad0c76">
   <script src="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/scripts/choices.min.js" defer></script>
   <script src="/form.js?v=5ad8d16394bf" defer></script>
-  <script src="/shop.js?v=ab78c8ef53d7" defer></script>
+  <script src="/shop.js?v=d8bd66f96043" defer></script>
 </head>
 <body id="home" class="shop-page bg-loaded">
   <a class="shop-skip" href="#catalog">Browse parts</a>
@@ -125,8 +125,8 @@
     </figure>
       <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">Regrinding or manufacture of a new camshaft for the Škoda 105–136, Favorit or Felicia.</p><p class="shop-description">Regrinding is intended for sportier driving on public roads.</p><p class="shop-description">For racing, we recommend a new camshaft manufactured from a single piece.</p><p class="shop-description">For regrinding, supply a clean Škoda Felicia 1.3 50 kW camshaft.</p><p class="shop-description">A new camshaft includes a high-strength M10x25 socket-head screw with a left-hand thread.</p><p class="shop-description">Delivery includes installation instructions: recommended compression ratio, valve clearances and timing.</p></div></div>
       <form class="shop-wizard-form" id="wizard-skoda-ohv-camshaft" data-wizard="skoda-ohv-camshaft" aria-label="Camshaft configuration: Škoda OHV camshaft" method="post" novalidate>
-      <h4 class="form-section-title" id="skoda-ohv-camshaft-inquiry-title">Enquiry</h4>
-      <fieldset class="shop-profile-options" aria-labelledby="skoda-ohv-camshaft-inquiry-title" aria-describedby="skoda-ohv-camshaft-profile-warning">
+      <fieldset class="shop-profile-options" aria-describedby="skoda-ohv-camshaft-profile-warning">
+        <legend class="shop-sr-only">Camshaft configuration</legend>
         <table class="shop-profile-table" aria-label="Camshaft configuration">
           <colgroup><col class="shop-profile-operation-column"><col class="shop-profile-spec-column"><col class="shop-profile-spec-column"><col class="shop-profile-price-column"></colgroup>
           <thead><tr><th id="skoda-ohv-camshaft-profileHeading-heading" class="shop-profile-label" scope="col">Operation</th><th id="skoda-ohv-camshaft-camDuration-heading" class="shop-profile-label" scope="col">Cam duration</th><th id="skoda-ohv-camshaft-camLift-heading" class="shop-profile-label" scope="col">Max. lift</th><th id="skoda-ohv-camshaft-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price</th></tr></thead>
@@ -197,8 +197,9 @@
           <span id="skoda-ohv-camshaft-bearing-warning" class="warning-msg">This field is mandatory.</span>
         </div>
       </div>
-      <h4 class="form-section-title">Engine details</h4>
-      <div class="form-row"><div class="form-group">
+      <fieldset class="shop-engine-fields">
+        <legend class="shop-sr-only">Engine details</legend>
+        <div class="form-row"><div class="form-group">
           <label for="skoda-ohv-camshaft-engineType">Engine type *</label>
           <input id="skoda-ohv-camshaft-engineType" name="engineType" type="text" maxlength="120" required class="validate-me">
           <span class="warning-msg">This field is mandatory.</span>
@@ -223,6 +224,91 @@
           <input id="skoda-ohv-camshaft-intakeValve" name="intakeValve" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
           <span class="warning-msg">Enter a number greater than zero.</span>
         </div></div>
+      </fieldset>
+      <button class="btn-submit" type="submit" disabled>Add to order</button>
+      <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
+    </form>
+    </article>
+<article class="blog-card shop-product shop-wizard-product" id="taz-camshaft" data-product="taz-camshaft" aria-labelledby="name-taz-camshaft">
+      <h3 class="shop-product-title" id="name-taz-camshaft">TAZ camshaft</h3>
+      <figure class="shop-photo shop-photo-gallery">
+      <a class="shop-photo-link" href="/assets/desktop/taz-1.jpeg" aria-haspopup="dialog" aria-label="Enlarge photo: TAZ camshaft – detail">
+        <span class="tech-frame">
+          <img src="/assets/desktop/taz-1.jpeg" alt="TAZ camshaft – detail" width="4000" height="2252" loading="eager" decoding="async">
+        </span>
+      </a><a class="shop-photo-link" href="/assets/desktop/taz-2.jpeg" aria-haspopup="dialog" aria-label="Enlarge photo: TAZ camshaft – overall view">
+        <span class="tech-frame">
+          <img src="/assets/desktop/taz-2.jpeg" alt="TAZ camshaft – overall view" width="4000" height="2252" loading="lazy" decoding="async">
+        </span>
+      </a>
+    </figure>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">Regrinding or manufacture of a new TAZ camshaft.</p><p class="shop-description">New camshafts are machined from solid stock and intended specifically for fire sport.</p><p class="shop-description">For regrinding, supply a clean TAZ 1500 camshaft with no wear at the cam-lobe tips. If wear is severe, nitriding is required – price on request.</p><p class="shop-description">Delivery includes installation instructions: recommended compression ratio, valve clearances and timing.</p></div></div>
+      <form class="shop-wizard-form" id="wizard-taz-camshaft" data-wizard="taz-camshaft" aria-label="Camshaft configuration: TAZ camshaft" method="post" novalidate>
+      <fieldset class="shop-profile-options" aria-describedby="taz-camshaft-profile-warning">
+        <legend class="shop-sr-only">Camshaft configuration</legend>
+        <table class="shop-profile-table" aria-label="Camshaft configuration">
+          <colgroup><col class="shop-profile-operation-column"><col class="shop-profile-spec-column"><col class="shop-profile-spec-column"><col class="shop-profile-price-column"></colgroup>
+          <thead><tr><th id="taz-camshaft-profileHeading-heading" class="shop-profile-label" scope="col">Operation</th><th id="taz-camshaft-camDuration-heading" class="shop-profile-label" scope="col">Cam duration</th><th id="taz-camshaft-camLift-heading" class="shop-profile-label" scope="col">Max. lift</th><th id="taz-camshaft-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price</th></tr></thead>
+          <tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="taz-camshaft-regrind-258-248">
+              <input type="radio" name="profile" value="regrind-258-248" id="taz-camshaft-regrind-258-248" required class="validate-me" data-warning-id="taz-camshaft-profile-warning" aria-labelledby="taz-camshaft-profileHeading-heading taz-camshaft-regrind-258-248-profileHeading taz-camshaft-camDuration-heading taz-camshaft-regrind-258-248-camDuration taz-camshaft-camLift-heading taz-camshaft-regrind-258-248-camLift taz-camshaft-price-heading taz-camshaft-regrind-258-248-price" aria-describedby="taz-camshaft-regrind-258-248-description taz-camshaft-profile-warning">
+              <span id="taz-camshaft-regrind-258-248-profileHeading" class="shop-profile-method">Regrind</span>
+            </label></td>
+            <td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-regrind-258-248"><span id="taz-camshaft-regrind-258-248-camDuration" class="shop-profile-value">258° / 248°</span></label></td><td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-regrind-258-248"><span id="taz-camshaft-regrind-258-248-camLift" class="shop-profile-value">6,4 / 5,8 mm</span></label></td><td class="shop-profile-stat shop-profile-price" rowspan="2"><label for="taz-camshaft-regrind-258-248"><span id="taz-camshaft-regrind-258-248-price" class="shop-profile-value">4 400 CZK</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="taz-camshaft-regrind-258-248-description" for="taz-camshaft-regrind-258-248">Suitable for TAZ 1.43 to 1.6 engines</label></td></tr>
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="taz-camshaft-regrind-278-272">
+              <input type="radio" name="profile" value="regrind-278-272" id="taz-camshaft-regrind-278-272" required class="validate-me" data-warning-id="taz-camshaft-profile-warning" aria-labelledby="taz-camshaft-profileHeading-heading taz-camshaft-regrind-278-272-profileHeading taz-camshaft-camDuration-heading taz-camshaft-regrind-278-272-camDuration taz-camshaft-camLift-heading taz-camshaft-regrind-278-272-camLift taz-camshaft-price-heading taz-camshaft-regrind-278-272-price" aria-describedby="taz-camshaft-regrind-278-272-description taz-camshaft-profile-warning">
+              <span id="taz-camshaft-regrind-278-272-profileHeading" class="shop-profile-method">Regrind</span>
+            </label></td>
+            <td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-regrind-278-272"><span id="taz-camshaft-regrind-278-272-camDuration" class="shop-profile-value">278°/ 272°</span></label></td><td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-regrind-278-272"><span id="taz-camshaft-regrind-278-272-camLift" class="shop-profile-value">7,0 / 6,6 mm</span></label></td><td class="shop-profile-stat shop-profile-price" rowspan="2"><label for="taz-camshaft-regrind-278-272"><span id="taz-camshaft-regrind-278-272-price" class="shop-profile-value">4 400 CZK</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="taz-camshaft-regrind-278-272-description" for="taz-camshaft-regrind-278-272">Suitable for TAZ 1.8 engines</label></td></tr>
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="taz-camshaft-new-284-284-7-0">
+              <input type="radio" name="profile" value="new-284-284-7-0" id="taz-camshaft-new-284-284-7-0" required class="validate-me" data-warning-id="taz-camshaft-profile-warning" aria-labelledby="taz-camshaft-profileHeading-heading taz-camshaft-new-284-284-7-0-profileHeading taz-camshaft-camDuration-heading taz-camshaft-new-284-284-7-0-camDuration taz-camshaft-camLift-heading taz-camshaft-new-284-284-7-0-camLift taz-camshaft-price-heading taz-camshaft-new-284-284-7-0-price" aria-describedby="taz-camshaft-new-284-284-7-0-description taz-camshaft-profile-warning">
+              <span id="taz-camshaft-new-284-284-7-0-profileHeading" class="shop-profile-method">Manufacture</span>
+            </label></td>
+            <td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-new-284-284-7-0"><span id="taz-camshaft-new-284-284-7-0-camDuration" class="shop-profile-value">284° / 284°</span></label></td><td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-new-284-284-7-0"><span id="taz-camshaft-new-284-284-7-0-camLift" class="shop-profile-value">7,0 / 7,0 mm</span></label></td><td class="shop-profile-stat shop-profile-price" rowspan="2"><label for="taz-camshaft-new-284-284-7-0"><span id="taz-camshaft-new-284-284-7-0-price" class="shop-profile-value">11 500 CZK</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="taz-camshaft-new-284-284-7-0-description" for="taz-camshaft-new-284-284-7-0">Suitable for TAZ 1.9 engines (slightly worn camshaft)</label></td></tr>
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="taz-camshaft-new-284-284-8-0">
+              <input type="radio" name="profile" value="new-284-284-8-0" id="taz-camshaft-new-284-284-8-0" required class="validate-me" data-warning-id="taz-camshaft-profile-warning" aria-labelledby="taz-camshaft-profileHeading-heading taz-camshaft-new-284-284-8-0-profileHeading taz-camshaft-camDuration-heading taz-camshaft-new-284-284-8-0-camDuration taz-camshaft-camLift-heading taz-camshaft-new-284-284-8-0-camLift taz-camshaft-price-heading taz-camshaft-new-284-284-8-0-price" aria-describedby="taz-camshaft-new-284-284-8-0-description taz-camshaft-profile-warning">
+              <span id="taz-camshaft-new-284-284-8-0-profileHeading" class="shop-profile-method">Manufacture</span>
+            </label></td>
+            <td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-new-284-284-8-0"><span id="taz-camshaft-new-284-284-8-0-camDuration" class="shop-profile-value">284° / 284°</span></label></td><td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-new-284-284-8-0"><span id="taz-camshaft-new-284-284-8-0-camLift" class="shop-profile-value">8,0 / 8,0 mm</span></label></td><td class="shop-profile-stat shop-profile-price" rowspan="2"><label for="taz-camshaft-new-284-284-8-0"><span id="taz-camshaft-new-284-284-8-0-price" class="shop-profile-value">15 500 CZK</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="taz-camshaft-new-284-284-8-0-description" for="taz-camshaft-new-284-284-8-0">Suitable for TAZ 2.0 and larger engines</label></td></tr>
+        </tbody>
+        </table>
+      </fieldset>
+      <span id="taz-camshaft-profile-warning" class="warning-msg">This field is mandatory.</span>
+      <fieldset class="shop-engine-fields">
+        <legend class="shop-sr-only">Engine details</legend>
+        <div class="form-row"><div class="form-group">
+          <label for="taz-camshaft-bore">Bore (mm) *</label>
+          <input id="taz-camshaft-bore" name="bore" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
+          <span class="warning-msg">Enter a number greater than zero.</span>
+        </div><div class="form-group">
+          <label for="taz-camshaft-stroke">Stroke (mm) *</label>
+          <input id="taz-camshaft-stroke" name="stroke" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
+          <span class="warning-msg">Enter a number greater than zero.</span>
+        </div></div><div class="form-row"><div class="form-group">
+          <label for="taz-camshaft-exhaustValve">Exhaust valve head diameter (mm) *</label>
+          <input id="taz-camshaft-exhaustValve" name="exhaustValve" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
+          <span class="warning-msg">Enter a number greater than zero.</span>
+        </div><div class="form-group">
+          <label for="taz-camshaft-intakeValve">Intake valve head diameter (mm) *</label>
+          <input id="taz-camshaft-intakeValve" name="intakeValve" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
+          <span class="warning-msg">Enter a number greater than zero.</span>
+        </div></div>
+      </fieldset>
       <button class="btn-submit" type="submit" disabled>Add to order</button>
       <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
     </form>
@@ -232,7 +318,7 @@
       <figure class="shop-photo">
       <a class="shop-photo-link" href="/assets/desktop/blog-article1-1.jpg" aria-haspopup="dialog" aria-label="Enlarge photo: Tuned exhaust headers">
         <span class="tech-frame">
-          <img src="/assets/desktop/blog-article1-1.jpg" alt="Tuned exhaust headers" width="640" height="480" loading="eager" decoding="async">
+          <img src="/assets/desktop/blog-article1-1.jpg" alt="Tuned exhaust headers" width="640" height="480" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
@@ -242,9 +328,7 @@
           <a href="/en/blog#post-2-title">Blog: TAZ 1.43 / PS12 ↗</a>
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>6 600 CZK</dd></div>
-          <div class="shop-price-row"><dt>Dealer price</dt><dd>6 400 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>Minimum dealer quantity</dt><dd>3</dd></div>
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>6 600 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
           <div class="form-group shop-variant">
@@ -275,9 +359,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>2 700 CZK</dd></div>
-          <div class="shop-price-row"><dt>Dealer price</dt><dd>2 500 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>Minimum dealer quantity</dt><dd>3</dd></div>
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>2 700 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -305,9 +387,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>12 500 CZK</dd></div>
-          <div class="shop-price-row"><dt>Dealer price</dt><dd>11 800 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>Minimum dealer quantity</dt><dd>4</dd></div>
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>12 500 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -335,9 +415,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>11 500 CZK</dd></div>
-          <div class="shop-price-row"><dt>Dealer price</dt><dd>11 000 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>Minimum dealer quantity</dt><dd>4</dd></div>
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>11 500 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -365,8 +443,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>780 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>780 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -394,8 +471,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>1 100 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>1 100 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -423,8 +499,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>Price on request</dd></div>
-
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>Price on request</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -452,8 +527,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>260 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>260 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -481,8 +555,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>150 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>150 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -510,8 +583,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>180 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>180 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -539,8 +611,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>280 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>280 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -568,9 +639,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>620 CZK</dd></div>
-          <div class="shop-price-row"><dt>Dealer price</dt><dd>560 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>Minimum dealer quantity</dt><dd>5</dd></div>
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>620 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
           <div class="form-group shop-variant">
@@ -601,8 +670,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>160 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>160 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -630,8 +698,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>From 40 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>From 40 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -659,9 +726,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>Retail price / item</dt><dd>1 600 CZK</dd></div>
-          <div class="shop-price-row"><dt>Dealer price</dt><dd>1 450 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>Minimum dealer quantity</dt><dd>3</dd></div>
+          <div class="shop-price-row"><dt>Price / pc.</dt><dd>1 600 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -677,7 +742,7 @@
       </section>
       <aside class="blog-sidebar shop-sidebar" aria-labelledby="basket-title">
       <div id="basket" class="toc-wrapper shop-basket" tabindex="-1">
-        <div class="shop-section-heading"><h2 id="basket-title" class="toc-title">Your order</h2><span data-basket-count>0</span></div>
+        <div class="shop-section-heading"><h2 id="basket-title" class="toc-title">Your order</h2></div>
         <p id="basket-empty">Your basket is empty. Choose a part to get started.</p>
         <ul id="basket-items" class="shop-basket-items"></ul>
         <div class="shop-totals"><span>Indicative price</span><strong id="basket-subtotal">0 CZK</strong></div>
@@ -801,6 +866,6 @@
     <img class="lightbox-img" alt="">
   </dialog>
   <div id="shop-status" class="shop-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
-  <script id="shop-config" type="application/json">{"products": [{"id": "skoda-ohv-camshaft", "name": "Škoda OHV camshaft", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/camshaft-options.csv", "profiles": [{"id": "regrind-262-248", "manufacture": "regrind", "duration": "262° / 248°", "lift": "6,4 / 5,8 mm", "price": 5600, "description": "KOM version"}, {"id": "regrind-272-266", "manufacture": "regrind", "duration": "272° / 266°", "lift": "6,6 / 6,4 mm", "price": 5600, "description": "TOP version"}, {"id": "new-294-294", "manufacture": "new", "duration": "294° / 294°", "lift": "7,2 / 7,2 mm", "price": 11400, "description": "Sprints, road use with two twin-choke Weber carburettors (short intake)"}, {"id": "new-316-316", "manufacture": "new", "duration": "316° / 316°", "lift": "7,5 / 7,5 mm", "price": 11400, "description": "Circuit racing, hill climbs"}, {"id": "new-320-320", "manufacture": "new", "duration": "320° / 320°", "lift": "8,0 / 8,0 mm", "price": 13200, "description": "Road use with two twin-choke Weber carburettors (short intake); stiffer valve springs required (included in the price)"}, {"id": "new-324-324", "manufacture": "new", "duration": "324°/ 324°", "lift": "7,5 / 7,2 mm", "price": 11400, "description": "130 LR / RS with two twin-choke Weber carburettors (curved intake runners)"}], "bearings": [{"id": "small", "labelKey": "smallBearings", "diameters": "39-38,5-30"}, {"id": "large", "labelKey": "largeBearings", "diameters": "40,5-40-30"}], "fields": [{"id": "engineType", "labelKey": "engineType", "type": "text", "required": true, "maxLength": 120}, {"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "rockerRatio", "labelKey": "rockerRatio", "type": "number", "required": true, "unit": ""}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "exhaust-headers", "name": "Tuned exhaust headers", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43 l"}, {"id": "large", "label": "TAZ 2.0 l +"}]}, {"id": "resonance-exhaust", "name": "Resonance exhaust", "price": 2700, "priceType": "fixed", "variants": []}, {"id": "connecting-rod-160", "name": "Forged H-beam Connecting Rod", "price": 12500, "priceType": "fixed", "variants": []}, {"id": "connecting-rod-156", "name": "Forged H-beam Connecting Rod", "price": 11500, "priceType": "fixed", "variants": []}, {"id": "ignition-coil-contact", "name": "Ignition coil for PAL contact ignition", "price": 780, "priceType": "fixed", "variants": []}, {"id": "ignition-coil-contactless", "name": "Ignition coil for PAL contactless ignition", "price": 1100, "priceType": "fixed", "variants": []}, {"id": "distributor-rotor", "name": "Distributor rotor with limiter", "price": null, "priceType": "quote", "variants": []}, {"id": "distributor-cap", "name": "Distributor cap", "price": 260, "priceType": "fixed", "variants": []}, {"id": "distributor-contacts", "name": "Distributor contacts BOSCH", "price": 150, "priceType": "fixed", "variants": []}, {"id": "distributor-capacitor", "name": "Distributor capacitor PAL", "price": 180, "priceType": "fixed", "variants": []}, {"id": "ignition-wiring", "name": "HT ignition wiring", "price": 280, "priceType": "fixed", "variants": []}, {"id": "head-gasket", "name": "Cylinder head gasket", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "80.5 mm"}, {"id": "82-0", "label": "82.0 mm"}]}, {"id": "head-gasket-stock", "name": "Stock cylinder head gasket (silicone treatment)", "price": 160, "priceType": "fixed", "variants": []}, {"id": "copper-rings", "name": "Copper shim rings under cylinders - price according to dimensions and quantity from", "price": 40, "priceType": "from", "variants": []}, {"id": "distributor-overhaul", "name": "Distributor overhaul", "price": 1600, "priceType": "fixed", "variants": []}], "currency": "CZK", "locale": "en", "email": "info@petramuckova.cz", "text": {"title": "Shop", "home": "Main site", "shop": "Shop", "blog": "Blog", "catalog": "Parts \u0026 services", "basket": "Your order", "empty": "Your basket is empty. Choose a part to get started.", "quantity": "Quantity", "increase": "Add one", "decrease": "Remove one", "remove": "Remove", "variant": "Specification", "details": "Details \u0026 dealer pricing", "noPhoto": "Product photo not yet available", "enlargePhoto": "Enlarge photo", "closePhoto": "Close photo", "retail": "Retail price / item", "dealer": "Dealer price", "dealerMinimum": "Minimum dealer quantity", "from": "From", "quote": "Price on request", "subtotal": "Indicative price", "quoteNotice": "Items priced on request or from a starting price are not included in this subtotal. We will confirm their price.", "deliveryNotice": "Delivery is not included. Availability, delivery cost and the final price will be confirmed by email.", "checkout": "Order", "fullName": "Full name", "company": "Company", "phone": "Phone", "email": "Email", "street": "Street, house no.", "city": "City", "postcode": "Postal code", "country": "Country", "notes": "Notes", "delivery": "Delivery method", "postal": "Delivery to a postal address", "prepare": "Prepare order email", "draft": "Review your email", "openEmail": "Open email application", "copy": "Copy order text", "copied": "Order text copied. Paste it into an email to info@petramuckova.cz.", "copyManual": "Select and copy the text below, then email it to info@petramuckova.cz.", "draftNotice": "Nothing has been sent. Review the details, open your email application and send the message. If no application opens, copy the text and email it to info@petramuckova.cz.", "privacy": "Only product selections are saved in this browser. Your email and address are not saved by this website; they are included in the email you choose to send.", "confirmation": "This is a non-binding order, not a payment or the conclusion of a distance contract.", "storageNotice": "Browser storage is unavailable. Your basket will work on this page but may not survive a reload.", "noScript": "Enable JavaScript to use the basket, or send your selection and postal address to info@petramuckova.cz.", "cartUpdated": "Basket updated", "browse": "Browse parts", "goShop": "Browse parts \u0026 prepare an order", "defaultDescription": "For TAZ firefighting aggregate engines.", "orderSubject": "Mücková / Mück — Order", "requiredFields": "* mandatory fields", "variantChoose": "Choose a specification", "totalItems": "Items in basket", "configure": "Camshaft configuration", "inquiryHeading": "Enquiry", "profileHeading": "Operation", "camDuration": "Cam duration", "camLift": "Max. lift", "price": "Price", "profileDescription": "Description", "manufactureRegrind": "Regrind", "manufactureNew": "Manufacture", "bearings": "Bearings", "smallBearings": "Small bearings, dia.", "largeBearings": "Large bearings, dia.", "chooseBearings": "Choose bearings", "engineHeading": "Engine details", "engineType": "Engine type", "bore": "Bore", "stroke": "Stroke", "intakeValve": "Intake valve head diameter", "exhaustValve": "Exhaust valve head diameter", "rockerRatio": "Rocker arm ratio", "positiveNumber": "Enter a number greater than zero.", "addConfigured": "Add to order", "configuredAdded": "Configuration added to your basket.", "basketFull": "Your basket is full. Remove an item before adding another.", "legacyCamshafts": "The old camshaft items have been replaced by the configurator. Please choose a new configuration; other basket items have been kept.", "contactHeading": "YOUR CONTACT", "requiredWarning": "This field is mandatory.", "emailWarning": "Enter a valid email.", "phoneWarning": "Enter a valid phone number."}}</script>
+  <script id="shop-config" type="application/json">{"products": [{"id": "skoda-ohv-camshaft", "name": "Škoda OHV camshaft", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/camshaft-options.csv", "profiles": [{"id": "regrind-262-248", "manufacture": "regrind", "duration": "262° / 248°", "lift": "6,4 / 5,8 mm", "price": 5600, "description": "KOM version"}, {"id": "regrind-272-266", "manufacture": "regrind", "duration": "272° / 266°", "lift": "6,6 / 6,4 mm", "price": 5600, "description": "TOP version"}, {"id": "new-294-294", "manufacture": "new", "duration": "294° / 294°", "lift": "7,2 / 7,2 mm", "price": 11400, "description": "Sprints, road use with two twin-choke Weber carburettors (short intake)"}, {"id": "new-316-316", "manufacture": "new", "duration": "316° / 316°", "lift": "7,5 / 7,5 mm", "price": 11400, "description": "Circuit racing, hill climbs"}, {"id": "new-320-320", "manufacture": "new", "duration": "320° / 320°", "lift": "8,0 / 8,0 mm", "price": 13200, "description": "Road use with two twin-choke Weber carburettors (short intake); stiffer valve springs required (included in the price)"}, {"id": "new-324-324", "manufacture": "new", "duration": "324°/ 324°", "lift": "7,5 / 7,2 mm", "price": 11400, "description": "130 LR / RS with two twin-choke Weber carburettors (curved intake runners)"}], "bearings": [{"id": "small", "labelKey": "smallBearings", "diameters": "39-38,5-30"}, {"id": "large", "labelKey": "largeBearings", "diameters": "40,5-40-30"}], "fields": [{"id": "engineType", "labelKey": "engineType", "type": "text", "required": true, "maxLength": 120}, {"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "rockerRatio", "labelKey": "rockerRatio", "type": "number", "required": true, "unit": ""}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "taz-camshaft", "name": "TAZ camshaft", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/taz-camshaft-options.csv", "profiles": [{"id": "regrind-258-248", "manufacture": "regrind", "duration": "258° / 248°", "lift": "6,4 / 5,8 mm", "price": 4400, "description": "Suitable for TAZ 1.43 to 1.6 engines"}, {"id": "regrind-278-272", "manufacture": "regrind", "duration": "278°/ 272°", "lift": "7,0 / 6,6 mm", "price": 4400, "description": "Suitable for TAZ 1.8 engines"}, {"id": "new-284-284-7-0", "manufacture": "new", "duration": "284° / 284°", "lift": "7,0 / 7,0 mm", "price": 11500, "description": "Suitable for TAZ 1.9 engines (slightly worn camshaft)"}, {"id": "new-284-284-8-0", "manufacture": "new", "duration": "284° / 284°", "lift": "8,0 / 8,0 mm", "price": 15500, "description": "Suitable for TAZ 2.0 and larger engines"}], "bearings": [], "fields": [{"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "exhaust-headers", "name": "Tuned exhaust headers", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43 l"}, {"id": "large", "label": "TAZ 2.0 l +"}]}, {"id": "resonance-exhaust", "name": "Resonance exhaust", "price": 2700, "priceType": "fixed", "variants": []}, {"id": "connecting-rod-160", "name": "Forged H-beam Connecting Rod", "price": 12500, "priceType": "fixed", "variants": []}, {"id": "connecting-rod-156", "name": "Forged H-beam Connecting Rod", "price": 11500, "priceType": "fixed", "variants": []}, {"id": "ignition-coil-contact", "name": "Ignition coil for PAL contact ignition", "price": 780, "priceType": "fixed", "variants": []}, {"id": "ignition-coil-contactless", "name": "Ignition coil for PAL contactless ignition", "price": 1100, "priceType": "fixed", "variants": []}, {"id": "distributor-rotor", "name": "Distributor rotor with limiter", "price": null, "priceType": "quote", "variants": []}, {"id": "distributor-cap", "name": "Distributor cap", "price": 260, "priceType": "fixed", "variants": []}, {"id": "distributor-contacts", "name": "Distributor contacts BOSCH", "price": 150, "priceType": "fixed", "variants": []}, {"id": "distributor-capacitor", "name": "Distributor capacitor PAL", "price": 180, "priceType": "fixed", "variants": []}, {"id": "ignition-wiring", "name": "HT ignition wiring", "price": 280, "priceType": "fixed", "variants": []}, {"id": "head-gasket", "name": "Cylinder head gasket", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "80.5 mm"}, {"id": "82-0", "label": "82.0 mm"}]}, {"id": "head-gasket-stock", "name": "Stock cylinder head gasket (silicone treatment)", "price": 160, "priceType": "fixed", "variants": []}, {"id": "copper-rings", "name": "Copper shim rings under cylinders - price according to dimensions and quantity from", "price": 40, "priceType": "from", "variants": []}, {"id": "distributor-overhaul", "name": "Distributor overhaul", "price": 1600, "priceType": "fixed", "variants": []}], "currency": "CZK", "locale": "en", "email": "info@petramuckova.cz", "text": {"title": "Shop", "home": "Main site", "shop": "Shop", "blog": "Blog", "catalog": "Parts \u0026 services", "basket": "Your order", "empty": "Your basket is empty. Choose a part to get started.", "quantity": "Quantity", "increase": "Add one", "decrease": "Remove one", "remove": "Remove", "variant": "Specification", "details": "Details \u0026 dealer pricing", "noPhoto": "Product photo not yet available", "enlargePhoto": "Enlarge photo", "closePhoto": "Close photo", "retail": "Price / pc.", "dealer": "Dealer price", "dealerMinimum": "Minimum dealer quantity", "from": "From", "quote": "Price on request", "subtotal": "Indicative price", "quoteNotice": "Items priced on request or from a starting price are not included in this subtotal. We will confirm their price.", "deliveryNotice": "Delivery is not included. Availability, delivery cost and the final price will be confirmed by email.", "checkout": "Order", "fullName": "Full name", "company": "Company", "phone": "Phone", "email": "Email", "street": "Street, house no.", "city": "City", "postcode": "Postal code", "country": "Country", "notes": "Notes", "delivery": "Delivery method", "postal": "Delivery to a postal address", "prepare": "Prepare order email", "draft": "Review your email", "openEmail": "Open email application", "copy": "Copy order text", "copied": "Order text copied. Paste it into an email to info@petramuckova.cz.", "copyManual": "Select and copy the text below, then email it to info@petramuckova.cz.", "draftNotice": "Nothing has been sent. Review the details, open your email application and send the message. If no application opens, copy the text and email it to info@petramuckova.cz.", "privacy": "Only product selections are saved in this browser. Your email and address are not saved by this website; they are included in the email you choose to send.", "confirmation": "This is a non-binding order, not a payment or the conclusion of a distance contract.", "storageNotice": "Browser storage is unavailable. Your basket will work on this page but may not survive a reload.", "noScript": "Enable JavaScript to use the basket, or send your selection and postal address to info@petramuckova.cz.", "cartUpdated": "Basket updated", "browse": "Browse parts", "goShop": "Browse parts \u0026 prepare an order", "defaultDescription": "For TAZ firefighting aggregate engines.", "orderSubject": "Mücková / Mück — Order", "requiredFields": "* mandatory fields", "variantChoose": "Choose a specification", "totalItems": "Items in basket", "configure": "Camshaft configuration", "profileHeading": "Operation", "camDuration": "Cam duration", "camLift": "Max. lift", "price": "Price", "profileDescription": "Description", "manufactureRegrind": "Regrind", "manufactureNew": "Manufacture", "bearings": "Bearings", "smallBearings": "Small bearings, dia.", "largeBearings": "Large bearings, dia.", "chooseBearings": "Choose bearings", "engineHeading": "Engine details", "engineType": "Engine type", "bore": "Bore", "stroke": "Stroke", "intakeValve": "Intake valve head diameter", "exhaustValve": "Exhaust valve head diameter", "rockerRatio": "Rocker arm ratio", "positiveNumber": "Enter a number greater than zero.", "addConfigured": "Add to order", "basketFull": "Your basket is full. Remove an item before adding another.", "legacyCamshafts": "The old camshaft items have been replaced by the configurator. Please choose a new configuration; other basket items have been kept.", "contactHeading": "YOUR CONTACT", "requiredWarning": "This field is mandatory.", "emailWarning": "Enter a valid email.", "phoneWarning": "Enter a valid phone number."}}</script>
 </body>
 </html>

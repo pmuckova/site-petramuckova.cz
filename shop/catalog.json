@@ -164,7 +164,7 @@
       "translations": {
         "cs": {
           "name": "Vačková hřídel Škoda OHV",
-          "description": "Přebroušení nebo výroba nové hřídele pro Škodu 105-136, Favorit nebo Felicie.\n\nPřebroušení je určeno pro sportovnější jízdu v běžném provozu.\n\nPro závodní účely doporučujeme novou hřídel, která je vyráběna z jednoho kusu.\n\nK přebroušení dodejte čistou hřídel Škoda Felicia 1,3 50 kW.\n\nSoučástí dodávky u nové hřídele je pevnostní šroub imbus M10x25 s levým závitem.\n\nSoučástí dodávky jsou montážní instrukce – doporučený stupeň komprese, ventilové vůle, časování."
+          "description": "Přebroušení nebo výroba nové hřídele pro Škodu Favorit / Felicie / 105-136.\n\nPřebroušení je určeno pro sportovnější jízdu v běžném provozu.\n\nPro závodní účely doporučujeme novou hřídel, která je vyráběna z plného kusu.\n\nK přebroušení dodejte čistou hřídel Škoda Felicia 1,3 50 kW.\n\nSoučástí dodávky u nové hřídele je pevnostní šroub imbus M10x25 s levým závitem.\n\nSoučástí dodávky jsou montážní instrukce – doporučený stupeň komprese, ventilové vůle, časování."
         },
         "en": {
           "name": "Škoda OHV camshaft",
@@ -361,6 +361,204 @@
             "type": "number",
             "required": true,
             "unit": ""
+          },
+          {
+            "id": "exhaustValve",
+            "labelKey": "exhaustValve",
+            "type": "number",
+            "required": true,
+            "unit": "mm"
+          },
+          {
+            "id": "intakeValve",
+            "labelKey": "intakeValve",
+            "type": "number",
+            "required": true,
+            "unit": "mm"
+          }
+        ]
+      }
+    },
+    {
+      "id": "taz-camshaft",
+      "kind": "wizard",
+      "price": null,
+      "priceType": "configured",
+      "image": "/assets/desktop/taz-1.jpeg",
+      "images": [
+        {
+          "src": "/assets/desktop/taz-1.jpeg",
+          "width": 4000,
+          "height": 2252,
+          "alt": {
+            "cs": "Vačková hřídel TAZ – detail",
+            "en": "TAZ camshaft – detail",
+            "de": "TAZ-Nockenwelle – Detailansicht",
+            "fr": "Arbre à cames TAZ – détail",
+            "it": "Albero a camme TAZ – dettaglio",
+            "es": "Árbol de levas TAZ – detalle",
+            "pl": "Wałek rozrządu TAZ – zbliżenie",
+            "ru": "Распределительный вал TAZ — крупный план",
+            "ja": "TAZ カムシャフトの詳細",
+            "zh": "TAZ 凸轮轴细节"
+          }
+        },
+        {
+          "src": "/assets/desktop/taz-2.jpeg",
+          "width": 4000,
+          "height": 2252,
+          "alt": {
+            "cs": "Vačková hřídel TAZ – celkový pohled",
+            "en": "TAZ camshaft – overall view",
+            "de": "TAZ-Nockenwelle – Gesamtansicht",
+            "fr": "Arbre à cames TAZ – vue d’ensemble",
+            "it": "Albero a camme TAZ – vista completa",
+            "es": "Árbol de levas TAZ – vista general",
+            "pl": "Wałek rozrządu TAZ – widok ogólny",
+            "ru": "Распределительный вал TAZ — общий вид",
+            "ja": "TAZ カムシャフトの全体像",
+            "zh": "TAZ 凸轮轴整体视图"
+          }
+        }
+      ],
+      "variants": [],
+      "translations": {
+        "cs": {
+          "name": "Vačková hřídel TAZ",
+          "description": "Přebroušení nebo výroba nové hřídele TAZ.\n\nNové hřídele jsou vyráběny z plného kusu a jsou přímo určeny pro požární sport.\n\nK přebroušení dodejte čistou hřídel TAZ 1500 a bez opotřebení na vrcholu palců. Při velkém opotřebení je nutná nitridace – cena na dotaz.\n\nSoučástí dodávky jsou montážní instrukce – doporučený stupeň komprese, ventilové vůle, časování."
+        },
+        "en": {
+          "name": "TAZ camshaft",
+          "description": "Regrinding or manufacture of a new TAZ camshaft.\n\nNew camshafts are machined from solid stock and intended specifically for fire sport.\n\nFor regrinding, supply a clean TAZ 1500 camshaft with no wear at the cam-lobe tips. If wear is severe, nitriding is required – price on request.\n\nDelivery includes installation instructions: recommended compression ratio, valve clearances and timing."
+        },
+        "de": {
+          "name": "TAZ-Nockenwelle",
+          "description": "Umschleifen oder Neuanfertigung einer TAZ-Nockenwelle.\n\nNeue Nockenwellen werden aus dem Vollen gefertigt und sind speziell für den Feuerwehrsport bestimmt.\n\nZum Umschleifen liefern Sie bitte eine saubere TAZ-1500-Nockenwelle ohne Verschleiß an den Nockenspitzen. Bei starkem Verschleiß ist eine Nitrierung erforderlich – Preis auf Anfrage.\n\nDie Lieferung enthält Montageanweisungen: empfohlenes Verdichtungsverhältnis, Ventilspiel und Steuerzeiten."
+        },
+        "fr": {
+          "name": "Arbre à cames TAZ",
+          "description": "Rectification ou fabrication d’un arbre à cames TAZ neuf.\n\nLes arbres neufs sont usinés dans la masse et spécialement destinés au sport incendie.\n\nPour la rectification, fournissez un arbre TAZ 1500 propre et sans usure au sommet des cames. En cas d’usure importante, une nitruration est nécessaire – prix sur demande.\n\nLa livraison comprend les instructions de montage : rapport volumétrique recommandé, jeux aux soupapes et calage."
+        },
+        "it": {
+          "name": "Albero a camme TAZ",
+          "description": "Riprofilatura o produzione di un nuovo albero a camme TAZ.\n\nGli alberi nuovi sono ricavati dal pieno e destinati specificamente allo sport antincendio.\n\nPer la riprofilatura, fornire un albero TAZ 1500 pulito e senza usura sulla sommità delle camme. In caso di forte usura è necessaria la nitrurazione – prezzo su richiesta.\n\nLa fornitura comprende istruzioni di montaggio: rapporto di compressione consigliato, giochi valvole e fasatura."
+        },
+        "es": {
+          "name": "Árbol de levas TAZ",
+          "description": "Rectificado o fabricación de un árbol de levas TAZ nuevo.\n\nLos árboles nuevos se mecanizan a partir de material macizo y están destinados específicamente al deporte de bomberos.\n\nPara el rectificado, entregue un árbol TAZ 1500 limpio y sin desgaste en la parte superior de las levas. Si el desgaste es elevado, se requiere nitruración – precio a consultar.\n\nLa entrega incluye instrucciones de montaje: relación de compresión recomendada, holguras de válvulas y calado."
+        },
+        "pl": {
+          "name": "Wałek rozrządu TAZ",
+          "description": "Szlifowanie lub wykonanie nowego wałka rozrządu TAZ.\n\nNowe wałki są wykonywane z pełnego materiału i przeznaczone bezpośrednio do sportów pożarniczych.\n\nDo szlifowania należy dostarczyć czysty wałek TAZ 1500 bez zużycia na wierzchołkach krzywek. Przy dużym zużyciu konieczne jest azotowanie – cena na zapytanie.\n\nDostawa obejmuje instrukcję montażu: zalecany stopień sprężania, luzy zaworowe i ustawienie rozrządu."
+        },
+        "ru": {
+          "name": "Распределительный вал TAZ",
+          "description": "Перешлифовка или изготовление нового распределительного вала TAZ.\n\nНовые валы изготавливаются из цельной заготовки и предназначены специально для пожарного спорта.\n\nДля перешлифовки предоставьте чистый вал TAZ 1500 без износа на вершинах кулачков. При сильном износе требуется азотирование – цена по запросу.\n\nВ поставку входит инструкция по монтажу: рекомендуемая степень сжатия, зазоры клапанов и фазы газораспределения."
+        },
+        "ja": {
+          "name": "TAZ カムシャフト",
+          "description": "TAZ カムシャフトの再研磨または新規製作。\n\n新品のカムシャフトは無垢材から削り出し、消防スポーツ専用に製作します。\n\n再研磨の場合は、カム山頂部に摩耗のない洗浄済み TAZ 1500 カムシャフトをご支給ください。摩耗が大きい場合は窒化処理が必要です（価格はお問い合わせください）。\n\n推奨圧縮比、バルブクリアランス、タイミングを記載した取り付け説明書が付属します。"
+        },
+        "zh": {
+          "name": "TAZ 凸轮轴",
+          "description": "TAZ 凸轮轴重磨或全新制造。\n\n新凸轮轴由整块实心材料加工而成，专为消防运动设计。\n\n重磨时，请提供清洁且凸轮顶部无磨损的 TAZ 1500 凸轮轴。磨损严重时需要进行氮化处理，价格请咨询。\n\n随附安装说明，包括推荐压缩比、气门间隙和正时。"
+        }
+      },
+      "wizard": {
+        "source": "shop/taz-camshaft-options.csv",
+        "profiles": [
+          {
+            "id": "regrind-258-248",
+            "manufacture": "regrind",
+            "duration": "258° / 248°",
+            "lift": "6,4 / 5,8 mm",
+            "price": 4400,
+            "translations": {
+              "cs": "vhodná pro motory TAZ 1,43 až 1,6",
+              "en": "Suitable for TAZ 1.43 to 1.6 engines",
+              "de": "Geeignet für TAZ-Motoren von 1,43 bis 1,6",
+              "fr": "Adapté aux moteurs TAZ de 1,43 à 1,6",
+              "it": "Adatto ai motori TAZ da 1,43 a 1,6",
+              "es": "Adecuado para motores TAZ de 1,43 a 1,6",
+              "pl": "Odpowiedni do silników TAZ od 1,43 do 1,6",
+              "ru": "Подходит для двигателей TAZ от 1,43 до 1,6",
+              "ja": "TAZ 1.43～1.6 エンジン向け",
+              "zh": "适用于 TAZ 1.43 至 1.6 发动机"
+            }
+          },
+          {
+            "id": "regrind-278-272",
+            "manufacture": "regrind",
+            "duration": "278°/ 272°",
+            "lift": "7,0 / 6,6 mm",
+            "price": 4400,
+            "translations": {
+              "cs": "vhodná pro motory TAZ 1,8",
+              "en": "Suitable for TAZ 1.8 engines",
+              "de": "Geeignet für TAZ-Motoren 1,8",
+              "fr": "Adapté aux moteurs TAZ 1,8",
+              "it": "Adatto ai motori TAZ 1,8",
+              "es": "Adecuado para motores TAZ 1,8",
+              "pl": "Odpowiedni do silników TAZ 1,8",
+              "ru": "Подходит для двигателей TAZ 1,8",
+              "ja": "TAZ 1.8 エンジン向け",
+              "zh": "适用于 TAZ 1.8 发动机"
+            }
+          },
+          {
+            "id": "new-284-284-7-0",
+            "manufacture": "new",
+            "duration": "284° / 284°",
+            "lift": "7,0 / 7,0 mm",
+            "price": 11500,
+            "translations": {
+              "cs": "vhodná pro motory TAZ 1,9 (mírně opotřebený kus)",
+              "en": "Suitable for TAZ 1.9 engines (slightly worn camshaft)",
+              "de": "Geeignet für TAZ-Motoren 1,9 (leicht verschlissene Nockenwelle)",
+              "fr": "Adapté aux moteurs TAZ 1,9 (arbre légèrement usé)",
+              "it": "Adatto ai motori TAZ 1,9 (albero leggermente usurato)",
+              "es": "Adecuado para motores TAZ 1,9 (árbol ligeramente desgastado)",
+              "pl": "Odpowiedni do silników TAZ 1,9 (lekko zużyty wałek)",
+              "ru": "Подходит для двигателей TAZ 1,9 (слегка изношенный вал)",
+              "ja": "TAZ 1.9 エンジン向け（軽度摩耗品）",
+              "zh": "适用于 TAZ 1.9 发动机（凸轮轴轻微磨损）"
+            }
+          },
+          {
+            "id": "new-284-284-8-0",
+            "manufacture": "new",
+            "duration": "284° / 284°",
+            "lift": "8,0 / 8,0 mm",
+            "price": 15500,
+            "translations": {
+              "cs": "vhodná pro motory TAZ 2,0 a větší",
+              "en": "Suitable for TAZ 2.0 and larger engines",
+              "de": "Geeignet für TAZ-Motoren ab 2,0",
+              "fr": "Adapté aux moteurs TAZ 2,0 et plus",
+              "it": "Adatto ai motori TAZ 2,0 e superiori",
+              "es": "Adecuado para motores TAZ 2,0 y superiores",
+              "pl": "Odpowiedni do silników TAZ 2,0 i większych",
+              "ru": "Подходит для двигателей TAZ 2,0 и большего объёма",
+              "ja": "TAZ 2.0 以上のエンジン向け",
+              "zh": "适用于 TAZ 2.0 及更大发动机"
+            }
+          }
+        ],
+        "bearings": [],
+        "fields": [
+          {
+            "id": "bore",
+            "labelKey": "bore",
+            "type": "number",
+            "required": true,
+            "unit": "mm"
+          },
+          {
+            "id": "stroke",
+            "labelKey": "stroke",
+            "type": "number",
+            "required": true,
+            "unit": "mm"
           },
           {
             "id": "exhaustValve",

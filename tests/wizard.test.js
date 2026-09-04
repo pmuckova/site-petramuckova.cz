@@ -5,9 +5,13 @@ const texts = require('../shop/translations.json');
 const shop = require('../shop.js');
 const SiteForm = require('../form.js');
 const product = catalog.products.find(product => product.kind === 'wizard');
+const tazProduct = catalog.products.find(product => product.id === 'taz-camshaft');
 const engine = { engineType: 'Škoda 136', bore: '75.5', stroke: '72', intakeValve: '34', exhaustValve: '30', rockerRatio: '1.45' };
+const tazEngine = { bore: '75.5', stroke: '72', intakeValve: '34', exhaustValve: '30' };
 const configuration = (profile = 'regrind-262-248', bearing = '') => ({ profile, bearing, values: { ...engine } });
 const add = (items = [], value = configuration(), lineId = 'test-1') => shop.addConfiguredItem(items, product.id, value, catalog.products, lineId);
+const tazConfiguration = (profile = 'regrind-258-248', bearing = '') => ({ profile, bearing, values: { ...tazEngine } });
+const addTaz = (items = [], value = tazConfiguration(), lineId = 'taz-test-1') => shop.addConfiguredItem(items, tazProduct.id, value, catalog.products, lineId);
 const load = items => shop.normaliseBasket({ version: 1, items }, catalog.products);
 
 test('every CSV option adds one configured line at its current catalogue price', () => {
@@ -18,6 +22,30 @@ test('every CSV option adds one configured line at its current catalogue price',
         assert.equal(items[0].quantity, 1);
         assert.deepEqual(shop.basketSummary(items, catalog.products), { count: 1, subtotalCents: profile.price * 100, quotedCount: 0 });
     }
+});
+
+test('the TAZ CSV profiles add independently configured TAZ camshaft lines', () => {
+    assert.equal(tazProduct.translations.cs.name, 'Vačková hřídel TAZ');
+    assert.deepEqual(tazProduct.wizard.bearings, []);
+    assert.deepEqual(tazProduct.wizard.fields.map(field => field.id),
+        ['bore', 'stroke', 'exhaustValve', 'intakeValve']);
+    assert.deepEqual(tazProduct.wizard.profiles.map(profile => profile.price), [4400, 4400, 11500, 15500]);
+    for (const profile of tazProduct.wizard.profiles) {
+        const items = addTaz([], tazConfiguration(profile.id, 'forged-bearing'), 'taz-' + profile.id);
+        assert.equal(items.length, 1);
+        assert.equal(items[0].id, 'taz-camshaft');
+        assert.equal(items[0].quantity, 1);
+        assert.equal(items[0].configuration.profile, profile.id);
+        assert.equal(items[0].configuration.bearing, '');
+        assert.deepEqual(items[0].configuration.values, tazEngine);
+        assert.deepEqual(shop.basketSummary(items, catalog.products), {
+            count: 1, subtotalCents: profile.price * 100, quotedCount: 0,
+        });
+    }
+    const withIrrelevantFields = tazConfiguration();
+    withIrrelevantFields.values.engineType = 'TAZ 1500';
+    withIrrelevantFields.values.rockerRatio = '1.45';
+    assert.deepEqual(shop.normaliseConfiguration(withIrrelevantFields, tazProduct).values, tazEngine);
 });
 
 test('identical submissions remain separate, persistent, independently removable entries', () => {
@@ -153,7 +181,7 @@ function node(initial = {}) {
     }, initial);
 }
 
-function wizardFixture(enhanced = true) {
+function wizardFixture(enhanced = true, canAdd = true) {
     const form = node({ id: 'wizard-test' });
     const warnings = { 'profile-warning': node({ textContent: 'Required' }), 'bearing-warning': node({ textContent: 'Required' }) };
     const radios = product.wizard.profiles.map(profile => {
@@ -179,13 +207,23 @@ function wizardFixture(enhanced = true) {
     form.elements = { namedItem(name) { return name === 'profile' ? { value: radios.find(r => r.checked)?.value || '' }
         : name === 'bearing' ? bearing : fields.find(field => field.name === name); } };
     shop.initWizardForm(form, product, SiteForm, enhanced ? new Map([[bearing, choices]]) : new Map(), texts.cs,
-        value => { added.push(value); return true; });
+        value => { if (canAdd) added.push(value); return canAdd; });
     return { form, radios, bearing, fields, wrapper, status, submit, choices, added, warnings,
         select(id) { radios.forEach(radio => { radio.checked = radio.value === id; });
             const selected = radios.find(radio => radio.checked); selected.fire('change'); form.fire('change', selected); },
         fill() { fields.forEach(field => { field.value = engine[field.name]; }); },
     };
 }
+
+test('wizard shows only add failures, not a success message', () => {
+    const f = wizardFixture(true, false);
+    f.fill();
+    f.select('regrind-262-248');
+    f.form.fire('submit');
+    assert.equal(f.added.length, 0);
+    assert.equal(f.status.textContent, texts.cs.basketFull);
+    assert.equal(f.status.hidden, false);
+});
 
 test('wizard validates empty submissions with the shared warnings and focuses the radio group', () => {
     const f = wizardFixture();
@@ -219,7 +257,8 @@ for (const enhanced of [true, false]) {
         f.form.fire('submit');
         assert.equal(f.added.length, 1);
         assert.equal(f.added[0].bearing, 'large');
-        assert.equal(f.status.textContent, texts.cs.configuredAdded);
+        assert.equal(f.status.textContent, '');
+        assert.equal(f.status.hidden, true);
         f.select('regrind-272-266');
         assert.equal(f.bearing.value, '');
         assert.equal(f.bearing.disabled, true);
@@ -235,6 +274,39 @@ for (const enhanced of [true, false]) {
         assert.equal(f.added.length, 2); // Must choose bearings again after a regrind.
     });
 }
+
+test('TAZ wizard initializes and submits without a bearing control', () => {
+    const form = node({ id: 'wizard-taz-test' });
+    const profile = node({ name: 'profile', type: 'radio', value: 'new-284-284-8-0', checked: true });
+    const fields = tazProduct.wizard.fields.map(field => node({
+        name: field.id, type: field.type, required: true, value: tazEngine[field.id],
+    }));
+    const status = node({ hidden: true });
+    const submit = node({ disabled: true });
+    form.elements = { namedItem(name) {
+        if (name === 'profile') return profile;
+        if (name === 'bearing') return null;
+        return fields.find(field => field.name === name) || null;
+    } };
+    form.querySelector = selector => ({
+        '[data-bearing-fields]': null,
+        '.shop-wizard-status': status,
+        'button[type="submit"]': submit,
+    })[selector] ?? null;
+    const added = [];
+    const siteForm = { initValidation() { return { validate: () => true }; } };
+    shop.initWizardForm(form, tazProduct, siteForm, new Map(), texts.cs, configuration => {
+        added.push(configuration);
+        return true;
+    });
+
+    assert.equal(submit.disabled, false);
+    form.fire('submit');
+    assert.equal(added.length, 1);
+    assert.equal(added[0].profile, 'new-284-284-8-0');
+    assert.equal(added[0].bearing, '');
+    assert.deepEqual(added[0].values, tazEngine);
+});
 
 test('zero or missing engine dimensions block submission and valid replacements clear inline warnings', () => {
     const f = wizardFixture();

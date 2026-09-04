@@ -1,16 +1,17 @@
 # Shop
 
-The shop is a static, general-purpose catalogue at `/{language}/shop`. Its first
-17 products were migrated from the TAZ blog article; the two camshaft cards now
-form one configurable Škoda OHV product, leaving 16 catalogue cards. No application framework,
-accounts, payment provider, server basket or new dependencies were introduced.
+The shop is a static, general-purpose catalogue at `/{language}/shop`. It contains
+17 catalogue cards, including configurable Škoda OHV and TAZ camshaft products.
+No application framework, accounts, payment provider, server basket or new
+dependencies were introduced.
 
 ## Editing the offer
 
 Edit `shop/catalog.json`:
 
-- `products`: stable ID, retail price in whole CZK, dealer price/minimum, variants,
-  photo path, and names/descriptions for the ten existing languages.
+- `products`: stable ID, customer price in whole CZK, variants, photo path, and
+  names/descriptions for the ten existing languages. Legacy dealer reference values
+  in the source catalogue are not rendered or used in basket totals.
 - `priceType`: `fixed`, `from`, or `quote` for standard products. Use `null` for a
   quote-only price. Wizard products use `configured` with a null base price; each
   profile supplies its own price.
@@ -33,8 +34,8 @@ Edit `shop/catalog.json`:
 
 IDs and variant IDs must remain stable across edits because saved baskets use
 them. Removed products/variants are dropped on the next page load. Prices always
-come from the current page, never from browser storage. Dealer discounts are not
-applied automatically. Starting-price and quote-only products are excluded from
+come from the current page, never from browser storage. Dealer prices and minimums
+are not displayed. Starting-price and quote-only products are excluded from
 the fixed-price subtotal; delivery is explicitly unpriced.
 
 The template and UI text live in `shop/page.html` and `shop/translations.json`.
@@ -170,18 +171,22 @@ customer-facing terms before enabling direct orders.
 
 ## Configured camshaft items
 
-`skoda-ohv-camshaft` uses `kind: "wizard"` and the four supplied photographs,
-copied unchanged to `assets/desktop/skoda-ohv-1.jpeg` through `skoda-ohv-4.jpeg`.
-They appear in that order, one below the other, in the photo column.
-Its six paragraph descriptions and six profiles are translated for all ten languages.
-The profile duration, lift, description and prices were imported from the supplied
-`aaa.csv`. `shop/camshaft-options.csv` is a normalized import snapshot used by the
-regression tests; the editable runtime catalogue remains `shop/catalog.json`.
-Update that snapshot with the catalogue when intentionally revising these specifications.
+`skoda-ohv-camshaft` and `taz-camshaft` use `kind: "wizard"`. Each uses two supplied
+photographs copied unchanged to `assets/desktop/skoda-ohv-1.jpeg` and
+`skoda-ohv-2.jpeg`, or `assets/desktop/taz-1.jpeg` and `taz-2.jpeg`. The two images
+appear one below the other in each product's photo column. The Škoda product has six
+description paragraphs and six profiles; the TAZ product has four paragraphs and four
+profiles. All content is translated for all ten languages. Profile duration, lift,
+description and prices were imported from the supplied CSV files.
+`shop/camshaft-options.csv` and `shop/taz-camshaft-options.csv` are normalized import
+snapshots used by the regression tests; the editable runtime catalogue remains
+`shop/catalog.json`. Update the applicable snapshot with the catalogue when intentionally
+revising these specifications.
 
 The form spans the card below the photo and description. It reuses the main form's
-labels, text/number fields, section headings, submit button and `form.js` inline
-validation. The six options form one required native radio group in a compact table
+labels, text/number fields, submit button and `form.js` inline validation. The engine
+fields retain a screen-reader group label but have no visible heading or separator.
+Each product's options form one required native radio group in a compact table
 with four shared column headings. Each option has two rows in its first column:
 radio button plus operation above, description below. Duration, lift and price each
 span both rows and are vertically centered. All content is left-aligned except the
@@ -190,17 +195,17 @@ to 40% / 20% / 20% / 20% on narrow screens to give prices more room. Every value
 and description is a native label for its radio, preserving
 click-to-select and keyboard behavior without extra JavaScript. Cells wrap on small
 screens rather than changing the two-row layout or shrinking the 14px body text.
-The table is introduced by a localized “Poptávka” heading using the same
-`form-section-title` treatment as the engine-details heading. The heading also
-labels the radio fieldset for assistive technology; no mandatory-fields note is
-shown here. Choosing a new shaft reveals a required bearing selector
-using the existing Choices component (with a native fallback). Switching to a
-regrind hides, disables and clears that selector, without clearing engine details.
-All six engine fields are required; numeric dimensions and rocker ratio accept
-positive decimals, with millimetres displayed for dimensions only.
-The rows pair engine type with bore, stroke with rocker ratio, and exhaust-valve
-head diameter with intake-valve head diameter. Diameter labels use words rather
-than the Ø symbol; stored field IDs and units stay unchanged.
+The radio fieldset has a screen-reader legend but no visible inquiry subheading or
+mandatory-fields note. In the Škoda configurator, choosing a new shaft reveals a
+required bearing selector using the existing Choices component (with a native
+fallback). Switching to a regrind hides, disables and clears that selector, without
+clearing engine details. The TAZ configurator has no bearing selector. Every
+displayed engine field is required. The Škoda configurator collects engine type,
+bore, stroke, rocker ratio and both valve-head diameters. The TAZ configurator does
+not ask for engine type or rocker ratio, and collects only bore, stroke and both
+valve-head diameters. Numeric values accept positive decimals, with millimetres
+displayed for dimensions. Diameter labels use words rather than the Ø symbol;
+stored field IDs and units stay unchanged.
 
 Each submission adds a separate configured unit, including identical submissions.
 Its basket entry has the usual remove cross, full configuration and profile price,
@@ -218,7 +223,7 @@ Stored configured rows have this shape (no labels or prices are persisted):
   } } }
 ```
 
-Reloading validates the profile, conditional bearing, all required engine fields
+Reloading validates the profile, any product-specific conditional bearing, all required engine fields
 and instance ID against the current catalogue. Totals use the current profile
 price, never a stored price. Standard version-1 baskets remain compatible. Legacy
 `camshaft-regrind` / `camshaft-new` selections cannot be mapped to a profile safely:

@@ -86,11 +86,15 @@ def validate_wizard(product, languages):
     wizard = product['wizard']
     if product['variants']:
         raise ValueError('Wizard choices must not also be quantity variants')
-    for group in ('profiles', 'bearings', 'fields'):
+    for group in ('profiles', 'fields'):
         ids = [item['id'] for item in wizard[group]]
         if not ids or len(ids) != len(set(ids)) or any(
                 not re.fullmatch(r'[a-zA-Z0-9-]+', item_id) for item_id in ids):
             raise ValueError(f'Invalid wizard {group}: {product["id"]}')
+    bearing_ids = [item['id'] for item in wizard['bearings']]
+    if len(bearing_ids) != len(set(bearing_ids)) or any(
+            not re.fullmatch(r'[a-zA-Z0-9-]+', item_id) for item_id in bearing_ids):
+        raise ValueError(f'Invalid wizard bearings: {product["id"]}')
     for profile in wizard['profiles']:
         if profile['manufacture'] not in ('regrind', 'new'):
             raise ValueError('Invalid manufacturing method')
@@ -139,6 +143,16 @@ def wizard_form(product, lang, t):
         </tbody>''')
     bearings = ''.join(f'<option value="{escape(b["id"])}">{escape(t[b["labelKey"]])} {escape(b["diameters"])}</option>'
                        for b in wizard['bearings'])
+    bearing_fields = f'''      <div class="shop-bearing-fields" data-bearing-fields hidden>
+        <div class="form-group shop-variant">
+          <label id="label-{prefix}-bearing" for="{prefix}-bearing">{escape(t['bearings'])} *</label>
+          <select id="{prefix}-bearing" name="bearing" class="custom-select validate-me" data-bearing data-warning-id="{prefix}-bearing-warning" disabled>
+            <option value="">{escape(t['chooseBearings'])}</option>{bearings}
+          </select>
+          <span id="{prefix}-bearing-warning" class="warning-msg">{escape(t['requiredWarning'])}</span>
+        </div>
+      </div>
+''' if wizard['bearings'] else ''
     fields = []
     for field in wizard['fields']:
         key = escape(field['id'])
@@ -152,8 +166,8 @@ def wizard_form(product, lang, t):
         </div>''')
     rows = ''.join('<div class="form-row">' + ''.join(fields[index:index + 2]) + '</div>' for index in range(0, len(fields), 2))
     return f'''<form class="shop-wizard-form" id="wizard-{prefix}" data-wizard="{prefix}" aria-label="{escape(t['configure'])}: {escape(product['translations'][lang]['name'])}" method="post" novalidate>
-      <h4 class="form-section-title" id="{prefix}-inquiry-title">{escape(t['inquiryHeading'])}</h4>
-      <fieldset class="shop-profile-options" aria-labelledby="{prefix}-inquiry-title" aria-describedby="{prefix}-profile-warning">
+      <fieldset class="shop-profile-options" aria-describedby="{prefix}-profile-warning">
+        <legend class="shop-sr-only">{escape(t['configure'])}</legend>
         <table class="shop-profile-table" aria-label="{escape(t['configure'])}">
           <colgroup><col class="shop-profile-operation-column"><col class="shop-profile-spec-column"><col class="shop-profile-spec-column"><col class="shop-profile-price-column"></colgroup>
           <thead><tr>{headers}</tr></thead>
@@ -161,17 +175,10 @@ def wizard_form(product, lang, t):
         </table>
       </fieldset>
       <span id="{prefix}-profile-warning" class="warning-msg">{escape(t['requiredWarning'])}</span>
-      <div class="shop-bearing-fields" data-bearing-fields hidden>
-        <div class="form-group shop-variant">
-          <label id="label-{prefix}-bearing" for="{prefix}-bearing">{escape(t['bearings'])} *</label>
-          <select id="{prefix}-bearing" name="bearing" class="custom-select validate-me" data-bearing data-warning-id="{prefix}-bearing-warning" disabled>
-            <option value="">{escape(t['chooseBearings'])}</option>{bearings}
-          </select>
-          <span id="{prefix}-bearing-warning" class="warning-msg">{escape(t['requiredWarning'])}</span>
-        </div>
-      </div>
-      <h4 class="form-section-title">{escape(t['engineHeading'])}</h4>
-      {rows}
+{bearing_fields}      <fieldset class="shop-engine-fields">
+        <legend class="shop-sr-only">{escape(t['engineHeading'])}</legend>
+        {rows}
+      </fieldset>
       <button class="btn-submit" type="submit" disabled>{escape(t['addConfigured'])}</button>
       <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
     </form>'''
@@ -229,10 +236,6 @@ def product_card(product, lang, t, position, placeholder_image):
           <label id="label-variant-{product_id}" for="variant-{product_id}">{escape(t['variant'])}</label>
           <select class="custom-select" id="variant-{product_id}" data-variant><option value="">{escape(t['variantChoose'])}</option>{options}</select>
         </div>'''
-    dealer = ''
-    if product.get('dealerPrice'):
-        dealer = f'''<div class="shop-price-row"><dt>{escape(t['dealer'])}</dt><dd>{escape(money(product['dealerPrice'], lang))}</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>{escape(t['dealerMinimum'])}</dt><dd>{product['dealerMinimum']}</dd></div>'''
     article_link = f'<a href="/{lang}/blog#post-2-title">{escape(t["blog"])}: TAZ 1.43 / PS12 ↗</a>' if product['id'] == 'exhaust-headers' else ''
     card = f'''<article class="blog-card shop-product" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
       <h3 class="shop-product-title" id="name-{product_id}">{name}</h3>
@@ -244,7 +247,6 @@ def product_card(product, lang, t, position, placeholder_image):
         </div>
         <dl class="shop-prices">
           <div class="shop-price-row"><dt>{escape(t['retail'])}</dt><dd>{escape(price)}</dd></div>
-          {dealer}
         </dl>
         <div class="shop-product-order">
           {variant}

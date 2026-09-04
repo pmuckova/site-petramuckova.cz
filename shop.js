@@ -13,8 +13,9 @@
         if (product?.kind !== 'wizard' || !value || typeof value !== 'object') return null;
         const profile = product.wizard.profiles.find(option => option.id === value.profile);
         if (!profile) return null;
-        const bearing = profile.manufacture === 'new' ? value.bearing : '';
-        if (profile.manufacture === 'new' && !product.wizard.bearings.some(option => option.id === bearing)) return null;
+        const needsBearing = profile.manufacture === 'new' && product.wizard.bearings.length > 0;
+        const bearing = needsBearing ? value.bearing : '';
+        if (needsBearing && !product.wizard.bearings.some(option => option.id === bearing)) return null;
         const values = {};
         for (const field of product.wizard.fields) {
             const raw = value.values?.[field.id];
@@ -325,6 +326,7 @@
         const read = name => form.elements.namedItem(name)?.value || '';
 
         function syncBearings() {
+            if (!bearing || !bearingFields) return;
             const profile = product.wizard.profiles.find(option => option.id === read('profile'));
             const available = profile?.manufacture === 'new';
             bearingFields.hidden = !available;
@@ -347,14 +349,17 @@
         form.addEventListener('submit', event => {
             event.preventDefault();
             status.hidden = true;
+            status.textContent = '';
             if (!validation.validate()) return;
             const configuration = normaliseConfiguration({
                 profile: read('profile'), bearing: read('bearing'),
                 values: Object.fromEntries(product.wizard.fields.map(field => [field.id, read(field.id)])),
             }, product);
             if (!configuration) return;
-            status.textContent = onAdd(configuration) ? text.configuredAdded : text.basketFull;
-            status.hidden = false;
+            if (!onAdd(configuration)) {
+                status.textContent = text.basketFull;
+                status.hidden = false;
+            }
         });
         syncBearings();
         form.querySelector('button[type="submit"]').disabled = false;
@@ -470,7 +475,6 @@
                 card.querySelector('[data-change="1"]').disabled = !validVariant || value >= MAX_QUANTITY;
             });
             const summary = basketSummary(items, config.products);
-            document.querySelectorAll('[data-basket-count]').forEach(node => { node.textContent = summary.count; });
             document.getElementById('basket-subtotal').textContent = money.format(summary.subtotalCents / 100);
             document.getElementById('basket-empty').hidden = !!items.length;
             document.getElementById('basket-quote-notice').hidden = !summary.quotedCount;

@@ -32,10 +32,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/styles/choices.min.css">
   <link rel="stylesheet" href="/main.css">
   <link rel="stylesheet" href="/blog.css?v=c87d129dc6cb">
-  <link rel="stylesheet" href="/shop.css?v=6104e39b63ec">
+  <link rel="stylesheet" href="/shop.css?v=da0884ad0c76">
   <script src="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/scripts/choices.min.js" defer></script>
   <script src="/form.js?v=5ad8d16394bf" defer></script>
-  <script src="/shop.js?v=ab78c8ef53d7" defer></script>
+  <script src="/shop.js?v=d8bd66f96043" defer></script>
 </head>
 <body id="home" class="shop-page bg-loaded">
   <a class="shop-skip" href="#catalog">浏览备件</a>
@@ -125,8 +125,8 @@
     </figure>
       <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">为 Škoda 105–136、Favorit 或 Felicia 提供凸轮轴重磨或全新制造服务。</p><p class="shop-description">重磨适用于日常道路上更具运动性的驾驶。</p><p class="shop-description">赛车用途建议使用由单块材料加工而成的新凸轮轴。</p><p class="shop-description">重磨时，请提供清洁的 Škoda Felicia 1.3 50 kW 凸轮轴。</p><p class="shop-description">新凸轮轴随附高强度 M10x25 左旋螺纹内六角螺钉。</p><p class="shop-description">随附安装说明，包括推荐压缩比、气门间隙和正时。</p></div></div>
       <form class="shop-wizard-form" id="wizard-skoda-ohv-camshaft" data-wizard="skoda-ohv-camshaft" aria-label="凸轮轴配置: Škoda OHV 凸轮轴" method="post" novalidate>
-      <h4 class="form-section-title" id="skoda-ohv-camshaft-inquiry-title">询价</h4>
-      <fieldset class="shop-profile-options" aria-labelledby="skoda-ohv-camshaft-inquiry-title" aria-describedby="skoda-ohv-camshaft-profile-warning">
+      <fieldset class="shop-profile-options" aria-describedby="skoda-ohv-camshaft-profile-warning">
+        <legend class="shop-sr-only">凸轮轴配置</legend>
         <table class="shop-profile-table" aria-label="凸轮轴配置">
           <colgroup><col class="shop-profile-operation-column"><col class="shop-profile-spec-column"><col class="shop-profile-spec-column"><col class="shop-profile-price-column"></colgroup>
           <thead><tr><th id="skoda-ohv-camshaft-profileHeading-heading" class="shop-profile-label" scope="col">工序</th><th id="skoda-ohv-camshaft-camDuration-heading" class="shop-profile-label" scope="col">凸轮持续角</th><th id="skoda-ohv-camshaft-camLift-heading" class="shop-profile-label" scope="col">最大升程</th><th id="skoda-ohv-camshaft-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格</th></tr></thead>
@@ -197,8 +197,9 @@
           <span id="skoda-ohv-camshaft-bearing-warning" class="warning-msg">此字段为必填项。</span>
         </div>
       </div>
-      <h4 class="form-section-title">发动机信息</h4>
-      <div class="form-row"><div class="form-group">
+      <fieldset class="shop-engine-fields">
+        <legend class="shop-sr-only">发动机信息</legend>
+        <div class="form-row"><div class="form-group">
           <label for="skoda-ohv-camshaft-engineType">发动机型号 *</label>
           <input id="skoda-ohv-camshaft-engineType" name="engineType" type="text" maxlength="120" required class="validate-me">
           <span class="warning-msg">此字段为必填项。</span>
@@ -223,6 +224,91 @@
           <input id="skoda-ohv-camshaft-intakeValve" name="intakeValve" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
           <span class="warning-msg">请输入大于零的数字。</span>
         </div></div>
+      </fieldset>
+      <button class="btn-submit" type="submit" disabled>添加到订单</button>
+      <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
+    </form>
+    </article>
+<article class="blog-card shop-product shop-wizard-product" id="taz-camshaft" data-product="taz-camshaft" aria-labelledby="name-taz-camshaft">
+      <h3 class="shop-product-title" id="name-taz-camshaft">TAZ 凸轮轴</h3>
+      <figure class="shop-photo shop-photo-gallery">
+      <a class="shop-photo-link" href="/assets/desktop/taz-1.jpeg" aria-haspopup="dialog" aria-label="放大照片: TAZ 凸轮轴细节">
+        <span class="tech-frame">
+          <img src="/assets/desktop/taz-1.jpeg" alt="TAZ 凸轮轴细节" width="4000" height="2252" loading="eager" decoding="async">
+        </span>
+      </a><a class="shop-photo-link" href="/assets/desktop/taz-2.jpeg" aria-haspopup="dialog" aria-label="放大照片: TAZ 凸轮轴整体视图">
+        <span class="tech-frame">
+          <img src="/assets/desktop/taz-2.jpeg" alt="TAZ 凸轮轴整体视图" width="4000" height="2252" loading="lazy" decoding="async">
+        </span>
+      </a>
+    </figure>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">TAZ 凸轮轴重磨或全新制造。</p><p class="shop-description">新凸轮轴由整块实心材料加工而成，专为消防运动设计。</p><p class="shop-description">重磨时，请提供清洁且凸轮顶部无磨损的 TAZ 1500 凸轮轴。磨损严重时需要进行氮化处理，价格请咨询。</p><p class="shop-description">随附安装说明，包括推荐压缩比、气门间隙和正时。</p></div></div>
+      <form class="shop-wizard-form" id="wizard-taz-camshaft" data-wizard="taz-camshaft" aria-label="凸轮轴配置: TAZ 凸轮轴" method="post" novalidate>
+      <fieldset class="shop-profile-options" aria-describedby="taz-camshaft-profile-warning">
+        <legend class="shop-sr-only">凸轮轴配置</legend>
+        <table class="shop-profile-table" aria-label="凸轮轴配置">
+          <colgroup><col class="shop-profile-operation-column"><col class="shop-profile-spec-column"><col class="shop-profile-spec-column"><col class="shop-profile-price-column"></colgroup>
+          <thead><tr><th id="taz-camshaft-profileHeading-heading" class="shop-profile-label" scope="col">工序</th><th id="taz-camshaft-camDuration-heading" class="shop-profile-label" scope="col">凸轮持续角</th><th id="taz-camshaft-camLift-heading" class="shop-profile-label" scope="col">最大升程</th><th id="taz-camshaft-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格</th></tr></thead>
+          <tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="taz-camshaft-regrind-258-248">
+              <input type="radio" name="profile" value="regrind-258-248" id="taz-camshaft-regrind-258-248" required class="validate-me" data-warning-id="taz-camshaft-profile-warning" aria-labelledby="taz-camshaft-profileHeading-heading taz-camshaft-regrind-258-248-profileHeading taz-camshaft-camDuration-heading taz-camshaft-regrind-258-248-camDuration taz-camshaft-camLift-heading taz-camshaft-regrind-258-248-camLift taz-camshaft-price-heading taz-camshaft-regrind-258-248-price" aria-describedby="taz-camshaft-regrind-258-248-description taz-camshaft-profile-warning">
+              <span id="taz-camshaft-regrind-258-248-profileHeading" class="shop-profile-method">重磨</span>
+            </label></td>
+            <td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-regrind-258-248"><span id="taz-camshaft-regrind-258-248-camDuration" class="shop-profile-value">258° / 248°</span></label></td><td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-regrind-258-248"><span id="taz-camshaft-regrind-258-248-camLift" class="shop-profile-value">6,4 / 5,8 mm</span></label></td><td class="shop-profile-stat shop-profile-price" rowspan="2"><label for="taz-camshaft-regrind-258-248"><span id="taz-camshaft-regrind-258-248-price" class="shop-profile-value">4 400 CZK</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="taz-camshaft-regrind-258-248-description" for="taz-camshaft-regrind-258-248">适用于 TAZ 1.43 至 1.6 发动机</label></td></tr>
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="taz-camshaft-regrind-278-272">
+              <input type="radio" name="profile" value="regrind-278-272" id="taz-camshaft-regrind-278-272" required class="validate-me" data-warning-id="taz-camshaft-profile-warning" aria-labelledby="taz-camshaft-profileHeading-heading taz-camshaft-regrind-278-272-profileHeading taz-camshaft-camDuration-heading taz-camshaft-regrind-278-272-camDuration taz-camshaft-camLift-heading taz-camshaft-regrind-278-272-camLift taz-camshaft-price-heading taz-camshaft-regrind-278-272-price" aria-describedby="taz-camshaft-regrind-278-272-description taz-camshaft-profile-warning">
+              <span id="taz-camshaft-regrind-278-272-profileHeading" class="shop-profile-method">重磨</span>
+            </label></td>
+            <td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-regrind-278-272"><span id="taz-camshaft-regrind-278-272-camDuration" class="shop-profile-value">278°/ 272°</span></label></td><td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-regrind-278-272"><span id="taz-camshaft-regrind-278-272-camLift" class="shop-profile-value">7,0 / 6,6 mm</span></label></td><td class="shop-profile-stat shop-profile-price" rowspan="2"><label for="taz-camshaft-regrind-278-272"><span id="taz-camshaft-regrind-278-272-price" class="shop-profile-value">4 400 CZK</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="taz-camshaft-regrind-278-272-description" for="taz-camshaft-regrind-278-272">适用于 TAZ 1.8 发动机</label></td></tr>
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="taz-camshaft-new-284-284-7-0">
+              <input type="radio" name="profile" value="new-284-284-7-0" id="taz-camshaft-new-284-284-7-0" required class="validate-me" data-warning-id="taz-camshaft-profile-warning" aria-labelledby="taz-camshaft-profileHeading-heading taz-camshaft-new-284-284-7-0-profileHeading taz-camshaft-camDuration-heading taz-camshaft-new-284-284-7-0-camDuration taz-camshaft-camLift-heading taz-camshaft-new-284-284-7-0-camLift taz-camshaft-price-heading taz-camshaft-new-284-284-7-0-price" aria-describedby="taz-camshaft-new-284-284-7-0-description taz-camshaft-profile-warning">
+              <span id="taz-camshaft-new-284-284-7-0-profileHeading" class="shop-profile-method">制造</span>
+            </label></td>
+            <td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-new-284-284-7-0"><span id="taz-camshaft-new-284-284-7-0-camDuration" class="shop-profile-value">284° / 284°</span></label></td><td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-new-284-284-7-0"><span id="taz-camshaft-new-284-284-7-0-camLift" class="shop-profile-value">7,0 / 7,0 mm</span></label></td><td class="shop-profile-stat shop-profile-price" rowspan="2"><label for="taz-camshaft-new-284-284-7-0"><span id="taz-camshaft-new-284-284-7-0-price" class="shop-profile-value">11 500 CZK</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="taz-camshaft-new-284-284-7-0-description" for="taz-camshaft-new-284-284-7-0">适用于 TAZ 1.9 发动机（凸轮轴轻微磨损）</label></td></tr>
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="taz-camshaft-new-284-284-8-0">
+              <input type="radio" name="profile" value="new-284-284-8-0" id="taz-camshaft-new-284-284-8-0" required class="validate-me" data-warning-id="taz-camshaft-profile-warning" aria-labelledby="taz-camshaft-profileHeading-heading taz-camshaft-new-284-284-8-0-profileHeading taz-camshaft-camDuration-heading taz-camshaft-new-284-284-8-0-camDuration taz-camshaft-camLift-heading taz-camshaft-new-284-284-8-0-camLift taz-camshaft-price-heading taz-camshaft-new-284-284-8-0-price" aria-describedby="taz-camshaft-new-284-284-8-0-description taz-camshaft-profile-warning">
+              <span id="taz-camshaft-new-284-284-8-0-profileHeading" class="shop-profile-method">制造</span>
+            </label></td>
+            <td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-new-284-284-8-0"><span id="taz-camshaft-new-284-284-8-0-camDuration" class="shop-profile-value">284° / 284°</span></label></td><td class="shop-profile-stat" rowspan="2"><label for="taz-camshaft-new-284-284-8-0"><span id="taz-camshaft-new-284-284-8-0-camLift" class="shop-profile-value">8,0 / 8,0 mm</span></label></td><td class="shop-profile-stat shop-profile-price" rowspan="2"><label for="taz-camshaft-new-284-284-8-0"><span id="taz-camshaft-new-284-284-8-0-price" class="shop-profile-value">15 500 CZK</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="taz-camshaft-new-284-284-8-0-description" for="taz-camshaft-new-284-284-8-0">适用于 TAZ 2.0 及更大发动机</label></td></tr>
+        </tbody>
+        </table>
+      </fieldset>
+      <span id="taz-camshaft-profile-warning" class="warning-msg">此字段为必填项。</span>
+      <fieldset class="shop-engine-fields">
+        <legend class="shop-sr-only">发动机信息</legend>
+        <div class="form-row"><div class="form-group">
+          <label for="taz-camshaft-bore">缸径 (mm) *</label>
+          <input id="taz-camshaft-bore" name="bore" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
+          <span class="warning-msg">请输入大于零的数字。</span>
+        </div><div class="form-group">
+          <label for="taz-camshaft-stroke">冲程 (mm) *</label>
+          <input id="taz-camshaft-stroke" name="stroke" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
+          <span class="warning-msg">请输入大于零的数字。</span>
+        </div></div><div class="form-row"><div class="form-group">
+          <label for="taz-camshaft-exhaustValve">排气门头部直径 (mm) *</label>
+          <input id="taz-camshaft-exhaustValve" name="exhaustValve" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
+          <span class="warning-msg">请输入大于零的数字。</span>
+        </div><div class="form-group">
+          <label for="taz-camshaft-intakeValve">进气门头部直径 (mm) *</label>
+          <input id="taz-camshaft-intakeValve" name="intakeValve" type="number" min="0" step="any" inputmode="decimal" data-positive required class="validate-me">
+          <span class="warning-msg">请输入大于零的数字。</span>
+        </div></div>
+      </fieldset>
       <button class="btn-submit" type="submit" disabled>添加到订单</button>
       <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
     </form>
@@ -232,7 +318,7 @@
       <figure class="shop-photo">
       <a class="shop-photo-link" href="/assets/desktop/blog-article1-1.jpg" aria-haspopup="dialog" aria-label="放大照片: 高性能排气歧管">
         <span class="tech-frame">
-          <img src="/assets/desktop/blog-article1-1.jpg" alt="高性能排气歧管" width="640" height="480" loading="eager" decoding="async">
+          <img src="/assets/desktop/blog-article1-1.jpg" alt="高性能排气歧管" width="640" height="480" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
@@ -242,9 +328,7 @@
           <a href="/zh/blog#post-2-title">博客: TAZ 1.43 / PS12 ↗</a>
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>6 600 CZK</dd></div>
-          <div class="shop-price-row"><dt>经销商价格</dt><dd>6 400 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>经销商最小采购量</dt><dd>3</dd></div>
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>6 600 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
           <div class="form-group shop-variant">
@@ -275,9 +359,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>2 700 CZK</dd></div>
-          <div class="shop-price-row"><dt>经销商价格</dt><dd>2 500 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>经销商最小采购量</dt><dd>3</dd></div>
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>2 700 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -305,9 +387,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>12 500 CZK</dd></div>
-          <div class="shop-price-row"><dt>经销商价格</dt><dd>11 800 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>经销商最小采购量</dt><dd>4</dd></div>
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>12 500 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -335,9 +415,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>11 500 CZK</dd></div>
-          <div class="shop-price-row"><dt>经销商价格</dt><dd>11 000 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>经销商最小采购量</dt><dd>4</dd></div>
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>11 500 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -365,8 +443,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>780 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>780 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -394,8 +471,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>1 100 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>1 100 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -423,8 +499,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>价格请咨询</dd></div>
-
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>价格请咨询</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -452,8 +527,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>260 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>260 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -481,8 +555,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>150 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>150 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -510,8 +583,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>180 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>180 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -539,8 +611,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>280 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>280 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -568,9 +639,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>620 CZK</dd></div>
-          <div class="shop-price-row"><dt>经销商价格</dt><dd>560 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>经销商最小采购量</dt><dd>5</dd></div>
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>620 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
           <div class="form-group shop-variant">
@@ -601,8 +670,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>160 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>160 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -630,8 +698,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>起价 40 CZK</dd></div>
-
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>起价 40 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -659,9 +726,7 @@
 
         </div>
         <dl class="shop-prices">
-          <div class="shop-price-row"><dt>零售价 / 件</dt><dd>1 600 CZK</dd></div>
-          <div class="shop-price-row"><dt>经销商价格</dt><dd>1 450 CZK</dd></div>
-          <div class="shop-price-row shop-dealer-minimum"><dt>经销商最小采购量</dt><dd>3</dd></div>
+          <div class="shop-price-row"><dt>价格 / 件</dt><dd>1 600 CZK</dd></div>
         </dl>
         <div class="shop-product-order">
 
@@ -677,7 +742,7 @@
       </section>
       <aside class="blog-sidebar shop-sidebar" aria-labelledby="basket-title">
       <div id="basket" class="toc-wrapper shop-basket" tabindex="-1">
-        <div class="shop-section-heading"><h2 id="basket-title" class="toc-title">您的订单</h2><span data-basket-count>0</span></div>
+        <div class="shop-section-heading"><h2 id="basket-title" class="toc-title">您的订单</h2></div>
         <p id="basket-empty">购物车为空。请选择商品。</p>
         <ul id="basket-items" class="shop-basket-items"></ul>
         <div class="shop-totals"><span>参考价格</span><strong id="basket-subtotal">0 CZK</strong></div>
@@ -801,6 +866,6 @@
     <img class="lightbox-img" alt="">
   </dialog>
   <div id="shop-status" class="shop-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
-  <script id="shop-config" type="application/json">{"products": [{"id": "skoda-ohv-camshaft", "name": "Škoda OHV 凸轮轴", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/camshaft-options.csv", "profiles": [{"id": "regrind-262-248", "manufacture": "regrind", "duration": "262° / 248°", "lift": "6,4 / 5,8 mm", "price": 5600, "description": "KOM 版本"}, {"id": "regrind-272-266", "manufacture": "regrind", "duration": "272° / 266°", "lift": "6,6 / 6,4 mm", "price": 5600, "description": "TOP 版本"}, {"id": "new-294-294", "manufacture": "new", "duration": "294° / 294°", "lift": "7,2 / 7,2 mm", "price": 11400, "description": "冲刺赛、搭配两只 Weber 双腔化油器的道路使用（短进气道）"}, {"id": "new-316-316", "manufacture": "new", "duration": "316° / 316°", "lift": "7,5 / 7,5 mm", "price": 11400, "description": "场地赛、爬山赛"}, {"id": "new-320-320", "manufacture": "new", "duration": "320° / 320°", "lift": "8,0 / 8,0 mm", "price": 13200, "description": "搭配两只 Weber 双腔化油器的道路使用（短进气道）；需使用更硬的气门弹簧（已含在价格中）"}, {"id": "new-324-324", "manufacture": "new", "duration": "324°/ 324°", "lift": "7,5 / 7,2 mm", "price": 11400, "description": "130 LR / RS，搭配两只 Weber 双腔化油器（弯曲进气管）"}], "bearings": [{"id": "small", "labelKey": "smallBearings", "diameters": "39-38,5-30"}, {"id": "large", "labelKey": "largeBearings", "diameters": "40,5-40-30"}], "fields": [{"id": "engineType", "labelKey": "engineType", "type": "text", "required": true, "maxLength": 120}, {"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "rockerRatio", "labelKey": "rockerRatio", "type": "number", "required": true, "unit": ""}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "exhaust-headers", "name": "高性能排气歧管", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43 l"}, {"id": "large", "label": "TAZ 2.0 l +"}]}, {"id": "resonance-exhaust", "name": "谐振消声器", "price": 2700, "priceType": "fixed", "variants": []}, {"id": "connecting-rod-160", "name": "H型锻造连杆", "price": 12500, "priceType": "fixed", "variants": []}, {"id": "connecting-rod-156", "name": "H型锻造连杆", "price": 11500, "priceType": "fixed", "variants": []}, {"id": "ignition-coil-contact", "name": "PAL 触点式点火线圈", "price": 780, "priceType": "fixed", "variants": []}, {"id": "ignition-coil-contactless", "name": "PAL 无触点式点火线圈", "price": 1100, "priceType": "fixed", "variants": []}, {"id": "distributor-rotor", "name": "带限速器的分电器转子", "price": null, "priceType": "quote", "variants": []}, {"id": "distributor-cap", "name": "分电器盖", "price": 260, "priceType": "fixed", "variants": []}, {"id": "distributor-contacts", "name": "BOSCH 分电器触点", "price": 150, "priceType": "fixed", "variants": []}, {"id": "distributor-capacitor", "name": "PAL 分电器电容器", "price": 180, "priceType": "fixed", "variants": []}, {"id": "ignition-wiring", "name": "点火高压线束", "price": 280, "priceType": "fixed", "variants": []}, {"id": "head-gasket", "name": "气缸盖垫片", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "80.5 mm"}, {"id": "82-0", "label": "82.0 mm"}]}, {"id": "head-gasket-stock", "name": "原厂气缸盖垫片 (硅胶处理)", "price": 160, "priceType": "fixed", "variants": []}, {"id": "copper-rings", "name": "缸套下调节铜环 - 价格视尺寸和数量而定，起价", "price": 40, "priceType": "from", "variants": []}, {"id": "distributor-overhaul", "name": "分电器翻新", "price": 1600, "priceType": "fixed", "variants": []}], "currency": "CZK", "locale": "zh", "email": "info@petramuckova.cz", "text": {"title": "商店", "home": "首页", "shop": "商店", "blog": "博客", "catalog": "零件与服务", "basket": "您的订单", "empty": "购物车为空。请选择商品。", "quantity": "数量", "increase": "增加一件", "decrease": "减少一件", "remove": "移除", "variant": "规格", "details": "详情与经销商价格", "noPhoto": "暂无商品照片", "enlargePhoto": "放大照片", "closePhoto": "关闭照片", "retail": "零售价 / 件", "dealer": "经销商价格", "dealerMinimum": "经销商最小采购量", "from": "起价", "quote": "价格请咨询", "subtotal": "参考价格", "quoteNotice": "需报价或标注起价的商品不计入小计。我们将另行确认价格。", "deliveryNotice": "不含运费。库存、运费及最终价格将通过电子邮件确认。", "checkout": "订单", "fullName": "姓名", "company": "公司", "phone": "电话", "email": "电子邮箱", "street": "街道与门牌号", "city": "城市", "postcode": "邮政编码", "country": "国家", "notes": "备注", "delivery": "配送方式", "postal": "配送至邮寄地址", "prepare": "准备订单邮件", "draft": "请核对邮件", "openEmail": "打开邮件应用", "copy": "复制订单内容", "copied": "已复制。请粘贴到发往 info@petramuckova.cz 的邮件中。", "copyManual": "请复制以下内容并发送至 info@petramuckova.cz。", "draftNotice": "尚未发送任何内容。请核对信息，并在邮件应用中发送。如果应用未打开，请复制内容并发邮件至 info@petramuckova.cz。", "privacy": "浏览器仅保存所选商品。网站不保存您的邮箱和地址；这些信息将包含在您自行发送的邮件中。", "confirmation": "这是不具约束力的订单，并非付款或订立远程销售合同。", "storageNotice": "浏览器存储不可用。购物车仍可使用，但刷新后可能丢失。", "noScript": "请启用 JavaScript 使用购物车，或将商品选择和地址发至 info@petramuckova.cz。", "cartUpdated": "购物车已更新", "browse": "浏览备件", "goShop": "浏览备件并准备订单", "defaultDescription": "适用于消防泵组的 TAZ 发动机。", "orderSubject": "Mücková / Mück — 订单", "requiredFields": "* 必填项", "variantChoose": "选择规格", "totalItems": "购物车商品数量", "configure": "凸轮轴配置", "inquiryHeading": "询价", "profileHeading": "工序", "camDuration": "凸轮持续角", "camLift": "最大升程", "price": "价格", "profileDescription": "说明", "manufactureRegrind": "重磨", "manufactureNew": "制造", "bearings": "轴承", "smallBearings": "小轴承，直径", "largeBearings": "大轴承，直径", "chooseBearings": "选择轴承", "engineHeading": "发动机信息", "engineType": "发动机型号", "bore": "缸径", "stroke": "冲程", "intakeValve": "进气门头部直径", "exhaustValve": "排气门头部直径", "rockerRatio": "摇臂比", "positiveNumber": "请输入大于零的数字。", "addConfigured": "添加到订单", "configuredAdded": "配置已加入购物车。", "basketFull": "购物车已满。请先移除一项商品。", "legacyCamshafts": "原凸轮轴商品已替换为配置表单。请重新配置；其他商品已保留。", "contactHeading": "您的联系方式", "requiredWarning": "此字段为必填项。", "emailWarning": "请输入有效的邮箱。", "phoneWarning": "请输入有效的电话号码。"}}</script>
+  <script id="shop-config" type="application/json">{"products": [{"id": "skoda-ohv-camshaft", "name": "Škoda OHV 凸轮轴", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/camshaft-options.csv", "profiles": [{"id": "regrind-262-248", "manufacture": "regrind", "duration": "262° / 248°", "lift": "6,4 / 5,8 mm", "price": 5600, "description": "KOM 版本"}, {"id": "regrind-272-266", "manufacture": "regrind", "duration": "272° / 266°", "lift": "6,6 / 6,4 mm", "price": 5600, "description": "TOP 版本"}, {"id": "new-294-294", "manufacture": "new", "duration": "294° / 294°", "lift": "7,2 / 7,2 mm", "price": 11400, "description": "冲刺赛、搭配两只 Weber 双腔化油器的道路使用（短进气道）"}, {"id": "new-316-316", "manufacture": "new", "duration": "316° / 316°", "lift": "7,5 / 7,5 mm", "price": 11400, "description": "场地赛、爬山赛"}, {"id": "new-320-320", "manufacture": "new", "duration": "320° / 320°", "lift": "8,0 / 8,0 mm", "price": 13200, "description": "搭配两只 Weber 双腔化油器的道路使用（短进气道）；需使用更硬的气门弹簧（已含在价格中）"}, {"id": "new-324-324", "manufacture": "new", "duration": "324°/ 324°", "lift": "7,5 / 7,2 mm", "price": 11400, "description": "130 LR / RS，搭配两只 Weber 双腔化油器（弯曲进气管）"}], "bearings": [{"id": "small", "labelKey": "smallBearings", "diameters": "39-38,5-30"}, {"id": "large", "labelKey": "largeBearings", "diameters": "40,5-40-30"}], "fields": [{"id": "engineType", "labelKey": "engineType", "type": "text", "required": true, "maxLength": 120}, {"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "rockerRatio", "labelKey": "rockerRatio", "type": "number", "required": true, "unit": ""}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "taz-camshaft", "name": "TAZ 凸轮轴", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/taz-camshaft-options.csv", "profiles": [{"id": "regrind-258-248", "manufacture": "regrind", "duration": "258° / 248°", "lift": "6,4 / 5,8 mm", "price": 4400, "description": "适用于 TAZ 1.43 至 1.6 发动机"}, {"id": "regrind-278-272", "manufacture": "regrind", "duration": "278°/ 272°", "lift": "7,0 / 6,6 mm", "price": 4400, "description": "适用于 TAZ 1.8 发动机"}, {"id": "new-284-284-7-0", "manufacture": "new", "duration": "284° / 284°", "lift": "7,0 / 7,0 mm", "price": 11500, "description": "适用于 TAZ 1.9 发动机（凸轮轴轻微磨损）"}, {"id": "new-284-284-8-0", "manufacture": "new", "duration": "284° / 284°", "lift": "8,0 / 8,0 mm", "price": 15500, "description": "适用于 TAZ 2.0 及更大发动机"}], "bearings": [], "fields": [{"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "exhaust-headers", "name": "高性能排气歧管", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43 l"}, {"id": "large", "label": "TAZ 2.0 l +"}]}, {"id": "resonance-exhaust", "name": "谐振消声器", "price": 2700, "priceType": "fixed", "variants": []}, {"id": "connecting-rod-160", "name": "H型锻造连杆", "price": 12500, "priceType": "fixed", "variants": []}, {"id": "connecting-rod-156", "name": "H型锻造连杆", "price": 11500, "priceType": "fixed", "variants": []}, {"id": "ignition-coil-contact", "name": "PAL 触点式点火线圈", "price": 780, "priceType": "fixed", "variants": []}, {"id": "ignition-coil-contactless", "name": "PAL 无触点式点火线圈", "price": 1100, "priceType": "fixed", "variants": []}, {"id": "distributor-rotor", "name": "带限速器的分电器转子", "price": null, "priceType": "quote", "variants": []}, {"id": "distributor-cap", "name": "分电器盖", "price": 260, "priceType": "fixed", "variants": []}, {"id": "distributor-contacts", "name": "BOSCH 分电器触点", "price": 150, "priceType": "fixed", "variants": []}, {"id": "distributor-capacitor", "name": "PAL 分电器电容器", "price": 180, "priceType": "fixed", "variants": []}, {"id": "ignition-wiring", "name": "点火高压线束", "price": 280, "priceType": "fixed", "variants": []}, {"id": "head-gasket", "name": "气缸盖垫片", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "80.5 mm"}, {"id": "82-0", "label": "82.0 mm"}]}, {"id": "head-gasket-stock", "name": "原厂气缸盖垫片 (硅胶处理)", "price": 160, "priceType": "fixed", "variants": []}, {"id": "copper-rings", "name": "缸套下调节铜环 - 价格视尺寸和数量而定，起价", "price": 40, "priceType": "from", "variants": []}, {"id": "distributor-overhaul", "name": "分电器翻新", "price": 1600, "priceType": "fixed", "variants": []}], "currency": "CZK", "locale": "zh", "email": "info@petramuckova.cz", "text": {"title": "商店", "home": "首页", "shop": "商店", "blog": "博客", "catalog": "零件与服务", "basket": "您的订单", "empty": "购物车为空。请选择商品。", "quantity": "数量", "increase": "增加一件", "decrease": "减少一件", "remove": "移除", "variant": "规格", "details": "详情与经销商价格", "noPhoto": "暂无商品照片", "enlargePhoto": "放大照片", "closePhoto": "关闭照片", "retail": "价格 / 件", "dealer": "经销商价格", "dealerMinimum": "经销商最小采购量", "from": "起价", "quote": "价格请咨询", "subtotal": "参考价格", "quoteNotice": "需报价或标注起价的商品不计入小计。我们将另行确认价格。", "deliveryNotice": "不含运费。库存、运费及最终价格将通过电子邮件确认。", "checkout": "订单", "fullName": "姓名", "company": "公司", "phone": "电话", "email": "电子邮箱", "street": "街道与门牌号", "city": "城市", "postcode": "邮政编码", "country": "国家", "notes": "备注", "delivery": "配送方式", "postal": "配送至邮寄地址", "prepare": "准备订单邮件", "draft": "请核对邮件", "openEmail": "打开邮件应用", "copy": "复制订单内容", "copied": "已复制。请粘贴到发往 info@petramuckova.cz 的邮件中。", "copyManual": "请复制以下内容并发送至 info@petramuckova.cz。", "draftNotice": "尚未发送任何内容。请核对信息，并在邮件应用中发送。如果应用未打开，请复制内容并发邮件至 info@petramuckova.cz。", "privacy": "浏览器仅保存所选商品。网站不保存您的邮箱和地址；这些信息将包含在您自行发送的邮件中。", "confirmation": "这是不具约束力的订单，并非付款或订立远程销售合同。", "storageNotice": "浏览器存储不可用。购物车仍可使用，但刷新后可能丢失。", "noScript": "请启用 JavaScript 使用购物车，或将商品选择和地址发至 info@petramuckova.cz。", "cartUpdated": "购物车已更新", "browse": "浏览备件", "goShop": "浏览备件并准备订单", "defaultDescription": "适用于消防泵组的 TAZ 发动机。", "orderSubject": "Mücková / Mück — 订单", "requiredFields": "* 必填项", "variantChoose": "选择规格", "totalItems": "购物车商品数量", "configure": "凸轮轴配置", "profileHeading": "工序", "camDuration": "凸轮持续角", "camLift": "最大升程", "price": "价格", "profileDescription": "说明", "manufactureRegrind": "重磨", "manufactureNew": "制造", "bearings": "轴承", "smallBearings": "小轴承，直径", "largeBearings": "大轴承，直径", "chooseBearings": "选择轴承", "engineHeading": "发动机信息", "engineType": "发动机型号", "bore": "缸径", "stroke": "冲程", "intakeValve": "进气门头部直径", "exhaustValve": "排气门头部直径", "rockerRatio": "摇臂比", "positiveNumber": "请输入大于零的数字。", "addConfigured": "添加到订单", "basketFull": "购物车已满。请先移除一项商品。", "legacyCamshafts": "原凸轮轴商品已替换为配置表单。请重新配置；其他商品已保留。", "contactHeading": "您的联系方式", "requiredWarning": "此字段为必填项。", "emailWarning": "请输入有效的邮箱。", "phoneWarning": "请输入有效的电话号码。"}}</script>
 </body>
 </html>

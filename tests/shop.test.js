@@ -288,21 +288,23 @@ test('product photos open the blog-style viewer with the full image, alt text an
         assert.equal(doc.activeElement, link);
     }
 });
-test('both retained Škoda OHV gallery photos enlarge independently and Escape restores the correct link', () => {
-    const photos = products.find(product => product.id === 'skoda-ohv-camshaft').images
-        .map(image => ({ src: image.src, alt: image.alt.cs }));
-    const { doc, viewer, image, links } = photoViewerFixture({ photos });
-    assert.equal(links.length, 2);
-    links.forEach((link, index) => {
-        link.fire('click');
-        assert.equal(viewer.open, true);
-        assert.equal(image.src, photos[index].src);
-        assert.equal(image.alt, photos[index].alt);
-        assert.equal(viewer.fire('cancel').defaultPrevented, true);
-        assert.equal(viewer.open, false);
-        assert.equal(doc.activeElement, link);
-        assert.equal(link.classList.has('shop-photo-pointer-focus'), true);
-    });
+test('both photos in every camshaft gallery enlarge independently and restore the correct link', () => {
+    for (const productId of ['skoda-ohv-camshaft', 'taz-camshaft']) {
+        const photos = products.find(product => product.id === productId).images
+            .map(image => ({ src: image.src, alt: image.alt.cs }));
+        const { doc, viewer, image, links } = photoViewerFixture({ photos });
+        assert.equal(links.length, 2);
+        links.forEach((link, index) => {
+            link.fire('click');
+            assert.equal(viewer.open, true);
+            assert.equal(image.src, photos[index].src);
+            assert.equal(image.alt, photos[index].alt);
+            assert.equal(viewer.fire('cancel').defaultPrevented, true);
+            assert.equal(viewer.open, false);
+            assert.equal(doc.activeElement, link);
+            assert.equal(link.classList.has('shop-photo-pointer-focus'), true);
+        });
+    }
 });
 
 test('Escape after mouse, touch or pen opening restores photo focus without a ring', () => {

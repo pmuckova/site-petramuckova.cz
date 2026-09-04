@@ -64,26 +64,45 @@ def main():
             config = json.loads(soup.select_one('#shop-config').string)
             assert config['locale'] == language
             assert all(product['price'] == catalog['products'][index]['price'] for index, product in enumerate(config['products']))
+            configured_prices = {
+                product['id']: [profile['price'] for profile in product['wizard']['profiles']]
+                for product in config['products'] if product.get('kind') == 'wizard'
+            }
+            assert configured_prices == {
+                'skoda-ohv-camshaft': [5600, 5600, 11400, 11400, 13200, 11400],
+                'taz-camshaft': [4400, 4400, 11500, 15500],
+            }
             assert soup.select_one('.shop-product > h3.shop-product-title')
             for card in soup.select('.shop-product'):
+                source_product = next(product for product in catalog['products'] if product['id'] == card['id'])
                 wizard = card.select_one('form[data-wizard]')
                 assert len(card.find_all(recursive=False)) == (4 if wizard else 3)
                 assert card.find(recursive=False).name == 'h3'
                 assert card.select_one(':scope > .shop-photo img')
                 assert card.select_one(':scope > .shop-product-content > .shop-product-body .shop-description')
                 if wizard:
-                    assert len(wizard.select('input[name=profile]')) == 6
-                    assert len(wizard.select('input[type=number][required]')) == 5
-                    assert len(card.select('.shop-description')) == 6
+                    assert len(wizard.select('input[name=profile]')) == len(source_product['wizard']['profiles'])
+                    expected_fields = source_product['wizard']['fields']
+                    assert len(wizard.select('input[type=number][required]')) == sum(
+                        field['type'] == 'number' and field['required'] for field in expected_fields)
+                    assert len(card.select('.shop-description')) == len(
+                        source_product['translations'][language]['description'].split('\n\n'))
                     assert wizard.select_one('button[type=submit].btn-submit')
                     assert not wizard.select('.mandatory-note, [id$="-profile-title"]')
-                    profiles = wizard.select_one('fieldset.shop-profile-options[aria-labelledby]')
+                    bearing = wizard.select_one('[data-bearing]')
+                    if source_product['wizard']['bearings']:
+                        assert bearing and wizard.select_one('[data-bearing-fields][hidden]')
+                    else:
+                        assert not bearing and not wizard.select('[data-bearing-fields]')
+                    assert not wizard.select(':scope > h4.form-section-title')
+                    engine_fields = wizard.select_one(':scope > fieldset.shop-engine-fields')
+                    assert engine_fields and engine_fields.select_one(':scope > legend.shop-sr-only')
+                    profiles = wizard.select_one(':scope > fieldset.shop-profile-options:not([aria-labelledby])')
                     assert profiles
-                    inquiry_heading = wizard.find(id=profiles['aria-labelledby'])
-                    assert inquiry_heading.name == 'h4'
-                    assert inquiry_heading['class'] == ['form-section-title']
-                    assert inquiry_heading.get_text() == config['text']['inquiryHeading']
-                    assert inquiry_heading.find_next_sibling() is profiles
+                    assert wizard.find(recursive=False) is profiles
+                    legend = profiles.find('legend', recursive=False)
+                    assert legend['class'] == ['shop-sr-only']
+                    assert legend.get_text() == config['text']['configure']
                     assert len(profiles.select('thead > tr > th')) == 4
                     for option in profiles.select('tbody.shop-profile-option'):
                         rows = option.find_all('tr', recursive=False)
@@ -96,19 +115,19 @@ def main():
                         assert len(rows[1].find_all('td', recursive=False)) == 1
                         assert rows[1].select_one('td > .shop-profile-description')
                     assert [field['name'] for field in wizard.select('.form-row input')] == [
-                        'engineType', 'bore', 'stroke', 'rockerRatio', 'exhaustValve', 'intakeValve']
+                        field['id'] for field in expected_fields]
                     assert 'Ø' not in wizard.get_text()
                     assert not card.select('[data-quantity], [data-change]')
-                    assert config['products'][0]['wizard']['profiles'][4]['price'] == 13200
                 else:
                     assert card.select_one(':scope > .shop-product-content > .shop-prices')
+                    assert len(card.select(':scope > .shop-product-content > .shop-prices .shop-price-row')) == 1
+                    assert not card.select('.shop-dealer-minimum')
                     assert card.select_one(':scope > .shop-product-content > .shop-product-order [data-quantity]')
                     assert card.select_one('input[data-quantity]')['max'] == '9999'
                 photo_links = card.select('.shop-photo-link')
                 for photo_link in photo_links:
                     assert photo_link['href'] == photo_link.img['src']
                     assert photo_link.select_one(':scope > .tech-frame > img')
-                source_product = next(product for product in catalog['products'] if product['id'] == card['id'])
                 if source_product.get('images'):
                     assert card.select_one('.shop-photo-gallery')
                     assert len(photo_links) == len(source_product['images'])
@@ -180,8 +199,9 @@ def main():
         assert len(locations) == 30
         assert len([loc for loc in locations if loc.text.endswith('/shop.html')]) == 10
         image_locations = sitemap.findall('.//{http://www.google.com/schemas/sitemap-image/1.1}loc')
-        for image in catalog['products'][0]['images']:
-            assert any(loc.text.endswith(image['src']) for loc in image_locations)
+        for product in catalog['products']:
+            for image in product.get('images', []):
+                assert any(loc.text.endswith(image['src']) for loc in image_locations)
         assert catalog['placeholderImage'] not in (release / 'sitemap.xml').read_text()
         assert 'vshop-smoke-test' in (release / '.htaccess').read_text()
         assert '{{RELEASE_' not in (release / '.htaccess').read_text()
