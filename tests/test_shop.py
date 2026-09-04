@@ -773,14 +773,14 @@ class ShopBuildTests(unittest.TestCase):
             self.assertFalse(card.select('form form, form.terminal-form'))
             self.assertTrue(card.select_one('form[data-wizard][novalidate] > button.btn-submit[type=submit]'))
 
-    def test_skoda_ohv_gallery_stacks_all_four_supplied_photos_with_individual_zoom(self):
+    def test_skoda_ohv_gallery_stacks_the_two_selected_photos_with_individual_zoom(self):
         product = self.catalog['products'][0]
         images = product['images']
-        expected_paths = [f'/assets/desktop/skoda-ohv-{index}.jpeg' for index in range(1, 5)]
+        expected_paths = [f'/assets/desktop/skoda-ohv-{index}.jpeg' for index in range(1, 3)]
         self.assertEqual([image['src'] for image in images], expected_paths)
         self.assertEqual(product['image'], expected_paths[0])
         self.assertEqual([(image['width'], image['height']) for image in images],
-                         [(4000, 2252), (4000, 2252), (2252, 4000), (2252, 4000)])
+                         [(4000, 2252), (4000, 2252)])
         for path in expected_paths:
             data = (ROOT / path.lstrip('/')).read_bytes()
             self.assertTrue(data.startswith(b'\xff\xd8'))
@@ -791,7 +791,7 @@ class ShopBuildTests(unittest.TestCase):
             self.assertIsNotNone(gallery)
             self.assertEqual(len(soup.select('.shop-photo-gallery')), 1)
             links = gallery.select(':scope > a.shop-photo-link')
-            self.assertEqual(len(links), 4)
+            self.assertEqual(len(links), 2)
             self.assertEqual([link['href'] for link in links], expected_paths)
             self.assertFalse(gallery.select('figcaption, .shop-description, form'))
             for index, (link, image) in enumerate(zip(links, images)):
@@ -1014,6 +1014,21 @@ class ShopBuildTests(unittest.TestCase):
             for option in soup.select('.shop-profile-option'):
                 label = manufacture if option.input['value'].startswith('new-') else config['text']['manufactureRegrind']
                 self.assertEqual(option.select_one('.shop-profile-method').get_text(), label)
+
+    def test_configurator_button_adds_the_item_to_the_order_in_every_locale(self):
+        expected = {
+            'cs': 'Přidat do objednávky', 'en': 'Add to order',
+            'de': 'Zur Bestellung hinzufügen', 'fr': 'Ajouter à la commande',
+            'it': 'Aggiungi all’ordine', 'es': 'Añadir al pedido',
+            'pl': 'Dodaj do zamówienia', 'ru': 'Добавить к заказу',
+            'ja': '注文に追加', 'zh': '添加到订单',
+        }
+        for lang, soup in self.pages():
+            with self.subTest(lang=lang):
+                config = json.loads(soup.select_one('#shop-config').string)
+                button = soup.select_one('form[data-wizard] > button[type=submit]')
+                self.assertEqual(config['text']['addConfigured'], expected[lang])
+                self.assertEqual(button.get_text(), expected[lang])
 
     def test_invalid_wizard_profiles_and_fields_fail_before_rendering(self):
         for mutate in (

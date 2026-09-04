@@ -158,40 +158,6 @@
             "ja": "Škoda OHVカムシャフトとバルブスプリング、固定ねじ",
             "zh": "Škoda OHV凸轮轴、气门弹簧和固定螺钉"
           }
-        },
-        {
-          "src": "/assets/desktop/skoda-ohv-3.jpeg",
-          "width": 2252,
-          "height": 4000,
-          "alt": {
-            "cs": "Upevňovací šroub s vnitřním šestihranem",
-            "en": "Socket-head retaining screw",
-            "de": "Befestigungsschraube mit Innensechskant",
-            "fr": "Vis de fixation à six pans creux",
-            "it": "Vite di fissaggio a esagono incassato",
-            "es": "Tornillo de fijación de hexágono interior",
-            "pl": "Śruba mocująca z gniazdem sześciokątnym",
-            "ru": "Крепёжный винт с внутренним шестигранником",
-            "ja": "六角穴付き固定ねじ",
-            "zh": "内六角固定螺钉"
-          }
-        },
-        {
-          "src": "/assets/desktop/skoda-ohv-4.jpeg",
-          "width": 2252,
-          "height": 4000,
-          "alt": {
-            "cs": "Balené ventilové pružiny",
-            "en": "Packaged valve springs",
-            "de": "Verpackte Ventilfedern",
-            "fr": "Ressorts de soupapes emballés",
-            "it": "Molle delle valvole confezionate",
-            "es": "Muelles de válvula embalados",
-            "pl": "Zapakowane sprężyny zaworowe",
-            "ru": "Клапанные пружины в упаковке",
-            "ja": "包装されたバルブスプリング",
-            "zh": "包装中的气门弹簧"
-          }
         }
       ],
       "variants": [],

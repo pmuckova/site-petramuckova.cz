@@ -76,7 +76,7 @@
     "exhaustValve": "Exhaust valve head diameter",
     "rockerRatio": "Rocker arm ratio",
     "positiveNumber": "Enter a number greater than zero.",
-    "addConfigured": "Add to basket",
+    "addConfigured": "Add to order",
     "configuredAdded": "Configuration added to your basket.",
     "basketFull": "Your basket is full. Remove an item before adding another.",
     "legacyCamshafts": "The old camshaft items have been replaced by the configurator. Please choose a new configuration; other basket items have been kept."
@@ -158,7 +158,7 @@
     "exhaustValve": "Průměr talířku V ventilu",
     "rockerRatio": "Převodový poměr vahadla",
     "positiveNumber": "Zadejte číslo větší než nula.",
-    "addConfigured": "Přidat do košíku",
+    "addConfigured": "Přidat do objednávky",
     "configuredAdded": "Konfigurace byla přidána do košíku.",
     "basketFull": "Košík je plný. Před přidáním další položky některou odeberte.",
     "legacyCamshafts": "Původní položky vačkových hřídelí byly nahrazeny konfigurátorem. Vyberte prosím novou konfiguraci; ostatní položky košíku zůstaly zachovány."
@@ -240,7 +240,7 @@
     "exhaustValve": "Durchmesser des Auslassventiltellers",
     "rockerRatio": "Kipphebelübersetzung",
     "positiveNumber": "Geben Sie eine Zahl größer als null ein.",
-    "addConfigured": "In den Warenkorb",
+    "addConfigured": "Zur Bestellung hinzufügen",
     "configuredAdded": "Konfiguration zum Warenkorb hinzugefügt.",
     "basketFull": "Ihr Warenkorb ist voll. Entfernen Sie zuerst einen Artikel.",
     "legacyCamshafts": "Die bisherigen Nockenwellenartikel wurden durch den Konfigurator ersetzt. Bitte konfigurieren Sie diese neu; andere Warenkorbartikel bleiben erhalten."
@@ -322,7 +322,7 @@
     "exhaustValve": "Diamètre de tête de soupape d’échappement",
     "rockerRatio": "Rapport de culbuteur",
     "positiveNumber": "Saisissez un nombre supérieur à zéro.",
-    "addConfigured": "Ajouter au panier",
+    "addConfigured": "Ajouter à la commande",
     "configuredAdded": "Configuration ajoutée au panier.",
     "basketFull": "Votre panier est plein. Retirez d’abord un article.",
     "legacyCamshafts": "Les anciens arbres à cames ont été remplacés par le configurateur. Configurez-les à nouveau ; les autres articles sont conservés."
@@ -404,7 +404,7 @@
     "exhaustValve": "Diametro testa valvola di scarico",
     "rockerRatio": "Rapporto del bilanciere",
     "positiveNumber": "Inserire un numero maggiore di zero.",
-    "addConfigured": "Aggiungi al carrello",
+    "addConfigured": "Aggiungi all’ordine",
     "configuredAdded": "Configurazione aggiunta al carrello.",
     "basketFull": "Il carrello è pieno. Rimuovere prima un articolo.",
     "legacyCamshafts": "I vecchi alberi a camme sono stati sostituiti dal configuratore. Configurarli nuovamente; gli altri articoli sono conservati."
@@ -486,7 +486,7 @@
     "exhaustValve": "Diámetro de cabeza de válvula de escape",
     "rockerRatio": "Relación del balancín",
     "positiveNumber": "Introduzca un número mayor que cero.",
-    "addConfigured": "Añadir a la cesta",
+    "addConfigured": "Añadir al pedido",
     "configuredAdded": "Configuración añadida a la cesta.",
     "basketFull": "La cesta está llena. Retire primero un artículo.",
     "legacyCamshafts": "Los antiguos árboles de levas se han sustituido por el configurador. Configúrelos de nuevo; los demás artículos se conservan."
@@ -568,7 +568,7 @@
     "exhaustValve": "Średnica talerzyka zaworu wydechowego",
     "rockerRatio": "Przełożenie dźwigienki",
     "positiveNumber": "Wpisz liczbę większą od zera.",
-    "addConfigured": "Dodaj do koszyka",
+    "addConfigured": "Dodaj do zamówienia",
     "configuredAdded": "Konfiguracja została dodana do koszyka.",
     "basketFull": "Koszyk jest pełny. Najpierw usuń pozycję.",
     "legacyCamshafts": "Poprzednie wałki rozrządu zastąpiono konfiguratorem. Skonfiguruj je ponownie; pozostałe pozycje zachowano."
@@ -650,7 +650,7 @@
     "exhaustValve": "Диаметр тарелки выпускного клапана",
     "rockerRatio": "Передаточное отношение коромысла",
     "positiveNumber": "Введите число больше нуля.",
-    "addConfigured": "Добавить в корзину",
+    "addConfigured": "Добавить к заказу",
     "configuredAdded": "Конфигурация добавлена в корзину.",
     "basketFull": "Корзина заполнена. Сначала удалите позицию.",
     "legacyCamshafts": "Прежние распредвалы заменены конфигуратором. Настройте их заново; остальные позиции сохранены."
@@ -732,7 +732,7 @@
     "exhaustValve": "排気バルブヘッド径",
     "rockerRatio": "ロッカーアーム比",
     "positiveNumber": "ゼロより大きい数値を入力してください。",
-    "addConfigured": "カートに追加",
+    "addConfigured": "注文に追加",
     "configuredAdded": "構成をカートに追加しました。",
     "basketFull": "カートがいっぱいです。先に商品を削除してください。",
     "legacyCamshafts": "従来のカムシャフトは構成フォームに置き換わりました。再度構成してください。他の商品は保持されています。"
@@ -814,7 +814,7 @@
     "exhaustValve": "排气门头部直径",
     "rockerRatio": "摇臂比",
     "positiveNumber": "请输入大于零的数字。",
-    "addConfigured": "加入购物车",
+    "addConfigured": "添加到订单",
     "configuredAdded": "配置已加入购物车。",
     "basketFull": "购物车已满。请先移除一项商品。",
     "legacyCamshafts": "原凸轮轴商品已替换为配置表单。请重新配置；其他商品已保留。"

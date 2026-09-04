@@ -288,11 +288,11 @@ test('product photos open the blog-style viewer with the full image, alt text an
         assert.equal(doc.activeElement, link);
     }
 });
-test('all four Škoda OHV gallery photos enlarge independently and Escape restores the correct link', () => {
+test('both retained Škoda OHV gallery photos enlarge independently and Escape restores the correct link', () => {
     const photos = products.find(product => product.id === 'skoda-ohv-camshaft').images
         .map(image => ({ src: image.src, alt: image.alt.cs }));
     const { doc, viewer, image, links } = photoViewerFixture({ photos });
-    assert.equal(links.length, 4);
+    assert.equal(links.length, 2);
     links.forEach((link, index) => {
         link.fire('click');
         assert.equal(viewer.open, true);
