@@ -119,106 +119,299 @@
   },
   "products": [
     {
-      "id": "camshaft-regrind",
-      "price": 4400,
-      "priceType": "fixed",
-      "image": "/assets/desktop/site-camshaft-2.webp",
+      "id": "skoda-ohv-camshaft",
+      "kind": "wizard",
+      "price": null,
+      "priceType": "configured",
+      "image": "/assets/desktop/skoda-ohv-1.jpeg",
+      "images": [
+        {
+          "src": "/assets/desktop/skoda-ohv-1.jpeg",
+          "width": 4000,
+          "height": 2252,
+          "alt": {
+            "cs": "Vačková hřídel Škoda OHV – detail",
+            "en": "Škoda OHV camshaft – detail",
+            "de": "Škoda OHV Nockenwelle – Detailansicht",
+            "fr": "Arbre à cames Škoda OHV – détail",
+            "it": "Albero a camme Škoda OHV – dettaglio",
+            "es": "Árbol de levas Škoda OHV – detalle",
+            "pl": "Wałek rozrządu Škoda OHV – zbliżenie",
+            "ru": "Распредвал Škoda OHV — крупный план",
+            "ja": "Škoda OHVカムシャフトの詳細",
+            "zh": "Škoda OHV凸轮轴细节"
+          }
+        },
+        {
+          "src": "/assets/desktop/skoda-ohv-2.jpeg",
+          "width": 4000,
+          "height": 2252,
+          "alt": {
+            "cs": "Vačková hřídel Škoda OHV s ventilovými pružinami a upevňovacím šroubem",
+            "en": "Škoda OHV camshaft with valve springs and retaining screw",
+            "de": "Škoda OHV Nockenwelle mit Ventilfedern und Befestigungsschraube",
+            "fr": "Arbre à cames Škoda OHV avec ressorts de soupapes et vis de fixation",
+            "it": "Albero a camme Škoda OHV con molle delle valvole e vite di fissaggio",
+            "es": "Árbol de levas Škoda OHV con muelles de válvula y tornillo de fijación",
+            "pl": "Wałek rozrządu Škoda OHV ze sprężynami zaworowymi i śrubą mocującą",
+            "ru": "Распредвал Škoda OHV с клапанными пружинами и крепёжным винтом",
+            "ja": "Škoda OHVカムシャフトとバルブスプリング、固定ねじ",
+            "zh": "Škoda OHV凸轮轴、气门弹簧和固定螺钉"
+          }
+        },
+        {
+          "src": "/assets/desktop/skoda-ohv-3.jpeg",
+          "width": 2252,
+          "height": 4000,
+          "alt": {
+            "cs": "Upevňovací šroub s vnitřním šestihranem",
+            "en": "Socket-head retaining screw",
+            "de": "Befestigungsschraube mit Innensechskant",
+            "fr": "Vis de fixation à six pans creux",
+            "it": "Vite di fissaggio a esagono incassato",
+            "es": "Tornillo de fijación de hexágono interior",
+            "pl": "Śruba mocująca z gniazdem sześciokątnym",
+            "ru": "Крепёжный винт с внутренним шестигранником",
+            "ja": "六角穴付き固定ねじ",
+            "zh": "内六角固定螺钉"
+          }
+        },
+        {
+          "src": "/assets/desktop/skoda-ohv-4.jpeg",
+          "width": 2252,
+          "height": 4000,
+          "alt": {
+            "cs": "Balené ventilové pružiny",
+            "en": "Packaged valve springs",
+            "de": "Verpackte Ventilfedern",
+            "fr": "Ressorts de soupapes emballés",
+            "it": "Molle delle valvole confezionate",
+            "es": "Muelles de válvula embalados",
+            "pl": "Zapakowane sprężyny zaworowe",
+            "ru": "Клапанные пружины в упаковке",
+            "ja": "包装されたバルブスプリング",
+            "zh": "包装中的气门弹簧"
+          }
+        }
+      ],
       "variants": [],
       "translations": {
         "cs": {
-          "name": "Vačková hřídel - přebrus",
-          "description": "(zákazník dodá vlastní sériovou hřídel z TAZ 1,43l) - Na úpravu dodejte vždy umyté a odmaštěné díly - Sériová hřídel musí být bez opotřebení na vrcholu palců - Součástí dodávky jsou montážní instrukce (doporučený stupeň komprese, ventilové vůle, časování)"
+          "name": "Vačková hřídel Škoda OHV",
+          "description": "Přebroušení nebo výroba nové hřídele pro Škodu 105-136, Favorit nebo Felicie.\n\nPřebroušení je určeno pro sportovnější jízdu v běžném provozu.\n\nPro závodní účely doporučujeme novou hřídel, která je vyráběna z jednoho kusu.\n\nK přebroušení dodejte čistou hřídel Škoda Felicia 1,3 50 kW.\n\nSoučástí dodávky u nové hřídele je pevnostní šroub imbus M10x25 s levým závitem.\n\nSoučástí dodávky jsou montážní instrukce – doporučený stupeň komprese, ventilové vůle, časování."
         },
         "en": {
-          "name": "Camshaft - regrind",
-          "description": "(customer supplies own stock shaft from TAZ 1.43l) - Always supply washed and degreased parts for modification - The stock shaft must be free of wear on the lobe peaks - Delivery includes assembly instructions (recommended compression degree, valve clearances, timing)"
+          "name": "Škoda OHV camshaft",
+          "description": "Regrinding or manufacture of a new camshaft for the Škoda 105–136, Favorit or Felicia.\n\nRegrinding is intended for sportier driving on public roads.\n\nFor racing, we recommend a new camshaft manufactured from a single piece.\n\nFor regrinding, supply a clean Škoda Felicia 1.3 50 kW camshaft.\n\nA new camshaft includes a high-strength M10x25 socket-head screw with a left-hand thread.\n\nDelivery includes installation instructions: recommended compression ratio, valve clearances and timing."
         },
         "de": {
-          "name": "Nockenwelle - Umschleifen",
-          "description": "(Kunde liefert eigene Serienwelle von TAZ 1,43l) - Liefern Sie zur Bearbeitung immer gewaschene und entfettete Teile - Die Serienwelle muss an den Nockenspitzen ohne Verschleiß sein - Teil der Lieferung sind Montageanweisungen (empfohlener Verdichtungsgrad, Ventilspiele, Timing)"
+          "name": "Škoda OHV Nockenwelle",
+          "description": "Umschleifen oder Neuanfertigung einer Nockenwelle für Škoda 105–136, Favorit oder Felicia.\n\nDas Umschleifen ist für sportlicheres Fahren im normalen Straßenverkehr vorgesehen.\n\nFür den Rennsport empfehlen wir eine neue, aus einem Stück gefertigte Nockenwelle.\n\nZum Umschleifen liefern Sie bitte eine saubere Nockenwelle vom Škoda Felicia 1,3 mit 50 kW.\n\nEine neue Nockenwelle wird mit einer hochfesten Innensechskantschraube M10x25 mit Linksgewinde geliefert.\n\nDie Lieferung enthält Montageanweisungen: empfohlenes Verdichtungsverhältnis, Ventilspiel und Steuerzeiten."
         },
         "fr": {
-          "name": "Arbre à cames - rectification",
-          "description": "(le client fournit son propre arbre de série de TAZ 1,43l) - Toujours fournir des pièces lavées et dégraissées pour la modification - L'arbre de série doit être exempt d'usure au sommet des cames - La livraison comprend les instructions de montage (taux de compression recommandé, jeux aux soupapes, calage)"
+          "name": "Arbre à cames Škoda OHV",
+          "description": "Rectification ou fabrication d’un arbre à cames neuf pour Škoda 105–136, Favorit ou Felicia.\n\nLa rectification est destinée à une conduite plus sportive sur route.\n\nPour la compétition, nous recommandons un arbre neuf fabriqué d’une seule pièce.\n\nPour la rectification, fournissez un arbre propre de Škoda Felicia 1,3 de 50 kW.\n\nUn arbre neuf est livré avec une vis à six pans creux haute résistance M10x25 à filetage à gauche.\n\nLa livraison comprend les instructions de montage : rapport volumétrique recommandé, jeux aux soupapes et calage."
         },
         "it": {
-          "name": "Albero a camme - riprofilatura",
-          "description": "(il cliente fornisce il proprio albero di serie da TAZ 1,43l) - Consegnare sempre parti lavate e sgrassate per la modifica - L'albero di serie deve essere privo di usura sulle punte delle camme - La fornitura include le istruzioni di montaggio (grado di compressione raccomandato, giochi valvole, fasatura)"
+          "name": "Albero a camme Škoda OHV",
+          "description": "Riprofilatura o produzione di un nuovo albero a camme per Škoda 105–136, Favorit o Felicia.\n\nLa riprofilatura è destinata a una guida più sportiva su strada.\n\nPer le competizioni consigliamo un albero nuovo, realizzato da un unico pezzo.\n\nPer la riprofilatura, fornire un albero pulito di Škoda Felicia 1,3 da 50 kW.\n\nL’albero nuovo include una vite a brugola ad alta resistenza M10x25 con filettatura sinistrorsa.\n\nLa fornitura comprende istruzioni di montaggio: rapporto di compressione consigliato, giochi valvole e fasatura."
         },
         "es": {
-          "name": "Árbol de levas - rectificado",
-          "description": "(el cliente suministra su propio eje de serie de TAZ 1,43l) - Entregue siempre las piezas lavadas y desengrasadas para su modificación - El eje de serie debe estar libre de desgaste en las puntas de las levas - La entrega incluye instrucciones de montaje (grado de compresión recomendado, holgura de válvulas, sincronización)"
+          "name": "Árbol de levas Škoda OHV",
+          "description": "Rectificado o fabricación de un árbol de levas nuevo para Škoda 105–136, Favorit o Felicia.\n\nEl rectificado está destinado a una conducción más deportiva en carretera.\n\nPara competición recomendamos un árbol nuevo, fabricado de una sola pieza.\n\nPara el rectificado, entregue un árbol limpio de Škoda Felicia 1,3 de 50 kW.\n\nEl árbol nuevo incluye un tornillo Allen de alta resistencia M10x25 con rosca izquierda.\n\nLa entrega incluye instrucciones de montaje: relación de compresión recomendada, holguras de válvulas y calado."
         },
         "pl": {
-          "name": "Wałek rozrządu - szlifowanie",
-          "description": "(klient dostarcza własny seryjny wałek z TAZ 1,43l) - Do modyfikacji zawsze dostarczaj umyte i odtłuszczone części - Seryjny wałek musi być wolny od zużycia na wierzchołkach krzywek - Dostawa obejmuje instrukcje montażu (zalecany stopień sprężania, luzy zaworowe, ustawienie)"
+          "name": "Wałek rozrządu Škoda OHV",
+          "description": "Szlifowanie lub wykonanie nowego wałka rozrządu do Škody 105–136, Favorit lub Felicii.\n\nSzlifowanie jest przeznaczone do bardziej sportowej jazdy w normalnym ruchu drogowym.\n\nDo wyścigów zalecamy nowy wałek wykonany z jednego kawałka materiału.\n\nDo szlifowania należy dostarczyć czysty wałek ze Škody Felicia 1,3 o mocy 50 kW.\n\nNowy wałek jest dostarczany ze śrubą imbusową M10x25 o wysokiej wytrzymałości z lewym gwintem.\n\nDostawa obejmuje instrukcję montażu: zalecany stopień sprężania, luzy zaworowe i ustawienie rozrządu."
         },
         "ru": {
-          "name": "Распределительный вал - перешлифовка",
-          "description": "(клиент предоставляет собственный серийный вал от TAZ 1,43 л) - Для модификации предоставляйте всегда вымытые и обезжиренные детали - Серийный вал должен быть без износа на вершинах кулачков - В комплект поставки входят инструкции по монтажу (рекомендуемая степень сжатия, зазоры клапанов, фазы газораспределения)"
+          "name": "Распределительный вал Škoda OHV",
+          "description": "Перешлифовка или изготовление нового распределительного вала для Škoda 105–136, Favorit или Felicia.\n\nПерешлифовка предназначена для более спортивной езды по дорогам общего пользования.\n\nДля гонок рекомендуем новый вал, изготовленный из цельной заготовки.\n\nДля перешлифовки предоставьте чистый вал от Škoda Felicia 1,3 мощностью 50 кВт.\n\nНовый вал комплектуется высокопрочным винтом M10x25 с внутренним шестигранником и левой резьбой.\n\nВ поставку входит инструкция по монтажу: рекомендуемая степень сжатия, зазоры клапанов и фазы газораспределения."
         },
         "ja": {
-          "name": "カムシャフト - 再研磨",
-          "description": "(お客様よりTAZ 1.43lの純正シャフトをご支給いただきます) - 改造用パーツは必ず洗浄・脱脂してご提供ください - 純正シャフトはカム山頂点に摩耗がない必要があります - 納品物には取り付け説明書（推奨圧縮比、バルブクリアランス、タイミング）が含まれます"
+          "name": "Škoda OHV カムシャフト",
+          "description": "Škoda 105–136、Favorit、Felicia 用カムシャフトの再研磨または新規製作。\n\n再研磨は、公道でのよりスポーティーな走行向けです。\n\nレース用途には、一体加工で製作する新品のカムシャフトをお勧めします。\n\n再研磨の場合は、洗浄済みの Škoda Felicia 1.3 50 kW 用カムシャフトをご支給ください。\n\n新品には、左ねじの高強度 M10x25 六角穴付きボルトが付属します。\n\n推奨圧縮比、バルブクリアランス、タイミングを記載した取り付け説明書が付属します。"
         },
         "zh": {
-          "name": "凸轮轴 - 重磨",
-          "description": "(客户提供 TAZ 1.43l 原厂轴) - 请务必提供清洗并脱脂的零件进行改装 - 原厂轴的凸轮顶部不得有磨损 - 供货包含安装说明（推荐压缩比、气门间隙、正时）"
+          "name": "Škoda OHV 凸轮轴",
+          "description": "为 Škoda 105–136、Favorit 或 Felicia 提供凸轮轴重磨或全新制造服务。\n\n重磨适用于日常道路上更具运动性的驾驶。\n\n赛车用途建议使用由单块材料加工而成的新凸轮轴。\n\n重磨时，请提供清洁的 Škoda Felicia 1.3 50 kW 凸轮轴。\n\n新凸轮轴随附高强度 M10x25 左旋螺纹内六角螺钉。\n\n随附安装说明，包括推荐压缩比、气门间隙和正时。"
         }
       },
-      "dealerPrice": 3900,
-      "dealerMinimum": 3
-    },
-    {
-      "id": "camshaft-new",
-      "price": 15500,
-      "priceType": "fixed",
-      "image": "/assets/desktop/site-camshaft-2.webp",
-      "variants": [],
-      "translations": {
-        "cs": {
-          "name": "Vačková hřídel - výroba komplet",
-          "description": "(TAZ 2,0l a větší) - Součástí dodávky jsou montážní instrukce (doporučený stupeň komprese, ventilové vůle, časování)"
-        },
-        "en": {
-          "name": "Camshaft - complete manufacturing",
-          "description": "(TAZ 2.0l and larger) - Delivery includes assembly instructions (recommended compression degree, valve clearances, timing)"
-        },
-        "de": {
-          "name": "Nockenwelle - Fertigung komplett",
-          "description": "(TAZ 2,0l und größer) - Teil der Lieferung sind Montageanweisungen (empfohlener Verdichtungsgrad, Ventilspiele, Timing)"
-        },
-        "fr": {
-          "name": "Arbre à cames - fabrication complète",
-          "description": "(TAZ 2,0l et plus grand) - La livraison comprend les instructions de montage (taux de compression recommandé, jeux aux soupapes, calage)"
-        },
-        "it": {
-          "name": "Albero a camme - produzione completa",
-          "description": "(TAZ 2,0l e superiore) - La fornitura include le istruzioni di montaggio (grado di compressione raccomandato, giochi valvole, fasatura)"
-        },
-        "es": {
-          "name": "Árbol de levas - fabricación completa",
-          "description": "(TAZ 2,0l y mayor) - La entrega incluye instrucciones de montaje (grado de compresión recomendado, holgura de válvulas, sincronización)"
-        },
-        "pl": {
-          "name": "Wałek rozrządu - produkcja kompletna",
-          "description": "(TAZ 2,0l i większe) - Dostawa obejmuje instrukcje montażu (zalecany stopień sprężania, luzy zaworowe, ustawienie)"
-        },
-        "ru": {
-          "name": "Распределительный вал - изготовление (комплект)",
-          "description": "(TAZ 2,0 л и более) - В комплект поставки входят инструкции по монтажу (рекомендуемая степень сжатия, зазоры клапанов, фазы газораспределения)"
-        },
-        "ja": {
-          "name": "カムシャフト - 完全製造",
-          "description": "(TAZ 2.0l 以上) - 納品物には取り付け説明書（推奨圧縮比、バルブクリアランス、タイミング）が含まれます"
-        },
-        "zh": {
-          "name": "凸轮轴 - 完整制造",
-          "description": "(TAZ 2.0l 及以上) - 供货包含安装说明（推荐压缩比、气门间隙、正时）"
-        }
-      },
-      "dealerPrice": 14400,
-      "dealerMinimum": 3
+      "wizard": {
+        "source": "shop/camshaft-options.csv",
+        "profiles": [
+          {
+            "id": "regrind-262-248",
+            "manufacture": "regrind",
+            "duration": "262° / 248°",
+            "lift": "6,4 / 5,8 mm",
+            "price": 5600,
+            "translations": {
+              "cs": "verze KOM",
+              "en": "KOM version",
+              "de": "Version KOM",
+              "fr": "Version KOM",
+              "it": "Versione KOM",
+              "es": "Versión KOM",
+              "pl": "Wersja KOM",
+              "ru": "Версия KOM",
+              "ja": "KOM 仕様",
+              "zh": "KOM 版本"
+            }
+          },
+          {
+            "id": "regrind-272-266",
+            "manufacture": "regrind",
+            "duration": "272° / 266°",
+            "lift": "6,6 / 6,4 mm",
+            "price": 5600,
+            "translations": {
+              "cs": "verze TOP",
+              "en": "TOP version",
+              "de": "Version TOP",
+              "fr": "Version TOP",
+              "it": "Versione TOP",
+              "es": "Versión TOP",
+              "pl": "Wersja TOP",
+              "ru": "Версия TOP",
+              "ja": "TOP 仕様",
+              "zh": "TOP 版本"
+            }
+          },
+          {
+            "id": "new-294-294",
+            "manufacture": "new",
+            "duration": "294° / 294°",
+            "lift": "7,2 / 7,2 mm",
+            "price": 11400,
+            "translations": {
+              "cs": "sprinty, běžný provoz s 2x dvojitým karburátorem Weber (krátké sání)",
+              "en": "Sprints, road use with two twin-choke Weber carburettors (short intake)",
+              "de": "Sprints, Straßenbetrieb mit zwei Weber-Doppelvergasern (kurzer Ansaugtrakt)",
+              "fr": "Sprints, usage routier avec deux carburateurs Weber double corps (admission courte)",
+              "it": "Sprint, uso stradale con due carburatori Weber doppio corpo (aspirazione corta)",
+              "es": "Sprints, uso en carretera con dos carburadores Weber de doble cuerpo (admisión corta)",
+              "pl": "Sprinty, jazda drogowa z dwoma dwugardzielowymi gaźnikami Weber (krótki dolot)",
+              "ru": "Спринты, дорожная эксплуатация с двумя двухкамерными карбюраторами Weber (короткий впуск)",
+              "ja": "スプリント、Weber ツインチョークキャブレター2基での公道走行（ショート吸気）",
+              "zh": "冲刺赛、搭配两只 Weber 双腔化油器的道路使用（短进气道）"
+            }
+          },
+          {
+            "id": "new-316-316",
+            "manufacture": "new",
+            "duration": "316° / 316°",
+            "lift": "7,5 / 7,5 mm",
+            "price": 11400,
+            "translations": {
+              "cs": "okruhy, kopce",
+              "en": "Circuit racing, hill climbs",
+              "de": "Rundstrecken, Bergrennen",
+              "fr": "Circuits, courses de côte",
+              "it": "Circuiti, cronoscalate",
+              "es": "Circuitos, subidas de montaña",
+              "pl": "Tory, wyścigi górskie",
+              "ru": "Кольцевые и горные гонки",
+              "ja": "サーキット、ヒルクライム",
+              "zh": "场地赛、爬山赛"
+            }
+          },
+          {
+            "id": "new-320-320",
+            "manufacture": "new",
+            "duration": "320° / 320°",
+            "lift": "8,0 / 8,0 mm",
+            "price": 13200,
+            "translations": {
+              "cs": "běžný provoz s 2x dvojitým karburátorem Weber (krátké sání), nutno použít tužší ventilové pera (zahrnuto v ceně)",
+              "en": "Road use with two twin-choke Weber carburettors (short intake); stiffer valve springs required (included in the price)",
+              "de": "Straßenbetrieb mit zwei Weber-Doppelvergasern (kurzer Ansaugtrakt); härtere Ventilfedern erforderlich (im Preis enthalten)",
+              "fr": "Usage routier avec deux carburateurs Weber double corps (admission courte) ; ressorts de soupapes plus rigides nécessaires (inclus dans le prix)",
+              "it": "Uso stradale con due carburatori Weber doppio corpo (aspirazione corta); necessarie molle valvola più rigide (incluse nel prezzo)",
+              "es": "Uso en carretera con dos carburadores Weber de doble cuerpo (admisión corta); requiere muelles de válvula más rígidos (incluidos en el precio)",
+              "pl": "Jazda drogowa z dwoma dwugardzielowymi gaźnikami Weber (krótki dolot); wymagane twardsze sprężyny zaworowe (w cenie)",
+              "ru": "Дорожная эксплуатация с двумя двухкамерными карбюраторами Weber (короткий впуск); требуются более жёсткие клапанные пружины (включены в цену)",
+              "ja": "Weber ツインチョークキャブレター2基での公道走行（ショート吸気）。強化バルブスプリングが必要（価格に含む）",
+              "zh": "搭配两只 Weber 双腔化油器的道路使用（短进气道）；需使用更硬的气门弹簧（已含在价格中）"
+            }
+          },
+          {
+            "id": "new-324-324",
+            "manufacture": "new",
+            "duration": "324°/ 324°",
+            "lift": "7,5 / 7,2 mm",
+            "price": 11400,
+            "translations": {
+              "cs": "130 LR / RS s 2x dvojitým karburátorem Weber (berany)",
+              "en": "130 LR / RS with two twin-choke Weber carburettors (curved intake runners)",
+              "de": "130 LR / RS mit zwei Weber-Doppelvergasern (gebogene Ansaugrohre)",
+              "fr": "130 LR / RS avec deux carburateurs Weber double corps (pipes d’admission courbées)",
+              "it": "130 LR / RS con due carburatori Weber doppio corpo (collettori di aspirazione curvi)",
+              "es": "130 LR / RS con dos carburadores Weber de doble cuerpo (conductos de admisión curvos)",
+              "pl": "130 LR / RS z dwoma dwugardzielowymi gaźnikami Weber (zakrzywione kanały dolotowe)",
+              "ru": "130 LR / RS с двумя двухкамерными карбюраторами Weber (изогнутые впускные патрубки)",
+              "ja": "130 LR / RS、Weber ツインチョークキャブレター2基（湾曲した吸気管）",
+              "zh": "130 LR / RS，搭配两只 Weber 双腔化油器（弯曲进气管）"
+            }
+          }
+        ],
+        "bearings": [
+          {
+            "id": "small",
+            "labelKey": "smallBearings",
+            "diameters": "39-38,5-30"
+          },
+          {
+            "id": "large",
+            "labelKey": "largeBearings",
+            "diameters": "40,5-40-30"
+          }
+        ],
+        "fields": [
+          {
+            "id": "engineType",
+            "labelKey": "engineType",
+            "type": "text",
+            "required": true,
+            "maxLength": 120
+          },
+          {
+            "id": "bore",
+            "labelKey": "bore",
+            "type": "number",
+            "required": true,
+            "unit": "mm"
+          },
+          {
+            "id": "stroke",
+            "labelKey": "stroke",
+            "type": "number",
+            "required": true,
+            "unit": "mm"
+          },
+          {
+            "id": "rockerRatio",
+            "labelKey": "rockerRatio",
+            "type": "number",
+            "required": true,
+            "unit": ""
+          },
+          {
+            "id": "exhaustValve",
+            "labelKey": "exhaustValve",
+            "type": "number",
+            "required": true,
+            "unit": "mm"
+          },
+          {
+            "id": "intakeValve",
+            "labelKey": "intakeValve",
+            "type": "number",
+            "required": true,
+            "unit": "mm"
+          }
+        ]
+      }
     },
     {
       "id": "exhaust-headers",

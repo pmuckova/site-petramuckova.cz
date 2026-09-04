@@ -4,17 +4,68 @@
 
     const STORAGE_KEY = 'muckova-shop-basket';
     const MAX_QUANTITY = 9999;
+    const MAX_ITEMS = 500;
 
     function lineKey(id, variant = '') { return id + ':' + variant; }
+    function basketLineKey(item) { return item.lineId ? item.id + ':@' + item.lineId : lineKey(item.id, item.variant); }
+
+    function normaliseConfiguration(value, product) {
+        if (product?.kind !== 'wizard' || !value || typeof value !== 'object') return null;
+        const profile = product.wizard.profiles.find(option => option.id === value.profile);
+        if (!profile) return null;
+        const bearing = profile.manufacture === 'new' ? value.bearing : '';
+        if (profile.manufacture === 'new' && !product.wizard.bearings.some(option => option.id === bearing)) return null;
+        const values = {};
+        for (const field of product.wizard.fields) {
+            const raw = value.values?.[field.id];
+            if (raw !== undefined && typeof raw !== 'string' && typeof raw !== 'number') return null;
+            let text = raw === undefined ? '' : String(raw).trim();
+            if (!text && field.required) return null;
+            if (field.type === 'text') {
+                text = text.replace(/[\s\u0000-\u001f\u007f]+/g, ' ').trim();
+                if ((field.required && !text) || text.length > field.maxLength) return null;
+            } else if (text) {
+                // Accept decimal input, not JS-specific hexadecimal or Infinity.
+                const decimal = text.replace(',', '.');
+                if (decimal.length > 32 || !/^(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(decimal)
+                    || !Number.isFinite(Number(decimal)) || Number(decimal) <= 0) return null;
+                text = String(Number(decimal));
+            }
+            values[field.id] = text;
+        }
+        return { profile: profile.id, bearing, values };
+    }
+
+    function addConfiguredItem(items, id, configuration, products, lineId) {
+        const product = products.find(product => product.id === id);
+        const cleaned = normaliseConfiguration(configuration, product);
+        if (!cleaned || items.length >= MAX_ITEMS || typeof lineId !== 'string' || !/^[a-zA-Z0-9-]{1,80}$/.test(lineId)
+            || items.some(item => item.lineId === lineId)) return items;
+        return [...items, { id, variant: '', quantity: 1, lineId, configuration: cleaned }];
+    }
+
+    function removeBasketItem(items, key) { return items.filter(item => basketLineKey(item) !== key); }
+
+    function hasLegacyCamshafts(value) {
+        return value?.version === 1 && Array.isArray(value.items)
+            && value.items.some(row => row && ['camshaft-regrind', 'camshaft-new'].includes(row.id));
+    }
 
     function normaliseBasket(value, products) {
         const rows = value && value.version === 1 && Array.isArray(value.items) ? value.items : [];
         const catalog = new Map(products.map(product => [product.id, product]));
         const items = new Map();
-        rows.slice(0, 500).forEach(row => {
+        rows.slice(0, MAX_ITEMS).forEach(row => {
             if (!row || typeof row !== 'object') return;
             const product = catalog.get(row.id);
             if (!product || !Number.isInteger(row.quantity) || row.quantity < 1) return;
+            if (product.kind === 'wizard') {
+                const configuration = normaliseConfiguration(row.configuration, product);
+                if (row.quantity !== 1 || !configuration || typeof row.lineId !== 'string' || !/^[a-zA-Z0-9-]{1,80}$/.test(row.lineId)) return;
+                const key = basketLineKey(row);
+                if (!items.has(key)) items.set(key, { id: product.id, variant: '', quantity: 1, lineId: row.lineId, configuration });
+                return;
+            }
             const variant = typeof row.variant === 'string' ? row.variant : '';
             if (product.variants.length ? !product.variants.some(v => v.id === variant) : variant !== '') return;
             const key = lineKey(product.id, variant);
@@ -25,7 +76,7 @@
     }
 
     function setQuantity(items, id, variant, quantity, products) {
-        if (!Number.isFinite(quantity)) return items;
+        if (!Number.isFinite(quantity) || products.find(product => product.id === id)?.kind === 'wizard') return items;
         const key = lineKey(id, variant);
         const next = items.map(item => lineKey(item.id, item.variant) === key ? { id, variant, quantity: Math.min(MAX_QUANTITY, Math.floor(quantity)) } : item);
         if (quantity > 0 && !items.some(item => lineKey(item.id, item.variant) === key)) {
@@ -37,13 +88,36 @@
     function basketSummary(items, products) {
         const catalog = new Map(products.map(product => [product.id, product]));
         return items.reduce((result, item) => {
-            const product = catalog.get(item.id);
+            const product = itemPrice(item, catalog.get(item.id));
             if (!product) return result;
             result.count += item.quantity;
             if (product.priceType === 'fixed') result.subtotalCents += product.price * 100 * item.quantity;
             else result.quotedCount += item.quantity;
             return result;
         }, { count: 0, subtotalCents: 0, quotedCount: 0 });
+    }
+
+    function itemPrice(item, product) {
+        if (product?.kind !== 'wizard') return product;
+        const profile = product.wizard.profiles.find(profile => profile.id === item.configuration?.profile);
+        return profile ? { price: profile.price, priceType: 'fixed' } : null;
+    }
+
+    function configurationDetails(item, product, config) {
+        if (product.kind !== 'wizard') return [];
+        const t = config.text;
+        const selected = item.configuration;
+        const profile = product.wizard.profiles.find(profile => profile.id === selected.profile);
+        const bearing = product.wizard.bearings.find(bearing => bearing.id === selected.bearing);
+        return [
+            [t.profileHeading, t[profile.manufacture === 'new' ? 'manufactureNew' : 'manufactureRegrind']],
+            [t.camDuration, profile.duration], [t.camLift, profile.lift],
+            [t.profileDescription, profile.description || profile.translations[config.locale]],
+            ...(bearing ? [[t.bearings, t[bearing.labelKey] + ' ' + bearing.diameters]] : []),
+            ...product.wizard.fields.filter(field => selected.values[field.id]).map(field => [
+                t[field.labelKey], selected.values[field.id] + (field.unit ? ' ' + field.unit : ''),
+            ]),
+        ];
     }
 
     function orderDetails(values) {
@@ -74,7 +148,8 @@
         const lines = items.map(item => {
             const product = products.get(item.id);
             const variant = product.variants.find(v => v.id === item.variant);
-            return `${item.quantity} × ${product.name}${variant ? ' / ' + variant.label : ''} [${product.id}${item.variant ? ':' + item.variant : ''}] — ${formatPrice(product, config, item.quantity)}`;
+            const heading = `${item.quantity} × ${product.name}${variant ? ' / ' + variant.label : ''} [${product.id}${item.variant ? ':' + item.variant : ''}] — ${formatPrice(itemPrice(item, product), config, item.quantity)}`;
+            return [heading, ...configurationDetails(item, product, config).map(([label, value]) => `  ${label}: ${value}`)].join('\n');
         });
         const address = details.delivery.address;
         return [
@@ -148,14 +223,16 @@
     }
 
     function initVariantSelects(doc, ChoicesClass) {
+        const instances = new Map();
         // Keep native variant selection working if the shared CDN script is unavailable.
-        if (typeof ChoicesClass !== 'function') return;
+        if (typeof ChoicesClass !== 'function') return instances;
         doc.querySelectorAll('.shop-variant .custom-select').forEach(select => {
-            new ChoicesClass(select, {
+            instances.set(select, new ChoicesClass(select, {
                 searchEnabled: false, itemSelectText: '', shouldSort: false,
                 allowHTML: false, labelId: select.labels[0].id,
-            });
+            }));
         });
+        return instances;
     }
 
     function initPhotoViewer(doc) {
@@ -216,7 +293,7 @@
         button.type = 'button';
         button.className = 'shop-basket-remove';
         button.dataset.remove = '';
-        button.dataset.focusKey = lineKey(item.id, item.variant) + ':remove';
+        button.dataset.focusKey = basketLineKey(item) + ':remove';
         button.setAttribute('aria-label', label + ': ' + name);
         button.title = label + ': ' + name;
         const icon = doc.createElement('span');
@@ -239,13 +316,57 @@
         container.addEventListener('click', selectQuantity);
     }
 
-    const api = { STORAGE_KEY, MAX_QUANTITY, lineKey, normaliseBasket, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, basketRemoveButton, initBasketQuantitySelection };
+    function initWizardForm(form, product, siteForm, selectInstances, text, onAdd) {
+        const validation = siteForm.initValidation(form);
+        const bearing = form.elements.namedItem('bearing');
+        const bearingFields = form.querySelector('[data-bearing-fields]');
+        const bearingSelect = selectInstances.get(bearing);
+        const status = form.querySelector('.shop-wizard-status');
+        const read = name => form.elements.namedItem(name)?.value || '';
+
+        function syncBearings() {
+            const profile = product.wizard.profiles.find(option => option.id === read('profile'));
+            const available = profile?.manufacture === 'new';
+            bearingFields.hidden = !available;
+            bearing.disabled = !available;
+            bearing.required = available;
+            if (available) bearingSelect?.enable();
+            else {
+                bearingSelect?.setChoiceByValue('');
+                bearing.value = '';
+                bearingSelect?.disable();
+                bearing.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+
+        form.addEventListener('input', () => { status.hidden = true; });
+        form.addEventListener('change', event => {
+            status.hidden = true;
+            if (event.target.name === 'profile') syncBearings();
+        });
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+            status.hidden = true;
+            if (!validation.validate()) return;
+            const configuration = normaliseConfiguration({
+                profile: read('profile'), bearing: read('bearing'),
+                values: Object.fromEntries(product.wizard.fields.map(field => [field.id, read(field.id)])),
+            }, product);
+            if (!configuration) return;
+            status.textContent = onAdd(configuration) ? text.configuredAdded : text.basketFull;
+            status.hidden = false;
+        });
+        syncBearings();
+        form.querySelector('button[type="submit"]').disabled = false;
+    }
+
+    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseConfiguration, addConfiguredItem, removeBasketItem, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, basketRemoveButton, initBasketQuantitySelection, initWizardForm };
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     if (!root.document) return;
 
     function init() {
         initNavigation(document, window);
-        initVariantSelects(document, root.Choices);
+        const selectInstances = initVariantSelects(document, root.Choices);
         initPhotoViewer(document);
         const configNode = document.getElementById('shop-config');
         if (!configNode) return;
@@ -263,7 +384,11 @@
         function storageUnavailable() { document.getElementById('shop-storage-notice').hidden = false; }
         try {
             const saved = localStorage.getItem(STORAGE_KEY);
-            try { items = normaliseBasket(JSON.parse(saved), config.products); } catch (_) { items = []; }
+            try {
+                const parsed = JSON.parse(saved);
+                items = normaliseBasket(parsed, config.products);
+                document.getElementById('shop-legacy-notice').hidden = !hasLegacyCamshafts(parsed);
+            } catch (_) { items = []; }
             localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, items }));
         } catch (_) { storageUnavailable(); }
 
@@ -319,12 +444,23 @@
                 const name = product.name + (variant ? ' / ' + variant.label : '');
                 const row = element('li', 'shop-basket-item');
                 row.dataset.product = item.id; row.dataset.variantId = item.variant;
+                row.dataset.lineKey = basketLineKey(item);
                 row.append(element('h3', '', name), basketRemoveButton(document, item, name, t.remove),
-                    element('p', '', formatPrice(product, config, item.quantity)), controls(item.id, item.variant, name, item.quantity));
+                    element('p', '', formatPrice(itemPrice(item, product), config, item.quantity)));
+                if (product.kind === 'wizard') {
+                    const details = element('dl', 'shop-basket-configuration');
+                    configurationDetails(item, product, config).forEach(([label, value]) => {
+                        const entry = element('div');
+                        entry.append(element('dt', '', label), element('dd', '', value));
+                        details.append(entry);
+                    });
+                    row.append(details);
+                } else row.append(controls(item.id, item.variant, name, item.quantity));
                 basketList.append(row);
             });
             document.querySelectorAll('.shop-product').forEach(card => {
                 const product = products.get(card.dataset.product);
+                if (product.kind === 'wizard') return;
                 const variant = card.querySelector('[data-variant]')?.value || '';
                 const validVariant = !product.variants.length || product.variants.some(v => v.id === variant);
                 const value = quantity(product.id, variant);
@@ -348,17 +484,21 @@
             }
         }
 
-        function update(id, variant, value) {
-            items = setQuantity(items, id, variant, value, config.products);
+        function basketChanged() {
             persist(); invalidateDraft(); render();
             const summary = basketSummary(items, config.products);
             document.getElementById('shop-status').textContent = t.cartUpdated + '. ' + t.totalItems + ': ' + summary.count + '. ' + t.subtotal + ': ' + money.format(summary.subtotalCents / 100);
         }
 
+        function update(id, variant, value) {
+            items = setQuantity(items, id, variant, value, config.products);
+            basketChanged();
+        }
+
         function targetItem(control) {
             const card = control.closest('[data-product]');
             if (!card) return null;
-            return { id: card.dataset.product, variant: card.dataset.variantId ?? (card.querySelector('[data-variant]')?.value || '') };
+            return { id: card.dataset.product, variant: card.dataset.variantId ?? (card.querySelector('[data-variant]')?.value || ''), key: card.dataset.lineKey };
         }
 
         document.addEventListener('click', event => {
@@ -366,6 +506,11 @@
             if (!control) return;
             const item = targetItem(control);
             if (!item) return;
+            if (control.hasAttribute('data-remove') && item.key) {
+                items = removeBasketItem(items, item.key);
+                basketChanged();
+                return;
+            }
             const next = control.hasAttribute('data-remove') ? 0 : quantity(item.id, item.variant) + Number(control.dataset.change);
             update(item.id, item.variant, next);
         });
@@ -383,6 +528,19 @@
             if (event.key !== STORAGE_KEY && event.key !== null) return;
             try { items = normaliseBasket(JSON.parse(event.newValue), config.products); } catch (_) { items = []; }
             invalidateDraft(); render();
+        });
+
+        document.querySelectorAll('form[data-wizard]').forEach(wizardForm => {
+            const product = products.get(wizardForm.dataset.wizard);
+            initWizardForm(wizardForm, product, root.SiteForm, selectInstances, t, configuration => {
+                const lineId = root.crypto.randomUUID ? root.crypto.randomUUID()
+                    : [...root.crypto.getRandomValues(new Uint8Array(16))].map(byte => byte.toString(16).padStart(2, '0')).join('');
+                const next = addConfiguredItem(items, product.id, configuration, config.products, lineId);
+                if (next === items) return false;
+                items = next;
+                basketChanged();
+                return true;
+            });
         });
 
         form.addEventListener('input', invalidateDraft);

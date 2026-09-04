@@ -8,10 +8,10 @@
 /* Modal focus restoration must not leave a keyboard-style ring after a photo click. */
 .shop-page .shop-photo-pointer-focus:focus, .shop-page .shop-photo-pointer-focus :focus { outline: none !important; }
 /* The entire order section retains the main contact form's typography and spacing. */
-.shop-layout :is(h1, h2, h3, p, figure):not(:where(.shop-order *)) { margin: 0; }
+.shop-layout :is(h1, h2, h3, p, figure):not(:where(.shop-order *, .shop-wizard-form *)) { margin: 0; }
 .shop-layout :is(h1, h2, h3):not(:where(.shop-order *)) { line-height: 1.2; }
 .shop-layout a:hover { color: #ff7777; }
-/* Leave field typography and sizing to main.css, including textarea line-height. */
+/* Keep shared field styling; product cards have a smaller, locally scoped type scale. */
 .shop-page button:not(.btn-submit) { font: inherit; }
 .shop-page button, .shop-page select, .shop-page summary { cursor: pointer; }
 .shop-page button:disabled { cursor: not-allowed; opacity: .4; }
@@ -27,9 +27,40 @@
 .shop-section-heading > span { color: var(--shop-muted); font-size: .875rem; white-space: nowrap; }
 .shop-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
 /* The title has its own row; photo and description share the next row's start. */
-.shop-product { padding: 22px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: ". title" "photo content"; align-items: start; gap: 18px 24px; min-width: 0; scroll-margin-top: calc(var(--navbar-height) + 40px); }
+.shop-product { --shop-product-font-size: .875rem; --shop-product-small-font-size: .8125rem; --shop-product-caption-font-size: .75rem; font-size: var(--shop-product-font-size); padding: 22px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: ". title" "photo content"; align-items: start; gap: 18px 24px; min-width: 0; scroll-margin-top: calc(var(--navbar-height) + 40px); }
 .shop-product-content { grid-area: content; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+/* Configured products keep the photo/description layout, then use the full card width. */
+.shop-wizard-product { grid-template-areas: ". title" "photo content" "wizard wizard"; }
+.shop-wizard-form { grid-area: wizard; min-width: 0; line-height: 1.6; }
+.shop-wizard-form .form-group { min-width: 0; }
+.shop-profile-options { margin: 0; padding: 0; border: 0; min-width: 0; }
+/* Operation/description share the first column; specifications span and center across both rows. */
+.shop-profile-table { width: 100%; table-layout: fixed; border-collapse: collapse; border: 1px solid #333; background: #050505; line-height: 1.45; }
+.shop-profile-operation-column { width: 44%; }
+.shop-profile-spec-column { width: 20%; }
+.shop-profile-price-column { width: 16%; }
+.shop-profile-table th { padding: .5rem; text-align: left; font-weight: 400; overflow-wrap: anywhere; }
+.shop-profile-option td { padding: 0; vertical-align: middle; text-align: left; }
+.shop-profile-table .shop-profile-price { text-align: right; }
+.shop-profile-option > tr:first-child > td { border-top: 1px solid #333; }
+.shop-profile-option label { display: block; margin: 0; padding: .5rem; text-transform: none; font-weight: 400; letter-spacing: normal; overflow-wrap: anywhere; cursor: pointer; }
+.shop-profile-option:has(input:checked) { background: #100909; }
+.shop-profile-option:has(input:checked) > tr > td:first-child { box-shadow: inset 3px 0 var(--accent); }
+.shop-profile-option:has(input.input-warning) > tr > td:first-child { box-shadow: inset 3px 0 var(--warning); }
+.shop-profile-option .shop-profile-radio-label { display: grid; grid-template-columns: 18px minmax(0, 1fr); align-items: center; gap: .5rem; min-height: 2.75rem; }
+.shop-profile-option input { accent-color: var(--accent); margin: 0; width: 18px; height: 18px; cursor: pointer; }
+.shop-profile-method { color: var(--accent); }
+.shop-profile-value { font-weight: 500; }
+.shop-profile-label { color: #aaa; font-size: var(--shop-product-caption-font-size); }
+.shop-profile-option .shop-profile-description { padding-block: 0 .5rem; color: #bbb; }
+.shop-bearing-fields { margin-top: 24px; }
+.shop-wizard-status { color: var(--accent); margin-top: 16px; }
+.shop-basket-configuration { margin: 12px 0; padding: 0; color: #bbb; font-size: .8rem; overflow-wrap: anywhere; }
+.shop-basket-configuration > div + div { margin-top: 8px; }
+.shop-basket-configuration dt { color: #888; }
+.shop-basket-configuration dd { margin: 0; }
 .shop-photo { grid-area: photo; align-self: start; min-width: 0; }
+.shop-photo-gallery { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
 .shop-photo-link { display: block; width: fit-content; max-width: 100%; margin-inline: auto; cursor: zoom-in; }
 /* Reuse the equipment section's soft edges without clipping the link's focus outline. */
 .shop-photo .tech-frame { display: block; }
@@ -41,11 +72,11 @@
   .shop-photo-link:hover .tech-frame::after { opacity: 0; }
 }
 .shop-product-body { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-/* Match the main page's .shadow-box h3 / .team-name heading treatment. */
-.shop-product-title { grid-area: title; justify-self: center; align-self: center; max-width: 100%; display: inline-block; font-size: 1.8rem; color: white; border-bottom: 1px solid var(--accent); padding-bottom: 5px; text-align: center; overflow-wrap: anywhere; }
-.shop-description { color: #bbb; font-size: 1rem; text-align: justify; hyphens: auto; overflow-wrap: anywhere; }
-.shop-product-body > a { color: #ff7272; font-size: .875rem; }
-.shop-prices { margin: 0; font-size: .875rem; }
+/* Keep the main team-name treatment, scaled to the card's 14px body text. */
+.shop-product-title { grid-area: title; justify-self: center; align-self: center; max-width: 100%; display: inline-block; font-size: calc(var(--shop-product-font-size) * 1.8); color: white; border-bottom: 1px solid var(--accent); padding-bottom: 5px; text-align: center; overflow-wrap: anywhere; }
+.shop-description { color: #bbb; font-size: var(--shop-product-font-size); text-align: justify; hyphens: auto; overflow-wrap: anywhere; }
+.shop-product-body > a { color: #ff7272; font-size: var(--shop-product-small-font-size); }
+.shop-prices { margin: 0; font-size: var(--shop-product-small-font-size); }
 .shop-product-order { min-width: 0; }
 /* Preserve the section spacing without decorative separator lines. */
 .shop-prices, .shop-product-order { padding-top: 19px; }
@@ -64,6 +95,16 @@
 /* Enhanced selects use the main form's Choices styles; retain a matching native fallback. */
 .shop-variant > select { padding: 0 15px; height: 50px; width: 100%; border: 1px solid #333; background: #050505; color: var(--text-main); border-radius: 0; font-family: 'Fira Code', monospace; font-size: .95rem; }
 .shop-variant > select:focus { border-color: var(--accent); background: #080808; box-shadow: 0 0 10px rgba(255, 51, 51, .2); }
+/* Override only font sizes, not the main form's families, colors or control heights.
+   Include Choices items so its dropdown and selected value use the same scale. */
+.shop-product label,
+.shop-product input[type="text"], .shop-product input[type="number"],
+.shop-product select.custom-select,
+.shop-product .choices, .shop-product .choices__inner, .shop-product .choices__item,
+.shop-product .shop-quantity button { font-size: var(--shop-product-font-size); }
+.shop-product .form-section-title { font-size: calc(var(--shop-product-font-size) * 1.1); }
+.shop-product .btn-submit { font-size: calc(var(--shop-product-font-size) * 1.2); }
+.shop-product .warning-msg { font-size: var(--shop-product-caption-font-size); }
 /* Keep the blog's appearance and top offset, but stop at the content rail's bottom. */
 .shop-basket { position: sticky; display: flex; flex-direction: column; width: 280px; max-height: calc(100dvh - var(--navbar-height) - 60px); overflow: hidden; scroll-margin-top: calc(var(--navbar-height) + 40px); }
 /* Only the item list shrinks and scrolls; the heading and checkout summary stay visible. */
@@ -122,4 +163,8 @@
 }
 @media (max-width: 680px) {
   .shop-product { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "photo" "content"; gap: 20px; }
+  .shop-wizard-product { grid-template-areas: "title" "photo" "content" "wizard"; }
+  .shop-profile-operation-column { width: 40%; }
+  .shop-profile-price-column { width: 20%; }
+  .shop-profile-option label, .shop-profile-table th { padding-inline: .25rem; }
 }

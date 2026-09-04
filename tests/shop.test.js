@@ -6,7 +6,7 @@ const shop = require('../shop.js');
 const catalog = JSON.parse(fs.readFileSync(path.join(__dirname, '../shop/catalog.json'), 'utf8'));
 const texts = JSON.parse(fs.readFileSync(path.join(__dirname, '../shop/translations.json'), 'utf8'));
 const products = catalog.products;
-const row = (id = 'camshaft-regrind', quantity = 1, variant = '') => ({ id, quantity, variant });
+const row = (id = 'resonance-exhaust', quantity = 1, variant = '') => ({ id, quantity, variant });
 const normalise = items => shop.normaliseBasket({ version: 1, items }, products);
 
 test('unknown storage versions and malformed data are discarded', () => {
@@ -18,23 +18,23 @@ test('only IDs, variants and quantities survive storage loading', () => {
     assert.deepEqual(normalise([{ ...row(), email: 'private@example.test', company: 'Private company', phone: '+420 123 456 789', address: 'Private', price: 1, admin: true }]), [row()]);
 });
 test('removed products and invalid variants are discarded', () => {
-    assert.deepEqual(normalise([row('gone'), row('exhaust-headers'), row('head-gasket', 1, 'unknown'), row('camshaft-new', 1, 'invalid')]), []);
+    assert.deepEqual(normalise([row('gone'), row('exhaust-headers'), row('head-gasket', 1, 'unknown'), row('connecting-rod-160', 1, 'invalid')]), []);
 });
 test('quantities must be positive integers', () => {
-    for (const quantity of [-1, 0, 1.5, '2', null, NaN, Infinity]) assert.deepEqual(normalise([row('camshaft-new', quantity)]), []);
+    for (const quantity of [-1, 0, 1.5, '2', null, NaN, Infinity]) assert.deepEqual(normalise([row('connecting-rod-160', quantity)]), []);
 });
 test('duplicate rows merge and are bounded', () => {
-    assert.deepEqual(normalise([row('camshaft-new', 6000), row('camshaft-new', 6000)]), [row('camshaft-new', 9999)]);
+    assert.deepEqual(normalise([row('connecting-rod-160', 6000), row('connecting-rod-160', 6000)]), [row('connecting-rod-160', 9999)]);
 });
 test('quantities above 99 and up to 9999 survive edits, storage and totals', () => {
     assert.equal(shop.MAX_QUANTITY, 9999);
     for (const quantity of [100, 1000, 9999]) {
-        const items = shop.setQuantity([], 'camshaft-new', '', quantity, products);
-        assert.deepEqual(items, [row('camshaft-new', quantity)]);
+        const items = shop.setQuantity([], 'connecting-rod-160', '', quantity, products);
+        assert.deepEqual(items, [row('connecting-rod-160', quantity)]);
         assert.deepEqual(normalise(items), items);
         const summary = shop.basketSummary(items, products);
         assert.equal(summary.count, quantity);
-        assert.equal(summary.subtotalCents, products.find(product => product.id === 'camshaft-new').price * 100 * quantity);
+        assert.equal(summary.subtotalCents, products.find(product => product.id === 'connecting-rod-160').price * 100 * quantity);
     }
 });
 test('variant quantities stay separate', () => {
@@ -43,20 +43,20 @@ test('variant quantities stay separate', () => {
     assert.equal(shop.basketSummary(basket, products).subtotalCents, 3300000);
 });
 test('plus, minus and direct edits update the same line', () => {
-    let items = shop.setQuantity([], 'camshaft-new', '', 1, products);
-    items = shop.setQuantity(items, 'camshaft-new', '', 5, products);
-    assert.deepEqual(items, [row('camshaft-new', 5)]);
-    items = shop.setQuantity(items, 'camshaft-new', '', 0, products);
+    let items = shop.setQuantity([], 'connecting-rod-160', '', 1, products);
+    items = shop.setQuantity(items, 'connecting-rod-160', '', 5, products);
+    assert.deepEqual(items, [row('connecting-rod-160', 5)]);
+    items = shop.setQuantity(items, 'connecting-rod-160', '', 0, products);
     assert.deepEqual(items, []);
 });
 test('quantity changes preserve basket order', () => {
-    const items = normalise([row(), row('camshaft-new')]);
-    assert.deepEqual(shop.setQuantity(items, 'camshaft-regrind', '', 2, products), [row('camshaft-regrind', 2), row('camshaft-new')]);
+    const items = normalise([row(), row('connecting-rod-160')]);
+    assert.deepEqual(shop.setQuantity(items, 'resonance-exhaust', '', 2, products), [row('resonance-exhaust', 2), row('connecting-rod-160')]);
 });
 test('removing a basket line keeps other products and variants unchanged', () => {
-    const items = normalise([row('exhaust-headers', 2, 'small'), row('exhaust-headers', 3, 'large'), row('camshaft-new')]);
+    const items = normalise([row('exhaust-headers', 2, 'small'), row('exhaust-headers', 3, 'large'), row('connecting-rod-160')]);
     const remaining = shop.setQuantity(items, 'exhaust-headers', 'small', 0, products);
-    assert.deepEqual(remaining, [row('exhaust-headers', 3, 'large'), row('camshaft-new')]);
+    assert.deepEqual(remaining, [row('exhaust-headers', 3, 'large'), row('connecting-rod-160')]);
 });
 test('basket removal uses a labelled cross button with the existing removal and focus hooks', () => {
     const doc = { createElement(tagName) {
@@ -72,7 +72,7 @@ test('basket removal uses a labelled cross button with the existing removal and 
         assert.equal(button.type, 'button');
         assert.equal(button.className, 'shop-basket-remove');
         assert.equal(button.dataset.remove, '');
-        assert.equal(button.dataset.focusKey, 'camshaft-regrind::remove');
+        assert.equal(button.dataset.focusKey, 'resonance-exhaust::remove');
         assert.equal(button.attributes['aria-label'], texts[lang].remove + ': ' + name);
         assert.equal(button.title, button.attributes['aria-label']);
         assert.equal(button.children.length, 1);
@@ -81,9 +81,9 @@ test('basket removal uses a labelled cross button with the existing removal and 
     }
 });
 test('large or fractional direct updates are clamped and invalid values ignored', () => {
-    assert.deepEqual(shop.setQuantity([], 'camshaft-new', '', 10000, products), [row('camshaft-new', 9999)]);
-    assert.deepEqual(shop.setQuantity([], 'camshaft-new', '', 2.9, products), [row('camshaft-new', 2)]);
-    assert.deepEqual(shop.setQuantity([], 'camshaft-new', '', NaN, products), []);
+    assert.deepEqual(shop.setQuantity([], 'connecting-rod-160', '', 10000, products), [row('connecting-rod-160', 9999)]);
+    assert.deepEqual(shop.setQuantity([], 'connecting-rod-160', '', 2.9, products), [row('connecting-rod-160', 2)]);
+    assert.deepEqual(shop.setQuantity([], 'connecting-rod-160', '', NaN, products), []);
 });
 
 function basketSelectionFixture() {
@@ -137,11 +137,11 @@ test('quantity selection ignores other controls and disabled or read-only fields
     }
 });
 test('quote and starting-price products are not misrepresented as fixed totals', () => {
-    const summary = shop.basketSummary(normalise([row('camshaft-regrind', 2), row('distributor-rotor', 1), row('copper-rings', 4)]), products);
-    assert.deepEqual(summary, { count: 7, subtotalCents: 880000, quotedCount: 5 });
+    const summary = shop.basketSummary(normalise([row('resonance-exhaust', 2), row('distributor-rotor', 1), row('copper-rings', 4)]), products);
+    assert.deepEqual(summary, { count: 7, subtotalCents: 540000, quotedCount: 5 });
 });
 test('dealer prices do not apply automatically at the dealer minimum', () => {
-    const product = products.find(p => p.id === 'camshaft-regrind');
+    const product = products.find(p => p.id === 'resonance-exhaust');
     assert.equal(shop.basketSummary([row(product.id, product.dealerMinimum)], products).subtotalCents, product.price * product.dealerMinimum * 100);
 });
 test('storage works across locales because it has no translated names or prices', () => {
@@ -232,7 +232,10 @@ test('native variant controls remain usable when Choices is unavailable', () => 
     shop.initVariantSelects({ querySelectorAll() { assert.fail('Native controls must be left untouched'); } }, undefined);
 });
 
-function photoViewerFixture({ nativeDialog = true } = {}) {
+function photoViewerFixture({ nativeDialog = true, photos = [
+    { src: '/assets/desktop/engine.webp', alt: 'Camshaft' },
+    { src: 'https://cdn.jsdelivr.net/gh/pmuckova/site-petramuckova.cz@main/assets/desktop/shop-placeholder.webp', alt: 'Photo not yet available' },
+] } = {}) {
     const doc = { activeElement: null };
     function node() {
         const classList = new Set();
@@ -256,10 +259,10 @@ function photoViewerFixture({ nativeDialog = true } = {}) {
     if (nativeDialog) viewer.showModal = () => { viewer.open = true; };
     viewer.close = () => { viewer.open = false; viewer.fire('close'); };
     viewer.querySelector = selector => selector === '.lightbox-img' ? image : closeButton;
-    const links = ['/assets/desktop/engine.webp', 'https://cdn.jsdelivr.net/gh/pmuckova/site-petramuckova.cz@main/assets/desktop/shop-placeholder.webp'].map(href => {
+    const links = photos.map(photo => {
         const link = node();
-        link.href = href;
-        link.querySelector = () => ({ alt: href.endsWith('shop-placeholder.webp') ? 'Photo not yet available' : 'Camshaft' });
+        link.href = photo.src;
+        link.querySelector = () => ({ alt: photo.alt });
         return link;
     });
     doc.getElementById = id => id === 'shop-lightbox' ? viewer : null;
@@ -285,6 +288,23 @@ test('product photos open the blog-style viewer with the full image, alt text an
         assert.equal(doc.activeElement, link);
     }
 });
+test('all four Škoda OHV gallery photos enlarge independently and Escape restores the correct link', () => {
+    const photos = products.find(product => product.id === 'skoda-ohv-camshaft').images
+        .map(image => ({ src: image.src, alt: image.alt.cs }));
+    const { doc, viewer, image, links } = photoViewerFixture({ photos });
+    assert.equal(links.length, 4);
+    links.forEach((link, index) => {
+        link.fire('click');
+        assert.equal(viewer.open, true);
+        assert.equal(image.src, photos[index].src);
+        assert.equal(image.alt, photos[index].alt);
+        assert.equal(viewer.fire('cancel').defaultPrevented, true);
+        assert.equal(viewer.open, false);
+        assert.equal(doc.activeElement, link);
+        assert.equal(link.classList.has('shop-photo-pointer-focus'), true);
+    });
+});
+
 test('Escape after mouse, touch or pen opening restores photo focus without a ring', () => {
     for (const activation of [{ detail: 1 }, { detail: 0, pointerType: 'touch' }, { detail: 0, pointerType: 'pen' }]) {
         const { doc, viewer, links } = photoViewerFixture();

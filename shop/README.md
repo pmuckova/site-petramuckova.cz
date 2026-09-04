@@ -1,7 +1,8 @@
 # Shop
 
 The shop is a static, general-purpose catalogue at `/{language}/shop`. Its first
-17 products were migrated from the TAZ blog article. No application framework,
+17 products were migrated from the TAZ blog article; the two camshaft cards now
+form one configurable Škoda OHV product, leaving 16 catalogue cards. No application framework,
 accounts, payment provider, server basket or new dependencies were introduced.
 
 ## Editing the offer
@@ -10,17 +11,25 @@ Edit `shop/catalog.json`:
 
 - `products`: stable ID, retail price in whole CZK, dealer price/minimum, variants,
   photo path, and names/descriptions for the ten existing languages.
-- `priceType`: `fixed`, `from`, or `quote`. Use `null` for a quote-only price.
+- `priceType`: `fixed`, `from`, or `quote` for standard products. Use `null` for a
+  quote-only price. Wizard products use `configured` with a null base price; each
+  profile supplies its own price.
 - `image`: a real `/assets/...` path or `null`. Existing workshop images are
   displayed without a caption. Products with `null` use the shared `placeholderImage`
   automatically; add their photo path when available to replace the placeholder.
+- `images`: optional ordered gallery entries with `src`, actual `width`/`height`,
+  and `alt` text for each language. Keep `image` equal to the first gallery entry's
+  `src`. All gallery photos stack vertically in the existing image column, keep
+  their natural proportions and faded edges, and open individually in the lightbox.
+  Additional gallery images load lazily; visible captions are not added.
 - `placeholderImage`: the shared generated image at
   `/assets/desktop/shop-placeholder.webp`. Its alt text identifies a missing product
   photo in each language, never actual product or workshop photography, and it is
   excluded from the image sitemap. The generation prompt is in
   `shop/placeholder-prompt.txt`.
 - `copy`: original article wording and price-list notes. The source price list is
-  dated 5 November 2025; this migration did not update commercial prices or dates.
+  dated 5 November 2025. The camshaft configurator has separate prices from the
+  supplied CSV; other products and the displayed price-list date are unchanged.
 
 IDs and variant IDs must remain stable across edits because saved baskets use
 them. Removed products/variants are dropped on the next page load. Prices always
@@ -55,8 +64,15 @@ Specifications, when offered, appear directly above the quantity controls.
 Specification dropdowns reuse the main form's pinned Choices.js component and
 shared styling, retaining native selection if the CDN script is unavailable.
 Text fields, textareas and quantity inputs also inherit the main page's field
-typography, sizing and red focus border/glow from `main.css`. Keep shop-specific
-font resets and white focus outlines off these fields and the Choices controls;
+families, control sizing and red focus border/glow from `main.css`. Product cards
+use a scoped 14px (`.875rem`) Fira Code base: descriptions, field labels, inputs,
+quantity buttons and native/enhanced dropdowns all follow that size. Prices and
+supporting links use 13px, while small option labels and warnings stay at 12px.
+The Chakra Petch product headings, form-section headings and submit text retain
+their relative hierarchy at 1.8, 1.1 and 1.2 times the smaller base respectively.
+Control heights and spacing are unchanged. The basket, final order form, blog
+and main page retain their original typography. Keep font-family resets and
+white focus outlines off these fields and the Choices controls;
 other keyboard-operated controls still have a visible focus outline.
 The order section uses the main page's `.section`, `.contact-intro` and
 `.contact-sub-1` styling: a separate centered heading and explanation above one
@@ -117,13 +133,15 @@ on the site's own origin, using content hashes in their URLs.
 
 ## Basket and checkout
 
-`shop.js` stores only `{version: 1, items: [{id, variant, quantity}]}` in localStorage
+For standard products, `shop.js` stores `{version: 1, items: [{id, variant, quantity}]}` in localStorage
 under `muckova-shop-basket`, shared across languages on the same origin. Storage
 failure falls back to memory, tabs listen for storage changes, and quantities are
 bounded to 0–9999 (zero removes the line). The same limit applies to product-card
 controls, basket controls, saved selections and order totals. Clicking anywhere
 inside a basket quantity input selects the entire number; keyboard focus does
 the same. These delegated handlers also cover rows rebuilt after quantity edits.
+Configured products also store a unique `lineId` and the validated `configuration`
+described below, with an implicit quantity of one and no quantity controls.
 No contact details, address or draft email are stored by the site.
 Company and phone are optional fields included in the prepared email only when
 filled in. Street and house number remain required; the former address-extra
@@ -149,6 +167,65 @@ fields. If a server order endpoint is added, it must independently validate IDs,
 variants, quantities, prices, delivery costs and customer data; client totals are
 not an authority for charging or fulfillment. Confirm actual delivery, payment and
 customer-facing terms before enabling direct orders.
+
+## Configured camshaft items
+
+`skoda-ohv-camshaft` uses `kind: "wizard"` and the four supplied photographs,
+copied unchanged to `assets/desktop/skoda-ohv-1.jpeg` through `skoda-ohv-4.jpeg`.
+They appear in that order, one below the other, in the photo column.
+Its six paragraph descriptions and six profiles are translated for all ten languages.
+The profile duration, lift, description and prices were imported from the supplied
+`aaa.csv`. `shop/camshaft-options.csv` is a normalized import snapshot used by the
+regression tests; the editable runtime catalogue remains `shop/catalog.json`.
+Update that snapshot with the catalogue when intentionally revising these specifications.
+
+The form spans the card below the photo and description. It reuses the main form's
+labels, text/number fields, section headings, submit button and `form.js` inline
+validation. The six options form one required native radio group in a compact table
+with four shared column headings. Each option has two rows in its first column:
+radio button plus operation above, description below. Duration, lift and price each
+span both rows and are vertically centered. All content is left-aligned except the
+right-aligned price and its heading. Column widths are 44% / 20% / 20% / 16%, changing
+to 40% / 20% / 20% / 20% on narrow screens to give prices more room. Every value
+and description is a native label for its radio, preserving
+click-to-select and keyboard behavior without extra JavaScript. Cells wrap on small
+screens rather than changing the two-row layout or shrinking the 14px body text.
+The table is introduced by a localized “Poptávka” heading using the same
+`form-section-title` treatment as the engine-details heading. The heading also
+labels the radio fieldset for assistive technology; no mandatory-fields note is
+shown here. Choosing a new shaft reveals a required bearing selector
+using the existing Choices component (with a native fallback). Switching to a
+regrind hides, disables and clears that selector, without clearing engine details.
+All six engine fields are required; numeric dimensions and rocker ratio accept
+positive decimals, with millimetres displayed for dimensions only.
+The rows pair engine type with bore, stroke with rocker ratio, and exhaust-valve
+head diameter with intake-valve head diameter. Diameter labels use words rather
+than the Ø symbol; stored field IDs and units stay unchanged.
+
+Each submission adds a separate configured unit, including identical submissions.
+Its basket entry has the usual remove cross, full configuration and profile price,
+but no quantity field or plus/minus controls. The same details are included in the
+order email. Form submission only adds to the local basket; it does not send an order.
+The form stays filled to allow another configuration without re-entering engine data.
+
+Stored configured rows have this shape (no labels or prices are persisted):
+
+```js
+{ id: 'skoda-ohv-camshaft', variant: '', quantity: 1, lineId: 'unique-instance-id',
+  configuration: { profile: 'new-294-294', bearing: 'small', values: {
+    engineType: 'Škoda 136', bore: '75.5', stroke: '72',
+    intakeValve: '34', exhaustValve: '30', rockerRatio: '1.45'
+  } } }
+```
+
+Reloading validates the profile, conditional bearing, all required engine fields
+and instance ID against the current catalogue. Totals use the current profile
+price, never a stored price. Standard version-1 baskets remain compatible. Legacy
+`camshaft-regrind` / `camshaft-new` selections cannot be mapped to a profile safely:
+they are removed with a notice asking for reconfiguration; other selections remain.
+The basket supports up to 500 distinct lines. Adding beyond that shows a message
+and leaves the existing basket intact. Stored configuration is a product selection;
+customer contact and delivery fields remain excluded from browser storage.
 
 ## Checks
 

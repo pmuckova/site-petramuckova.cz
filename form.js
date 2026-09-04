@@ -5,22 +5,29 @@
     function initValidation(form) {
         if (!form) return null;
         const fields = [...form.querySelectorAll('.validate-me')];
+        const warnings = new Map(fields.map(input => [input, input.getAttribute('data-warning-id')
+            ? form.querySelector('#' + input.getAttribute('data-warning-id')) : input.nextElementSibling]));
         // Keep the localized messages from the markup, even after a required-field
         // warning temporarily replaces an email/phone/year format warning.
-        const messages = new Map(fields.map(input => [input, input.nextElementSibling.textContent.trim()]));
+        const messages = new Map(fields.map(input => [input, warnings.get(input).textContent.trim()]));
         const requiredField = fields.find(input => input.required && input.type === 'text');
         const requiredMessage = messages.get(requiredField) || 'This field is required.';
 
         function showWarning(input, message) {
             input.classList.toggle('input-warning', Boolean(message));
             input.setAttribute('aria-invalid', String(Boolean(message)));
-            const warning = input.nextElementSibling;
+            const choices = input.closest?.('.choices');
+            choices?.querySelector('.choices__inner')?.classList.toggle('input-warning', Boolean(message));
+            choices?.setAttribute('aria-invalid', String(Boolean(message)));
+            const warning = warnings.get(input);
             warning.textContent = message || messages.get(input);
             warning.style.display = message ? 'block' : 'none';
         }
 
         function validateInput(input) {
-            const value = input.value.trim();
+            const value = input.type === 'radio'
+                ? (fields.some(field => field.type === 'radio' && field.name === input.name && field.checked && !field.disabled) ? 'selected' : '')
+                : input.value.trim();
             let message = '';
             if (!input.disabled) {
                 if (input.required && !value) {
@@ -29,7 +36,8 @@
                     const invalidEmail = input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
                     const invalidPhone = (input.name === 'phone' || input.type === 'tel') && !/^[\d\s+]{9,20}$/.test(value);
                     const invalidYear = input.name === 'year' && Number(value) < 1900;
-                    if (invalidEmail || invalidPhone || invalidYear || input.validity?.valid === false) {
+                    const invalidPositive = input.getAttribute('data-positive') !== null && !(Number(value) > 0 && Number.isFinite(Number(value)));
+                    if (invalidEmail || invalidPhone || invalidYear || invalidPositive || input.validity?.valid === false) {
                         message = messages.get(input);
                     }
                 } else if (input.validity?.badInput) {
@@ -41,15 +49,20 @@
         }
 
         fields.forEach(input => {
-            const warning = input.nextElementSibling;
+            const warning = warnings.get(input);
             if (!input.id) input.id = `${form.id}-${input.name}`;
             if (!warning.id) warning.id = `${input.id}-warning`;
             const describedBy = new Set((input.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean));
             describedBy.add(warning.id);
             input.setAttribute('aria-describedby', [...describedBy].join(' '));
+            input.closest?.('.choices')?.setAttribute('aria-describedby', [...describedBy].join(' '));
             warning.setAttribute('aria-live', 'polite');
-            input.addEventListener('input', () => validateInput(input));
-            input.addEventListener('change', () => validateInput(input));
+            const validateChanged = () => {
+                if (input.type === 'radio') fields.filter(field => field.type === 'radio' && field.name === input.name).forEach(validateInput);
+                else validateInput(input);
+            };
+            input.addEventListener('input', validateChanged);
+            input.addEventListener('change', validateChanged);
         });
 
         function reset() { fields.forEach(input => showWarning(input, '')); }
@@ -65,7 +78,9 @@
                     if (input.value !== trimmed) input.value = trimmed;
                     if (!validateInput(input) && !firstInvalid) firstInvalid = input;
                 });
-                firstInvalid?.focus();
+                // Choices keeps its native select hidden; focus the visible control.
+                const focusTarget = firstInvalid?.closest?.('.choices') || firstInvalid;
+                focusTarget?.focus();
                 return !firstInvalid;
             },
             reset,

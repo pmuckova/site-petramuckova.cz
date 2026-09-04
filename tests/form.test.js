@@ -66,6 +66,34 @@ function assertWarning(input, expected) {
     if (expected) assert.equal(input.nextElementSibling.textContent, expected);
 }
 
+test('enhanced selects use explicit warning targets and focus the visible accessible control', () => {
+    const form = node();
+    form.id = 'wizard-form';
+    const select = Object.assign(node(), { name: 'bearing', type: 'select-one', value: '', required: true, disabled: false });
+    const warning = node();
+    warning.id = 'bearing-warning';
+    warning.textContent = 'Choose bearings.';
+    select.setAttribute('data-warning-id', warning.id);
+    // The warning is not the select's next sibling after Choices enhances it.
+    select.nextElementSibling = null;
+    const visible = node(), inner = node();
+    select.closest = selector => { assert.equal(selector, '.choices'); return visible; };
+    visible.querySelector = selector => { assert.equal(selector, '.choices__inner'); return inner; };
+    visible.focus = () => { form.focused = visible; };
+    form.querySelectorAll = () => [select];
+    form.querySelector = selector => { assert.equal(selector, '#bearing-warning'); return warning; };
+    const validation = initValidation(form);
+    assert.equal(validation.validate(), false);
+    assert.equal(form.focused, visible);
+    assert.equal(visible.getAttribute('aria-invalid'), 'true');
+    assert.equal(visible.getAttribute('aria-describedby'), 'bearing-warning');
+    assert.equal(inner.classList.contains('input-warning'), true);
+    edit(select, 'small', 'change');
+    assert.equal(visible.getAttribute('aria-invalid'), 'false');
+    assert.equal(inner.classList.contains('input-warning'), false);
+    assert.equal(warning.style.display, 'none');
+});
+
 for (const kind of ['main', 'shop']) {
     test(`${kind}: fields use localized inline warnings on input and change`, () => {
         const { fields, validation, copy } = fixture(kind);

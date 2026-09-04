@@ -36,12 +36,15 @@ def load_catalog(root=ROOT):
         if not re.fullmatch(r'[a-z0-9-]+', product_id) or product_id in ids:
             raise ValueError(f'Invalid or duplicate product ID: {product_id}')
         ids.add(product_id)
-        if product['priceType'] not in ('fixed', 'from', 'quote'):
+        if product.get('kind', 'standard') not in ('standard', 'wizard'):
+            raise ValueError(f'Invalid product kind: {product_id}')
+        wizard = product.get('kind') == 'wizard'
+        if product['priceType'] not in (('configured',) if wizard else ('fixed', 'from', 'quote')):
             raise ValueError(f'Invalid price type: {product_id}')
         price = product['price']
-        if product['priceType'] == 'quote':
+        if product['priceType'] in ('quote', 'configured'):
             if price is not None:
-                raise ValueError(f'Quote-only item must have a null price: {product_id}')
+                raise ValueError(f'Quote-only or configured item must have a null base price: {product_id}')
         elif type(price) is not int or price <= 0:
             raise ValueError(f'Price must be positive whole CZK: {product_id}')
         variant_ids = [variant['id'] for variant in product['variants']]
@@ -52,38 +55,173 @@ def load_catalog(root=ROOT):
         image = product.get('image')
         if image:
             validate_image(image, product_id, root)
+        if 'images' in product:
+            validate_gallery(product, data['languages'], root)
+        if wizard:
+            validate_wizard(product, data['languages'])
         for lang in data['languages']:
             if not product['translations'].get(lang, {}).get('name'):
                 raise ValueError(f'Missing {lang} name: {product_id}')
     return data
 
 
+def validate_gallery(product, languages, root):
+    images = product['images']
+    if not isinstance(images, list) or not images:
+        raise ValueError(f'Product gallery must contain images: {product["id"]}')
+    for image in images:
+        if not isinstance(image, dict):
+            raise ValueError('Gallery images must contain a path, dimensions and translated alt text')
+        validate_image(image.get('src'), product['id'], root)
+        if any(type(image.get(key)) is not int or image[key] <= 0 for key in ('width', 'height')):
+            raise ValueError('Gallery image dimensions must be positive integers')
+        alt = image.get('alt')
+        if not isinstance(alt, dict) or any(not isinstance(alt.get(lang), str) or not alt[lang].strip() for lang in languages):
+            raise ValueError('Missing translated gallery image alt text')
+    if product.get('image') != images[0]['src']:
+        raise ValueError('The primary product image must be the first gallery image')
+
+
+def validate_wizard(product, languages):
+    wizard = product['wizard']
+    if product['variants']:
+        raise ValueError('Wizard choices must not also be quantity variants')
+    for group in ('profiles', 'bearings', 'fields'):
+        ids = [item['id'] for item in wizard[group]]
+        if not ids or len(ids) != len(set(ids)) or any(
+                not re.fullmatch(r'[a-zA-Z0-9-]+', item_id) for item_id in ids):
+            raise ValueError(f'Invalid wizard {group}: {product["id"]}')
+    for profile in wizard['profiles']:
+        if profile['manufacture'] not in ('regrind', 'new'):
+            raise ValueError('Invalid manufacturing method')
+        if type(profile['price']) is not int or profile['price'] <= 0:
+            raise ValueError('Profile price must be positive whole CZK')
+        if not profile['duration'] or not profile['lift']:
+            raise ValueError('Missing profile specification')
+        if any(not profile['translations'].get(lang) for lang in languages):
+            raise ValueError('Missing translated profile description')
+    for field in wizard['fields']:
+        if field['type'] not in ('text', 'number') or type(field['required']) is not bool:
+            raise ValueError('Invalid wizard field')
+        if field['type'] == 'text' and not 1 <= field['maxLength'] <= 200:
+            raise ValueError('Invalid wizard text length')
+
+
 def money(value, lang):
     return f'{value:,}'.replace(',', '\u00a0') + (' Kč' if lang == 'cs' else ' CZK')
+
+
+def wizard_form(product, lang, t):
+    wizard = product['wizard']
+    prefix = escape(product['id'])
+    columns = ('profileHeading', 'camDuration', 'camLift', 'price')
+    headers = ''.join(f'<th id="{prefix}-{key}-heading" class="shop-profile-label{" shop-profile-price" if key == "price" else ""}" scope="col">{escape(t[key])}</th>'
+                      for key in columns)
+    options = []
+    for profile in wizard['profiles']:
+        method = t['manufactureNew' if profile['manufacture'] == 'new' else 'manufactureRegrind']
+        option_id = f"{prefix}-{escape(profile['id'])}"
+        values = (profile['duration'], profile['lift'], money(profile['price'], lang))
+        cells = []
+        for key, value in zip(columns[1:], values):
+            cell_class = 'shop-profile-stat shop-profile-price' if key == 'price' else 'shop-profile-stat'
+            cells.append(f'<td class="{cell_class}" rowspan="2"><label for="{option_id}"><span id="{option_id}-{key}" class="shop-profile-value">{escape(value)}</span></label></td>')
+        labelled_by = ' '.join(f'{prefix}-{key}-heading {option_id}-{key}' for key in columns)
+        options.append(f'''<tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="{option_id}">
+              <input type="radio" name="profile" value="{escape(profile['id'])}" id="{option_id}" required class="validate-me" data-warning-id="{prefix}-profile-warning" aria-labelledby="{labelled_by}" aria-describedby="{option_id}-description {prefix}-profile-warning">
+              <span id="{option_id}-profileHeading" class="shop-profile-method">{escape(method)}</span>
+            </label></td>
+            {''.join(cells)}
+          </tr>
+          <tr><td><label class="shop-profile-description" id="{option_id}-description" for="{option_id}">{escape(profile['translations'][lang])}</label></td></tr>
+        </tbody>''')
+    bearings = ''.join(f'<option value="{escape(b["id"])}">{escape(t[b["labelKey"]])} {escape(b["diameters"])}</option>'
+                       for b in wizard['bearings'])
+    fields = []
+    for field in wizard['fields']:
+        key = escape(field['id'])
+        label = t[field['labelKey']] + (f' ({field["unit"]})' if field.get('unit') else '')
+        constraints = 'min="0" step="any" inputmode="decimal" data-positive' if field['type'] == 'number' else f'maxlength="{field["maxLength"]}"'
+        warning = t['positiveNumber'] if field['type'] == 'number' else t['requiredWarning']
+        fields.append(f'''<div class="form-group">
+          <label for="{prefix}-{key}">{escape(label)}{' *' if field['required'] else ''}</label>
+          <input id="{prefix}-{key}" name="{key}" type="{field['type']}" {constraints} {'required' if field['required'] else ''} class="validate-me">
+          <span class="warning-msg">{escape(warning)}</span>
+        </div>''')
+    rows = ''.join('<div class="form-row">' + ''.join(fields[index:index + 2]) + '</div>' for index in range(0, len(fields), 2))
+    return f'''<form class="shop-wizard-form" id="wizard-{prefix}" data-wizard="{prefix}" aria-label="{escape(t['configure'])}: {escape(product['translations'][lang]['name'])}" method="post" novalidate>
+      <h4 class="form-section-title" id="{prefix}-inquiry-title">{escape(t['inquiryHeading'])}</h4>
+      <fieldset class="shop-profile-options" aria-labelledby="{prefix}-inquiry-title" aria-describedby="{prefix}-profile-warning">
+        <table class="shop-profile-table" aria-label="{escape(t['configure'])}">
+          <colgroup><col class="shop-profile-operation-column"><col class="shop-profile-spec-column"><col class="shop-profile-spec-column"><col class="shop-profile-price-column"></colgroup>
+          <thead><tr>{headers}</tr></thead>
+          {''.join(options)}
+        </table>
+      </fieldset>
+      <span id="{prefix}-profile-warning" class="warning-msg">{escape(t['requiredWarning'])}</span>
+      <div class="shop-bearing-fields" data-bearing-fields hidden>
+        <div class="form-group shop-variant">
+          <label id="label-{prefix}-bearing" for="{prefix}-bearing">{escape(t['bearings'])} *</label>
+          <select id="{prefix}-bearing" name="bearing" class="custom-select validate-me" data-bearing data-warning-id="{prefix}-bearing-warning" disabled>
+            <option value="">{escape(t['chooseBearings'])}</option>{bearings}
+          </select>
+          <span id="{prefix}-bearing-warning" class="warning-msg">{escape(t['requiredWarning'])}</span>
+        </div>
+      </div>
+      <h4 class="form-section-title">{escape(t['engineHeading'])}</h4>
+      {rows}
+      <button class="btn-submit" type="submit" disabled>{escape(t['addConfigured'])}</button>
+      <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
+    </form>'''
+
+
+def product_photos(product, lang, t, position, placeholder_image):
+    name = product['translations'][lang]['name']
+    is_placeholder = not product.get('image')
+    images = product.get('images') or [{
+        'src': product.get('image') or placeholder_image, 'width': 640, 'height': 480,
+        'alt': {lang: t['noPhoto'] if is_placeholder else name},
+    }]
+    placeholder_attr = ' data-placeholder="true"' if is_placeholder else ''
+    links = []
+    for index, image in enumerate(images):
+        alt = image['alt'][lang]
+        link_label = t['enlargePhoto'] + ': ' + (alt if len(images) > 1 else name)
+        loading = 'eager' if position < 2 and index == 0 else 'lazy'
+        links.append(f'''<a class="shop-photo-link" href="{escape(image['src'])}" aria-haspopup="dialog" aria-label="{escape(link_label)}">
+        <span class="tech-frame">
+          <img src="{escape(image['src'])}" alt="{escape(alt)}" width="{image['width']}" height="{image['height']}" loading="{loading}" decoding="async"{placeholder_attr}>
+        </span>
+      </a>''')
+    gallery_class = ' shop-photo-gallery' if len(images) > 1 else ''
+    placeholder_class = ' shop-photo-placeholder' if is_placeholder else ''
+    return f'''<figure class="shop-photo{gallery_class}{placeholder_class}">
+      {''.join(links)}
+    </figure>'''
 
 
 def product_card(product, lang, t, position, placeholder_image):
     text = product['translations'][lang]
     product_id = escape(product['id'])
     name = escape(text['name'])
-    description = escape(text['description'])
-    if product['priceType'] == 'quote':
+    description = ''.join(f'<p class="shop-description">{escape(paragraph)}</p>' for paragraph in text['description'].split('\n\n'))
+    is_wizard = product.get('kind') == 'wizard'
+    if product['priceType'] in ('quote', 'configured'):
         price = t['quote']
     else:
         price = money(product['price'], lang)
         if product['priceType'] == 'from':
             price = t['from'] + ' ' + price
-    is_placeholder = not product.get('image')
-    image = product.get('image') or placeholder_image
-    alt = escape(t['noPhoto']) if is_placeholder else name
-    placeholder_attr = ' data-placeholder="true"' if is_placeholder else ''
-    photo = f'''<figure class="shop-photo{' shop-photo-placeholder' if is_placeholder else ''}">
-      <a class="shop-photo-link" href="{escape(image)}" aria-haspopup="dialog" aria-label="{escape(t['enlargePhoto'])}: {name}">
-        <span class="tech-frame">
-          <img src="{escape(image)}" alt="{alt}" width="640" height="480" loading="{'eager' if position < 2 else 'lazy'}" decoding="async"{placeholder_attr}>
-        </span>
-      </a>
-    </figure>'''
+    photo = product_photos(product, lang, t, position, placeholder_image)
+    if is_wizard:
+        return f'''<article class="blog-card shop-product shop-wizard-product" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
+      <h3 class="shop-product-title" id="name-{product_id}">{name}</h3>
+      {photo}
+      <div class="shop-product-content"><div class="shop-product-body">{description}</div></div>
+      {wizard_form(product, lang, t)}
+    </article>'''
     variant = ''
     if product['variants']:
         options = ''.join(f'<option value="{escape(v["id"])}">{escape(v["label"])}</option>' for v in product['variants'])
@@ -101,7 +239,7 @@ def product_card(product, lang, t, position, placeholder_image):
       {photo}
       <div class="shop-product-content">
         <div class="shop-product-body">
-          <p class="shop-description">{description}</p>
+          {description}
           {article_link}
         </div>
         <dl class="shop-prices">
@@ -205,17 +343,22 @@ def build_shop(root=ROOT, languages=None, output_root=None):
         t = translations[lang]
         if set(t) != set(translations['en']):
             raise ValueError(f'Incomplete UI translation: {lang}')
+        t = {**t, **main_form_copy(root, lang)}
         copy = data['copy'][lang]
         header, footer = site_navigation(root, lang)
         client_products = [{
             'id': p['id'], 'name': p['translations'][lang]['name'],
             'price': p['price'], 'priceType': p['priceType'], 'variants': p['variants'],
+            **({'kind': 'wizard', 'wizard': {
+                **p['wizard'],
+                'profiles': [{key: value for key, value in profile.items() if key != 'translations'}
+                             | {'description': profile['translations'][lang]} for profile in p['wizard']['profiles']],
+            }} if p.get('kind') == 'wizard' else {}),
         } for p in data['products']]
         config = json.dumps({'products': client_products, 'currency': data['currency'],
                              'locale': lang, 'email': data['orderEmail'], 'text': t}, ensure_ascii=False)
         config = config.replace('&', '\\u0026').replace('<', '\\u003c').replace('>', '\\u003e')
         values = {key: escape(value) for key, value in t.items()}
-        values.update({key: escape(value) for key, value in main_form_copy(root, lang).items()})
         values.update({
             'lang': lang, 'canonical': f'{BASE_URL}/{lang}/shop',
             'intro': escape(copy['intro']), 'trade': escape(copy['trade']),

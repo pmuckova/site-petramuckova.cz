@@ -66,16 +66,58 @@ def main():
             assert all(product['price'] == catalog['products'][index]['price'] for index, product in enumerate(config['products']))
             assert soup.select_one('.shop-product > h3.shop-product-title')
             for card in soup.select('.shop-product'):
-                assert len(card.find_all(recursive=False)) == 3
+                wizard = card.select_one('form[data-wizard]')
+                assert len(card.find_all(recursive=False)) == (4 if wizard else 3)
                 assert card.find(recursive=False).name == 'h3'
                 assert card.select_one(':scope > .shop-photo img')
                 assert card.select_one(':scope > .shop-product-content > .shop-product-body .shop-description')
-                assert card.select_one(':scope > .shop-product-content > .shop-prices')
-                assert card.select_one(':scope > .shop-product-content > .shop-product-order [data-quantity]')
-                assert card.select_one('input[data-quantity]')['max'] == '9999'
-                photo_link = card.select_one('.shop-photo-link')
-                assert photo_link['href'] == photo_link.img['src']
-                assert photo_link.select_one(':scope > .tech-frame > img')
+                if wizard:
+                    assert len(wizard.select('input[name=profile]')) == 6
+                    assert len(wizard.select('input[type=number][required]')) == 5
+                    assert len(card.select('.shop-description')) == 6
+                    assert wizard.select_one('button[type=submit].btn-submit')
+                    assert not wizard.select('.mandatory-note, [id$="-profile-title"]')
+                    profiles = wizard.select_one('fieldset.shop-profile-options[aria-labelledby]')
+                    assert profiles
+                    inquiry_heading = wizard.find(id=profiles['aria-labelledby'])
+                    assert inquiry_heading.name == 'h4'
+                    assert inquiry_heading['class'] == ['form-section-title']
+                    assert inquiry_heading.get_text() == config['text']['inquiryHeading']
+                    assert inquiry_heading.find_next_sibling() is profiles
+                    assert len(profiles.select('thead > tr > th')) == 4
+                    for option in profiles.select('tbody.shop-profile-option'):
+                        rows = option.find_all('tr', recursive=False)
+                        assert len(rows) == 2
+                        cells = rows[0].find_all('td', recursive=False)
+                        assert len(cells) == 4
+                        assert cells[0].select_one('input[type=radio]')
+                        assert [cell['rowspan'] for cell in cells[1:]] == ['2', '2', '2']
+                        assert 'shop-profile-price' in cells[-1]['class']
+                        assert len(rows[1].find_all('td', recursive=False)) == 1
+                        assert rows[1].select_one('td > .shop-profile-description')
+                    assert [field['name'] for field in wizard.select('.form-row input')] == [
+                        'engineType', 'bore', 'stroke', 'rockerRatio', 'exhaustValve', 'intakeValve']
+                    assert 'Ø' not in wizard.get_text()
+                    assert not card.select('[data-quantity], [data-change]')
+                    assert config['products'][0]['wizard']['profiles'][4]['price'] == 13200
+                else:
+                    assert card.select_one(':scope > .shop-product-content > .shop-prices')
+                    assert card.select_one(':scope > .shop-product-content > .shop-product-order [data-quantity]')
+                    assert card.select_one('input[data-quantity]')['max'] == '9999'
+                photo_links = card.select('.shop-photo-link')
+                for photo_link in photo_links:
+                    assert photo_link['href'] == photo_link.img['src']
+                    assert photo_link.select_one(':scope > .tech-frame > img')
+                source_product = next(product for product in catalog['products'] if product['id'] == card['id'])
+                if source_product.get('images'):
+                    assert card.select_one('.shop-photo-gallery')
+                    assert len(photo_links) == len(source_product['images'])
+                    for photo_link, source_image in zip(photo_links, source_product['images']):
+                        assert photo_link['href'].endswith(source_image['src'])
+                        assert photo_link.img['alt'] == source_image['alt'][language]
+                        assert (int(photo_link.img['width']), int(photo_link.img['height'])) == (source_image['width'], source_image['height'])
+                        relative_path = source_image['src'].lstrip('/')
+                        assert (release / relative_path).read_bytes() == (ROOT / relative_path).read_bytes()
                 assert not card.select('.blog-img-frame')
             assert soup.select_one('dialog#shop-lightbox.lightbox-modal .lightbox-img')
             assert soup.select_one('script[src*="choices.js@11.1.0"][defer]')
@@ -137,6 +179,9 @@ def main():
         locations = sitemap.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc')
         assert len(locations) == 30
         assert len([loc for loc in locations if loc.text.endswith('/shop.html')]) == 10
+        image_locations = sitemap.findall('.//{http://www.google.com/schemas/sitemap-image/1.1}loc')
+        for image in catalog['products'][0]['images']:
+            assert any(loc.text.endswith(image['src']) for loc in image_locations)
         assert catalog['placeholderImage'] not in (release / 'sitemap.xml').read_text()
         assert 'vshop-smoke-test' in (release / '.htaccess').read_text()
         assert '{{RELEASE_' not in (release / '.htaccess').read_text()
