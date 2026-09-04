@@ -79,14 +79,21 @@ RewriteCond %{HTTP:Accept-Language} (zh) [NC]
 RewriteRule ^$ /zh/?v={{RELEASE_VERSION_URL}} [L,R=302,NE]
 
 # ----------------------------------------------------------------------
-# 3. Blog Clean URLs (NEW)
+# 3. Blog Clean URLs
 # ----------------------------------------------------------------------
 # Rewrite /<lang>/blog to /<lang>/blog.html
 # This allows users to visit ".../en/blog" while the server loads ".../en/blog.html"
 RewriteRule ^([a-z]{2})/blog/?$ $1/blog.html [L]
 
 # ----------------------------------------------------------------------
-# 4. Fallback Redirect
+# 4. Shop Clean URLs
+# ----------------------------------------------------------------------
+# Rewrite /<lang>/shop to /<lang>/shop.html
+# This allows users to visit ".../en/shop" while the server loads ".../en/shop.html"
+RewriteRule ^([a-z]{2})/shop/?$ $1/shop.html [L]
+
+# ----------------------------------------------------------------------
+# 5. Fallback Redirect
 # ----------------------------------------------------------------------
 # If we are at root "^$" and no language matched above, go to /en/
 RewriteRule ^$ /en/?v={{RELEASE_VERSION_URL}} [L,R=302,NE]

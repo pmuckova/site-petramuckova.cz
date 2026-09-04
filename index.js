@@ -483,59 +483,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const form = document.getElementById('inquiryForm');
-
-    function validateInput(input) {
-        const warning = input.nextElementSibling;
-        if (!warning || !warning.classList.contains('warning-msg')) {
-            return;
-        }
-
-        input.classList.remove('input-warning');
-        warning.style.display = 'none';
-
-        if (input.hasAttribute('required') && !input.value) {
-            input.classList.add('input-warning');
-            warning.textContent = "Toto pole je povinné.";
-            warning.style.display = 'block';
-            return;
-        }
-        if (input.type === 'email' && input.value && !/\S+@\S+\.\S+/.test(
-            input.value)) {
-            input.classList.add('input-warning');
-            warning.textContent = "Neplatný formát emailu.";
-            warning.style.display = 'block';
-        }
-        if (input.id === 'phoneInput' && input.value && !/^[\d\s+]{9,20}$/.test(
-            input.value)) {
-            input.classList.add('input-warning');
-            warning.textContent = "Zadejte platné telefonní číslo.";
-            warning.style.display = 'block';
-        }
-        if (input.name === 'year' && input.value && parseInt(input.value)
-            < 1900) {
-            input.classList.add('input-warning');
-            warning.textContent = "Zadejte platný rok.";
-            warning.style.display = 'block';
-        }
-    }
-
-    document.querySelectorAll('.validate-me').forEach(input => {
-        input.addEventListener('input', () => validateInput(input));
-        input.addEventListener('change', () => validateInput(input));
-    });
+    const validation = SiteForm.initValidation(form);
 
     form?.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        let valid = true;
-        document.querySelectorAll('.validate-me').forEach(input => {
-            validateInput(input);
-            if (input.classList.contains('input-warning')) {
-                valid = false;
-            }
-        });
-
-        if (valid) {
+        if (validation.validate()) {
             const btn = form.querySelector('.btn-submit');
             const originalText = btn.innerText;
             btn.innerText = t.emailSubmissionSendingBtnText;

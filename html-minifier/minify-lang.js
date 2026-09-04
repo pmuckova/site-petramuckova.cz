@@ -25,6 +25,10 @@ try {
         const cmdBlog = `html-minifier-terser -c html-config.json -o ../release/${lang}/blog.html ../${lang}/blog.html`;
         execSync(cmdBlog, {stdio: 'inherit'});
 
+        // Shop pages are generated from shop/catalog.json before the release.
+        const cmdShop = `html-minifier-terser -c html-config.json -o ../release/${lang}/shop.html ../${lang}/shop.html`;
+        execSync(cmdShop, {stdio: 'inherit'});
+
         console.log(`✅ Success for [${lang}]`);
     }
 

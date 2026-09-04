@@ -1,0 +1,125 @@
+/* Shared industrial palette and typefaces come from main.css. */
+.shop-page { --shop-muted: #b0b0b0; margin: 0; font-size: 1rem; }
+.shop-layout *, .shop-layout *::before, .shop-layout *::after { box-sizing: border-box; }
+.shop-page [hidden] { display: none !important; }
+.shop-page :focus-visible { outline: 2px solid #fff !important; outline-offset: 4px; }
+/* Form fields already have the main page's red focus border/glow, not a white ring. */
+.shop-page :is(input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea, select.custom-select, .choices):focus-visible { outline: none !important; }
+/* Modal focus restoration must not leave a keyboard-style ring after a photo click. */
+.shop-page .shop-photo-pointer-focus:focus, .shop-page .shop-photo-pointer-focus :focus { outline: none !important; }
+/* The entire order section retains the main contact form's typography and spacing. */
+.shop-layout :is(h1, h2, h3, p, figure):not(:where(.shop-order *)) { margin: 0; }
+.shop-layout :is(h1, h2, h3):not(:where(.shop-order *)) { line-height: 1.2; }
+.shop-layout a:hover { color: #ff7777; }
+/* Leave field typography and sizing to main.css, including textarea line-height. */
+.shop-page button:not(.btn-submit) { font: inherit; }
+.shop-page button, .shop-page select, .shop-page summary { cursor: pointer; }
+.shop-page button:disabled { cursor: not-allowed; opacity: .4; }
+.shop-page .lang-dropdown-wrapper:focus-within .lang-menu { display: block; }
+.shop-page .mobile-menu-trigger { padding: 0; }
+.shop-page footer button.copy-right { padding: 0; border: 0; background: none; }
+.shop-layout { grid-template-columns: minmax(0, 1fr) 280px; row-gap: 0; }
+.shop-catalog, .shop-basket { line-height: 1.65; }
+.shop-catalog { min-width: 0; gap: 0; }
+.shop-sidebar { grid-column: 2; grid-row: 1 / 3; align-self: stretch; padding-top: calc(var(--navbar-height) + 40px); }
+.shop-section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 22px; padding-top: 18px; border-top: 2px solid var(--accent); }
+.shop-section-heading h1, .shop-section-heading h2 { font-size: 1.4rem; border: 0; padding: 0; background: none; box-shadow: none; }
+.shop-section-heading > span { color: var(--shop-muted); font-size: .875rem; white-space: nowrap; }
+.shop-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+/* The title has its own row; photo and description share the next row's start. */
+.shop-product { padding: 22px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: ". title" "photo content"; align-items: start; gap: 18px 24px; min-width: 0; scroll-margin-top: calc(var(--navbar-height) + 40px); }
+.shop-product-content { grid-area: content; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.shop-photo { grid-area: photo; align-self: start; min-width: 0; }
+.shop-photo-link { display: block; width: fit-content; max-width: 100%; margin-inline: auto; cursor: zoom-in; }
+/* Reuse the equipment section's soft edges without clipping the link's focus outline. */
+.shop-photo .tech-frame { display: block; }
+/* Natural image proportions define the frame: no fixed-ratio letterboxing or crop. */
+.shop-photo img { display: block; width: auto; max-width: 100%; height: auto; }
+/* Restored focus after mouse/touch zoom must not leave the faded edges cleared. */
+.shop-photo-link:not(.shop-photo-pointer-focus):focus-visible .tech-frame::after { opacity: 0; }
+@media (hover: hover) {
+  .shop-photo-link:hover .tech-frame::after { opacity: 0; }
+}
+.shop-product-body { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+/* Match the main page's .shadow-box h3 / .team-name heading treatment. */
+.shop-product-title { grid-area: title; justify-self: center; align-self: center; max-width: 100%; display: inline-block; font-size: 1.8rem; color: white; border-bottom: 1px solid var(--accent); padding-bottom: 5px; text-align: center; overflow-wrap: anywhere; }
+.shop-description { color: #bbb; font-size: 1rem; text-align: justify; hyphens: auto; overflow-wrap: anywhere; }
+.shop-product-body > a { color: #ff7272; font-size: .875rem; }
+.shop-prices { margin: 0; font-size: .875rem; }
+.shop-product-order { min-width: 0; }
+/* Preserve the section spacing without decorative separator lines. */
+.shop-prices, .shop-product-order { padding-top: 19px; }
+.shop-product-order > .shop-variant { margin-bottom: 18px; }
+.shop-quantity-label { display: block; }
+.shop-price-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 18px; padding-block: 4px; align-items: baseline; }
+.shop-price-row dt { color: #bcbcbc; }
+.shop-price-row dd { margin: 0; color: #ddd; text-align: end; }
+.shop-dealer-minimum dt, .shop-dealer-minimum dd { color: #aaa; }
+.shop-quantity { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; border: 1px solid #333; }
+.shop-quantity button { min-width: 0; min-height: 50px; border: 0; border-radius: 0; color: white; background: #050505; text-align: center; font-size: 1.5rem; }
+.shop-quantity button:last-child { background: var(--accent); color: #050505; font-weight: 700; }
+/* Keep the shared text-field treatment inside the existing minus/plus group. */
+.shop-quantity input { min-width: 0; border-block: 0; text-align: center; }
+.shop-variant { min-width: 0; line-height: 1.6; }
+/* Enhanced selects use the main form's Choices styles; retain a matching native fallback. */
+.shop-variant > select { padding: 0 15px; height: 50px; width: 100%; border: 1px solid #333; background: #050505; color: var(--text-main); border-radius: 0; font-family: 'Fira Code', monospace; font-size: .95rem; }
+.shop-variant > select:focus { border-color: var(--accent); background: #080808; box-shadow: 0 0 10px rgba(255, 51, 51, .2); }
+/* Keep the blog's appearance and top offset, but stop at the content rail's bottom. */
+.shop-basket { position: sticky; display: flex; flex-direction: column; width: 280px; max-height: calc(100dvh - var(--navbar-height) - 60px); overflow: hidden; scroll-margin-top: calc(var(--navbar-height) + 40px); }
+/* Only the item list shrinks and scrolls; the heading and checkout summary stay visible. */
+.shop-basket > :not(.shop-basket-items) { flex-shrink: 0; }
+.shop-basket .shop-section-heading { border: 0; padding-top: 0; gap: 8px; margin-bottom: 15px; }
+.shop-basket h2.toc-title { font-size: 1rem; }
+.shop-basket-items { flex: 0 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 6px; margin: 0 -6px; list-style: none; }
+.shop-basket-item { position: relative; padding-block: 18px; border-top: 1px solid #363636; }
+.shop-basket-item h3 { padding-right: 44px; font-size: 1rem; text-transform: none; line-height: 1.45; }
+.shop-basket-remove { position: absolute; top: 6px; right: 0; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: transparent; color: var(--accent); }
+.shop-basket-remove .mdi { font-size: 1.35rem; line-height: 1; pointer-events: none; }
+.shop-basket-remove:hover { color: #fff; }
+.shop-basket-item p { font-size: .875rem; color: #bbb; margin-block: 8px; }
+.shop-basket-item .shop-quantity { margin-top: 12px; }
+.shop-totals { display: flex; justify-content: space-between; flex-direction: column; gap: 8px; border-top: 1px solid #555; margin-block: 22px 16px; padding-top: 20px; }
+.shop-totals span { color: #ccc; font-size: .875rem; }
+.shop-totals strong { font: 600 1.2rem 'Chakra Petch', sans-serif; }
+.shop-muted { color: var(--shop-muted); font-size: .875rem; }
+.shop-basket > p { margin-bottom: 16px; }
+.shop-button, .shop-secondary-button { min-height: 50px; padding: 14px 18px; display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; background: var(--accent); color: #050505 !important; border: 1px solid var(--accent); border-radius: 0; font-family: 'Chakra Petch', sans-serif !important; font-size: 1rem; font-weight: 700; text-align: start; }
+.shop-button:hover { background: #ff6666; }
+.shop-basket > .shop-button { display: flex; }
+.shop-secondary-button { color: white !important; background: transparent; border-color: #777; }
+.shop-catalog-notes { color: var(--shop-muted); border-top: 1px solid #333; padding-top: 24px; margin-bottom: 28px; font-size: .875rem; }
+.shop-catalog-notes p + p { margin-top: 12px; }
+/* One main-page form panel, below the unboxed .section / .contact-intro heading. */
+.shop-order { grid-column: 1; min-width: 0; scroll-margin-top: calc(var(--navbar-height) + 40px); }
+.shop-order-form { min-width: 0; }
+.shop-order-form .form-group { min-width: 0; }
+.shop-order-form fieldset { margin: 0; min-width: 0; border: 0; padding: 0; }
+.shop-delivery-method { display: flex; align-items: baseline; gap: 8px; margin-bottom: 20px; }
+.shop-delivery-method input { accent-color: var(--accent); }
+.shop-notice { border-inline-start: 3px solid var(--accent); padding: 12px 16px; background: #181818; margin-block: 12px !important; }
+.shop-draft { margin-top: 28px; border: 1px solid #555; padding: 28px; background: #101010; }
+.shop-draft h3 { font-size: 1.5rem; }
+.shop-draft > p { margin-block: 14px; }
+.shop-draft textarea { white-space: pre-wrap; }
+.shop-draft-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; }
+.shop-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.shop-skip { position: absolute; top: 0; left: -10000px; padding: 16px; background: white; color: black !important; z-index: 10000; }
+.shop-skip:focus { left: 10px; }
+/* Reuse the blog's fullscreen photo viewer, with native modal keyboard handling. */
+.shop-lightbox { margin: 0; padding: 0; border: 0; max-width: none; max-height: none; }
+.shop-lightbox:not([open]) { display: none; }
+.shop-lightbox::backdrop { background: transparent; }
+.shop-lightbox .shop-lightbox-close { position: absolute; top: 16px; right: 16px; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--accent); border-radius: 50%; background: #050505; color: var(--accent); font-size: 1.5rem; }
+.shop-lightbox-close .mdi { pointer-events: none; }
+@media (max-width: 1399px) {
+  /* The blog switches to its mobile header here. Keep checkout in the normal page flow. */
+  .shop-sidebar { padding-top: 0; }
+  .shop-basket { position: static; display: block; width: auto; max-height: none; overflow: visible; margin-top: 40px; }
+  .shop-basket-items { overflow: visible; overscroll-behavior: auto; }
+}
+@media (max-width: 740px) {
+  .shop-draft { padding: 20px; }
+}
+@media (max-width: 680px) {
+  .shop-product { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "photo" "content"; gap: 20px; }
+}

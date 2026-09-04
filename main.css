@@ -603,7 +603,6 @@ footer { background: transparent; padding-top: 60px; }
 }
 .c-slash { color: var(--accent); font-weight: bold; }
 .c-name { color: white; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
-.version { color: #444; }
 
 .barcode {
     width: 64px; height: 24px;

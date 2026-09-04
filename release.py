@@ -69,7 +69,7 @@ NPM_ARGS = ['run', 'build']
 RELEASE_DIR = 'release'
 
 # SITEMAP CONFIG
-TARGET_SITEMAP_FILES = ['index.html', 'blog.html']
+TARGET_SITEMAP_FILES = ['index.html', 'blog.html', 'shop.html']
 XMLNS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 XMLNS_XHTML = "http://www.w3.org/1999/xhtml"
 XMLNS_IMAGE = "http://www.google.com/schemas/sitemap-image/1.1"
@@ -147,7 +147,8 @@ class PageRecord:
       if not src:
         continue
 
-      if 'icon' in src or 'logo' in src:
+      # Generic catalogue placeholders are not actual product imagery.
+      if 'icon' in src or 'logo' in src or img.has_attr('data-placeholder'):
         continue
 
       full_img_url = self._resolve_url(src)
@@ -508,8 +509,9 @@ def append_version_to_public_urls(version=None):
 
   public_hosts = {'petramuckova.cz', 'www.petramuckova.cz'}
   language_pattern = '|'.join(re.escape(lang) for lang in CONTENT_DIRS)
+  page_pattern = '|'.join(re.escape(os.path.splitext(page)[0]) for page in TARGET_SITEMAP_FILES)
   public_page_pattern = re.compile(
-    rf'/(?:{language_pattern})(?:/?|/(?:index|blog)(?:\.html)?)'
+    rf'/(?:{language_pattern})(?:/?|/(?:{page_pattern})(?:\.html|/)?)'
   )
   anchor_href_pattern = re.compile(
     r'(?P<prefix><a\b[^>]*?\bhref\s*=\s*)(?P<quote>["\'])(?P<url>.*?)(?P=quote)',
@@ -703,6 +705,10 @@ def parse_release_arguments():
 
 if __name__ == "__main__":
   asset_ref, site_version = parse_release_arguments()
+
+  # Validate and render the shared catalogue before replacing the release.
+  from build_shop import build_shop
+  build_shop()
 
   # Resolve Node.js/npm before replacing an existing release.
   npm_executable, node_environment = ensure_node_tooling()

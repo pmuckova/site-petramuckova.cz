@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.petramuckova.cz/cs/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/cs" />
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/en/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/en" />
@@ -130,7 +130,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/de/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/de" />
@@ -194,7 +194,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/fr/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/fr" />
@@ -258,7 +258,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/it/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/it" />
@@ -322,7 +322,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/es/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/es" />
@@ -386,7 +386,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/pl/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/pl" />
@@ -450,7 +450,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/ru/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/ru" />
@@ -514,7 +514,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/ja/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/ja" />
@@ -578,7 +578,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/zh/index.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/zh" />
@@ -642,7 +642,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/cs/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/cs/blog" />
@@ -668,11 +668,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>Obrázek 1: Průběh otáček motoru při výtlaku v závislosti na čase</image:title>
@@ -802,7 +797,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/en/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/en/blog" />
@@ -828,11 +823,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>Figure 1: Engine speed course during water delivery versus time</image:title>
@@ -962,7 +952,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/de/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/de/blog" />
@@ -988,11 +978,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>Abbildung 1: Drehzahlverlauf des Motors während der Förderung in Abhängigkeit von der Zeit</image:title>
@@ -1122,7 +1107,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/fr/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/fr/blog" />
@@ -1148,11 +1133,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>Figure 1 : Évolution du régime moteur lors du refoulement en fonction du temps</image:title>
@@ -1282,7 +1262,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/it/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/it/blog" />
@@ -1308,11 +1288,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>Figura 1: Andamento del regime del motore durante la mandata in funzione del tempo</image:title>
@@ -1442,7 +1417,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/es/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/es/blog" />
@@ -1468,11 +1443,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>Figura 1: Curso de las revoluciones del motor durante la descarga en función del tiempo</image:title>
@@ -1602,7 +1572,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/pl/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/pl/blog" />
@@ -1628,11 +1598,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>Rysunek 1: Przebieg obrotów silnika podczas tłoczenia w zależności od czasu</image:title>
@@ -1762,7 +1727,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/ru/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/ru/blog" />
@@ -1788,11 +1753,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>Рисунок 1: График оборотов двигателя при подаче воды в зависимости от времени</image:title>
@@ -1922,7 +1882,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/ja/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/ja/blog" />
@@ -1948,11 +1908,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>図1：時間経過に伴う放水時のエンジン回転数の推移</image:title>
@@ -2077,7 +2032,7 @@
   </url>
   <url>
     <loc>https://www.petramuckova.cz/zh/blog.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="canonical" href="https://www.petramuckova.cz/zh/blog" />
@@ -2103,11 +2058,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/blog" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/blog" />
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
-      <image:title>Image</image:title>
-      <image:caption>Image</image:caption>
-    </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article2-1.webp</image:loc>
       <image:title>图 1：出水时发动机转速随时间的变化过程</image:title>
@@ -2229,5 +2179,445 @@
       <video:description>或者说托马斯·穆克领航并获胜！</video:description>
       <video:player_loc>https://www.youtube-nocookie.com/embed/e8USvpfeNeQ?rel=0&amp;modestbranding=1</video:player_loc>
     </video:video>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/cs/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Vačková hřídel - přebrus</image:title>
+      <image:caption>Vačková hřídel - přebrus</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Vačková hřídel - výroba komplet</image:title>
+      <image:caption>Vačková hřídel - výroba komplet</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Výfukové svody laděné</image:title>
+      <image:caption>Výfukové svody laděné</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/en/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Camshaft - regrind</image:title>
+      <image:caption>Camshaft - regrind</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Camshaft - complete manufacturing</image:title>
+      <image:caption>Camshaft - complete manufacturing</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Tuned exhaust headers</image:title>
+      <image:caption>Tuned exhaust headers</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/de/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Nockenwelle - Umschleifen</image:title>
+      <image:caption>Nockenwelle - Umschleifen</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Nockenwelle - Fertigung komplett</image:title>
+      <image:caption>Nockenwelle - Fertigung komplett</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Fächerkrümmer (Ladbare Abgaskrümmer)</image:title>
+      <image:caption>Fächerkrümmer (Ladbare Abgaskrümmer)</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/fr/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Arbre à cames - rectification</image:title>
+      <image:caption>Arbre à cames - rectification</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Arbre à cames - fabrication complète</image:title>
+      <image:caption>Arbre à cames - fabrication complète</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Collecteurs d&apos;échappement accordés</image:title>
+      <image:caption>Collecteurs d&apos;échappement accordés</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/it/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Albero a camme - riprofilatura</image:title>
+      <image:caption>Albero a camme - riprofilatura</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Albero a camme - produzione completa</image:title>
+      <image:caption>Albero a camme - produzione completa</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Collettori di scarico accordati</image:title>
+      <image:caption>Collettori di scarico accordati</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/es/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Árbol de levas - rectificado</image:title>
+      <image:caption>Árbol de levas - rectificado</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Árbol de levas - fabricación completa</image:title>
+      <image:caption>Árbol de levas - fabricación completa</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Colectores de escape afinados</image:title>
+      <image:caption>Colectores de escape afinados</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/pl/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Wałek rozrządu - szlifowanie</image:title>
+      <image:caption>Wałek rozrządu - szlifowanie</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Wałek rozrządu - produkcja kompletna</image:title>
+      <image:caption>Wałek rozrządu - produkcja kompletna</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Sportowe kolektory wydechowe (tzw. barany)</image:title>
+      <image:caption>Sportowe kolektory wydechowe (tzw. barany)</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/ru/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Распределительный вал - перешлифовка</image:title>
+      <image:caption>Распределительный вал - перешлифовка</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>Распределительный вал - изготовление (комплект)</image:title>
+      <image:caption>Распределительный вал - изготовление (комплект)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>Выпускные коллекторы настроенные</image:title>
+      <image:caption>Выпускные коллекторы настроенные</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/ja/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>カムシャフト - 再研磨</image:title>
+      <image:caption>カムシャフト - 再研磨</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>カムシャフト - 完全製造</image:title>
+      <image:caption>カムシャフト - 完全製造</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>チューニングエキゾーストマニホールド</image:title>
+      <image:caption>チューニングエキゾーストマニホールド</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.petramuckova.cz/zh/shop.html</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="canonical" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="cs" href="https://www.petramuckova.cz/cs/shop" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.petramuckova.cz/en/shop" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.petramuckova.cz/de/shop" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.petramuckova.cz/fr/shop" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.petramuckova.cz/it/shop" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.petramuckova.cz/es/shop" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop.html" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.petramuckova.cz/pl/shop" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.petramuckova.cz/ru/shop" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.petramuckova.cz/ja/shop" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop.html" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.petramuckova.cz/zh/shop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.petramuckova.cz/cs/shop" />
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>凸轮轴 - 重磨</image:title>
+      <image:caption>凸轮轴 - 重磨</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/site-camshaft-2.webp</image:loc>
+      <image:title>凸轮轴 - 完整制造</image:title>
+      <image:caption>凸轮轴 - 完整制造</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/blog-article1-1.jpg</image:loc>
+      <image:title>高性能排气歧管</image:title>
+      <image:caption>高性能排气歧管</image:caption>
+    </image:image>
   </url>
 </urlset>
