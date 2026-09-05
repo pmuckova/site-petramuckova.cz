@@ -78,7 +78,7 @@ def main():
             for card in soup.select('.shop-product'):
                 source_product = next(product for product in catalog['products'] if product['id'] == card['id'])
                 wizard = card.select_one('form[data-wizard]')
-                assert len(card.find_all(recursive=False)) == (4 if wizard else 3)
+                assert len(card.find_all(recursive=False)) == 4
                 assert card.find(recursive=False).name == 'h3'
                 assert card.select_one(':scope > .shop-photo img')
                 assert card.select_one(':scope > .shop-product-content > .shop-product-body .shop-description')
@@ -125,17 +125,19 @@ def main():
                     assert 'Ø' not in wizard.get_text()
                     assert not card.select('[data-quantity], [data-change]')
                 else:
-                    assert card.select_one(':scope > .shop-product-content > .shop-prices')
-                    assert len(card.select(':scope > .shop-product-content > .shop-prices .shop-price-row')) == 1
+                    item_form = card.select_one('form[data-order-product]')
+                    assert item_form.select_one('table.shop-profile-table input[type=radio][name=option]')
+                    assert item_form.select_one('tbody[data-profile-fields][hidden] input[data-order-quantity][disabled]')
+                    assert item_form.select_one('tbody[data-profile-fields] button[type=submit].btn-submit[disabled]')
+                    assert not card.select('.shop-prices, .shop-product-order, [data-change], [data-quantity]')
                     assert not card.select('.shop-dealer-minimum')
-                    assert card.select_one(':scope > .shop-product-content > .shop-product-order [data-quantity]')
-                    assert card.select_one('input[data-quantity]')['max'] == '9999'
+                    assert item_form.select_one('input[data-order-quantity]')['max'] == '9999'
                 photo_links = card.select('.shop-photo-link')
                 for photo_link in photo_links:
                     assert photo_link['href'] == photo_link.img['src']
                     assert photo_link.select_one(':scope > .tech-frame > img')
                 if source_product.get('images'):
-                    assert card.select_one('.shop-photo-gallery')
+                    assert bool(card.select_one('.shop-photo-gallery')) == (len(source_product['images']) > 1)
                     assert len(photo_links) == len(source_product['images'])
                     for photo_link, source_image in zip(photo_links, source_product['images']):
                         assert photo_link['href'].endswith(source_image['src'])
@@ -147,7 +149,7 @@ def main():
             assert soup.select_one('dialog#shop-lightbox.lightbox-modal .lightbox-img')
             assert soup.select_one('script[src*="choices.js@11.1.0"][defer]')
             assert soup.select_one('link[href*="choices.js@11.1.0"]')
-            assert len(soup.select('.shop-variant.form-group > select.custom-select[data-variant]')) == sum(bool(p['variants']) for p in catalog['products'])
+            assert len(soup.select('select[data-order-variant]')) == sum(len(option['variantIds']) > 1 for p in catalog['products'] for option in p.get('options', []))
             assert urlsplit(soup.select_one('#navLinks > li > a.active-link')['href']).path == f'/{language}/shop'
             assert soup.select_one('.blog-sidebar > #basket.toc-wrapper')
             assert soup.select_one('main .shop-layout > .shop-sidebar > #basket')

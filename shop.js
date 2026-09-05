@@ -55,9 +55,16 @@
     function normaliseBasket(value, products) {
         const rows = value && value.version === 1 && Array.isArray(value.items) ? value.items : [];
         const catalog = new Map(products.map(product => [product.id, product]));
+        const legacy = new Map(products.flatMap(product => (product.legacyItems || []).map(item =>
+            [item.id, { id: product.id, sourceVariant: item.variant, variant: item.targetVariant }])));
         const items = new Map();
         rows.slice(0, MAX_ITEMS).forEach(row => {
             if (!row || typeof row !== 'object') return;
+            if (!catalog.has(row.id)) {
+                const replacement = legacy.get(row.id);
+                if (!replacement || (row.variant || '') !== replacement.sourceVariant) return;
+                row = { ...row, id: replacement.id, variant: replacement.variant };
+            }
             const product = catalog.get(row.id);
             if (!product || !Number.isInteger(row.quantity) || row.quantity < 1) return;
             if (product.kind === 'wizard') {
@@ -86,6 +93,15 @@
         return normaliseBasket({ version: 1, items: next }, products);
     }
 
+    function addOrderItem(items, id, variant, quantity, products) {
+        const product = products.find(product => product.id === id);
+        if (!product || product.kind === 'wizard' || !Number.isInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY
+            || (product.variants.length ? !product.variants.some(value => value.id === variant) : variant !== '')) return items;
+        const existing = items.find(item => item.id === id && item.variant === variant);
+        if ((!existing && items.length >= MAX_ITEMS) || quantity + (existing?.quantity || 0) > MAX_QUANTITY) return items;
+        return setQuantity(items, id, variant, quantity + (existing?.quantity || 0), products);
+    }
+
     function basketSummary(items, products) {
         const catalog = new Map(products.map(product => [product.id, product]));
         return items.reduce((result, item) => {
@@ -99,7 +115,11 @@
     }
 
     function itemPrice(item, product) {
-        if (product?.kind !== 'wizard') return product;
+        if (!product) return null;
+        if (product.kind !== 'wizard') {
+            const variant = product.variants.find(variant => variant.id === item.variant);
+            return { price: variant?.price ?? product.price, priceType: product.priceType };
+        }
         const profile = product.wizard.profiles.find(profile => profile.id === item.configuration?.profile);
         return profile ? { price: profile.price, priceType: 'fixed' } : null;
     }
@@ -351,18 +371,88 @@
         container.addEventListener('click', selectQuantity);
     }
 
+    function initRadioSubform(form, name, onSelect) {
+        const fields = form.querySelector('[data-profile-fields]');
+        let selected = null;
+        function sync() {
+            selected = form.querySelector(`input[name="${name}"]:checked`);
+            const option = selected?.closest('.shop-profile-option');
+            fields.hidden = !option;
+            if (option) option.after(fields);
+            onSelect(selected?.value || '');
+        }
+        form.addEventListener('click', event => {
+            const radio = event.target;
+            if (event.defaultPrevented || radio.type !== 'radio' || radio.name !== name) return;
+            if (radio === selected) {
+                radio.checked = false;
+                radio.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        });
+        form.addEventListener('keydown', event => {
+            const radio = event.target;
+            if (event.key !== ' ' || radio.type !== 'radio' || radio.name !== name) return;
+            event.preventDefault();
+            if (!event.repeat) radio.click();
+        });
+        form.addEventListener('change', event => { if (event.target.name === name) sync(); });
+        sync();
+        return () => selected?.value || '';
+    }
+
+    function initOrderItemForm(form, product, siteForm, selectInstances, text, onAdd) {
+        const validation = siteForm.initValidation(form, { requiredMessage: text.requiredWarning });
+        const quantity = form.querySelector('[data-order-quantity]');
+        const variantRows = [...form.querySelectorAll('[data-order-variant-fields]')];
+        const submit = form.querySelector('button[type="submit"]');
+        const status = form.querySelector('.shop-wizard-status');
+        let selectedOption = null;
+        let variantSelect = null;
+        initBasketQuantitySelection(form, 'input[data-order-quantity]');
+        initRadioSubform(form, 'option', value => {
+            selectedOption = product.options.find(option => option.id === value);
+            variantSelect = null;
+            quantity.disabled = !selectedOption;
+            submit.disabled = !selectedOption;
+            variantRows.forEach(row => {
+                const select = row.querySelector('select');
+                const choices = selectInstances.get(select);
+                const active = row.dataset.orderVariantFields === value;
+                row.hidden = !active;
+                select.disabled = !active;
+                choices?.setChoiceByValue('');
+                select.value = '';
+                if (active) { choices?.enable(); variantSelect = select; }
+                else choices?.disable();
+            });
+            validation.reset();
+            status.hidden = true;
+        });
+        form.addEventListener('input', () => { status.hidden = true; });
+        form.addEventListener('change', () => { status.hidden = true; });
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+            status.hidden = true;
+            if (!selectedOption || !validation.validate()) return;
+            const variant = variantSelect ? variantSelect.value : selectedOption.variants[0]?.id || '';
+            if (selectedOption.variants.length && !selectedOption.variants.some(option => option.id === variant)) return;
+            const count = Number(quantity.value);
+            if (!Number.isInteger(count) || count < 1 || count > MAX_QUANTITY) return;
+            const error = onAdd(variant, count);
+            if (error) { status.textContent = error; status.hidden = false; }
+        });
+    }
+
     function initWizardForm(form, product, siteForm, selectInstances, text, onAdd) {
-        const validation = siteForm.initValidation(form);
+        const validation = siteForm.initValidation(form, { requiredMessage: text.requiredWarning });
         initBasketQuantitySelection(form, 'input[data-engine-field]');
         const bearing = form.elements.namedItem('bearing');
-        const profileFields = form.querySelector('[data-profile-fields]');
         const bearingFields = form.querySelector('[data-bearing-fields]');
         const engineFields = [...form.querySelectorAll('[data-engine-field]')];
         const bearingSelect = selectInstances.get(bearing);
         const status = form.querySelector('.shop-wizard-status');
         const submit = form.querySelector('button[type="submit"]');
         const read = name => form.elements.namedItem(name)?.value || '';
-        let selectedProfile = null;
 
         function syncBearings(profile) {
             if (!bearing || !bearingFields) return;
@@ -379,51 +469,24 @@
             }
         }
 
-        function syncProfileFields() {
-            const selected = form.querySelector('input[name="profile"]:checked');
-            selectedProfile = selected;
-            const profile = product.wizard.profiles.find(option => option.id === selected?.value);
-            const option = selected?.closest('.shop-profile-option');
-            if (profileFields) {
-                profileFields.hidden = !option;
-                if (option) option.after(profileFields);
-            }
+        const selectedProfile = initRadioSubform(form, 'profile', value => {
+            const profile = product.wizard.profiles.find(option => option.id === value);
             engineFields.forEach(field => { field.disabled = !profile; });
             submit.disabled = !profile;
             syncBearings(profile);
             // The optional radio group opens/closes the subform; it is not a
             // validated order field. Closing it also clears its field warnings.
             if (!profile) validation.reset();
-        }
-
-        // Native radio activation happens before click. Track the previous
-        // selection so activating it again can clear the group, including
-        // label clicks and touch, without disturbing arrow-key navigation.
-        form.addEventListener('click', event => {
-            const radio = event.target;
-            if (event.defaultPrevented || radio.type !== 'radio' || radio.name !== 'profile') return;
-            if (radio === selectedProfile) {
-                radio.checked = false;
-                radio.dispatchEvent(new Event('change', { bubbles: true }));
-            }
-        });
-        // Browsers do not emit a click for Space on an already checked radio.
-        form.addEventListener('keydown', event => {
-            const radio = event.target;
-            if (event.key !== ' ' || radio.type !== 'radio' || radio.name !== 'profile') return;
-            event.preventDefault();
-            if (!event.repeat) radio.click();
         });
         form.addEventListener('input', () => { status.hidden = true; });
         form.addEventListener('change', event => {
             status.hidden = true;
-            if (event.target.name === 'profile') syncProfileFields();
         });
         form.addEventListener('submit', event => {
             event.preventDefault();
             status.hidden = true;
             status.textContent = '';
-            if (!selectedProfile || !validation.validate()) return;
+            if (!selectedProfile() || !validation.validate()) return;
             const configuration = normaliseConfiguration({
                 profile: read('profile'), bearing: read('bearing'),
                 values: Object.fromEntries(product.wizard.fields.map(field => [field.id, read(field.id)])),
@@ -434,10 +497,9 @@
                 status.hidden = false;
             }
         });
-        syncProfileFields();
     }
 
-    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseConfiguration, addConfiguredItem, removeBasketItem, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, initPhotoGalleries, basketRemoveButton, initBasketQuantitySelection, initWizardForm };
+    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseConfiguration, addConfiguredItem, addOrderItem, removeBasketItem, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, initPhotoGalleries, basketRemoveButton, initBasketQuantitySelection, initRadioSubform, initOrderItemForm, initWizardForm };
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     if (!root.document) return;
 
@@ -536,17 +598,6 @@
                 } else row.append(controls(item.id, item.variant, name, item.quantity));
                 basketList.append(row);
             });
-            document.querySelectorAll('.shop-product').forEach(card => {
-                const product = products.get(card.dataset.product);
-                if (product.kind === 'wizard') return;
-                const variant = card.querySelector('[data-variant]')?.value || '';
-                const validVariant = !product.variants.length || product.variants.some(v => v.id === variant);
-                const value = quantity(product.id, variant);
-                card.querySelector('[data-quantity]').value = String(value);
-                card.querySelector('[data-quantity]').disabled = !validVariant;
-                card.querySelector('[data-change="-1"]').disabled = !validVariant || !value;
-                card.querySelector('[data-change="1"]').disabled = !validVariant || value >= MAX_QUANTITY;
-            });
             const summary = basketSummary(items, config.products);
             document.getElementById('basket-subtotal').textContent = money.format(summary.subtotalCents / 100);
             document.getElementById('basket-empty').hidden = !!items.length;
@@ -573,9 +624,9 @@
         }
 
         function targetItem(control) {
-            const card = control.closest('[data-product]');
+            const card = control.closest('.shop-basket-item');
             if (!card) return null;
-            return { id: card.dataset.product, variant: card.dataset.variantId ?? (card.querySelector('[data-variant]')?.value || ''), key: card.dataset.lineKey };
+            return { id: card.dataset.product, variant: card.dataset.variantId || '', key: card.dataset.lineKey };
         }
 
         document.addEventListener('click', event => {
@@ -592,7 +643,6 @@
             update(item.id, item.variant, next);
         });
         document.addEventListener('change', event => {
-            if (event.target.matches('[data-variant]')) { render(); return; }
             if (!event.target.matches('[data-quantity]')) return;
             const item = targetItem(event.target);
             const value = event.target.value === '' ? 0 : event.target.valueAsNumber;
@@ -605,6 +655,19 @@
             if (event.key !== STORAGE_KEY && event.key !== null) return;
             try { items = normaliseBasket(JSON.parse(event.newValue), config.products); } catch (_) { items = []; }
             invalidateDraft(); render();
+        });
+
+        document.querySelectorAll('form[data-order-product]').forEach(itemForm => {
+            const product = products.get(itemForm.dataset.orderProduct);
+            initOrderItemForm(itemForm, product, root.SiteForm, selectInstances, t, (variant, count) => {
+                const existing = items.find(item => item.id === product.id && item.variant === variant);
+                if (count + (existing?.quantity || 0) > MAX_QUANTITY) return t.quantityLimit;
+                const next = addOrderItem(items, product.id, variant, count, config.products);
+                if (next === items) return t.basketFull;
+                items = next;
+                basketChanged();
+                return '';
+            });
         });
 
         document.querySelectorAll('form[data-wizard]').forEach(wizardForm => {

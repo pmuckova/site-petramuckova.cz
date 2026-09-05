@@ -2,7 +2,7 @@
 (function (root) {
     'use strict';
 
-    function initValidation(form) {
+    function initValidation(form, options = {}) {
         if (!form) return null;
         const fields = [...form.querySelectorAll('.validate-me')];
         const warnings = new Map(fields.map(input => [input, input.getAttribute('data-warning-id')
@@ -11,7 +11,7 @@
         // warning temporarily replaces an email/phone/year format warning.
         const messages = new Map(fields.map(input => [input, warnings.get(input).textContent.trim()]));
         const requiredField = fields.find(input => input.required && input.type === 'text');
-        const requiredMessage = messages.get(requiredField) || 'This field is required.';
+        const requiredMessage = options.requiredMessage || messages.get(requiredField) || 'This field is required.';
 
         function showWarning(input, message) {
             input.classList.toggle('input-warning', Boolean(message));

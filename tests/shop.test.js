@@ -18,23 +18,23 @@ test('only IDs, variants and quantities survive storage loading', () => {
     assert.deepEqual(normalise([{ ...row(), email: 'private@example.test', company: 'Private company', phone: '+420 123 456 789', address: 'Private', price: 1, admin: true }]), [row()]);
 });
 test('removed products and invalid variants are discarded', () => {
-    assert.deepEqual(normalise([row('gone'), row('exhaust-headers'), row('head-gasket', 1, 'unknown'), row('connecting-rod-160', 1, 'invalid')]), []);
+    assert.deepEqual(normalise([row('gone'), row('exhaust-headers'), row('head-gasket', 1, 'unknown'), row('ignition-coil-contact', 1, 'invalid')]), []);
 });
 test('quantities must be positive integers', () => {
-    for (const quantity of [-1, 0, 1.5, '2', null, NaN, Infinity]) assert.deepEqual(normalise([row('connecting-rod-160', quantity)]), []);
+    for (const quantity of [-1, 0, 1.5, '2', null, NaN, Infinity]) assert.deepEqual(normalise([row('ignition-coil-contact', quantity)]), []);
 });
 test('duplicate rows merge and are bounded', () => {
-    assert.deepEqual(normalise([row('connecting-rod-160', 6000), row('connecting-rod-160', 6000)]), [row('connecting-rod-160', 9999)]);
+    assert.deepEqual(normalise([row('ignition-coil-contact', 6000), row('ignition-coil-contact', 6000)]), [row('ignition-coil-contact', 9999)]);
 });
 test('quantities above 99 and up to 9999 survive edits, storage and totals', () => {
     assert.equal(shop.MAX_QUANTITY, 9999);
     for (const quantity of [100, 1000, 9999]) {
-        const items = shop.setQuantity([], 'connecting-rod-160', '', quantity, products);
-        assert.deepEqual(items, [row('connecting-rod-160', quantity)]);
+        const items = shop.setQuantity([], 'ignition-coil-contact', '', quantity, products);
+        assert.deepEqual(items, [row('ignition-coil-contact', quantity)]);
         assert.deepEqual(normalise(items), items);
         const summary = shop.basketSummary(items, products);
         assert.equal(summary.count, quantity);
-        assert.equal(summary.subtotalCents, products.find(product => product.id === 'connecting-rod-160').price * 100 * quantity);
+        assert.equal(summary.subtotalCents, products.find(product => product.id === 'ignition-coil-contact').price * 100 * quantity);
     }
 });
 test('variant quantities stay separate', () => {
@@ -43,20 +43,20 @@ test('variant quantities stay separate', () => {
     assert.equal(shop.basketSummary(basket, products).subtotalCents, 3300000);
 });
 test('plus, minus and direct edits update the same line', () => {
-    let items = shop.setQuantity([], 'connecting-rod-160', '', 1, products);
-    items = shop.setQuantity(items, 'connecting-rod-160', '', 5, products);
-    assert.deepEqual(items, [row('connecting-rod-160', 5)]);
-    items = shop.setQuantity(items, 'connecting-rod-160', '', 0, products);
+    let items = shop.setQuantity([], 'ignition-coil-contact', '', 1, products);
+    items = shop.setQuantity(items, 'ignition-coil-contact', '', 5, products);
+    assert.deepEqual(items, [row('ignition-coil-contact', 5)]);
+    items = shop.setQuantity(items, 'ignition-coil-contact', '', 0, products);
     assert.deepEqual(items, []);
 });
 test('quantity changes preserve basket order', () => {
-    const items = normalise([row(), row('connecting-rod-160')]);
-    assert.deepEqual(shop.setQuantity(items, 'resonance-exhaust', '', 2, products), [row('resonance-exhaust', 2), row('connecting-rod-160')]);
+    const items = normalise([row(), row('ignition-coil-contact')]);
+    assert.deepEqual(shop.setQuantity(items, 'resonance-exhaust', '', 2, products), [row('resonance-exhaust', 2), row('ignition-coil-contact')]);
 });
 test('removing a basket line keeps other products and variants unchanged', () => {
-    const items = normalise([row('exhaust-headers', 2, 'small'), row('exhaust-headers', 3, 'large'), row('connecting-rod-160')]);
+    const items = normalise([row('exhaust-headers', 2, 'small'), row('exhaust-headers', 3, 'large'), row('ignition-coil-contact')]);
     const remaining = shop.setQuantity(items, 'exhaust-headers', 'small', 0, products);
-    assert.deepEqual(remaining, [row('exhaust-headers', 3, 'large'), row('connecting-rod-160')]);
+    assert.deepEqual(remaining, [row('exhaust-headers', 3, 'large'), row('ignition-coil-contact')]);
 });
 test('basket removal uses a labelled cross button with the existing removal and focus hooks', () => {
     const doc = { createElement(tagName) {
@@ -81,9 +81,9 @@ test('basket removal uses a labelled cross button with the existing removal and 
     }
 });
 test('large or fractional direct updates are clamped and invalid values ignored', () => {
-    assert.deepEqual(shop.setQuantity([], 'connecting-rod-160', '', 10000, products), [row('connecting-rod-160', 9999)]);
-    assert.deepEqual(shop.setQuantity([], 'connecting-rod-160', '', 2.9, products), [row('connecting-rod-160', 2)]);
-    assert.deepEqual(shop.setQuantity([], 'connecting-rod-160', '', NaN, products), []);
+    assert.deepEqual(shop.setQuantity([], 'ignition-coil-contact', '', 10000, products), [row('ignition-coil-contact', 9999)]);
+    assert.deepEqual(shop.setQuantity([], 'ignition-coil-contact', '', 2.9, products), [row('ignition-coil-contact', 2)]);
+    assert.deepEqual(shop.setQuantity([], 'ignition-coil-contact', '', NaN, products), []);
 });
 
 function basketSelectionFixture() {
@@ -288,12 +288,12 @@ test('product photos open the blog-style viewer with the full image, alt text an
         assert.equal(doc.activeElement, link);
     }
 });
-test('both photos in every camshaft gallery enlarge independently and restore the correct link', () => {
+test('all photos in every camshaft gallery enlarge independently and restore the correct link', () => {
     for (const productId of ['skoda-ohv-camshaft', 'taz-camshaft']) {
         const photos = products.find(product => product.id === productId).images
             .map(image => ({ src: image.src, alt: image.alt.cs }));
         const { doc, viewer, image, links } = photoViewerFixture({ photos });
-        assert.equal(links.length, 2);
+        assert.equal(links.length, photos.length);
         links.forEach((link, index) => {
             link.fire('click');
             assert.equal(viewer.open, true);

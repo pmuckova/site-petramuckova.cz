@@ -644,7 +644,26 @@
       "id": "exhaust-headers",
       "price": 6600,
       "priceType": "fixed",
-      "image": "/assets/desktop/blog-article1-1.jpg",
+      "image": "/assets/desktop/svody-ladene-01.jpeg",
+      "images": [
+        {
+          "src": "/assets/desktop/svody-ladene-01.jpeg",
+          "width": 435,
+          "height": 493,
+          "alt": {
+            "cs": "Výfukové svody laděné",
+            "en": "Tuned exhaust headers",
+            "de": "Fächerkrümmer (Ladbare Abgaskrümmer)",
+            "fr": "Collecteurs d'échappement accordés",
+            "it": "Collettori di scarico accordati",
+            "es": "Colectores de escape afinados",
+            "pl": "Sportowe kolektory wydechowe (tzw. barany)",
+            "ru": "Выпускные коллекторы настроенные",
+            "ja": "チューニングエキゾーストマニホールド",
+            "zh": "高性能排气歧管"
+          }
+        }
+      ],
       "variants": [
         {
           "id": "small",
@@ -752,112 +771,120 @@
       "dealerMinimum": 3
     },
     {
-      "id": "connecting-rod-160",
+      "id": "connecting-rod",
       "price": 12500,
       "priceType": "fixed",
-      "image": null,
-      "variants": [],
+      "image": "/assets/desktop/ojnice-h-kovana-01.jpeg",
+      "images": [
+        {
+          "src": "/assets/desktop/ojnice-h-kovana-01.jpeg",
+          "width": 4000,
+          "height": 2252,
+          "alt": {
+            "cs": "Ojnice H kovaná",
+            "en": "Forged H-beam Connecting Rod",
+            "de": "Geschmiedetes H-Schaft-Pleuel",
+            "fr": "Bielle forgée en H",
+            "it": "Biella forgiata ad H",
+            "es": "Biela forjada en H",
+            "pl": "Korbowód kuty H",
+            "ru": "Шатун H-образный кованый",
+            "ja": "鍛造H断面コンロッド",
+            "zh": "H型锻造连杆"
+          }
+        }
+      ],
+      "variants": [
+        {
+          "id": "160",
+          "label": "160 mm",
+          "price": 12500
+        },
+        {
+          "id": "156",
+          "label": "156 mm",
+          "price": 11500
+        }
+      ],
       "translations": {
         "cs": {
           "name": "Ojnice H kovaná",
-          "description": "Délka 160mm (série)"
+          "description": "Délka 160mm (série)\n\nDélka 156mm (pro motory se zvětšeným zdvihem - lze upravit vyosení také pro KH \"Vošvrda\")"
         },
         "en": {
           "name": "Forged H-beam Connecting Rod",
-          "description": "Length 160mm (stock)"
+          "description": "Length 160mm (stock)\n\nLength 156mm (for engines with increased stroke - offset can also be adjusted for \"Vošvrda\" crankshafts)"
         },
         "de": {
           "name": "Geschmiedetes H-Schaft-Pleuel",
-          "description": "Länge 160mm (Serie)"
+          "description": "Länge 160mm (Serie)\n\nLänge 156mm (für Motoren mit vergrößertem Hub - Versatz kann auch für Kurbelwelle \"Vošvrda\" angepasst werden)"
         },
         "fr": {
           "name": "Bielle forgée en H",
-          "description": "Longueur 160mm (série)"
+          "description": "Longueur 160mm (série)\n\nLongueur 156mm (pour moteurs à course augmentée - le déport peut également être ajusté pour vilebrequin \"Vošvrda\")"
         },
         "it": {
           "name": "Biella forgiata ad H",
-          "description": "Lunghezza 160mm (serie)"
+          "description": "Lunghezza 160mm (serie)\n\nLunghezza 156mm (per motori con corsa maggiorata - l'offset può essere regolato anche per alberi motore \"Vošvrda\")"
         },
         "es": {
           "name": "Biela forjada en H",
-          "description": "Longitud 160mm (serie)"
+          "description": "Longitud 160mm (serie)\n\nLongitud 156mm (para motores con carrera aumentada - el desplazamiento también se puede ajustar para cigüeñales \"Vošvrda\")"
         },
         "pl": {
           "name": "Korbowód kuty H",
-          "description": "Długość 160mm (seria)"
+          "description": "Długość 160mm (seria)\n\nDługość 156mm (do silników o zwiększonym skoku - przesunięcie można dostosować również dla wałów \"Vošvrda\")"
         },
         "ru": {
           "name": "Шатун H-образный кованый",
-          "description": "Длина 160 мм (серия)"
+          "description": "Длина 160 мм (серия)\n\nДлина 156 мм (для двигателей с увеличенным ходом поршня - можно изменить смещение также для коленвала \"Vošvrda\")"
         },
         "ja": {
           "name": "鍛造H断面コンロッド",
-          "description": "長さ 160mm (純正)"
+          "description": "長さ 160mm (純正)\n\n長さ 156mm (ストロークアップエンジン用 - \"Vošvrda\"クランクシャフト用にオフセット調整可能)"
         },
         "zh": {
           "name": "H型锻造连杆",
-          "description": "长度 160mm (原厂)"
+          "description": "长度 160mm (原厂)\n\n长度 156mm (用于加长冲程发动机 - 也可调整偏移量以适配 \"Vošvrda\" 曲轴)"
         }
       },
-      "dealerPrice": 11800,
-      "dealerMinimum": 4
-    },
-    {
-      "id": "connecting-rod-156",
-      "price": 11500,
-      "priceType": "fixed",
-      "image": null,
-      "variants": [],
-      "translations": {
-        "cs": {
-          "name": "Ojnice H kovaná",
-          "description": "Délka 156mm (pro motory se zvětšeným zdvihem - lze upravit vyosení také pro KH \"Vošvrda\")"
+      "legacyItems": [
+        {
+          "id": "connecting-rod-160",
+          "variant": "",
+          "targetVariant": "160"
         },
-        "en": {
-          "name": "Forged H-beam Connecting Rod",
-          "description": "Length 156mm (for engines with increased stroke - offset can also be adjusted for \"Vošvrda\" crankshafts)"
-        },
-        "de": {
-          "name": "Geschmiedetes H-Schaft-Pleuel",
-          "description": "Länge 156mm (für Motoren mit vergrößertem Hub - Versatz kann auch für Kurbelwelle \"Vošvrda\" angepasst werden)"
-        },
-        "fr": {
-          "name": "Bielle forgée en H",
-          "description": "Longueur 156mm (pour moteurs à course augmentée - le déport peut également être ajusté pour vilebrequin \"Vošvrda\")"
-        },
-        "it": {
-          "name": "Biella forgiata ad H",
-          "description": "Lunghezza 156mm (per motori con corsa maggiorata - l'offset può essere regolato anche per alberi motore \"Vošvrda\")"
-        },
-        "es": {
-          "name": "Biela forjada en H",
-          "description": "Longitud 156mm (para motores con carrera aumentada - el desplazamiento también se puede ajustar para cigüeñales \"Vošvrda\")"
-        },
-        "pl": {
-          "name": "Korbowód kuty H",
-          "description": "Długość 156mm (do silników o zwiększonym skoku - przesunięcie można dostosować również dla wałów \"Vošvrda\")"
-        },
-        "ru": {
-          "name": "Шатун H-образный кованый",
-          "description": "Длина 156 мм (для двигателей с увеличенным ходом поршня - можно изменить смещение также для коленвала \"Vošvrda\")"
-        },
-        "ja": {
-          "name": "鍛造H断面コンロッド",
-          "description": "長さ 156mm (ストロークアップエンジン用 - \"Vošvrda\"クランクシャフト用にオフセット調整可能)"
-        },
-        "zh": {
-          "name": "H型锻造连杆",
-          "description": "长度 156mm (用于加长冲程发动机 - 也可调整偏移量以适配 \"Vošvrda\" 曲轴)"
+        {
+          "id": "connecting-rod-156",
+          "variant": "",
+          "targetVariant": "156"
         }
-      },
-      "dealerPrice": 11000,
-      "dealerMinimum": 4
+      ]
     },
     {
       "id": "ignition-coil-contact",
       "price": 780,
       "priceType": "fixed",
-      "image": null,
+      "image": "/assets/desktop/zapalovaci-civka-01.jpeg",
+      "images": [
+        {
+          "src": "/assets/desktop/zapalovaci-civka-01.jpeg",
+          "width": 2252,
+          "height": 4000,
+          "alt": {
+            "cs": "Zapalovací cívka kontaktního zapalování PAL",
+            "en": "Ignition coil for PAL contact ignition",
+            "de": "Zündspule für PAL Kontaktzündung",
+            "fr": "Bobine d'allumage pour allumage à contact PAL",
+            "it": "Bobina di accensione per accensione a contatti PAL",
+            "es": "Bobina de encendido para encendido por contacto PAL",
+            "pl": "Cewka zapłonowa do zapłonu kontaktowego PAL",
+            "ru": "Катушка зажигания контактного зажигания PAL",
+            "ja": "PAL ポイント式イグニッションコイル",
+            "zh": "PAL 触点式点火线圈"
+          }
+        }
+      ],
       "variants": [],
       "translations": {
         "cs": {
@@ -908,7 +935,26 @@
       "id": "ignition-coil-contactless",
       "price": 1100,
       "priceType": "fixed",
-      "image": null,
+      "image": "/assets/desktop/zapalovaci-civka-01.jpeg",
+      "images": [
+        {
+          "src": "/assets/desktop/zapalovaci-civka-01.jpeg",
+          "width": 2252,
+          "height": 4000,
+          "alt": {
+            "cs": "Zapalovací cívka bezkontaktního zapalování PAL",
+            "en": "Ignition coil for PAL contactless ignition",
+            "de": "Zündspule für PAL kontaktlose Zündung",
+            "fr": "Bobine d'allumage pour allumage sans contact PAL",
+            "it": "Bobina di accensione per accensione senza contatti PAL",
+            "es": "Bobina de encendido para encendido sin contacto PAL",
+            "pl": "Cewka zapłonowa do zapłonu bezkontaktowego PAL",
+            "ru": "Катушка зажигания бесконтактного зажигания PAL",
+            "ja": "PAL フルトラ式イグニッションコイル",
+            "zh": "PAL 无触点式点火线圈"
+          }
+        }
+      ],
       "variants": [],
       "translations": {
         "cs": {
@@ -959,7 +1005,26 @@
       "id": "distributor-rotor",
       "price": null,
       "priceType": "quote",
-      "image": null,
+      "image": "/assets/desktop/palec-rozdelovace-omezovac-01.jpeg",
+      "images": [
+        {
+          "src": "/assets/desktop/palec-rozdelovace-omezovac-01.jpeg",
+          "width": 2046,
+          "height": 2048,
+          "alt": {
+            "cs": "Palec rozdělovače s omezovačem",
+            "en": "Distributor rotor with limiter",
+            "de": "Verteilerläufer mit Begrenzer",
+            "fr": "Doigt d'allumeur avec limiteur",
+            "it": "Spazzola rotante dello spinterogeno con limitatore",
+            "es": "Rotor del distribuidor con limitador",
+            "pl": "Palec rozdzielacza z ogranicznikiem",
+            "ru": "Бегунок распределителя с ограничителем",
+            "ja": "リミッター付きディストリビューターローター",
+            "zh": "带限速器的分电器转子"
+          }
+        }
+      ],
       "variants": [],
       "translations": {
         "cs": {
@@ -1214,7 +1279,43 @@
       "id": "head-gasket",
       "price": 620,
       "priceType": "fixed",
-      "image": null,
+      "image": "/assets/desktop/tesneni-valce-01.jpeg",
+      "images": [
+        {
+          "src": "/assets/desktop/tesneni-valce-01.jpeg",
+          "width": 1600,
+          "height": 1200,
+          "alt": {
+            "cs": "Těsnění hlavy válců",
+            "en": "Cylinder head gasket",
+            "de": "Zylinderkopfdichtung",
+            "fr": "Joint de culasse",
+            "it": "Guarnizione testa cilindri",
+            "es": "Junta de culata",
+            "pl": "Uszczelka głowicy cylindrów",
+            "ru": "Прокладка головки блока цилиндров (ГБЦ)",
+            "ja": "シリンダーヘッドガスケット",
+            "zh": "气缸盖垫片"
+          }
+        },
+        {
+          "src": "/assets/desktop/tesneni-valce-02.jpeg",
+          "width": 742,
+          "height": 497,
+          "alt": {
+            "cs": "Těsnění hlavy válců — Série (silikonová úprava)",
+            "en": "Cylinder head gasket — Stock (silicone treatment)",
+            "de": "Zylinderkopfdichtung — Serie (Silikonbehandlung)",
+            "fr": "Joint de culasse — Série (traitement silicone)",
+            "it": "Guarnizione testa cilindri — Di serie (trattamento al silicone)",
+            "es": "Junta de culata — De serie (tratamiento de silicona)",
+            "pl": "Uszczelka głowicy cylindrów — Seryjna (wykończenie silikonowe)",
+            "ru": "Прокладка головки блока цилиндров (ГБЦ) — Серийная (силиконовая обработка)",
+            "ja": "シリンダーヘッドガスケット — 純正（シリコン処理）",
+            "zh": "气缸盖垫片 — 原厂（硅胶处理）"
+          }
+        }
+      ],
       "variants": [
         {
           "id": "80-5",
@@ -1223,103 +1324,173 @@
         {
           "id": "82-0",
           "label": "82.0 mm"
+        },
+        {
+          "id": "stock",
+          "label": "Stock (silicone treatment)",
+          "translations": {
+            "cs": "Série (silikonová úprava)",
+            "en": "Stock (silicone treatment)",
+            "de": "Serie (Silikonbehandlung)",
+            "fr": "Série (traitement silicone)",
+            "it": "Di serie (trattamento al silicone)",
+            "es": "De serie (tratamiento de silicona)",
+            "pl": "Seryjna (wykończenie silikonowe)",
+            "ru": "Серийная (силиконовая обработка)",
+            "ja": "純正（シリコン処理）",
+            "zh": "原厂（硅胶处理）"
+          },
+          "price": 160
         }
       ],
       "translations": {
         "cs": {
           "name": "Těsnění hlavy válců",
-          "description": "vrtání 80,5mm / 82,0mm - Rozteč válců 88-88-88mm, tloušťka 1,5mm - Na objednávku lze vyrobit jinou rozteč a tloušťku (cena bude upřesněna při objednávce)"
-        },
-        "en": {
-          "name": "Cylinder head gasket",
-          "description": "bore 80.5mm / 82.0mm - Cylinder spacing 88-88-88mm, thickness 1.5mm - Different spacing and thickness can be manufactured on order (price will be specified upon order)"
-        },
-        "de": {
-          "name": "Zylinderkopfdichtung",
-          "description": "Bohrung 80,5mm / 82,0mm - Zylinderabstand 88-88-88mm, Dicke 1,5mm - Auf Bestellung kann ein anderer Abstand und eine andere Dicke gefertigt werden (Preis wird bei Bestellung präzisiert)"
-        },
-        "fr": {
-          "name": "Joint de culasse",
-          "description": "alésage 80,5mm / 82,0mm - Entraxe cylindres 88-88-88mm, épaisseur 1,5mm - Sur commande, possibilité de fabriquer un autre entraxe et épaisseur (prix précisé à la commande)"
-        },
-        "it": {
-          "name": "Guarnizione testa cilindri",
-          "description": "alesaggio 80,5mm / 82,0mm - Interasse cilindri 88-88-88mm, spessore 1,5mm - Su ordinazione è possibile produrre altri interassi e spessori (il prezzo sarà specificato all'ordine)"
-        },
-        "es": {
-          "name": "Junta de culata",
-          "description": "diámetro 80,5mm / 82,0mm - Distancia entre cilindros 88-88-88mm, espesor 1,5mm - Bajo pedido se puede fabricar otra distancia y espesor (el precio se especificará en el pedido)"
-        },
-        "pl": {
-          "name": "Uszczelka głowicy cylindrów",
-          "description": "średnica 80,5mm / 82,0mm - Rozstaw cylindrów 88-88-88mm, grubość 1,5mm - Na zamówienie można wyprodukować inny rozstaw i grubość (cena zostanie określona przy zamówieniu)"
-        },
-        "ru": {
-          "name": "Прокладка головки блока цилиндров (ГБЦ)",
-          "description": "диаметр 80,5 мм / 82,0 мм - Расстояние между цилиндрами 88-88-88 мм, толщина 1,5 мм - На заказ можно изготовить другое расстояние и толщину (цена будет уточнена при заказе)"
-        },
-        "ja": {
-          "name": "シリンダーヘッドガスケット",
-          "description": "ボア 80.5mm / 82.0mm - ボアピッチ 88-88-88mm、厚さ 1.5mm - 注文に応じて他のピッチや厚さも製造可能（価格は注文時に確定）"
-        },
-        "zh": {
-          "name": "气缸盖垫片",
-          "description": "缸径 80.5mm / 82.0mm - 缸间距 88-88-88mm，厚度 1.5mm - 可按订单生产其他间距和厚度（订货时确定价格）"
-        }
-      },
-      "dealerPrice": 560,
-      "dealerMinimum": 5
-    },
-    {
-      "id": "head-gasket-stock",
-      "price": 160,
-      "priceType": "fixed",
-      "image": null,
-      "variants": [],
-      "translations": {
-        "cs": {
-          "name": "Těsnění hlavy válců série (silikonová úprava)",
           "description": "Pro motory TAZ hasičských agregátů."
         },
         "en": {
-          "name": "Stock cylinder head gasket (silicone treatment)",
+          "name": "Cylinder head gasket",
           "description": "For TAZ firefighting aggregate engines."
         },
         "de": {
-          "name": "Zylinderkopfdichtung Serie (Silikonbehandlung)",
+          "name": "Zylinderkopfdichtung",
           "description": "Für TAZ-Motoren von Feuerwehraggregaten."
         },
         "fr": {
-          "name": "Joint de culasse série (traitement silicone)",
+          "name": "Joint de culasse",
           "description": "Pour moteurs TAZ de groupes de pompage incendie."
         },
         "it": {
-          "name": "Guarnizione testa cilindri di serie (trattamento al silicone)",
+          "name": "Guarnizione testa cilindri",
           "description": "Per motori TAZ di motopompe antincendio."
         },
         "es": {
-          "name": "Junta de culata de serie (tratamiento de silicona)",
+          "name": "Junta de culata",
           "description": "Para motores TAZ de equipos de bombeo contra incendios."
         },
         "pl": {
-          "name": "Seryjna uszczelka głowicy cylindrów (wykończenie silikonowe)",
+          "name": "Uszczelka głowicy cylindrów",
           "description": "Do silników TAZ agregatów pożarniczych."
         },
         "ru": {
-          "name": "Прокладка ГБЦ серийная (силиконовая обработка)",
+          "name": "Прокладка головки блока цилиндров (ГБЦ)",
           "description": "Для двигателей TAZ пожарных агрегатов."
         },
         "ja": {
-          "name": "純正シリンダーヘッドガスケット (シリコン処理)",
+          "name": "シリンダーヘッドガスケット",
           "description": "消防用ポンプユニットの TAZ エンジン用。"
         },
         "zh": {
-          "name": "原厂气缸盖垫片 (硅胶处理)",
+          "name": "气缸盖垫片",
           "description": "适用于消防泵组的 TAZ 发动机。"
         }
       },
-      "dealerPrice": null,
-      "dealerMinimum": null
+      "options": [
+        {
+          "id": "custom",
+          "variantIds": [
+            "80-5",
+            "82-0"
+          ],
+          "translations": {
+            "cs": {
+              "name": "Těsnění hlavy válců",
+              "description": "vrtání 80,5mm / 82,0mm - Rozteč válců 88-88-88mm, tloušťka 1,5mm - Na objednávku lze vyrobit jinou rozteč a tloušťku (cena bude upřesněna při objednávce)"
+            },
+            "en": {
+              "name": "Cylinder head gasket",
+              "description": "bore 80.5mm / 82.0mm - Cylinder spacing 88-88-88mm, thickness 1.5mm - Different spacing and thickness can be manufactured on order (price will be specified upon order)"
+            },
+            "de": {
+              "name": "Zylinderkopfdichtung",
+              "description": "Bohrung 80,5mm / 82,0mm - Zylinderabstand 88-88-88mm, Dicke 1,5mm - Auf Bestellung kann ein anderer Abstand und eine andere Dicke gefertigt werden (Preis wird bei Bestellung präzisiert)"
+            },
+            "fr": {
+              "name": "Joint de culasse",
+              "description": "alésage 80,5mm / 82,0mm - Entraxe cylindres 88-88-88mm, épaisseur 1,5mm - Sur commande, possibilité de fabriquer un autre entraxe et épaisseur (prix précisé à la commande)"
+            },
+            "it": {
+              "name": "Guarnizione testa cilindri",
+              "description": "alesaggio 80,5mm / 82,0mm - Interasse cilindri 88-88-88mm, spessore 1,5mm - Su ordinazione è possibile produrre altri interassi e spessori (il prezzo sarà specificato all'ordine)"
+            },
+            "es": {
+              "name": "Junta de culata",
+              "description": "diámetro 80,5mm / 82,0mm - Distancia entre cilindros 88-88-88mm, espesor 1,5mm - Bajo pedido se puede fabricar otra distancia y espesor (el precio se especificará en el pedido)"
+            },
+            "pl": {
+              "name": "Uszczelka głowicy cylindrów",
+              "description": "średnica 80,5mm / 82,0mm - Rozstaw cylindrów 88-88-88mm, grubość 1,5mm - Na zamówienie można wyprodukować inny rozstaw i grubość (cena zostanie określona przy zamówieniu)"
+            },
+            "ru": {
+              "name": "Прокладка головки блока цилиндров (ГБЦ)",
+              "description": "диаметр 80,5 мм / 82,0 мм - Расстояние между цилиндрами 88-88-88 мм, толщина 1,5 мм - На заказ можно изготовить другое расстояние и толщину (цена будет уточнена при заказе)"
+            },
+            "ja": {
+              "name": "シリンダーヘッドガスケット",
+              "description": "ボア 80.5mm / 82.0mm - ボアピッチ 88-88-88mm、厚さ 1.5mm - 注文に応じて他のピッチや厚さも製造可能（価格は注文時に確定）"
+            },
+            "zh": {
+              "name": "气缸盖垫片",
+              "description": "缸径 80.5mm / 82.0mm - 缸间距 88-88-88mm，厚度 1.5mm - 可按订单生产其他间距和厚度（订货时确定价格）"
+            }
+          }
+        },
+        {
+          "id": "stock",
+          "variantIds": [
+            "stock"
+          ],
+          "translations": {
+            "cs": {
+              "name": "Série (silikonová úprava)",
+              "description": ""
+            },
+            "en": {
+              "name": "Stock (silicone treatment)",
+              "description": ""
+            },
+            "de": {
+              "name": "Serie (Silikonbehandlung)",
+              "description": ""
+            },
+            "fr": {
+              "name": "Série (traitement silicone)",
+              "description": ""
+            },
+            "it": {
+              "name": "Di serie (trattamento al silicone)",
+              "description": ""
+            },
+            "es": {
+              "name": "De serie (tratamiento de silicona)",
+              "description": ""
+            },
+            "pl": {
+              "name": "Seryjna (wykończenie silikonowe)",
+              "description": ""
+            },
+            "ru": {
+              "name": "Серийная (силиконовая обработка)",
+              "description": ""
+            },
+            "ja": {
+              "name": "純正（シリコン処理）",
+              "description": ""
+            },
+            "zh": {
+              "name": "原厂（硅胶处理）",
+              "description": ""
+            }
+          }
+        }
+      ],
+      "legacyItems": [
+        {
+          "id": "head-gasket-stock",
+          "variant": "",
+          "targetVariant": "stock"
+        }
+      ]
     },
     {
       "id": "copper-rings",
@@ -1329,44 +1500,44 @@
       "variants": [],
       "translations": {
         "cs": {
-          "name": "Vymezovací Cu kroužky pod válce - cena dle rozměrů a množství od",
-          "description": "Pro motory TAZ hasičských agregátů."
+          "name": "Vymezovací Cu kroužky pod válce",
+          "description": "Pro motory TAZ hasičských agregátů.\n\nCena dle rozměrů a množství od 40 Kč."
         },
         "en": {
-          "name": "Copper shim rings under cylinders - price according to dimensions and quantity from",
-          "description": "For TAZ firefighting aggregate engines."
+          "name": "Copper shim rings under cylinders",
+          "description": "For TAZ firefighting aggregate engines.\n\nPrice according to dimensions and quantity from 40 CZK."
         },
         "de": {
-          "name": "Kupfer-Ausgleichsringe unter die Zylinder - Preis nach Abmessungen und Menge ab",
-          "description": "Für TAZ-Motoren von Feuerwehraggregaten."
+          "name": "Kupfer-Ausgleichsringe unter die Zylinder",
+          "description": "Für TAZ-Motoren von Feuerwehraggregaten.\n\nPreis nach Abmessungen und Menge ab 40 CZK."
         },
         "fr": {
-          "name": "Bagues d'espacement en Cu sous les cylindres - prix selon dimensions et quantité à partir de",
-          "description": "Pour moteurs TAZ de groupes de pompage incendie."
+          "name": "Bagues d'espacement en Cu sous les cylindres",
+          "description": "Pour moteurs TAZ de groupes de pompage incendie.\n\nPrix selon dimensions et quantité à partir de 40 CZK."
         },
         "it": {
-          "name": "Anelli di spessoramento in rame sotto i cilindri - prezzo secondo dimensioni e quantità da",
-          "description": "Per motori TAZ di motopompe antincendio."
+          "name": "Anelli di spessoramento in rame sotto i cilindri",
+          "description": "Per motori TAZ di motopompe antincendio.\n\nPrezzo secondo dimensioni e quantità da 40 CZK."
         },
         "es": {
-          "name": "Anillos espaciadores de cobre bajo los cilindros - precio según dimensiones y cantidad desde",
-          "description": "Para motores TAZ de equipos de bombeo contra incendios."
+          "name": "Anillos espaciadores de cobre bajo los cilindros",
+          "description": "Para motores TAZ de equipos de bombeo contra incendios.\n\nPrecio según dimensiones y cantidad desde 40 CZK."
         },
         "pl": {
-          "name": "Miedziane pierścienie dystansowe pod cylindry - cena wg wymiarów i ilości od",
-          "description": "Do silników TAZ agregatów pożarniczych."
+          "name": "Miedziane pierścienie dystansowe pod cylindry",
+          "description": "Do silników TAZ agregatów pożarniczych.\n\nCena wg wymiarów i ilości od 40 CZK."
         },
         "ru": {
-          "name": "Регулировочные медные кольца под гильзы - цена в зависимости от размеров и количества от",
-          "description": "Для двигателей TAZ пожарных агрегатов."
+          "name": "Регулировочные медные кольца под гильзы",
+          "description": "Для двигателей TAZ пожарных агрегатов.\n\nЦена в зависимости от размеров и количества от 40 CZK."
         },
         "ja": {
-          "name": "シリンダーライナー用調整銅リング - サイズと数量に応じた価格、最低価格：",
-          "description": "消防用ポンプユニットの TAZ エンジン用。"
+          "name": "シリンダーライナー用調整銅リング",
+          "description": "消防用ポンプユニットの TAZ エンジン用。\n\nサイズと数量に応じた価格、最低価格： 40 CZK."
         },
         "zh": {
-          "name": "缸套下调节铜环 - 价格视尺寸和数量而定，起价",
-          "description": "适用于消防泵组的 TAZ 发动机。"
+          "name": "缸套下调节铜环",
+          "description": "适用于消防泵组的 TAZ 发动机。\n\n价格视尺寸和数量而定，起价 40 CZK."
         }
       },
       "dealerPrice": null,
@@ -1376,7 +1547,26 @@
       "id": "distributor-overhaul",
       "price": 1600,
       "priceType": "fixed",
-      "image": null,
+      "image": "/assets/desktop/repas-rozdelovac-01.jpeg",
+      "images": [
+        {
+          "src": "/assets/desktop/repas-rozdelovac-01.jpeg",
+          "width": 600,
+          "height": 800,
+          "alt": {
+            "cs": "Repase rozdělovače",
+            "en": "Distributor overhaul",
+            "de": "Überholung des Verteilers",
+            "fr": "Réfection de l'allumeur",
+            "it": "Revisione spinterogeno",
+            "es": "Revisión del distribuidor",
+            "pl": "Regeneracja aparatu zapłonowego",
+            "ru": "Реставрация распределителя",
+            "ja": "ディストリビューターのオーバーホール",
+            "zh": "分电器翻新"
+          }
+        }
+      ],
       "variants": [],
       "translations": {
         "cs": {

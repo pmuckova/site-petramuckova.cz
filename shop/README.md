@@ -1,7 +1,7 @@
 # Shop
 
 The shop is a static, general-purpose catalogue at `/{language}/shop`. It contains
-17 catalogue cards, including configurable Škoda OHV and TAZ camshaft products.
+15 catalogue cards, including configurable Škoda OHV and TAZ camshaft products.
 No application framework, accounts, payment provider, server basket or new
 dependencies were introduced.
 
@@ -12,6 +12,18 @@ Edit `shop/catalog.json`:
 - `products`: stable ID, customer price in whole CZK, variants, photo path, and
   names/descriptions for the ten existing languages. Legacy dealer reference values
   in the source catalogue are not rendered or used in basket totals.
+- `variants`: stable IDs and labels, with an optional `price` override and localized
+  labels in `translations`. By default, each variant becomes a radio-table option;
+  a product with no variants still has one selectable option.
+- `options`: optional groups containing a stable ID, translated name/description
+  and `variantIds`. All variants must appear exactly once and variants in a group
+  must share a price. A group with multiple variants shows a required specification
+  dropdown inside its selected subform. The head gasket has two main options:
+  the 620 CZK gasket (80.5/82.0 mm) and the 160 CZK stock silicone-treated gasket.
+- `legacyItems`: explicit old-ID/variant mappings for merged products. The old
+  160/156 mm connecting-rod cards map to `connecting-rod` variants at 12,500/11,500
+  CZK; the old stock gasket maps to `head-gasket:stock`. These mappings preserve
+  existing saved selections without trusting stored names or prices.
 - `priceType`: `fixed`, `from`, or `quote` for standard products. Use `null` for a
   quote-only price. Wizard products use `configured` with a null base price; each
   profile supplies its own price.
@@ -20,8 +32,10 @@ Edit `shop/catalog.json`:
   automatically; add their photo path when available to replace the placeholder.
 - `images`: optional ordered gallery entries with `src`, actual `width`/`height`,
   and `alt` text for each language. Keep `image` equal to the first gallery entry's
-  `src`. All gallery photos stack vertically in the existing image column, keep
-  their natural proportions and faded edges, and open individually in the lightbox.
+  `src`. Gallery photos share a fixed 16:9 frame with faded edges; thumbnails switch
+  the selected photo. They open individually, uncropped, in the lightbox.
+  Use a one-entry array for a single photo with explicit dimensions as well;
+  only arrays with multiple images create the thumbnail gallery.
   Additional gallery images load lazily; visible captions are not added.
 - `placeholderImage`: the shared generated image at
   `/assets/desktop/shop-placeholder.webp`. Its alt text identifies a missing product
@@ -33,7 +47,8 @@ Edit `shop/catalog.json`:
   supplied CSV; other products and the displayed price-list date are unchanged.
 
 IDs and variant IDs must remain stable across edits because saved baskets use
-them. Removed products/variants are dropped on the next page load. Prices always
+them. Removed products/variants without a `legacyItems` mapping are dropped on the
+next page load. Prices always
 come from the current page, never from browser storage. Dealer prices and minimums
 are not displayed. Starting-price and quote-only products are excluded from
 the fixed-price subtotal; delivery is explicitly unpriced.
@@ -54,14 +69,20 @@ indicative price, delivery notices and order button stay visible. Quantity edits
 preserve the list's scroll position. Below the blog's 1400px breakpoint it stays
 inline between the catalogue and order form, with normal page scrolling.
 
-The catalogue always has one product per row. Standard cards have an image-only left
-column and a right column containing a centered heading, justified description,
-prices and quantity controls. CSS Grid places the heading in its own right-column
-row, with the photo and description starting together in the row beneath it.
-Headings match the main team names' uppercase type
-and thin red underline. Prices and quantity use spacing only, without separator lines.
-At 680px and below the card stacks as heading, photo, then description/prices/quantity.
-Specifications, when offered, appear directly above the quantity controls.
+The catalogue always has one product per row. Every card uses the same photo-led
+layout: left-aligned heading with the main team names' uppercase type and thin red
+underline, photo/gallery, description, then an option table. Photo, text and table
+share the same inner edges. Standard tables have an option column (44%) and a
+right-aligned price column; like the camshaft tables, they have internal dividers
+but no outer border. Selecting a radio moves one shared subform directly beneath
+that option. Selecting it again hides the subform and clears validation warnings.
+The radios are optional display controls, not required order fields.
+The subform places labels in the first column and controls in the second: any
+applicable specification dropdown, quantity, then the Add to order button. Quantity
+is a draft value (1–9999), not a live basket control. Only pressing Add to order
+adds that many units, accumulating units of the same variant in the order. A
+submission that would exceed 9999 units of an option is rejected without a partial
+add. Changing the selection moves the same fields and retains the quantity.
 Specification dropdowns reuse the main form's pinned Choices.js component and
 shared styling, retaining native selection if the CDN script is unavailable.
 Text fields, textareas and quantity inputs also inherit the main page's field
@@ -86,7 +107,7 @@ color/size and submit button. Do not add shop-specific typography or padding
 overrides to these components. The contact heading and validation messages are
 read from each language's main form when generating the shop.
 
-Both forms use `form.js` for inline validation on input/change and submission:
+Product subforms and the final order form use `form.js` for inline validation on input/change and submission:
 required fields, email and phone formats, warning borders/messages, and focus on
 the first invalid field. Browser validation popups are disabled with `novalidate`.
 Company, phone and notes remain optional in the shop; a supplied phone number is
@@ -96,13 +117,15 @@ The release build minifies `form.js` alongside the page scripts and includes it
 in the release root. It is served from the website, just like `index.js` and
 `shop.js`; only catalogue imagery uses the jsDelivr asset reference.
 
-Photos align with the top of the product description. Their thumbnails reuse
+Product photos precede the description. Photos reuse
 the main equipment section's `.tech-frame` soft-edge shading, which clears on
-hover or keyboard focus. Images keep their natural proportions, scale down to fit
-the image column and are horizontally centered; the frame follows the image instead
-of forcing a 4:3 box with black bands. Placeholder images use the same sizing,
-without cropping. Product photos have no visible captions; placeholders retain
-their descriptive alt text for accessibility.
+hover or keyboard focus. Single-photo products keep their natural proportions,
+scale down to fit the card's inner width and are horizontally centered. The frame
+reserves the declared photo width before lazy loading, capped to the available
+width, so it cannot collapse or introduce empty strips beside smaller images. Placeholder
+images use the same sizing, without cropping. Camshaft and head-gasket galleries use fixed
+landscape frames as described below. Product photos have no visible captions;
+placeholders retain their descriptive alt text for accessibility.
 The zoom cursor and lightbox remain unchanged, and enlarged images are unshaded.
 Click or press Enter on a photo to enlarge it; click the overlay, use its close
 button or press Escape to close it. Focus returns to the photo, and image links
@@ -137,9 +160,10 @@ on the site's own origin, using content hashes in their URLs.
 For standard products, `shop.js` stores `{version: 1, items: [{id, variant, quantity}]}` in localStorage
 under `muckova-shop-basket`, shared across languages on the same origin. Storage
 failure falls back to memory, tabs listen for storage changes, and quantities are
-bounded to 0–9999 (zero removes the line). The same limit applies to product-card
-controls, basket controls, saved selections and order totals. Clicking anywhere
-inside a basket quantity input selects the entire number; keyboard focus does
+bounded to 0–9999 (zero removes the line). Product subforms accept 1–9999 units per
+add, subject to the same per-option limit in the order. Basket controls edit the
+existing line directly; product form edits do not affect it. Clicking anywhere
+inside a basket or product quantity input selects the entire number; keyboard focus does
 the same. These delegated handlers also cover rows rebuilt after quantity edits.
 Configured products also store a unique `lineId` and the validated `configuration`
 described below, with an implicit quantity of one and no quantity controls.
@@ -180,13 +204,16 @@ and thumbnails align with the inner text and form edges, using the same responsi
 side inset (28px on desktop, 18px on small screens).
 Thumbnail buttons switch the large photo; clicking the large photo retains the
 existing magnifier and fullscreen viewer. Without JavaScript, all linked photos
-remain visible one below the other. Main and enlarged photos keep their natural
-aspect ratios; only the compact thumbnail previews use a center crop.
+remain visible one below the other. Main gallery photos use a fixed 16:9 frame
+with a center crop, so switching between landscape and portrait photos never
+changes the gallery's height. Thumbnails also use a center crop. Enlarged photos
+keep their original proportions and show the complete image.
 The description follows the gallery, with an introductory paragraph,
 side-by-side regrinding/manufacturing sections and installation instructions below.
 These sections stack on small screens. The catalogue's `descriptionGroups` maps
 the existing translated paragraphs into these sections without rewriting or
-dropping their contents. Standard product cards keep their two-column layout.
+dropping their contents. Standard product cards use the same photo-led layout,
+with their existing description paragraphs followed by a quantity-based option table.
 The Škoda product has six
 description paragraphs and six profiles; the TAZ product has four paragraphs and four
 profiles. All content is translated for all ten languages. Profile duration, lift,

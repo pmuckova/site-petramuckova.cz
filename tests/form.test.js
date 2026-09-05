@@ -94,6 +94,26 @@ test('enhanced selects use explicit warning targets and focus the visible access
     assert.equal(warning.style.display, 'none');
 });
 
+test('quantity-only subforms keep localized required and numeric warnings separate', () => {
+    const form = node();
+    form.id = 'item-test';
+    const input = Object.assign(node(), { name: 'quantity', type: 'number', value: '', required: true, disabled: false });
+    input.focus = () => {};
+    input.nextElementSibling = node();
+    input.nextElementSibling.textContent = 'Zadejte celý počet od 1 do 9999.';
+    form.querySelectorAll = () => [input];
+    const validation = initValidation(form, { requiredMessage: 'Toto pole je povinné.' });
+    assert.equal(validation.validate(), false);
+    assertWarning(input, 'Toto pole je povinné.');
+    input.validity = { valid: false };
+    edit(input, '1.5');
+    assertWarning(input, 'Zadejte celý počet od 1 do 9999.');
+    input.validity = { valid: true };
+    edit(input, '3');
+    assert.equal(validation.validate(), true);
+    assertWarning(input, '');
+});
+
 for (const kind of ['main', 'shop']) {
     test(`${kind}: fields use localized inline warnings on input and change`, () => {
         const { fields, validation, copy } = fixture(kind);

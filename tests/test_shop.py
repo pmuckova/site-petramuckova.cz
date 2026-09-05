@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 from bs4 import BeautifulSoup
 
-from build_shop import ROOT, build_shop, load_catalog, money
+from build_shop import ROOT, build_shop, load_catalog, money, standard_options
 
 
 def css_rules(path):
@@ -79,11 +79,11 @@ class ShopBuildTests(unittest.TestCase):
     def test_quantity_controls_allow_9999_and_share_the_runtime_limit(self):
         for lang, soup in self.pages():
             with self.subTest(lang=lang):
-                fields = soup.select('.shop-product input[data-quantity]')
+                fields = soup.select('.shop-product input[data-order-quantity]')
                 self.assertEqual(len(fields), sum(p.get('kind') != 'wizard' for p in self.catalog['products']))
                 for field in fields:
                     self.assertEqual(field['type'], 'number')
-                    self.assertEqual(field['min'], '0')
+                    self.assertEqual(field['min'], '1')
                     self.assertEqual(field['max'], '9999')
                     self.assertEqual(field['step'], '1')
                     self.assertEqual(field['inputmode'], 'numeric')
@@ -116,53 +116,82 @@ class ShopBuildTests(unittest.TestCase):
             self.assertEqual(len(soup.select('.shop-product > h3.shop-product-title')),
                              len(self.catalog['products']))
 
-    def test_image_column_is_separate_from_ordered_product_content(self):
+    def test_standard_products_reuse_the_photo_led_layout_and_expanding_order_table(self):
         for lang, soup in self.pages():
             for product in self.catalog['products']:
                 if product.get('kind') == 'wizard':
-                    continue  # Configurator structure has its own assertions below.
+                    continue
                 with self.subTest(lang=lang, product=product['id']):
                     card = soup.find(id=product['id'])
-                    sections = card.find_all(recursive=False)
-                    self.assertEqual(len(sections), 3)
-                    title, photo, content = sections
-                    self.assertIn('shop-product-title', title['class'])
-                    self.assertIn('shop-photo', photo['class'])
-                    self.assertIn('shop-product-content', content['class'])
-                    self.assertFalse(photo.select('h3, .shop-description, .shop-prices, .shop-quantity, .shop-variant'))
-                    description, prices, order = content.find_all(recursive=False)
-                    self.assertIn('shop-product-body', description['class'])
-                    self.assertIn('shop-prices', prices['class'])
-                    self.assertIn('shop-product-order', order['class'])
-                    self.assertTrue(description.select_one('.shop-description'))
-                    self.assertFalse(description.select('.shop-prices, .shop-quantity, .shop-variant'))
-                    self.assertEqual(prices.name, 'dl')
-                    self.assertTrue(order.find('div', class_='shop-quantity', recursive=False))
-                    quantity = order.select_one('[data-quantity]')
-                    label = order.find('label', attrs={'for': quantity['id']})
-                    self.assertIn('shop-quantity-label', label['class'])
-                    self.assertNotIn('shop-sr-only', label['class'])
-                    self.assertIn(product['translations'][lang]['name'], label.get_text())
-                    self.assertEqual(len(order.select('[data-variant]')), 1 if product['variants'] else 0)
+                    self.assertIn('shop-wizard-product', card['class'])
+                    self.assertEqual([node.name for node in card.find_all(recursive=False)], ['h3', 'figure', 'div', 'form'])
+                    self.assertFalse(card.select('.shop-prices, .shop-product-order, [data-change], [data-quantity]'))
+                    self.assertEqual([node.get_text() for node in card.select('.shop-product-body .shop-description')],
+                                     product['translations'][lang]['description'].split('\n\n'))
+                    form = card.select_one('form[data-order-product][novalidate]')
+                    options = standard_options(product, lang)
+                    radios = form.select('input[type=radio][name=option]')
+                    self.assertEqual([radio['value'] for radio in radios], [option['id'] for option in options])
+                    self.assertTrue(all(not radio.has_attr('required') and 'validate-me' not in radio.get('class', []) for radio in radios))
+                    self.assertEqual(len(form.select('thead th')), 2)
+                    fields = form.select_one('tbody[data-profile-fields][hidden]')
+                    self.assertTrue(fields.select_one('input[data-order-quantity][required][disabled]'))
+                    self.assertTrue(fields.select_one('button[type=submit].btn-submit[disabled]'))
+                    for radio in radios:
+                        self.assertTrue(all(soup.find(id=ref) is not None for ref in radio['aria-labelledby'].split()))
 
-    def test_grid_aligns_photo_with_description_below_the_right_column_title(self):
-        rules = list(css_rules(ROOT / 'shop.css'))
-        desktop = next(props for selector, props in rules if selector == '.shop-product')
-        self.assertEqual(desktop['display'], 'grid')
-        self.assertEqual(desktop['grid-template-columns'], 'minmax(0, .9fr) minmax(0, 1.1fr)')
-        self.assertEqual(desktop['grid-template-areas'], '". title" "photo content"')
-        self.assertEqual(desktop['align-items'], 'start')
-        self.assertEqual(desktop['gap'], '18px 24px')
-        shared = dict(rules)
-        self.assertEqual(shared['.shop-product-title']['grid-area'], 'title')
-        self.assertEqual(shared['.shop-photo']['grid-area'], 'photo')
-        self.assertEqual(shared['.shop-photo']['align-self'], 'start')
-        self.assertEqual(shared['.shop-product-content']['grid-area'], 'content')
-        self.assertEqual(shared['.shop-product-content']['flex-direction'], 'column')
-        # Narrow cards stack in the same logical order as the source markup.
-        mobile = shared['.shop-product']
-        self.assertEqual(mobile['grid-template-columns'], 'minmax(0, 1fr)')
-        self.assertEqual(mobile['grid-template-areas'], '"title" "photo" "content"')
+    def test_all_cards_share_the_camshaft_layout_at_desktop_and_mobile_widths(self):
+        rules = dict(css_rules(ROOT / 'shop.css'))
+        self.assertEqual(rules['.shop-wizard-product']['grid-template-areas'], '"title" "photo" "content" "wizard"')
+        heading = next(props for selector, props in css_rules(ROOT / 'shop.css') if selector == '.shop-wizard-product > .shop-product-title')
+        self.assertEqual(heading['text-align'], 'left')
+        self.assertEqual(rules['.shop-product-content']['grid-area'], 'content')
+        self.assertEqual(rules['.shop-wizard-form']['grid-area'], 'wizard')
+        for _, soup in self.pages():
+            self.assertEqual(len(soup.select('.shop-product.shop-wizard-product')), len(self.catalog['products']))
+
+    def test_merged_products_keep_all_options_and_original_prices_in_every_locale(self):
+        products = {product['id']: product for product in self.catalog['products']}
+        self.assertEqual(len(products), 15)
+        self.assertTrue({'connecting-rod-160', 'connecting-rod-156', 'head-gasket-stock'}.isdisjoint(products))
+        for lang, soup in self.pages():
+            with self.subTest(lang=lang):
+                rods = standard_options(products['connecting-rod'], lang)
+                self.assertEqual([(option['id'], option['price']) for option in rods], [('160', 12500), ('156', 11500)])
+                gaskets = standard_options(products['head-gasket'], lang)
+                self.assertEqual([(option['id'], option['price']) for option in gaskets], [('custom', 620), ('stock', 160)])
+                self.assertEqual([[variant['id'] for variant in option['variants']] for option in gaskets], [['80-5', '82-0'], ['stock']])
+                self.assertEqual(gaskets[1]['name'], gaskets[1]['variants'][0]['label'])
+                config = json.loads(soup.select_one('#shop-config').string)
+                for product_id in ('connecting-rod', 'head-gasket'):
+                    client = next(product for product in config['products'] if product['id'] == product_id)
+                    self.assertEqual(client['options'], standard_options(products[product_id], lang))
+                    self.assertEqual(client['legacyItems'], products[product_id]['legacyItems'])
+                    self.assertEqual(len(soup.find(id=product_id).select('input[name=option]')), 2)
+                rings = products['copper-rings']['translations'][lang]
+                self.assertNotIn(' - ', rings['name'])
+                self.assertIn('40', rings['description'])
+                if lang == 'cs':
+                    self.assertEqual(rings['name'], 'Vymezovací Cu kroužky pod válce')
+                    self.assertIn('Cena dle rozměrů a množství od 40 Kč.', rings['description'])
+
+    def test_invalid_option_groups_prices_and_legacy_mappings_fail_before_rendering(self):
+        for mutate in (
+            lambda p: p['variants'][0].update(price=0),
+            lambda p: p['variants'][0].update(price=True),
+            lambda p: p['variants'][0].update(price=900),
+            lambda p: p['variants'][2]['translations'].pop('cs'),
+            lambda p: p['options'][0].update(variantIds=[]),
+            lambda p: p['options'][0].update(variantIds=['80-5', 'stock']),
+            lambda p: p['options'][1].update(id='custom'),
+            lambda p: p['options'][1]['translations'].pop('cs'),
+            lambda p: p['legacyItems'][0].update(targetVariant='missing'),
+            lambda p: p['legacyItems'][0].update(id='connecting-rod'),
+        ):
+            invalid = json.loads(json.dumps(self.catalog))
+            mutate(next(product for product in invalid['products'] if product['id'] == 'head-gasket'))
+            with patch('build_shop.json.loads', return_value=invalid), self.assertRaises(ValueError):
+                load_catalog()
 
     def test_product_sections_keep_spacing_without_separator_lines(self):
         rules = dict(css_rules(ROOT / 'shop.css'))
@@ -173,25 +202,23 @@ class ShopBuildTests(unittest.TestCase):
             self.assertNotIn('width', rules[selector])
             self.assertNotIn('border-top', rules[selector])
 
-    def test_variants_reuse_main_form_dropdowns_and_keep_native_hooks(self):
+    def test_nested_variants_reuse_main_form_dropdowns_and_remain_scoped_to_their_option(self):
         for lang, soup in self.pages():
             main = BeautifulSoup((ROOT / lang / 'index.html').read_text(), 'html.parser')
-            styles = [link['href'] for link in soup.select('link[rel=stylesheet]')]
             scripts = [script['src'] for script in soup.select('script[src]')]
-            choices_css = main.select_one('link[href*="choices.js@"]')['href']
             choices_js = main.select_one('script[src*="choices.js@"]')['src']
-            self.assertLess(styles.index(choices_css), styles.index('/main.css'))
             self.assertLess(scripts.index(choices_js), next(i for i, src in enumerate(scripts) if src.startswith('/shop.js?')))
-            self.assertTrue(soup.select_one('script[src*="choices.js@"]')['defer'] == '')
             for product in self.catalog['products']:
+                if product.get('kind') == 'wizard':
+                    continue
                 card = soup.find(id=product['id'])
-                select = card.select_one('.shop-variant.form-group > select.custom-select[data-variant]')
-                self.assertEqual(select is not None, bool(product['variants']))
-                if select:
-                    label = card.find('label', attrs={'for': select['id']})
-                    self.assertEqual(label['id'], 'label-' + select['id'])
-                    self.assertEqual([option['value'] for option in select.select('option')],
-                                     ['', *[variant['id'] for variant in product['variants']]])
+                nested = [option for option in standard_options(product, lang) if len(option['variants']) > 1]
+                self.assertEqual(len(card.select('select[data-order-variant]')), len(nested))
+                for option in nested:
+                    row = card.select_one('[data-order-variant-fields="' + option['id'] + '"][hidden]')
+                    select = row.select_one('select.custom-select.validate-me[required][disabled]')
+                    self.assertEqual(row.find('label', attrs={'for': select['id']})['id'], 'label-' + select['id'])
+                    self.assertEqual([value['value'] for value in select.select('option')], ['', *[variant['id'] for variant in option['variants']]])
 
     def test_text_fields_keep_main_page_styles_instead_of_shop_overrides(self):
         _, soup = next(self.pages())
@@ -349,7 +376,7 @@ class ShopBuildTests(unittest.TestCase):
         rules = dict(css_rules(ROOT / 'shop.css'))
         self.assertEqual(rules['.shop-photo']['align-self'], 'start')
         self.assertEqual(rules['.shop-photo-link']['cursor'], 'zoom-in')
-        self.assertEqual(rules['.shop-photo-link']['width'], 'fit-content')
+        self.assertEqual(rules['.shop-photo-link']['width'], 'var(--shop-photo-width)')
         self.assertEqual(rules['.shop-photo-link']['max-width'], '100%')
         self.assertEqual(rules['.shop-photo-link']['margin-inline'], 'auto')
         self.assertNotIn('overflow', rules['.shop-photo-link'])
@@ -387,21 +414,21 @@ class ShopBuildTests(unittest.TestCase):
             self.assertTrue(any(node is frame for node in soup.select(selector)))
         self.assertEqual(shop_rules['.shop-photo-link:hover .tech-frame::after']['opacity'], '0')
 
-    def test_product_photos_keep_natural_proportions_without_letterboxing_or_cropping(self):
+    def test_standard_product_photos_keep_natural_proportions_without_letterboxing_or_cropping(self):
         rules = dict(css_rules(ROOT / 'shop.css'))
         self.assertEqual(rules['.shop-photo .tech-frame'], {'display': 'block'})
         image = rules['.shop-photo img']
         self.assertEqual(image['display'], 'block')
-        self.assertEqual(image['width'], 'auto')
+        self.assertEqual(image['width'], '100%')
         self.assertEqual(image['max-width'], '100%')
         self.assertEqual(image['height'], 'auto')
         for prop in ('position', 'inset', 'object-fit', 'aspect-ratio'):
             self.assertNotIn(prop, image)
         self.assertNotIn('.shop-photo-placeholder img', rules)
         _, soup = next(self.pages())
-        photos = soup.select('.shop-photo img')
-        frames = soup.select('.shop-photo .tech-frame')
-        # Reject other shop rules that reintroduce fixed frames or image crops.
+        photos = soup.select('.shop-photo:not(.shop-photo-gallery) img')
+        frames = soup.select('.shop-photo:not(.shop-photo-gallery) .tech-frame')
+        # Fixed gallery frames must not change single-photo products.
         for selector, declarations in css_rules(ROOT / 'shop.css'):
             if '::' in selector or not {'height', 'aspect-ratio', 'object-fit'}.intersection(declarations):
                 continue
@@ -412,11 +439,36 @@ class ShopBuildTests(unittest.TestCase):
                     if 'height' in declarations:
                         self.assertEqual(declarations['height'], 'auto', selector)
 
+    def test_gallery_photos_use_a_fixed_landscape_crop_without_affecting_enlargement(self):
+        rules = dict(css_rules(ROOT / 'shop.css'))
+        frame_selector = '.shop-photo-gallery .shop-photo-link .tech-frame'
+        image_selector = '.shop-photo-gallery .shop-photo-link img'
+        self.assertEqual(rules[frame_selector], {'aspect-ratio': '16 / 9'})
+        self.assertEqual(rules[image_selector], {
+            'position': 'absolute', 'inset': '0', 'width': '100%', 'height': '100%',
+            'object-fit': 'cover', 'object-position': 'center',
+        })
+        gallery_photo_count = sum(len(product['images']) for product in self.catalog['products']
+                                  if len(product.get('images', [])) > 1)
+        for lang, soup in self.pages():
+            with self.subTest(lang=lang):
+                self.assertEqual(len(soup.select(frame_selector)), gallery_photo_count)
+                self.assertEqual(len(soup.select(image_selector)), gallery_photo_count)
+                self.assertFalse(soup.select_one('#shop-lightbox').select(image_selector))
+                for photo in soup.select(image_selector):
+                    # Keep original dimensions and source URLs for the fullscreen viewer.
+                    self.assertEqual(photo.find_parent('a')['href'], photo['src'])
+                    source = next(image for product in self.catalog['products']
+                                  for image in product.get('images', []) if image['src'] == photo['src'])
+                    self.assertEqual((int(photo['width']), int(photo['height'])),
+                                     (source['width'], source['height']))
+
     def test_generic_placeholder_is_used_only_where_a_photo_is_missing(self):
         for lang, soup in self.pages():
             text = json.loads(soup.select_one('#shop-config').string)['text']
             self.assertEqual(len(soup.select('.shop-product img')), self.photo_count)
-            self.assertEqual(len(soup.select('img[data-placeholder]')), 14)
+            self.assertEqual(len(soup.select('img[data-placeholder]')),
+                             sum(not product['image'] for product in self.catalog['products']))
             self.assertFalse(soup.select('.shop-photo figcaption'))
             for product in self.catalog['products']:
                 photo = soup.find(id=product['id']).find('img')
@@ -434,6 +486,35 @@ class ShopBuildTests(unittest.TestCase):
             self.assertEqual(soup.select_one('link[rel=canonical]')['href'], f'https://www.petramuckova.cz/{lang}/shop')
             self.assertEqual(len(soup.select('link[rel=alternate]')), 11)
             self.assertTrue(all('?' not in link['href'] for link in soup.select('link[rel=alternate]')))
+
+    def test_supplied_standard_product_photos_have_correct_paths_dimensions_and_localized_alt_text(self):
+        expected = {
+            'exhaust-headers': [('svody-ladene-01.jpeg', 435, 493)],
+            'head-gasket': [('tesneni-valce-01.jpeg', 1600, 1200), ('tesneni-valce-02.jpeg', 742, 497)],
+            'connecting-rod': [('ojnice-h-kovana-01.jpeg', 4000, 2252)],
+            'ignition-coil-contact': [('zapalovaci-civka-01.jpeg', 2252, 4000)],
+            'ignition-coil-contactless': [('zapalovaci-civka-01.jpeg', 2252, 4000)],
+            'distributor-rotor': [('palec-rozdelovace-omezovac-01.jpeg', 2046, 2048)],
+            'distributor-overhaul': [('repas-rozdelovac-01.jpeg', 600, 800)],
+        }
+        for lang, soup in self.pages():
+            for product_id, files in expected.items():
+                with self.subTest(lang=lang, product=product_id):
+                    product = next(product for product in self.catalog['products'] if product['id'] == product_id)
+                    card = soup.find(id=product_id)
+                    links = card.select('.shop-photo-link')
+                    self.assertEqual(len(links), len(files))
+                    self.assertEqual(bool(card.select_one('.shop-photo-gallery')), len(files) > 1)
+                    self.assertFalse(card.select('img[data-placeholder], figcaption'))
+                    for index, (link, (filename, width, height)) in enumerate(zip(links, files)):
+                        path = '/assets/desktop/' + filename
+                        self.assertEqual(link['href'], path)
+                        self.assertEqual(link.img['src'], path)
+                        self.assertEqual((int(link.img['width']), int(link.img['height'])), (width, height))
+                        self.assertEqual(link['style'], f'--shop-photo-width: {width}px')
+                        self.assertEqual(link.img['alt'], product['images'][index]['alt'][lang])
+                        self.assertEqual(link.img['loading'], 'lazy')
+                        self.assertTrue((ROOT / path.lstrip('/')).is_file())
 
     def test_browser_config_matches_visible_products_and_prices(self):
         for lang, soup in self.pages():
@@ -470,10 +551,17 @@ class ShopBuildTests(unittest.TestCase):
             self.assertEqual(text['retail'], expected_price_labels[lang])
             for product in self.catalog['products']:
                 card = soup.find(id=product['id'])
-                prices = card.select('.shop-price-row')
-                self.assertEqual(len(prices), 0 if product.get('kind') == 'wizard' else 1)
-                if prices:
-                    self.assertEqual(prices[0].dt.get_text(), expected_price_labels[lang])
+                self.assertFalse(card.select('.shop-price-row'))
+                if product.get('kind') != 'wizard':
+                    self.assertEqual(card.select_one('thead .shop-profile-price').get_text(), expected_price_labels[lang])
+                    prices = card.select('.shop-profile-option .shop-profile-price')
+                    options = standard_options(product, lang)
+                    self.assertEqual(len(prices), len(options))
+                    for cell, option in zip(prices, options):
+                        price = text['quote'] if option['priceType'] == 'quote' else money(option['price'], lang)
+                        if option['priceType'] == 'from':
+                            price = text['from'] + ' ' + price
+                        self.assertEqual(cell.get_text(strip=True), price)
                 self.assertFalse(card.select('.shop-dealer-minimum'))
                 self.assertIsNone(card.select_one('.shop-price-note'))
             self.assertTrue(soup.select_one('#shop-order-form.terminal-form'))
@@ -826,7 +914,7 @@ class ShopBuildTests(unittest.TestCase):
         for lang, soup in self.pages():
             card = soup.find(id=wizard['id'])
             self.assertEqual(card['id'], wizard['id'])
-            self.assertEqual(len(soup.select('.shop-wizard-product')), 2)
+            self.assertEqual(len(soup.select('form[data-wizard]')), 2)
             self.assertFalse(soup.select('#camshaft-regrind, #camshaft-new'))
             sections = card.find_all(recursive=False)
             self.assertEqual([node.name for node in sections], ['h3', 'figure', 'div', 'form'])
@@ -860,7 +948,8 @@ class ShopBuildTests(unittest.TestCase):
                 self.assertTrue(data.startswith(b'\xff\xd8'))
                 self.assertTrue(data.endswith(b'\xff\xd9'))
         for lang, soup in self.pages():
-            self.assertEqual(len(soup.select('.shop-photo-gallery')), len(products))
+            self.assertEqual(len(soup.select('.shop-photo-gallery')),
+                             sum(len(product.get('images', [])) > 1 for product in self.catalog['products']))
             for product_id, expected_paths in expected.items():
                 product = products[product_id]
                 images = product['images']
@@ -1171,7 +1260,7 @@ class ShopBuildTests(unittest.TestCase):
             operation, manufacture = expected[lang]
             self.assertEqual(config['text']['profileHeading'], operation)
             self.assertEqual(config['text']['manufactureNew'], manufacture)
-            for option in soup.select('.shop-profile-option'):
+            for option in soup.select('form[data-wizard] .shop-profile-option'):
                 label = manufacture if option.input['value'].startswith('new-') else config['text']['manufactureRegrind']
                 self.assertEqual(option.select_one('.shop-profile-method').get_text(), label)
 
@@ -1186,9 +1275,9 @@ class ShopBuildTests(unittest.TestCase):
         for lang, soup in self.pages():
             with self.subTest(lang=lang):
                 config = json.loads(soup.select_one('#shop-config').string)
-                buttons = soup.select('form[data-wizard] button[type=submit]')
+                buttons = soup.select('.shop-product button[type=submit]')
                 self.assertEqual(config['text']['addConfigured'], expected[lang])
-                self.assertEqual(len(buttons), 2)
+                self.assertEqual(len(buttons), len(self.catalog['products']))
                 self.assertTrue(all(button.get_text() == expected[lang] for button in buttons))
 
     def test_invalid_wizard_profiles_and_fields_fail_before_rendering(self):
