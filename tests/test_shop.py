@@ -841,7 +841,7 @@ class ShopBuildTests(unittest.TestCase):
         products = {product['id']: product for product in self.catalog['products'] if product.get('kind') == 'wizard'}
         expected = {
             'skoda-ohv-camshaft': [f'/assets/desktop/skoda-ohv-{index}.jpeg' for index in range(1, 5)],
-            'taz-camshaft': [f'/assets/desktop/taz-{index}.jpeg' for index in range(1, 4)],
+            'taz-camshaft': [f'/assets/desktop/taz-{index:02d}.jpeg' for index in range(1, 4)],
         }
         expected_dimensions = {
             'skoda-ohv-camshaft': [(4000, 2252), (4000, 2252), (2252, 4000), (2252, 4000)],

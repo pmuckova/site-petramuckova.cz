@@ -48,10 +48,12 @@ def main():
             'RewriteRule ^$ /cs/?v={{RELEASE_VERSION_URL}} [L,R=302,NE]\n'
             'RewriteRule ^([a-z]{2})/shop/?$ $1/shop.html [L]\n'
         )
+        shutil.copy2(ROOT / 'backend/.user.ini', workspace / 'backend/.user.ini')
         subprocess.run([sys.executable, 'release.py', 'main', 'shop-smoke-test'], cwd=workspace, check=True)
         release = workspace / 'release'
-        for filename in ('shop.css', 'shop.js', 'form.js', 'sitemap.xml', '.htaccess'):
+        for filename in ('shop.css', 'shop.js', 'form.js', 'sitemap.xml', '.htaccess', '.user.ini'):
             assert (release / filename).stat().st_size > 0, filename
+        assert (release / '.user.ini').read_bytes() == (ROOT / 'backend/.user.ini').read_bytes()
         assert 'position:sticky' in (release / 'shop.css').read_text().replace(' ', '')
         for language in catalog['languages']:
             soup = BeautifulSoup((release / language / 'shop.html').read_text(), 'html.parser')

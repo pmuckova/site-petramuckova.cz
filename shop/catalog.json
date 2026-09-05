@@ -430,10 +430,10 @@
       ],
       "price": null,
       "priceType": "configured",
-      "image": "/assets/desktop/taz-1.jpeg",
+      "image": "/assets/desktop/taz-01.jpeg",
       "images": [
         {
-          "src": "/assets/desktop/taz-1.jpeg",
+          "src": "/assets/desktop/taz-01.jpeg",
           "width": 4000,
           "height": 2252,
           "alt": {
@@ -450,7 +450,7 @@
           }
         },
         {
-          "src": "/assets/desktop/taz-2.jpeg",
+          "src": "/assets/desktop/taz-02.jpeg",
           "width": 4000,
           "height": 2252,
           "alt": {
@@ -467,7 +467,7 @@
           }
         },
         {
-          "src": "/assets/desktop/taz-3.jpeg",
+          "src": "/assets/desktop/taz-03.jpeg",
           "width": 4000,
           "height": 2252,
           "alt": {

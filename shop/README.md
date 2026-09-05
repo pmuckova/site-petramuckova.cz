@@ -173,8 +173,8 @@ customer-facing terms before enabling direct orders.
 
 `skoda-ohv-camshaft` and `taz-camshaft` use `kind: "wizard"`. Škoda OHV uses four supplied
 photographs copied unchanged to `assets/desktop/skoda-ohv-1.jpeg` through
-`skoda-ohv-4.jpeg`; TAZ uses three photographs, `assets/desktop/taz-1.jpeg` through
-`taz-3.jpeg`. The images
+`skoda-ohv-4.jpeg`; TAZ uses three photographs, `assets/desktop/taz-01.jpeg` through
+`taz-03.jpeg`. The images
 appear in a gallery under a left-aligned, red-underlined heading. The main photo
 and thumbnails align with the inner text and form edges, using the same responsive
 side inset (28px on desktop, 18px on small screens).

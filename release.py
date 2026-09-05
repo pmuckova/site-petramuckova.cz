@@ -88,9 +88,10 @@ FILES_TO_COPY = [
 ]
 
 # Files stored outside the public root in the source tree, but copied to the
-# release root under a different name.
+# release root. Only .htaccess is templated; .user.ini is copied unchanged.
 RELEASE_ROOT_FILE_MAPPINGS = {
-  os.path.join('backend', '.htaccess'): '.htaccess'
+  os.path.join('backend', '.htaccess'): '.htaccess',
+  os.path.join('backend', '.user.ini'): '.user.ini'
 }
 
 RELEASE_VERSION_PLACEHOLDER = '{{RELEASE_VERSION}}'
