@@ -36,6 +36,43 @@ test('mixed legacy and new rows merge by the new option identity', () => {
     assert.deepEqual(load([row('connecting-rod-160', 'invalid'), row('head-gasket-stock', '82-0')]), []);
 });
 
+test('old coils and distributor spare parts migrate to the corresponding new options', () => {
+    const mappings = [
+        ['ignition-coil-contact', 'ignition-coil', 'contact', 780],
+        ['ignition-coil-contactless', 'ignition-coil', 'contactless', 1100],
+        ['distributor-cap', 'distributor-parts', 'cap', 260],
+        ['ignition-wiring', 'distributor-parts', 'wiring', 280],
+        ['distributor-contacts', 'distributor-parts', 'contacts', 150],
+        ['distributor-capacitor', 'distributor-parts', 'capacitor', 180],
+    ];
+    const old = mappings.map(([id], index) => row(id, '', index + 1));
+    const migrated = mappings.map(([, id, variant], index) => row(id, variant, index + 1));
+    assert.deepEqual(load(old), migrated);
+    assert.deepEqual(load(migrated), migrated);
+    assert.equal(shop.basketSummary(migrated, products).subtotalCents,
+        mappings.reduce((sum, mapping, index) => sum + mapping[3] * (index + 1) * 100, 0));
+    for (const [oldId, id, variant] of mappings) {
+        assert.deepEqual(load([row(oldId, '', 2), row(id, variant, 3)]), [row(id, variant, 5)]);
+        assert.deepEqual(load([row(oldId, 'invalid')]), []);
+    }
+});
+
+test('new rod, kit and carburetor options use their current per-unit or per-set prices', () => {
+    const cases = [
+        ['connecting-rod', '156-engitec', 12500],
+        ['cylinder-piston-kit', 'complete', 18000],
+        ['cylinder-piston-kit', 'pistons-rings', 10400],
+        ['cylinder-piston-kit', 'rings', 1600],
+        ['carburetor-38-38', '', 7900],
+    ];
+    for (const [id, variant, price] of cases) {
+        const items = shop.addOrderItem([], id, variant, 2, products);
+        assert.deepEqual(items, [row(id, variant, 2)]);
+        assert.equal(shop.basketSummary(items, products).subtotalCents, price * 2 * 100);
+        assert.deepEqual(load(items), items);
+    }
+});
+
 test('invalid draft quantities and variants never alter the order', () => {
     const items = [row('resonance-exhaust')];
     for (const count of [0, -1, 1.5, '2', NaN, Infinity, 10000]) {
@@ -64,8 +101,23 @@ test('a full basket blocks new options but allows increasing an existing option'
     assert.deepEqual(next.slice(1), items.slice(1));
 });
 
-test('quote and starting prices remain excluded from the fixed-price subtotal', () => {
+test('quote, starting and approximate prices remain excluded from the fixed-price subtotal', () => {
     let items = shop.addOrderItem([], 'copper-rings', '', 3, products);
-    items = shop.addOrderItem(items, 'distributor-rotor', '', 2, products);
-    assert.deepEqual(shop.basketSummary(items, products), { count: 5, subtotalCents: 0, quotedCount: 5 });
+    items = shop.addOrderItem(items, 'distributor-rotor', 'original', 2, products);
+    items = shop.addOrderItem(items, 'distributor-overhaul', '', 2, products);
+    assert.deepEqual(shop.basketSummary(items, products), { count: 7, subtotalCents: 0, quotedCount: 7 });
+});
+
+test('approximate overhaul prices remain explicitly approximate in every localized order draft', () => {
+    const texts = require('../shop/translations.json');
+    const { languages, currency } = require('../shop/catalog.json');
+    const details = shop.orderDetails({ deliveryMethod: 'postal', fullName: 'Test', email: 'test@example.test' });
+    for (const locale of languages) {
+        const config = { locale, currency, text: texts[locale],
+            products: products.map(product => ({ ...product, name: product.translations[locale].name })) };
+        const draft = shop.orderText([row('distributor-overhaul', '', 2)], details, config);
+        const formatted = new Intl.NumberFormat(locale, { style: 'currency', currency, maximumFractionDigits: 0 }).format(3200);
+        assert.ok(draft.includes(texts[locale].approx + ' ' + formatted), locale);
+        assert.ok(draft.includes(texts[locale].quoteNotice), locale);
+    }
 });

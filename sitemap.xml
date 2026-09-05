@@ -2245,8 +2245,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>Výfukové svody laděné</image:title>
-      <image:caption>Výfukové svody laděné</image:caption>
+      <image:title>Výfukový svod laděný</image:title>
+      <image:caption>Výfukový svod laděný</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>Rezonanční výfuk</image:title>
+      <image:caption>Rezonanční výfuk</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -2255,13 +2260,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Zapalovací cívka kontaktního zapalování PAL</image:title>
-      <image:caption>Zapalovací cívka kontaktního zapalování PAL</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Zapalovací cívka bezkontaktního zapalování PAL</image:title>
-      <image:caption>Zapalovací cívka bezkontaktního zapalování PAL</image:caption>
+      <image:title>Zapalovací cívka</image:title>
+      <image:caption>Zapalovací cívka</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -2280,8 +2280,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>Repase rozdělovače</image:title>
-      <image:caption>Repase rozdělovače</image:caption>
+      <image:title>Repase a úprava rozdělovače</image:title>
+      <image:caption>Repase a úprava rozdělovače</image:caption>
     </image:image>
   </url>
   <url>
@@ -2349,8 +2349,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>Tuned exhaust headers</image:title>
-      <image:caption>Tuned exhaust headers</image:caption>
+      <image:title>Tuned exhaust manifold</image:title>
+      <image:caption>Tuned exhaust manifold</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>Resonance exhaust</image:title>
+      <image:caption>Resonance exhaust</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -2359,13 +2364,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Ignition coil for PAL contact ignition</image:title>
-      <image:caption>Ignition coil for PAL contact ignition</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Ignition coil for PAL contactless ignition</image:title>
-      <image:caption>Ignition coil for PAL contactless ignition</image:caption>
+      <image:title>Ignition coil</image:title>
+      <image:caption>Ignition coil</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -2384,8 +2384,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>Distributor overhaul</image:title>
-      <image:caption>Distributor overhaul</image:caption>
+      <image:title>Distributor overhaul and modification</image:title>
+      <image:caption>Distributor overhaul and modification</image:caption>
     </image:image>
   </url>
   <url>
@@ -2453,8 +2453,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>Fächerkrümmer (Ladbare Abgaskrümmer)</image:title>
-      <image:caption>Fächerkrümmer (Ladbare Abgaskrümmer)</image:caption>
+      <image:title>Abgestimmter Abgaskrümmer</image:title>
+      <image:caption>Abgestimmter Abgaskrümmer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>Resonanzauspuff</image:title>
+      <image:caption>Resonanzauspuff</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -2463,13 +2468,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Zündspule für PAL Kontaktzündung</image:title>
-      <image:caption>Zündspule für PAL Kontaktzündung</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Zündspule für PAL kontaktlose Zündung</image:title>
-      <image:caption>Zündspule für PAL kontaktlose Zündung</image:caption>
+      <image:title>Zündspule</image:title>
+      <image:caption>Zündspule</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -2488,8 +2488,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>Überholung des Verteilers</image:title>
-      <image:caption>Überholung des Verteilers</image:caption>
+      <image:title>Überholung und Modifikation des Zündverteilers</image:title>
+      <image:caption>Überholung und Modifikation des Zündverteilers</image:caption>
     </image:image>
   </url>
   <url>
@@ -2557,8 +2557,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>Collecteurs d&apos;échappement accordés</image:title>
-      <image:caption>Collecteurs d&apos;échappement accordés</image:caption>
+      <image:title>Collecteur d’échappement accordé</image:title>
+      <image:caption>Collecteur d’échappement accordé</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>Échappement à résonance</image:title>
+      <image:caption>Échappement à résonance</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -2567,13 +2572,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Bobine d&apos;allumage pour allumage à contact PAL</image:title>
-      <image:caption>Bobine d&apos;allumage pour allumage à contact PAL</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Bobine d&apos;allumage pour allumage sans contact PAL</image:title>
-      <image:caption>Bobine d&apos;allumage pour allumage sans contact PAL</image:caption>
+      <image:title>Bobine d’allumage</image:title>
+      <image:caption>Bobine d’allumage</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -2592,8 +2592,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>Réfection de l&apos;allumeur</image:title>
-      <image:caption>Réfection de l&apos;allumeur</image:caption>
+      <image:title>Réfection et modification du distributeur</image:title>
+      <image:caption>Réfection et modification du distributeur</image:caption>
     </image:image>
   </url>
   <url>
@@ -2661,8 +2661,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>Collettori di scarico accordati</image:title>
-      <image:caption>Collettori di scarico accordati</image:caption>
+      <image:title>Collettore di scarico accordato</image:title>
+      <image:caption>Collettore di scarico accordato</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>Scarico a risonanza</image:title>
+      <image:caption>Scarico a risonanza</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -2671,13 +2676,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Bobina di accensione per accensione a contatti PAL</image:title>
-      <image:caption>Bobina di accensione per accensione a contatti PAL</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Bobina di accensione per accensione senza contatti PAL</image:title>
-      <image:caption>Bobina di accensione per accensione senza contatti PAL</image:caption>
+      <image:title>Bobina di accensione</image:title>
+      <image:caption>Bobina di accensione</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -2696,8 +2696,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>Revisione spinterogeno</image:title>
-      <image:caption>Revisione spinterogeno</image:caption>
+      <image:title>Revisione e modifica dello spinterogeno</image:title>
+      <image:caption>Revisione e modifica dello spinterogeno</image:caption>
     </image:image>
   </url>
   <url>
@@ -2765,8 +2765,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>Colectores de escape afinados</image:title>
-      <image:caption>Colectores de escape afinados</image:caption>
+      <image:title>Colector de escape afinado</image:title>
+      <image:caption>Colector de escape afinado</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>Escape de resonancia</image:title>
+      <image:caption>Escape de resonancia</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -2775,13 +2780,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Bobina de encendido para encendido por contacto PAL</image:title>
-      <image:caption>Bobina de encendido para encendido por contacto PAL</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Bobina de encendido para encendido sin contacto PAL</image:title>
-      <image:caption>Bobina de encendido para encendido sin contacto PAL</image:caption>
+      <image:title>Bobina de encendido</image:title>
+      <image:caption>Bobina de encendido</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -2800,8 +2800,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>Revisión del distribuidor</image:title>
-      <image:caption>Revisión del distribuidor</image:caption>
+      <image:title>Reacondicionamiento y modificación del distribuidor</image:title>
+      <image:caption>Reacondicionamiento y modificación del distribuidor</image:caption>
     </image:image>
   </url>
   <url>
@@ -2869,8 +2869,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>Sportowe kolektory wydechowe (tzw. barany)</image:title>
-      <image:caption>Sportowe kolektory wydechowe (tzw. barany)</image:caption>
+      <image:title>Strojony kolektor wydechowy</image:title>
+      <image:caption>Strojony kolektor wydechowy</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>Wydech rezonansowy</image:title>
+      <image:caption>Wydech rezonansowy</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -2879,13 +2884,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Cewka zapłonowa do zapłonu kontaktowego PAL</image:title>
-      <image:caption>Cewka zapłonowa do zapłonu kontaktowego PAL</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Cewka zapłonowa do zapłonu bezkontaktowego PAL</image:title>
-      <image:caption>Cewka zapłonowa do zapłonu bezkontaktowego PAL</image:caption>
+      <image:title>Cewka zapłonowa</image:title>
+      <image:caption>Cewka zapłonowa</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -2904,8 +2904,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>Regeneracja aparatu zapłonowego</image:title>
-      <image:caption>Regeneracja aparatu zapłonowego</image:caption>
+      <image:title>Regeneracja i modyfikacja rozdzielacza</image:title>
+      <image:caption>Regeneracja i modyfikacja rozdzielacza</image:caption>
     </image:image>
   </url>
   <url>
@@ -2973,8 +2973,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>Выпускные коллекторы настроенные</image:title>
-      <image:caption>Выпускные коллекторы настроенные</image:caption>
+      <image:title>Настроенный выпускной коллектор</image:title>
+      <image:caption>Настроенный выпускной коллектор</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>Резонансный глушитель</image:title>
+      <image:caption>Резонансный глушитель</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -2983,13 +2988,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Катушка зажигания контактного зажигания PAL</image:title>
-      <image:caption>Катушка зажигания контактного зажигания PAL</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>Катушка зажигания бесконтактного зажигания PAL</image:title>
-      <image:caption>Катушка зажигания бесконтактного зажигания PAL</image:caption>
+      <image:title>Катушка зажигания</image:title>
+      <image:caption>Катушка зажигания</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -3008,8 +3008,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>Реставрация распределителя</image:title>
-      <image:caption>Реставрация распределителя</image:caption>
+      <image:title>Восстановление и доработка распределителя</image:title>
+      <image:caption>Восстановление и доработка распределителя</image:caption>
     </image:image>
   </url>
   <url>
@@ -3077,8 +3077,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>チューニングエキゾーストマニホールド</image:title>
-      <image:caption>チューニングエキゾーストマニホールド</image:caption>
+      <image:title>チューニング排気マニホールド</image:title>
+      <image:caption>チューニング排気マニホールド</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>レゾネーターマフラー</image:title>
+      <image:caption>レゾネーターマフラー</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -3087,13 +3092,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>PAL ポイント式イグニッションコイル</image:title>
-      <image:caption>PAL ポイント式イグニッションコイル</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>PAL フルトラ式イグニッションコイル</image:title>
-      <image:caption>PAL フルトラ式イグニッションコイル</image:caption>
+      <image:title>イグニッションコイル</image:title>
+      <image:caption>イグニッションコイル</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -3112,8 +3112,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>ディストリビューターのオーバーホール</image:title>
-      <image:caption>ディストリビューターのオーバーホール</image:caption>
+      <image:title>ディストリビューターのオーバーホール・加工</image:title>
+      <image:caption>ディストリビューターのオーバーホール・加工</image:caption>
     </image:image>
   </url>
   <url>
@@ -3181,8 +3181,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/svody-ladene-01.jpeg</image:loc>
-      <image:title>高性能排气歧管</image:title>
-      <image:caption>高性能排气歧管</image:caption>
+      <image:title>调谐排气歧管</image:title>
+      <image:caption>调谐排气歧管</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.petramuckova.cz/assets/desktop/rezonancni-vyfuk-01.jpg</image:loc>
+      <image:title>谐振消声器</image:title>
+      <image:caption>谐振消声器</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/ojnice-h-kovana-01.jpeg</image:loc>
@@ -3191,13 +3196,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>PAL 触点式点火线圈</image:title>
-      <image:caption>PAL 触点式点火线圈</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.petramuckova.cz/assets/desktop/zapalovaci-civka-01.jpeg</image:loc>
-      <image:title>PAL 无触点式点火线圈</image:title>
-      <image:caption>PAL 无触点式点火线圈</image:caption>
+      <image:title>点火线圈</image:title>
+      <image:caption>点火线圈</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/palec-rozdelovace-omezovac-01.jpeg</image:loc>
@@ -3216,8 +3216,8 @@
     </image:image>
     <image:image>
       <image:loc>https://www.petramuckova.cz/assets/desktop/repas-rozdelovac-01.jpeg</image:loc>
-      <image:title>分电器翻新</image:title>
-      <image:caption>分电器翻新</image:caption>
+      <image:title>分电器翻新与改装</image:title>
+      <image:caption>分电器翻新与改装</image:caption>
     </image:image>
   </url>
 </urlset>

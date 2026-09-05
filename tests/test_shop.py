@@ -87,6 +87,14 @@ class ShopBuildTests(unittest.TestCase):
                     self.assertEqual(field['max'], '9999')
                     self.assertEqual(field['step'], '1')
                     self.assertEqual(field['inputmode'], 'numeric')
+                    spinner = field.parent
+                    self.assertIn('shop-quantity', spinner['class'])
+                    self.assertEqual(spinner['role'], 'group')
+                    self.assertEqual(spinner['aria-labelledby'], 'label-' + field['id'])
+                    buttons = spinner.select('button[type=button][data-order-change][disabled]')
+                    self.assertEqual([button['data-order-change'] for button in buttons], ['-1', '1'])
+                    self.assertTrue(all(button['aria-controls'] == field['id'] for button in buttons))
+                    self.assertEqual(spinner.find_next_sibling('span')['id'], field['data-warning-id'])
         source = (ROOT / 'shop.js').read_text()
         self.assertIn('const MAX_QUANTITY = 9999;', source)
         self.assertIn('control.max = String(MAX_QUANTITY)', source)
@@ -124,16 +132,20 @@ class ShopBuildTests(unittest.TestCase):
                 with self.subTest(lang=lang, product=product['id']):
                     card = soup.find(id=product['id'])
                     self.assertIn('shop-wizard-product', card['class'])
-                    self.assertEqual([node.name for node in card.find_all(recursive=False)], ['h3', 'figure', 'div', 'form'])
+                    has_content = bool(product['translations'][lang]['description']) or product['id'] == 'exhaust-headers'
+                    self.assertEqual([node.name for node in card.find_all(recursive=False)],
+                                     ['h3', 'figure', *(['div'] if has_content else []), 'form'])
                     self.assertFalse(card.select('.shop-prices, .shop-product-order, [data-change], [data-quantity]'))
                     self.assertEqual([node.get_text() for node in card.select('.shop-product-body .shop-description')],
-                                     product['translations'][lang]['description'].split('\n\n'))
+                                     [paragraph for paragraph in product['translations'][lang]['description'].split('\n\n') if paragraph.strip()])
                     form = card.select_one('form[data-order-product][novalidate]')
                     options = standard_options(product, lang)
                     radios = form.select('input[type=radio][name=option]')
                     self.assertEqual([radio['value'] for radio in radios], [option['id'] for option in options])
                     self.assertTrue(all(not radio.has_attr('required') and 'validate-me' not in radio.get('class', []) for radio in radios))
                     self.assertEqual(len(form.select('thead th')), 2)
+                    text = json.loads(soup.select_one('#shop-config').string)['text']
+                    self.assertEqual(form.select_one('thead th').get_text(), text['variant'])
                     fields = form.select_one('tbody[data-profile-fields][hidden]')
                     self.assertTrue(fields.select_one('input[data-order-quantity][required][disabled]'))
                     self.assertTrue(fields.select_one('button[type=submit].btn-submit[disabled]'))
@@ -152,22 +164,36 @@ class ShopBuildTests(unittest.TestCase):
 
     def test_merged_products_keep_all_options_and_original_prices_in_every_locale(self):
         products = {product['id']: product for product in self.catalog['products']}
-        self.assertEqual(len(products), 15)
-        self.assertTrue({'connecting-rod-160', 'connecting-rod-156', 'head-gasket-stock'}.isdisjoint(products))
+        self.assertEqual(len(products), 13)
+        self.assertTrue({'connecting-rod-160', 'connecting-rod-156', 'head-gasket-stock',
+                         'ignition-coil-contact', 'ignition-coil-contactless', 'distributor-cap',
+                         'distributor-contacts', 'distributor-capacitor', 'ignition-wiring'}.isdisjoint(products))
+        expected = {
+            'exhaust-headers': [('small', 6600), ('large', 6600)],
+            'connecting-rod': [('160', 12500), ('156', 11500), ('156-engitec', 12500)],
+            'ignition-coil': [('contact', 780), ('contactless', 1100)],
+            'distributor-parts': [('cap', 260), ('wiring', 280), ('contacts', 150), ('capacitor', 180)],
+            'head-gasket': [('80-5', 620), ('82-0', 620), ('stock', 160)],
+            'cylinder-piston-kit': [('complete', 18000), ('pistons-rings', 10400), ('rings', 1600)],
+        }
         for lang, soup in self.pages():
             with self.subTest(lang=lang):
-                rods = standard_options(products['connecting-rod'], lang)
-                self.assertEqual([(option['id'], option['price']) for option in rods], [('160', 12500), ('156', 11500)])
-                gaskets = standard_options(products['head-gasket'], lang)
-                self.assertEqual([(option['id'], option['price']) for option in gaskets], [('custom', 620), ('stock', 160)])
-                self.assertEqual([[variant['id'] for variant in option['variants']] for option in gaskets], [['80-5', '82-0'], ['stock']])
-                self.assertEqual(gaskets[1]['name'], gaskets[1]['variants'][0]['label'])
                 config = json.loads(soup.select_one('#shop-config').string)
-                for product_id in ('connecting-rod', 'head-gasket'):
+                for product_id, prices in expected.items():
+                    options = standard_options(products[product_id], lang)
+                    self.assertEqual([(option['id'], option['price']) for option in options], prices)
+                    for option, variant in zip(options, products[product_id]['variants']):
+                        self.assertEqual(option['name'], variant['translations'][lang])
+                        self.assertEqual(option['variants'][0]['label'], variant['translations'][lang])
                     client = next(product for product in config['products'] if product['id'] == product_id)
-                    self.assertEqual(client['options'], standard_options(products[product_id], lang))
-                    self.assertEqual(client['legacyItems'], products[product_id]['legacyItems'])
-                    self.assertEqual(len(soup.find(id=product_id).select('input[name=option]')), 2)
+                    self.assertEqual(client['options'], options)
+                    self.assertEqual(client.get('legacyItems', []), products[product_id].get('legacyItems', []))
+                    self.assertEqual(len(soup.find(id=product_id).select('input[name=option]')), len(prices))
+                self.assertFalse(soup.select('#head-gasket select[data-order-variant]'))
+                for product_id in ('distributor-parts', 'cylinder-piston-kit', 'carburetor-38-38'):
+                    self.assertTrue(soup.find(id=product_id).select_one('img[data-placeholder]'))
+                self.assertEqual(products['carburetor-38-38']['price'], 7900)
+                self.assertEqual(products['distributor-overhaul']['priceType'], 'approx')
                 rings = products['copper-rings']['translations'][lang]
                 self.assertNotIn(' - ', rings['name'])
                 self.assertIn('40', rings['description'])
@@ -189,7 +215,15 @@ class ShopBuildTests(unittest.TestCase):
             lambda p: p['legacyItems'][0].update(id='connecting-rod'),
         ):
             invalid = json.loads(json.dumps(self.catalog))
-            mutate(next(product for product in invalid['products'] if product['id'] == 'head-gasket'))
+            gasket = next(product for product in invalid['products'] if product['id'] == 'head-gasket')
+            # Keep group validation covered even though the live gaskets now use direct radio options.
+            gasket['options'] = [
+                {'id': 'custom', 'variantIds': ['80-5', '82-0'],
+                 'translations': {lang: {'name': 'Custom'} for lang in self.catalog['languages']}},
+                {'id': 'stock', 'variantIds': ['stock'],
+                 'translations': {lang: {'name': 'Stock'} for lang in self.catalog['languages']}},
+            ]
+            mutate(gasket)
             with patch('build_shop.json.loads', return_value=invalid), self.assertRaises(ValueError):
                 load_catalog()
 
@@ -201,6 +235,47 @@ class ShopBuildTests(unittest.TestCase):
         for selector in ('.shop-prices', '.shop-product-order'):
             self.assertNotIn('width', rules[selector])
             self.assertNotIn('border-top', rules[selector])
+
+    def test_add_buttons_match_field_height_without_changing_the_final_order_button(self):
+        rules = dict(css_rules(ROOT / 'shop.css'))
+        button = rules['.shop-profile-submit .btn-submit']
+        self.assertEqual(button['height'], '42px')
+        self.assertEqual(button['padding'], '0')
+        for _, soup in self.pages():
+            self.assertEqual(len(soup.select('.shop-profile-submit .btn-submit')), len(self.catalog['products']))
+            self.assertNotIn(soup.select_one('#order-prepare'), soup.select('.shop-profile-submit .btn-submit'))
+
+    def test_rotor_parameters_are_required_only_in_the_custom_option_and_copy_is_concise(self):
+        for lang, soup in self.pages():
+            config = json.loads(soup.select_one('#shop-config').string)
+            rotor = next(product for product in config['products'] if product['id'] == 'distributor-rotor')
+            self.assertEqual([option['id'] for option in rotor['options']], ['4800-5100', 'custom', 'original'])
+            form = soup.select_one('#item-distributor-rotor')
+            self.assertEqual(len(form.select('input[name=option]')), 3)
+            self.assertEqual(len(form.select('[data-order-field]')), 2)
+            self.assertEqual([field['data-order-field'] for field in form.select('[data-order-field]')], ['min-rpm', 'max-rpm'])
+            for field, key in zip(form.select('[data-order-field]'), ('minRpm', 'maxRpm')):
+                self.assertEqual((field['type'], field['min'], field['step']), ('number', '1', '1'))
+                self.assertTrue(field.has_attr('required') and field.has_attr('disabled'))
+                self.assertEqual(field.find_parent('tr')['data-order-field-row'], 'custom')
+                self.assertTrue(field.find_parent('tr').has_attr('hidden'))
+                self.assertEqual(form.find('label', attrs={'for': field['id']}).text, config['text'][key] + ' *')
+                self.assertEqual(field.find_next_sibling('span').text, config['text']['rpmWarning'])
+            self.assertEqual(form.select_one('[data-order-field="max-rpm"]')['data-minimum-field'], 'min-rpm')
+            for product_id in ('exhaust-headers', 'connecting-rod', 'ignition-coil', 'distributor-rotor'):
+                self.assertFalse(soup.find(id=product_id).select('.shop-description'))
+            for product_id in ('connecting-rod', 'ignition-coil', 'distributor-rotor'):
+                self.assertIn('shop-no-description', soup.find(id=product_id)['class'])
+                self.assertFalse(soup.find(id=product_id).select('.shop-product-content'))
+            resonance = soup.select_one('#resonance-exhaust')
+            self.assertEqual(resonance.img['src'], '/assets/desktop/rezonancni-vyfuk-01.jpg')
+            self.assertFalse(resonance.select('img[data-placeholder]'))
+            if lang == 'cs':
+                self.assertEqual([option['name'] for option in rotor['options']],
+                                 ['Upravený na 4800-5100 ot/min', 'Upravený na přání', 'Originál Bosch / Facet, EPS'])
+                self.assertEqual(rotor['options'][2]['description'], 'žádné levné náhrady!')
+                self.assertEqual(resonance.select_one('.shop-profile-method').text, 'TAZ 1,43 – TAZ 1,6')
+                self.assertEqual(resonance.select_one('.shop-description').text, 'Rezonanční výfuk montovaný na sériový litinový svod.')
 
     def test_nested_variants_reuse_main_form_dropdowns_and_remain_scoped_to_their_option(self):
         for lang, soup in self.pages():
@@ -490,10 +565,10 @@ class ShopBuildTests(unittest.TestCase):
     def test_supplied_standard_product_photos_have_correct_paths_dimensions_and_localized_alt_text(self):
         expected = {
             'exhaust-headers': [('svody-ladene-01.jpeg', 435, 493)],
+            'resonance-exhaust': [('rezonancni-vyfuk-01.jpg', 600, 639)],
             'head-gasket': [('tesneni-valce-01.jpeg', 1600, 1200), ('tesneni-valce-02.jpeg', 742, 497)],
             'connecting-rod': [('ojnice-h-kovana-01.jpeg', 4000, 2252)],
-            'ignition-coil-contact': [('zapalovaci-civka-01.jpeg', 2252, 4000)],
-            'ignition-coil-contactless': [('zapalovaci-civka-01.jpeg', 2252, 4000)],
+            'ignition-coil': [('zapalovaci-civka-01.jpeg', 2252, 4000)],
             'distributor-rotor': [('palec-rozdelovace-omezovac-01.jpeg', 2046, 2048)],
             'distributor-overhaul': [('repas-rozdelovac-01.jpeg', 600, 800)],
         }
@@ -559,8 +634,8 @@ class ShopBuildTests(unittest.TestCase):
                     self.assertEqual(len(prices), len(options))
                     for cell, option in zip(prices, options):
                         price = text['quote'] if option['priceType'] == 'quote' else money(option['price'], lang)
-                        if option['priceType'] == 'from':
-                            price = text['from'] + ' ' + price
+                        if option['priceType'] in ('from', 'approx'):
+                            price = text[option['priceType']] + ' ' + price
                         self.assertEqual(cell.get_text(strip=True), price)
                 self.assertFalse(card.select('.shop-dealer-minimum'))
                 self.assertIsNone(card.select_one('.shop-price-note'))
@@ -874,7 +949,9 @@ class ShopBuildTests(unittest.TestCase):
                                      [f'/{code}/shop' for code in self.catalog['languages']])
                 for link in soup.select('.mobile-menu-list a'):
                     self.assertFalse(link['href'].startswith('#post-'))
-                for trigger in soup.select('button[aria-controls]'):
+                triggers = soup.select('button[aria-controls="mobile-menu-overlay"], button[aria-controls="mobile-langchooser-overlay"]')
+                self.assertEqual(len(triggers), 2)
+                for trigger in triggers:
                     self.assertEqual(trigger['aria-expanded'], 'false')
                     self.assertTrue(soup.find(id=trigger['aria-controls']).has_attr('hidden'))
 

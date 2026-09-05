@@ -1,7 +1,7 @@
 # Shop
 
 The shop is a static, general-purpose catalogue at `/{language}/shop`. It contains
-15 catalogue cards, including configurable Škoda OHV and TAZ camshaft products.
+13 catalogue cards, including configurable Škoda OHV and TAZ camshaft products.
 No application framework, accounts, payment provider, server basket or new
 dependencies were introduced.
 
@@ -14,22 +14,37 @@ Edit `shop/catalog.json`:
   in the source catalogue are not rendered or used in basket totals.
 - `variants`: stable IDs and labels, with an optional `price` override and localized
   labels in `translations`. By default, each variant becomes a radio-table option;
-  a product with no variants still has one selectable option.
+  a product with no variants still has one selectable option. `descriptions` adds
+  a localized description row under a variant. For single-option items, the
+  localized product `optionName` can differ from the card heading.
+  Variants may define `fields` with an ID and localized `labelKey`: these are
+  required positive whole-number fields shown only for the selected variant.
+  `minimumField` names another field that supplies an inclusive lower bound.
+  The rotor's custom variant uses `min-rpm` / `max-rpm`; its other variants have
+  no extra fields. All three rotor options remain priced on request.
 - `options`: optional groups containing a stable ID, translated name/description
   and `variantIds`. All variants must appear exactly once and variants in a group
   must share a price. A group with multiple variants shows a required specification
-  dropdown inside its selected subform. The head gasket has two main options:
-  the 620 CZK gasket (80.5/82.0 mm) and the 160 CZK stock silicone-treated gasket.
+  dropdown inside its selected subform. The current head gasket instead has three
+  direct radio options: 80.5 mm (620 CZK), 82 mm (620 CZK), and stock TAZ 1.43
+  with silicone treatment (160 CZK).
 - `legacyItems`: explicit old-ID/variant mappings for merged products. The old
   160/156 mm connecting-rod cards map to `connecting-rod` variants at 12,500/11,500
-  CZK; the old stock gasket maps to `head-gasket:stock`. These mappings preserve
+  CZK; the old stock gasket maps to `head-gasket:stock`. The two coils map to
+  `ignition-coil:contact` and `ignition-coil:contactless`; the four distributor
+  components map to `distributor-parts` variants. These mappings preserve
   existing saved selections without trusting stored names or prices.
-- `priceType`: `fixed`, `from`, or `quote` for standard products. Use `null` for a
-  quote-only price. Wizard products use `configured` with a null base price; each
-  profile supplies its own price.
+- `priceType`: `fixed`, `from`, `approx`, or `quote` for standard products. Use `null`
+  for a quote-only price. The distributor overhaul is `approx` (around 1,600 CZK,
+  depending on the work), not a fixed price or a minimum. Wizard products use
+  `configured` with a null base price; each profile supplies its own price.
 - `image`: a real `/assets/...` path or `null`. Existing workshop images are
   displayed without a caption. Products with `null` use the shared `placeholderImage`
   automatically; add their photo path when available to replace the placeholder.
+  The distributor spare-parts collage is pending photos and uses the placeholder;
+  the cylinder/piston kit and carburetor also use it until photos are supplied.
+  The resonance exhaust uses `rezonancni-vyfuk-01.jpg` (renamed from
+  `blog-article1-1.jpg` in the desktop, 1200 and 800 asset directories).
 - `images`: optional ordered gallery entries with `src`, actual `width`/`height`,
   and `alt` text for each language. Keep `image` equal to the first gallery entry's
   `src`. Gallery photos share a fixed 16:9 frame with faded edges; thumbnails switch
@@ -44,13 +59,15 @@ Edit `shop/catalog.json`:
   `shop/placeholder-prompt.txt`.
 - `copy`: original article wording and price-list notes. The source price list is
   dated 5 November 2025. The camshaft configurator has separate prices from the
-  supplied CSV; other products and the displayed price-list date are unchanged.
+  supplied CSV. The remaining product descriptions, options and prices were revised
+  from the supplied Czech product list; the displayed price-list date is unchanged.
+  The Ø82 mm kit's three prices are for a complete four-cylinder engine, not one cylinder.
 
 IDs and variant IDs must remain stable across edits because saved baskets use
 them. Removed products/variants without a `legacyItems` mapping are dropped on the
 next page load. Prices always
 come from the current page, never from browser storage. Dealer prices and minimums
-are not displayed. Starting-price and quote-only products are excluded from
+are not displayed. Starting-price, approximate-price and quote-only products are excluded from
 the fixed-price subtotal; delivery is explicitly unpriced.
 
 The template and UI text live in `shop/page.html` and `shop/translations.json`.
@@ -74,15 +91,20 @@ layout: left-aligned heading with the main team names' uppercase type and thin r
 underline, photo/gallery, description, then an option table. Photo, text and table
 share the same inner edges. Standard tables have an option column (44%) and a
 right-aligned price column; like the camshaft tables, they have internal dividers
-but no outer border. Selecting a radio moves one shared subform directly beneath
+but no outer border. Every standard table retains both the option and price
+headings, including single-option products. Selecting a radio moves one shared subform directly beneath
 that option. Selecting it again hides the subform and clears validation warnings.
 The radios are optional display controls, not required order fields.
 The subform places labels in the first column and controls in the second: any
 applicable specification dropdown, quantity, then the Add to order button. Quantity
-is a draft value (1–9999), not a live basket control. Only pressing Add to order
+uses the shared minus/input/plus spinner, compacted to the product form's 42px
+control height. It is a draft value (1–9999), not a live basket control. Minus is
+disabled at 1 and plus at 9999. Only pressing Add to order
 adds that many units, accumulating units of the same variant in the order. A
 submission that would exceed 9999 units of an option is rejected without a partial
 add. Changing the selection moves the same fields and retains the quantity.
+The Add to order button is also 42px high, matching the product form fields;
+the final checkout button keeps its original main-page styling.
 Specification dropdowns reuse the main form's pinned Choices.js component and
 shared styling, retaining native selection if the CDN script is unavailable.
 Text fields, textareas and quantity inputs also inherit the main page's field
@@ -165,6 +187,12 @@ add, subject to the same per-option limit in the order. Basket controls edit the
 existing line directly; product form edits do not affect it. Clicking anywhere
 inside a basket or product quantity input selects the entire number; keyboard focus does
 the same. These delegated handlers also cover rows rebuilt after quantity edits.
+Custom rotor rows additionally store sanitized `parameters` containing only
+`min-rpm` and `max-rpm`. A product/variant/RPM-range combination is one order line:
+identical ranges accumulate quantity; different ranges remain independently
+editable/removable. RPM settings appear in the order panel and email draft.
+Legacy rotor rows without a variant cannot be mapped unambiguously; the page
+asks the customer to select a new option and preserves their other order items.
 Configured products also store a unique `lineId` and the validated `configuration`
 described below, with an implicit quantity of one and no quantity controls.
 No contact details, address or draft email are stored by the site.

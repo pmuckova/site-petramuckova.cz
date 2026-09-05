@@ -39,7 +39,7 @@ def load_catalog(root=ROOT):
         if product.get('kind', 'standard') not in ('standard', 'wizard'):
             raise ValueError(f'Invalid product kind: {product_id}')
         wizard = product.get('kind') == 'wizard'
-        if product['priceType'] not in (('configured',) if wizard else ('fixed', 'from', 'quote')):
+        if product['priceType'] not in (('configured',) if wizard else ('fixed', 'from', 'approx', 'quote')):
             raise ValueError(f'Invalid price type: {product_id}')
         price = product['price']
         if product['priceType'] in ('quote', 'configured'):
@@ -65,6 +65,16 @@ def load_catalog(root=ROOT):
                     raise ValueError(f'Invalid variant price: {product_id}')
                 if 'translations' in variant and any(not variant['translations'].get(lang) for lang in data['languages']):
                     raise ValueError(f'Missing variant translation: {product_id}')
+                if 'descriptions' in variant and any(not variant['descriptions'].get(lang) for lang in data['languages']):
+                    raise ValueError(f'Missing variant description: {product_id}')
+                fields = variant.get('fields', [])
+                field_ids = [field['id'] for field in fields]
+                if len(set(field_ids)) != len(field_ids) or any(not re.fullmatch(r'[a-z][a-z0-9-]*', key) for key in field_ids):
+                    raise ValueError(f'Invalid option field IDs: {product_id}')
+                for field in fields:
+                    if (field.get('labelKey') not in ('minRpm', 'maxRpm')
+                            or ('minimumField' in field and (field['minimumField'] not in field_ids or field['minimumField'] == field['id']))):
+                        raise ValueError(f'Invalid option field: {product_id}')
             if 'options' in product:
                 option_ids = [option['id'] for option in product['options']]
                 covered = [variant for option in product['options'] for variant in option['variantIds']]
@@ -154,8 +164,9 @@ def money(value, lang):
 
 
 def localized_variants(product, lang):
-    return [{key: value for key, value in variant.items() if key != 'translations'}
+    return [{key: value for key, value in variant.items() if key not in ('translations', 'descriptions')}
             | {'label': variant.get('translations', {}).get(lang, variant['label'])}
+            | ({'description': variant['descriptions'][lang]} if 'descriptions' in variant else {})
             for variant in product['variants']]
 
 
@@ -171,8 +182,9 @@ def standard_options(product, lang):
         } for option in product['options']]
     return [{
         'id': variant['id'] if variant else 'standard',
-        'name': variant['label'] if variant else product['translations'][lang]['name'],
-        'description': '', 'price': variant.get('price', product['price']) if variant else product['price'],
+        'name': variant['label'] if variant else product['translations'][lang].get('optionName', product['translations'][lang]['name']),
+        'description': variant.get('description', '') if variant else '',
+        'price': variant.get('price', product['price']) if variant else product['price'],
         'priceType': product['priceType'], 'variants': [variant] if variant else [],
     } for variant in (variants or [None])]
 
@@ -181,13 +193,13 @@ def order_item_form(product, lang, t):
     prefix = escape(product['id'])
     name = escape(product['translations'][lang]['name'])
     options = standard_options(product, lang)
-    rows, variant_rows = [], []
+    rows, variant_rows, parameter_rows = [], [], []
     for option in options:
         key = escape(option['id'])
         option_id = f'{prefix}-option-{key}'
         price = t['quote'] if option['priceType'] == 'quote' else money(option['price'], lang)
-        if option['priceType'] == 'from':
-            price = t['from'] + ' ' + price
+        if option['priceType'] in ('from', 'approx'):
+            price = t[option['priceType']] + ' ' + price
         description = option['description']
         rows.append(f'''<tbody class="shop-profile-option">
           <tr>
@@ -212,6 +224,17 @@ def order_item_form(product, lang, t):
                 <span id="{select_id}-warning" class="warning-msg">{escape(t['requiredWarning'])}</span>
               </div></td>
             </tr>''')
+        for variant in option['variants']:
+            for field in variant.get('fields', []):
+                field_id = f'{prefix}-{escape(variant["id"])}-{escape(field["id"])}'
+                minimum = (' data-minimum-field="' + escape(field['minimumField']) + '"') if field.get('minimumField') else ''
+                parameter_rows.append(f'''<tr class="shop-profile-field" data-order-field-row="{escape(variant['id'])}" hidden>
+              <th scope="row"><label for="{field_id}">{escape(t[field['labelKey']])} *</label></th>
+              <td><div class="form-group">
+                <input id="{field_id}" name="{escape(field['id'])}" data-order-field="{escape(field['id'])}"{minimum} type="number" min="1" max="9007199254740991" step="1" inputmode="numeric" class="validate-me" required disabled>
+                <span class="warning-msg">{escape(t['rpmWarning'])}</span>
+              </div></td>
+            </tr>''')
     return f'''<form class="shop-wizard-form shop-item-form" id="item-{prefix}" data-order-product="{prefix}" aria-label="{name}" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">{escape(t['variant'])}: {name}</legend>
@@ -221,11 +244,16 @@ def order_item_form(product, lang, t):
           {''.join(rows)}
           <tbody class="shop-profile-fields" data-profile-fields hidden>
             {''.join(variant_rows)}
+            {''.join(parameter_rows)}
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-{prefix}">{escape(t['quantity'])} *</label></th>
+              <th scope="row"><label id="label-quantity-{prefix}" for="quantity-{prefix}">{escape(t['quantity'])} *</label></th>
               <td><div class="form-group">
-                <input id="quantity-{prefix}" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">{escape(t['quantityLimit'])}</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-{prefix}">
+                  <button type="button" data-order-change="-1" aria-label="{escape(t['decrease'])}: {name}" aria-controls="quantity-{prefix}" disabled>−</button>
+                  <input id="quantity-{prefix}" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-{prefix}-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="{escape(t['increase'])}: {name}" aria-controls="quantity-{prefix}" disabled>+</button>
+                </div>
+                <span id="quantity-{prefix}-warning" class="warning-msg">{escape(t['quantityLimit'])}</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -358,7 +386,7 @@ def product_card(product, lang, t, position, placeholder_image):
     text = product['translations'][lang]
     product_id = escape(product['id'])
     name = escape(text['name'])
-    description = ''.join(f'<p class="shop-description">{escape(paragraph)}</p>' for paragraph in text['description'].split('\n\n'))
+    description = ''.join(f'<p class="shop-description">{escape(paragraph)}</p>' for paragraph in text['description'].split('\n\n') if paragraph.strip())
     is_wizard = product.get('kind') == 'wizard'
     photo = product_photos(product, lang, t, position, placeholder_image)
     if is_wizard:
@@ -369,15 +397,11 @@ def product_card(product, lang, t, position, placeholder_image):
       {wizard_form(product, lang, t)}
     </article>'''
     article_link = f'<a href="/{lang}/blog#post-2-title">{escape(t["blog"])}: TAZ 1.43 / PS12 ↗</a>' if product['id'] == 'exhaust-headers' else ''
-    card = f'''<article class="blog-card shop-product shop-wizard-product shop-option-product" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
+    content = f'<div class="shop-product-content"><div class="shop-product-body">{description}{article_link}</div></div>' if description or article_link else ''
+    card = f'''<article class="blog-card shop-product shop-wizard-product shop-option-product{' shop-no-description' if not content else ''}" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
       <h3 class="shop-product-title" id="name-{product_id}">{name}</h3>
       {photo}
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          {description}
-          {article_link}
-        </div>
-      </div>
+      {content}
       {order_item_form(product, lang, t)}
     </article>'''
     return '\n'.join(line.rstrip() for line in card.splitlines())

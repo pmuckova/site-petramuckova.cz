@@ -31,6 +31,7 @@
 .shop-product-content { grid-area: content; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
 /* Photo-led product cards: gallery, copy and order form share the same inner width. */
 .shop-wizard-product { --shop-wizard-padding: 28px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "photo" "content" "wizard"; gap: 26px; padding: 0; }
+.shop-option-product.shop-no-description { grid-template-areas: "title" "photo" "wizard"; }
 .shop-wizard-product > .shop-product-title { justify-self: start; text-align: left; font-size: calc(var(--shop-product-font-size) * 2.3); margin: var(--shop-wizard-padding) var(--shop-wizard-padding) 0; max-width: calc(100% - 2 * var(--shop-wizard-padding)); hyphens: none; }
 .shop-wizard-product > .shop-product-content { padding-inline: var(--shop-wizard-padding); }
 .shop-wizard-product > .shop-photo { margin-inline: var(--shop-wizard-padding); }
@@ -65,7 +66,7 @@
 .shop-profile-field > th label { display: block; margin: 0; color: #fff; font-size: var(--shop-product-small-font-size); text-transform: none; letter-spacing: .5px; overflow-wrap: anywhere; cursor: default; }
 .shop-profile-field > td > .form-group { width: 100%; min-width: 0; }
 .shop-profile-submit > td:first-child { box-shadow: inset 3px 0 var(--accent); }
-.shop-profile-submit .btn-submit { margin-top: 0; }
+.shop-profile-submit .btn-submit { margin-top: 0; height: 42px; padding: 0; line-height: 1.15; }
 .shop-wizard-status { color: var(--accent); margin-top: 16px; }
 .shop-basket-configuration { margin: 12px 0; padding: 0; color: #bbb; font-size: .8rem; overflow-wrap: anywhere; }
 .shop-basket-configuration > div + div { margin-top: 8px; }
@@ -139,6 +140,9 @@
    compact without changing the final order form. */
 .shop-wizard-form input[type="text"],
 .shop-wizard-form input[type="number"] { height: 42px; line-height: 42px; padding: 0 12px; font-size: var(--shop-product-font-size); }
+.shop-item-form .shop-quantity { grid-template-columns: 36px minmax(0, 1fr) 36px; }
+.shop-item-form .shop-quantity button { min-height: 42px; }
+.shop-item-form .shop-quantity input { padding-inline: 2px; }
 .shop-wizard-form select.custom-select { height: 42px; padding: 0 12px; font-size: var(--shop-product-font-size); }
 .shop-wizard-form .choices,
 .shop-wizard-form .choices__item { font-size: var(--shop-product-font-size); }
@@ -208,4 +212,5 @@
   .shop-profile-operation-column { width: 40%; }
   .shop-profile-price-column { width: 20%; }
   .shop-profile-option label, .shop-profile-table th { padding-inline: .25rem; }
+  .shop-product .shop-profile-submit .btn-submit { font-size: var(--shop-product-font-size); }
 }

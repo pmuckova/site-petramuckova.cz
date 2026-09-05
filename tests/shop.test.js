@@ -18,23 +18,23 @@ test('only IDs, variants and quantities survive storage loading', () => {
     assert.deepEqual(normalise([{ ...row(), email: 'private@example.test', company: 'Private company', phone: '+420 123 456 789', address: 'Private', price: 1, admin: true }]), [row()]);
 });
 test('removed products and invalid variants are discarded', () => {
-    assert.deepEqual(normalise([row('gone'), row('exhaust-headers'), row('head-gasket', 1, 'unknown'), row('ignition-coil-contact', 1, 'invalid')]), []);
+    assert.deepEqual(normalise([row('gone'), row('exhaust-headers'), row('head-gasket', 1, 'unknown'), row('carburetor-38-38', 1, 'invalid')]), []);
 });
 test('quantities must be positive integers', () => {
-    for (const quantity of [-1, 0, 1.5, '2', null, NaN, Infinity]) assert.deepEqual(normalise([row('ignition-coil-contact', quantity)]), []);
+    for (const quantity of [-1, 0, 1.5, '2', null, NaN, Infinity]) assert.deepEqual(normalise([row('carburetor-38-38', quantity)]), []);
 });
 test('duplicate rows merge and are bounded', () => {
-    assert.deepEqual(normalise([row('ignition-coil-contact', 6000), row('ignition-coil-contact', 6000)]), [row('ignition-coil-contact', 9999)]);
+    assert.deepEqual(normalise([row('carburetor-38-38', 6000), row('carburetor-38-38', 6000)]), [row('carburetor-38-38', 9999)]);
 });
 test('quantities above 99 and up to 9999 survive edits, storage and totals', () => {
     assert.equal(shop.MAX_QUANTITY, 9999);
     for (const quantity of [100, 1000, 9999]) {
-        const items = shop.setQuantity([], 'ignition-coil-contact', '', quantity, products);
-        assert.deepEqual(items, [row('ignition-coil-contact', quantity)]);
+        const items = shop.setQuantity([], 'carburetor-38-38', '', quantity, products);
+        assert.deepEqual(items, [row('carburetor-38-38', quantity)]);
         assert.deepEqual(normalise(items), items);
         const summary = shop.basketSummary(items, products);
         assert.equal(summary.count, quantity);
-        assert.equal(summary.subtotalCents, products.find(product => product.id === 'ignition-coil-contact').price * 100 * quantity);
+        assert.equal(summary.subtotalCents, products.find(product => product.id === 'carburetor-38-38').price * 100 * quantity);
     }
 });
 test('variant quantities stay separate', () => {
@@ -43,20 +43,20 @@ test('variant quantities stay separate', () => {
     assert.equal(shop.basketSummary(basket, products).subtotalCents, 3300000);
 });
 test('plus, minus and direct edits update the same line', () => {
-    let items = shop.setQuantity([], 'ignition-coil-contact', '', 1, products);
-    items = shop.setQuantity(items, 'ignition-coil-contact', '', 5, products);
-    assert.deepEqual(items, [row('ignition-coil-contact', 5)]);
-    items = shop.setQuantity(items, 'ignition-coil-contact', '', 0, products);
+    let items = shop.setQuantity([], 'carburetor-38-38', '', 1, products);
+    items = shop.setQuantity(items, 'carburetor-38-38', '', 5, products);
+    assert.deepEqual(items, [row('carburetor-38-38', 5)]);
+    items = shop.setQuantity(items, 'carburetor-38-38', '', 0, products);
     assert.deepEqual(items, []);
 });
 test('quantity changes preserve basket order', () => {
-    const items = normalise([row(), row('ignition-coil-contact')]);
-    assert.deepEqual(shop.setQuantity(items, 'resonance-exhaust', '', 2, products), [row('resonance-exhaust', 2), row('ignition-coil-contact')]);
+    const items = normalise([row(), row('carburetor-38-38')]);
+    assert.deepEqual(shop.setQuantity(items, 'resonance-exhaust', '', 2, products), [row('resonance-exhaust', 2), row('carburetor-38-38')]);
 });
 test('removing a basket line keeps other products and variants unchanged', () => {
-    const items = normalise([row('exhaust-headers', 2, 'small'), row('exhaust-headers', 3, 'large'), row('ignition-coil-contact')]);
+    const items = normalise([row('exhaust-headers', 2, 'small'), row('exhaust-headers', 3, 'large'), row('carburetor-38-38')]);
     const remaining = shop.setQuantity(items, 'exhaust-headers', 'small', 0, products);
-    assert.deepEqual(remaining, [row('exhaust-headers', 3, 'large'), row('ignition-coil-contact')]);
+    assert.deepEqual(remaining, [row('exhaust-headers', 3, 'large'), row('carburetor-38-38')]);
 });
 test('basket removal uses a labelled cross button with the existing removal and focus hooks', () => {
     const doc = { createElement(tagName) {
@@ -81,9 +81,9 @@ test('basket removal uses a labelled cross button with the existing removal and 
     }
 });
 test('large or fractional direct updates are clamped and invalid values ignored', () => {
-    assert.deepEqual(shop.setQuantity([], 'ignition-coil-contact', '', 10000, products), [row('ignition-coil-contact', 9999)]);
-    assert.deepEqual(shop.setQuantity([], 'ignition-coil-contact', '', 2.9, products), [row('ignition-coil-contact', 2)]);
-    assert.deepEqual(shop.setQuantity([], 'ignition-coil-contact', '', NaN, products), []);
+    assert.deepEqual(shop.setQuantity([], 'carburetor-38-38', '', 10000, products), [row('carburetor-38-38', 9999)]);
+    assert.deepEqual(shop.setQuantity([], 'carburetor-38-38', '', 2.9, products), [row('carburetor-38-38', 2)]);
+    assert.deepEqual(shop.setQuantity([], 'carburetor-38-38', '', NaN, products), []);
 });
 
 function basketSelectionFixture() {
@@ -137,7 +137,7 @@ test('quantity selection ignores other controls and disabled or read-only fields
     }
 });
 test('quote and starting-price products are not misrepresented as fixed totals', () => {
-    const summary = shop.basketSummary(normalise([row('resonance-exhaust', 2), row('distributor-rotor', 1), row('copper-rings', 4)]), products);
+    const summary = shop.basketSummary(normalise([row('resonance-exhaust', 2), row('distributor-rotor', 1, 'original'), row('copper-rings', 4)]), products);
     assert.deepEqual(summary, { count: 7, subtotalCents: 540000, quotedCount: 5 });
 });
 test('dealer prices do not apply automatically at the dealer minimum', () => {
@@ -168,9 +168,10 @@ test('delivery has a method and a separate postal-address structure', () => {
 test('every locale generates an order draft with products, contact details, address and caveats', () => {
     for (const locale of catalog.languages) {
         const config = { locale, currency: catalog.currency, text: texts[locale], products: products.map(p => ({ ...p, name: p.translations[locale].name })) };
-        const items = normalise([row('exhaust-headers', 2, 'small'), row('distributor-rotor'), row('copper-rings')]);
+        const items = normalise([row('exhaust-headers', 2, 'small'), row('distributor-rotor', 1, 'original'), row('copper-rings')]);
         const draft = shop.orderText(items, shop.orderDetails(values), config);
-        for (const value of ['TAZ 1.43 l', '[exhaust-headers:small]', values.email, values.street, values.country, values.notes, texts[locale].deliveryNotice, texts[locale].quoteNotice, texts[locale].confirmation]) {
+        const variantName = products.find(product => product.id === 'exhaust-headers').variants[0].label;
+        for (const value of [variantName, '[exhaust-headers:small]', values.email, values.street, values.country, values.notes, texts[locale].deliveryNotice, texts[locale].quoteNotice, texts[locale].confirmation]) {
             assert.ok(draft.includes(value), locale + ': ' + value);
         }
         assert.ok(draft.split('\n').includes(texts[locale].company + ': ' + values.company.trim()), locale);
@@ -428,7 +429,11 @@ function navigationFixture() {
         panel.querySelectorAll = () => links;
         return { id, trigger, panel, links };
     });
-    doc.querySelectorAll = () => menus.map(menu => menu.trigger);
+    doc.querySelectorAll = selector => {
+        // Quantity buttons also use aria-controls, but must never toggle navigation.
+        assert.equal(selector, 'button[aria-controls="mobile-menu-overlay"], button[aria-controls="mobile-langchooser-overlay"]');
+        return menus.map(menu => menu.trigger);
+    };
     doc.getElementById = id => menus.find(menu => menu.id === id)?.panel;
     const media = node();
     const viewport = { matchMedia(query) { assert.equal(query, '(min-width: 1400px)'); return media; } };

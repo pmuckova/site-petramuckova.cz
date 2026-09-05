@@ -78,10 +78,11 @@ def main():
             for card in soup.select('.shop-product'):
                 source_product = next(product for product in catalog['products'] if product['id'] == card['id'])
                 wizard = card.select_one('form[data-wizard]')
-                assert len(card.find_all(recursive=False)) == 4
+                has_description = bool(source_product['translations'][language]['description'])
+                assert len(card.find_all(recursive=False)) == (4 if has_description or card['id'] == 'exhaust-headers' else 3)
                 assert card.find(recursive=False).name == 'h3'
                 assert card.select_one(':scope > .shop-photo img')
-                assert card.select_one(':scope > .shop-product-content > .shop-product-body .shop-description')
+                assert bool(card.select_one(':scope > .shop-product-content > .shop-product-body .shop-description')) == has_description
                 if wizard:
                     assert len(wizard.select('input[name=profile]')) == len(source_product['wizard']['profiles'])
                     expected_fields = source_product['wizard']['fields']
@@ -132,6 +133,13 @@ def main():
                     assert not card.select('.shop-prices, .shop-product-order, [data-change], [data-quantity]')
                     assert not card.select('.shop-dealer-minimum')
                     assert item_form.select_one('input[data-order-quantity]')['max'] == '9999'
+                    spinner = item_form.select_one('.shop-quantity')
+                    assert [button['data-order-change'] for button in spinner.select('button[type=button][disabled]')] == ['-1', '1']
+                    quantity = spinner.select_one('input[data-order-quantity]')
+                    assert item_form.find(id=quantity['data-warning-id'])
+                    assert len(item_form.select('thead th')) == 2
+                    if source_product['id'] == 'distributor-rotor':
+                        assert len(item_form.select('[data-order-field-row="custom"][hidden] input[required][disabled]')) == 2
                 photo_links = card.select('.shop-photo-link')
                 for photo_link in photo_links:
                     assert photo_link['href'] == photo_link.img['src']

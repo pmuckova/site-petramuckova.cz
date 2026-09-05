@@ -32,10 +32,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/styles/choices.min.css">
   <link rel="stylesheet" href="/main.css">
   <link rel="stylesheet" href="/blog.css?v=c87d129dc6cb">
-  <link rel="stylesheet" href="/shop.css?v=4629316ee9fb">
+  <link rel="stylesheet" href="/shop.css?v=d24495b187c7">
   <script src="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/scripts/choices.min.js" defer></script>
   <script src="/form.js?v=ab5bb64dc1ce" defer></script>
-  <script src="/shop.js?v=29cb9c4d3e61" defer></script>
+  <script src="/shop.js?v=45a39d538079" defer></script>
 </head>
 <body id="home" class="shop-page bg-loaded">
   <a class="shop-skip" href="#catalog">Browse parts</a>
@@ -108,6 +108,7 @@
         <noscript><p class="shop-notice">Enable JavaScript to use the basket, or send your selection and postal address to info@petramuckova.cz.</p></noscript>
         <p id="shop-storage-notice" class="shop-notice" role="status" hidden>Browser storage is unavailable. Your basket will work on this page but may not survive a reload.</p>
         <p id="shop-legacy-notice" class="shop-notice" role="status" hidden>The old camshaft items have been replaced by the configurator. Please choose a new configuration; other basket items have been kept.</p>
+        <p id="shop-legacy-rotor-notice" class="shop-notice" role="status" hidden>The distributor rotor now has new options. Please select it again; your other order items have been kept.</p>
         <h1 id="catalog-title" class="shop-sr-only">Shop</h1>
         <div class="blog-card shop-catalog-notes"><p>We specialize in modifications and component supplies for fire sport. We offer individual pricing conditions and discounted prices to dealers and tuners who purchase goods in larger quantities.</p><p>All offered parts are CZ originals, not cheap replacements. Other parts on request.</p><p>PRICELIST VALID FROM NOV 5, 2025</p><p>WE ARE NOT VAT PAYERS</p></div>
         <div class="shop-grid"><article class="blog-card shop-product shop-wizard-product" id="skoda-ohv-camshaft" data-product="skoda-ohv-camshaft" aria-labelledby="name-skoda-ohv-camshaft">
@@ -352,31 +353,26 @@
     </form>
     </article>
 <article class="blog-card shop-product shop-wizard-product shop-option-product" id="exhaust-headers" data-product="exhaust-headers" aria-labelledby="name-exhaust-headers">
-      <h3 class="shop-product-title" id="name-exhaust-headers">Tuned exhaust headers</h3>
+      <h3 class="shop-product-title" id="name-exhaust-headers">Tuned exhaust manifold</h3>
       <figure class="shop-photo">
-      <a class="shop-photo-link" id="photo-exhaust-headers-1" href="/assets/desktop/svody-ladene-01.jpeg" style="--shop-photo-width: 435px" aria-haspopup="dialog" aria-label="Enlarge photo: Tuned exhaust headers">
+      <a class="shop-photo-link" id="photo-exhaust-headers-1" href="/assets/desktop/svody-ladene-01.jpeg" style="--shop-photo-width: 435px" aria-haspopup="dialog" aria-label="Enlarge photo: Tuned exhaust manifold">
         <span class="tech-frame">
-          <img src="/assets/desktop/svody-ladene-01.jpeg" alt="Tuned exhaust headers" width="435" height="493" loading="lazy" decoding="async">
+          <img src="/assets/desktop/svody-ladene-01.jpeg" alt="Tuned exhaust manifold" width="435" height="493" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">small (1.43l) / large (2.0l and larger)</p>
-          <a href="/en/blog#post-2-title">Blog: TAZ 1.43 / PS12 ↗</a>
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-exhaust-headers" data-order-product="exhaust-headers" aria-label="Tuned exhaust headers" method="post" novalidate>
+      <div class="shop-product-content"><div class="shop-product-body"><a href="/en/blog#post-2-title">Blog: TAZ 1.43 / PS12 ↗</a></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-exhaust-headers" data-order-product="exhaust-headers" aria-label="Tuned exhaust manifold" method="post" novalidate>
       <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">Specification: Tuned exhaust headers</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="Tuned exhaust headers">
+        <legend class="shop-sr-only">Specification: Tuned exhaust manifold</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="Tuned exhaust manifold">
           <colgroup><col class="shop-item-option-column"><col></colgroup>
           <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="exhaust-headers-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
             <td><label class="shop-profile-radio-label" for="exhaust-headers-option-small">
               <input type="radio" name="option" value="small" id="exhaust-headers-option-small" aria-labelledby="exhaust-headers-option-small-name exhaust-headers-price-heading exhaust-headers-option-small-price">
-              <span id="exhaust-headers-option-small-name" class="shop-profile-method">TAZ 1.43 l</span>
+              <span id="exhaust-headers-option-small-name" class="shop-profile-method">TAZ 1.43</span>
             </label></td>
             <td class="shop-profile-price"><label for="exhaust-headers-option-small"><span id="exhaust-headers-option-small-price" class="shop-profile-value">6 600 CZK</span></label></td>
           </tr>
@@ -385,7 +381,7 @@
           <tr>
             <td><label class="shop-profile-radio-label" for="exhaust-headers-option-large">
               <input type="radio" name="option" value="large" id="exhaust-headers-option-large" aria-labelledby="exhaust-headers-option-large-name exhaust-headers-price-heading exhaust-headers-option-large-price">
-              <span id="exhaust-headers-option-large-name" class="shop-profile-method">TAZ 2.0 l +</span>
+              <span id="exhaust-headers-option-large-name" class="shop-profile-method">TAZ 2.0 and larger</span>
             </label></td>
             <td class="shop-profile-price"><label for="exhaust-headers-option-large"><span id="exhaust-headers-option-large-price" class="shop-profile-value">6 600 CZK</span></label></td>
           </tr>
@@ -393,11 +389,16 @@
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-exhaust-headers">Quantity *</label></th>
+              <th scope="row"><label id="label-quantity-exhaust-headers" for="quantity-exhaust-headers">Quantity *</label></th>
               <td><div class="form-group">
-                <input id="quantity-exhaust-headers" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-exhaust-headers">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Tuned exhaust manifold" aria-controls="quantity-exhaust-headers" disabled>−</button>
+                  <input id="quantity-exhaust-headers" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-exhaust-headers-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Tuned exhaust manifold" aria-controls="quantity-exhaust-headers" disabled>+</button>
+                </div>
+                <span id="quantity-exhaust-headers-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -412,19 +413,14 @@
     </article>
 <article class="blog-card shop-product shop-wizard-product shop-option-product" id="resonance-exhaust" data-product="resonance-exhaust" aria-labelledby="name-resonance-exhaust">
       <h3 class="shop-product-title" id="name-resonance-exhaust">Resonance exhaust</h3>
-      <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-resonance-exhaust-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="Enlarge photo: Resonance exhaust">
+      <figure class="shop-photo">
+      <a class="shop-photo-link" id="photo-resonance-exhaust-1" href="/assets/desktop/rezonancni-vyfuk-01.jpg" style="--shop-photo-width: 600px" aria-haspopup="dialog" aria-label="Enlarge photo: Resonance exhaust">
         <span class="tech-frame">
-          <img src="/assets/desktop/shop-placeholder.webp" alt="Product photo not yet available" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
+          <img src="/assets/desktop/rezonancni-vyfuk-01.jpg" alt="Resonance exhaust" width="600" height="639" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">(for cast iron manifold) - TAZ 1.43l</p>
-
-        </div>
-      </div>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">Resonance exhaust mounted on the stock cast-iron manifold.</p></div></div>
       <form class="shop-wizard-form shop-item-form" id="item-resonance-exhaust" data-order-product="resonance-exhaust" aria-label="Resonance exhaust" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">Specification: Resonance exhaust</legend>
@@ -435,7 +431,7 @@
           <tr>
             <td><label class="shop-profile-radio-label" for="resonance-exhaust-option-standard">
               <input type="radio" name="option" value="standard" id="resonance-exhaust-option-standard" aria-labelledby="resonance-exhaust-option-standard-name resonance-exhaust-price-heading resonance-exhaust-option-standard-price">
-              <span id="resonance-exhaust-option-standard-name" class="shop-profile-method">Resonance exhaust</span>
+              <span id="resonance-exhaust-option-standard-name" class="shop-profile-method">TAZ 1.43 – TAZ 1.6</span>
             </label></td>
             <td class="shop-profile-price"><label for="resonance-exhaust-option-standard"><span id="resonance-exhaust-option-standard-price" class="shop-profile-value">2 700 CZK</span></label></td>
           </tr>
@@ -443,11 +439,16 @@
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-resonance-exhaust">Quantity *</label></th>
+              <th scope="row"><label id="label-quantity-resonance-exhaust" for="quantity-resonance-exhaust">Quantity *</label></th>
               <td><div class="form-group">
-                <input id="quantity-resonance-exhaust" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-resonance-exhaust">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Resonance exhaust" aria-controls="quantity-resonance-exhaust" disabled>−</button>
+                  <input id="quantity-resonance-exhaust" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-resonance-exhaust-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Resonance exhaust" aria-controls="quantity-resonance-exhaust" disabled>+</button>
+                </div>
+                <span id="quantity-resonance-exhaust-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -460,7 +461,7 @@
       </fieldset>
     </form>
     </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="connecting-rod" data-product="connecting-rod" aria-labelledby="name-connecting-rod">
+<article class="blog-card shop-product shop-wizard-product shop-option-product shop-no-description" id="connecting-rod" data-product="connecting-rod" aria-labelledby="name-connecting-rod">
       <h3 class="shop-product-title" id="name-connecting-rod">Forged H-beam Connecting Rod</h3>
       <figure class="shop-photo">
       <a class="shop-photo-link" id="photo-connecting-rod-1" href="/assets/desktop/ojnice-h-kovana-01.jpeg" style="--shop-photo-width: 4000px" aria-haspopup="dialog" aria-label="Enlarge photo: Forged H-beam Connecting Rod">
@@ -469,12 +470,7 @@
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">Length 160mm (stock)</p><p class="shop-description">Length 156mm (for engines with increased stroke - offset can also be adjusted for &quot;Vošvrda&quot; crankshafts)</p>
 
-        </div>
-      </div>
       <form class="shop-wizard-form shop-item-form" id="item-connecting-rod" data-order-product="connecting-rod" aria-label="Forged H-beam Connecting Rod" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">Specification: Forged H-beam Connecting Rod</legend>
@@ -485,7 +481,7 @@
           <tr>
             <td><label class="shop-profile-radio-label" for="connecting-rod-option-160">
               <input type="radio" name="option" value="160" id="connecting-rod-option-160" aria-labelledby="connecting-rod-option-160-name connecting-rod-price-heading connecting-rod-option-160-price">
-              <span id="connecting-rod-option-160-name" class="shop-profile-method">160 mm</span>
+              <span id="connecting-rod-option-160-name" class="shop-profile-method">160 mm – stock</span>
             </label></td>
             <td class="shop-profile-price"><label for="connecting-rod-option-160"><span id="connecting-rod-option-160-price" class="shop-profile-value">12 500 CZK</span></label></td>
           </tr>
@@ -494,69 +490,33 @@
           <tr>
             <td><label class="shop-profile-radio-label" for="connecting-rod-option-156">
               <input type="radio" name="option" value="156" id="connecting-rod-option-156" aria-labelledby="connecting-rod-option-156-name connecting-rod-price-heading connecting-rod-option-156-price">
-              <span id="connecting-rod-option-156-name" class="shop-profile-method">156 mm</span>
+              <span id="connecting-rod-option-156-name" class="shop-profile-method">156 mm – weld-built crankshaft</span>
             </label></td>
             <td class="shop-profile-price"><label for="connecting-rod-option-156"><span id="connecting-rod-option-156-price" class="shop-profile-value">11 500 CZK</span></label></td>
           </tr>
 
-        </tbody>
-          <tbody class="shop-profile-fields" data-profile-fields hidden>
-
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-connecting-rod">Quantity *</label></th>
-              <td><div class="form-group">
-                <input id="quantity-connecting-rod" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
-              </div></td>
-            </tr>
-            <tr class="shop-profile-field shop-profile-submit">
-              <td></td><td><button class="btn-submit" type="submit" disabled>Add to order</button>
-                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </fieldset>
-    </form>
-    </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="ignition-coil-contact" data-product="ignition-coil-contact" aria-labelledby="name-ignition-coil-contact">
-      <h3 class="shop-product-title" id="name-ignition-coil-contact">Ignition coil for PAL contact ignition</h3>
-      <figure class="shop-photo">
-      <a class="shop-photo-link" id="photo-ignition-coil-contact-1" href="/assets/desktop/zapalovaci-civka-01.jpeg" style="--shop-photo-width: 2252px" aria-haspopup="dialog" aria-label="Enlarge photo: Ignition coil for PAL contact ignition">
-        <span class="tech-frame">
-          <img src="/assets/desktop/zapalovaci-civka-01.jpeg" alt="Ignition coil for PAL contact ignition" width="2252" height="4000" loading="lazy" decoding="async">
-        </span>
-      </a>
-    </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">For TAZ firefighting aggregate engines.</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-ignition-coil-contact" data-order-product="ignition-coil-contact" aria-label="Ignition coil for PAL contact ignition" method="post" novalidate>
-      <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">Specification: Ignition coil for PAL contact ignition</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="Ignition coil for PAL contact ignition">
-          <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="ignition-coil-contact-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
-          <tbody class="shop-profile-option">
+        </tbody><tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="ignition-coil-contact-option-standard">
-              <input type="radio" name="option" value="standard" id="ignition-coil-contact-option-standard" aria-labelledby="ignition-coil-contact-option-standard-name ignition-coil-contact-price-heading ignition-coil-contact-option-standard-price">
-              <span id="ignition-coil-contact-option-standard-name" class="shop-profile-method">Ignition coil for PAL contact ignition</span>
+            <td><label class="shop-profile-radio-label" for="connecting-rod-option-156-engitec">
+              <input type="radio" name="option" value="156-engitec" id="connecting-rod-option-156-engitec" aria-labelledby="connecting-rod-option-156-engitec-name connecting-rod-price-heading connecting-rod-option-156-engitec-price">
+              <span id="connecting-rod-option-156-engitec-name" class="shop-profile-method">156 mm – “Engitec” crankshaft</span>
             </label></td>
-            <td class="shop-profile-price"><label for="ignition-coil-contact-option-standard"><span id="ignition-coil-contact-option-standard-price" class="shop-profile-value">780 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="connecting-rod-option-156-engitec"><span id="connecting-rod-option-156-engitec-price" class="shop-profile-value">12 500 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-ignition-coil-contact">Quantity *</label></th>
+              <th scope="row"><label id="label-quantity-connecting-rod" for="quantity-connecting-rod">Quantity *</label></th>
               <td><div class="form-group">
-                <input id="quantity-ignition-coil-contact" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-connecting-rod">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Forged H-beam Connecting Rod" aria-controls="quantity-connecting-rod" disabled>−</button>
+                  <input id="quantity-connecting-rod" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-connecting-rod-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Forged H-beam Connecting Rod" aria-controls="quantity-connecting-rod" disabled>+</button>
+                </div>
+                <span id="quantity-connecting-rod-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -569,44 +529,53 @@
       </fieldset>
     </form>
     </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="ignition-coil-contactless" data-product="ignition-coil-contactless" aria-labelledby="name-ignition-coil-contactless">
-      <h3 class="shop-product-title" id="name-ignition-coil-contactless">Ignition coil for PAL contactless ignition</h3>
+<article class="blog-card shop-product shop-wizard-product shop-option-product shop-no-description" id="ignition-coil" data-product="ignition-coil" aria-labelledby="name-ignition-coil">
+      <h3 class="shop-product-title" id="name-ignition-coil">Ignition coil</h3>
       <figure class="shop-photo">
-      <a class="shop-photo-link" id="photo-ignition-coil-contactless-1" href="/assets/desktop/zapalovaci-civka-01.jpeg" style="--shop-photo-width: 2252px" aria-haspopup="dialog" aria-label="Enlarge photo: Ignition coil for PAL contactless ignition">
+      <a class="shop-photo-link" id="photo-ignition-coil-1" href="/assets/desktop/zapalovaci-civka-01.jpeg" style="--shop-photo-width: 2252px" aria-haspopup="dialog" aria-label="Enlarge photo: Ignition coil">
         <span class="tech-frame">
-          <img src="/assets/desktop/zapalovaci-civka-01.jpeg" alt="Ignition coil for PAL contactless ignition" width="2252" height="4000" loading="lazy" decoding="async">
+          <img src="/assets/desktop/zapalovaci-civka-01.jpeg" alt="Ignition coil" width="2252" height="4000" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">For TAZ firefighting aggregate engines.</p>
 
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-ignition-coil-contactless" data-order-product="ignition-coil-contactless" aria-label="Ignition coil for PAL contactless ignition" method="post" novalidate>
+      <form class="shop-wizard-form shop-item-form" id="item-ignition-coil" data-order-product="ignition-coil" aria-label="Ignition coil" method="post" novalidate>
       <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">Specification: Ignition coil for PAL contactless ignition</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="Ignition coil for PAL contactless ignition">
+        <legend class="shop-sr-only">Specification: Ignition coil</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="Ignition coil">
           <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="ignition-coil-contactless-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
+          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="ignition-coil-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="ignition-coil-contactless-option-standard">
-              <input type="radio" name="option" value="standard" id="ignition-coil-contactless-option-standard" aria-labelledby="ignition-coil-contactless-option-standard-name ignition-coil-contactless-price-heading ignition-coil-contactless-option-standard-price">
-              <span id="ignition-coil-contactless-option-standard-name" class="shop-profile-method">Ignition coil for PAL contactless ignition</span>
+            <td><label class="shop-profile-radio-label" for="ignition-coil-option-contact">
+              <input type="radio" name="option" value="contact" id="ignition-coil-option-contact" aria-labelledby="ignition-coil-option-contact-name ignition-coil-price-heading ignition-coil-option-contact-price">
+              <span id="ignition-coil-option-contact-name" class="shop-profile-method">For contact ignition</span>
             </label></td>
-            <td class="shop-profile-price"><label for="ignition-coil-contactless-option-standard"><span id="ignition-coil-contactless-option-standard-price" class="shop-profile-value">1 100 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="ignition-coil-option-contact"><span id="ignition-coil-option-contact-price" class="shop-profile-value">780 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="ignition-coil-option-contactless">
+              <input type="radio" name="option" value="contactless" id="ignition-coil-option-contactless" aria-labelledby="ignition-coil-option-contactless-name ignition-coil-price-heading ignition-coil-option-contactless-price">
+              <span id="ignition-coil-option-contactless-name" class="shop-profile-method">For contactless ignition</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="ignition-coil-option-contactless"><span id="ignition-coil-option-contactless-price" class="shop-profile-value">1 100 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-ignition-coil-contactless">Quantity *</label></th>
+              <th scope="row"><label id="label-quantity-ignition-coil" for="quantity-ignition-coil">Quantity *</label></th>
               <td><div class="form-group">
-                <input id="quantity-ignition-coil-contactless" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-ignition-coil">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Ignition coil" aria-controls="quantity-ignition-coil" disabled>−</button>
+                  <input id="quantity-ignition-coil" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-ignition-coil-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Ignition coil" aria-controls="quantity-ignition-coil" disabled>+</button>
+                </div>
+                <span id="quantity-ignition-coil-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -619,7 +588,7 @@
       </fieldset>
     </form>
     </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-rotor" data-product="distributor-rotor" aria-labelledby="name-distributor-rotor">
+<article class="blog-card shop-product shop-wizard-product shop-option-product shop-no-description" id="distributor-rotor" data-product="distributor-rotor" aria-labelledby="name-distributor-rotor">
       <h3 class="shop-product-title" id="name-distributor-rotor">Distributor rotor with limiter</h3>
       <figure class="shop-photo">
       <a class="shop-photo-link" id="photo-distributor-rotor-1" href="/assets/desktop/palec-rozdelovace-omezovac-01.jpeg" style="--shop-photo-width: 2046px" aria-haspopup="dialog" aria-label="Enlarge photo: Distributor rotor with limiter">
@@ -628,12 +597,7 @@
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">modified to 4800-5100 rpm, or upon request (Bosch/Facet)</p>
 
-        </div>
-      </div>
       <form class="shop-wizard-form shop-item-form" id="item-distributor-rotor" data-order-product="distributor-rotor" aria-label="Distributor rotor with limiter" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">Specification: Distributor rotor with limiter</legend>
@@ -642,21 +606,56 @@
           <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="distributor-rotor-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="distributor-rotor-option-standard">
-              <input type="radio" name="option" value="standard" id="distributor-rotor-option-standard" aria-labelledby="distributor-rotor-option-standard-name distributor-rotor-price-heading distributor-rotor-option-standard-price">
-              <span id="distributor-rotor-option-standard-name" class="shop-profile-method">Distributor rotor with limiter</span>
+            <td><label class="shop-profile-radio-label" for="distributor-rotor-option-4800-5100">
+              <input type="radio" name="option" value="4800-5100" id="distributor-rotor-option-4800-5100" aria-labelledby="distributor-rotor-option-4800-5100-name distributor-rotor-price-heading distributor-rotor-option-4800-5100-price">
+              <span id="distributor-rotor-option-4800-5100-name" class="shop-profile-method">Modified for 4800–5100 rpm</span>
             </label></td>
-            <td class="shop-profile-price"><label for="distributor-rotor-option-standard"><span id="distributor-rotor-option-standard-price" class="shop-profile-value">Price on request</span></label></td>
+            <td class="shop-profile-price"><label for="distributor-rotor-option-4800-5100"><span id="distributor-rotor-option-4800-5100-price" class="shop-profile-value">Price on request</span></label></td>
           </tr>
 
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-rotor-option-custom">
+              <input type="radio" name="option" value="custom" id="distributor-rotor-option-custom" aria-labelledby="distributor-rotor-option-custom-name distributor-rotor-price-heading distributor-rotor-option-custom-price">
+              <span id="distributor-rotor-option-custom-name" class="shop-profile-method">Modified to order</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="distributor-rotor-option-custom"><span id="distributor-rotor-option-custom-price" class="shop-profile-value">Price on request</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-rotor-option-original">
+              <input type="radio" name="option" value="original" id="distributor-rotor-option-original" aria-labelledby="distributor-rotor-option-original-name distributor-rotor-price-heading distributor-rotor-option-original-price" aria-describedby="distributor-rotor-option-original-description">
+              <span id="distributor-rotor-option-original-name" class="shop-profile-method">Genuine Bosch / Facet, EPS</span>
+            </label></td>
+            <td class="shop-profile-price" rowspan="2"><label for="distributor-rotor-option-original"><span id="distributor-rotor-option-original-price" class="shop-profile-value">Price on request</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="distributor-rotor-option-original-description" for="distributor-rotor-option-original">no cheap substitutes!</label></td></tr>
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-rotor">Quantity *</label></th>
+            <tr class="shop-profile-field" data-order-field-row="custom" hidden>
+              <th scope="row"><label for="distributor-rotor-custom-min-rpm">Min rpm *</label></th>
               <td><div class="form-group">
-                <input id="quantity-distributor-rotor" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+                <input id="distributor-rotor-custom-min-rpm" name="min-rpm" data-order-field="min-rpm" type="number" min="1" max="9007199254740991" step="1" inputmode="numeric" class="validate-me" required disabled>
+                <span class="warning-msg">Enter positive whole RPM values; the maximum must not be below the minimum.</span>
+              </div></td>
+            </tr><tr class="shop-profile-field" data-order-field-row="custom" hidden>
+              <th scope="row"><label for="distributor-rotor-custom-max-rpm">Max rpm *</label></th>
+              <td><div class="form-group">
+                <input id="distributor-rotor-custom-max-rpm" name="max-rpm" data-order-field="max-rpm" data-minimum-field="min-rpm" type="number" min="1" max="9007199254740991" step="1" inputmode="numeric" class="validate-me" required disabled>
+                <span class="warning-msg">Enter positive whole RPM values; the maximum must not be below the minimum.</span>
+              </div></td>
+            </tr>
+            <tr class="shop-profile-field">
+              <th scope="row"><label id="label-quantity-distributor-rotor" for="quantity-distributor-rotor">Quantity *</label></th>
+              <td><div class="form-group">
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-distributor-rotor">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Distributor rotor with limiter" aria-controls="quantity-distributor-rotor" disabled>−</button>
+                  <input id="quantity-distributor-rotor" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-distributor-rotor-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Distributor rotor with limiter" aria-controls="quantity-distributor-rotor" disabled>+</button>
+                </div>
+                <span id="quantity-distributor-rotor-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -669,194 +668,71 @@
       </fieldset>
     </form>
     </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-cap" data-product="distributor-cap" aria-labelledby="name-distributor-cap">
-      <h3 class="shop-product-title" id="name-distributor-cap">Distributor cap</h3>
+<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-parts" data-product="distributor-parts" aria-labelledby="name-distributor-parts">
+      <h3 class="shop-product-title" id="name-distributor-parts">Distributor spare parts</h3>
       <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-distributor-cap-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="Enlarge photo: Distributor cap">
+      <a class="shop-photo-link" id="photo-distributor-parts-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="Enlarge photo: Distributor spare parts">
         <span class="tech-frame">
           <img src="/assets/desktop/shop-placeholder.webp" alt="Product photo not yet available" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">For TAZ firefighting aggregate engines.</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-distributor-cap" data-order-product="distributor-cap" aria-label="Distributor cap" method="post" novalidate>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">Distributor spare parts for TAZ firefighting aggregate engines.</p></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-distributor-parts" data-order-product="distributor-parts" aria-label="Distributor spare parts" method="post" novalidate>
       <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">Specification: Distributor cap</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="Distributor cap">
+        <legend class="shop-sr-only">Specification: Distributor spare parts</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="Distributor spare parts">
           <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="distributor-cap-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
+          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="distributor-parts-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="distributor-cap-option-standard">
-              <input type="radio" name="option" value="standard" id="distributor-cap-option-standard" aria-labelledby="distributor-cap-option-standard-name distributor-cap-price-heading distributor-cap-option-standard-price">
-              <span id="distributor-cap-option-standard-name" class="shop-profile-method">Distributor cap</span>
+            <td><label class="shop-profile-radio-label" for="distributor-parts-option-cap">
+              <input type="radio" name="option" value="cap" id="distributor-parts-option-cap" aria-labelledby="distributor-parts-option-cap-name distributor-parts-price-heading distributor-parts-option-cap-price">
+              <span id="distributor-parts-option-cap-name" class="shop-profile-method">Distributor cap</span>
             </label></td>
-            <td class="shop-profile-price"><label for="distributor-cap-option-standard"><span id="distributor-cap-option-standard-price" class="shop-profile-value">260 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="distributor-parts-option-cap"><span id="distributor-parts-option-cap-price" class="shop-profile-value">260 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-parts-option-wiring">
+              <input type="radio" name="option" value="wiring" id="distributor-parts-option-wiring" aria-labelledby="distributor-parts-option-wiring-name distributor-parts-price-heading distributor-parts-option-wiring-price">
+              <span id="distributor-parts-option-wiring-name" class="shop-profile-method">High-voltage ignition leads</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="distributor-parts-option-wiring"><span id="distributor-parts-option-wiring-price" class="shop-profile-value">280 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-parts-option-contacts">
+              <input type="radio" name="option" value="contacts" id="distributor-parts-option-contacts" aria-labelledby="distributor-parts-option-contacts-name distributor-parts-price-heading distributor-parts-option-contacts-price">
+              <span id="distributor-parts-option-contacts-name" class="shop-profile-method">Bosch distributor contacts</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="distributor-parts-option-contacts"><span id="distributor-parts-option-contacts-price" class="shop-profile-value">150 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-parts-option-capacitor">
+              <input type="radio" name="option" value="capacitor" id="distributor-parts-option-capacitor" aria-labelledby="distributor-parts-option-capacitor-name distributor-parts-price-heading distributor-parts-option-capacitor-price">
+              <span id="distributor-parts-option-capacitor-name" class="shop-profile-method">PAL distributor condenser</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="distributor-parts-option-capacitor"><span id="distributor-parts-option-capacitor-price" class="shop-profile-value">180 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-cap">Quantity *</label></th>
-              <td><div class="form-group">
-                <input id="quantity-distributor-cap" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
-              </div></td>
-            </tr>
-            <tr class="shop-profile-field shop-profile-submit">
-              <td></td><td><button class="btn-submit" type="submit" disabled>Add to order</button>
-                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </fieldset>
-    </form>
-    </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-contacts" data-product="distributor-contacts" aria-labelledby="name-distributor-contacts">
-      <h3 class="shop-product-title" id="name-distributor-contacts">Distributor contacts BOSCH</h3>
-      <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-distributor-contacts-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="Enlarge photo: Distributor contacts BOSCH">
-        <span class="tech-frame">
-          <img src="/assets/desktop/shop-placeholder.webp" alt="Product photo not yet available" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
-        </span>
-      </a>
-    </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">For TAZ firefighting aggregate engines.</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-distributor-contacts" data-order-product="distributor-contacts" aria-label="Distributor contacts BOSCH" method="post" novalidate>
-      <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">Specification: Distributor contacts BOSCH</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="Distributor contacts BOSCH">
-          <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="distributor-contacts-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
-          <tbody class="shop-profile-option">
-          <tr>
-            <td><label class="shop-profile-radio-label" for="distributor-contacts-option-standard">
-              <input type="radio" name="option" value="standard" id="distributor-contacts-option-standard" aria-labelledby="distributor-contacts-option-standard-name distributor-contacts-price-heading distributor-contacts-option-standard-price">
-              <span id="distributor-contacts-option-standard-name" class="shop-profile-method">Distributor contacts BOSCH</span>
-            </label></td>
-            <td class="shop-profile-price"><label for="distributor-contacts-option-standard"><span id="distributor-contacts-option-standard-price" class="shop-profile-value">150 CZK</span></label></td>
-          </tr>
-
-        </tbody>
-          <tbody class="shop-profile-fields" data-profile-fields hidden>
 
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-contacts">Quantity *</label></th>
+              <th scope="row"><label id="label-quantity-distributor-parts" for="quantity-distributor-parts">Quantity *</label></th>
               <td><div class="form-group">
-                <input id="quantity-distributor-contacts" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
-              </div></td>
-            </tr>
-            <tr class="shop-profile-field shop-profile-submit">
-              <td></td><td><button class="btn-submit" type="submit" disabled>Add to order</button>
-                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </fieldset>
-    </form>
-    </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-capacitor" data-product="distributor-capacitor" aria-labelledby="name-distributor-capacitor">
-      <h3 class="shop-product-title" id="name-distributor-capacitor">Distributor capacitor PAL</h3>
-      <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-distributor-capacitor-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="Enlarge photo: Distributor capacitor PAL">
-        <span class="tech-frame">
-          <img src="/assets/desktop/shop-placeholder.webp" alt="Product photo not yet available" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
-        </span>
-      </a>
-    </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">For TAZ firefighting aggregate engines.</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-distributor-capacitor" data-order-product="distributor-capacitor" aria-label="Distributor capacitor PAL" method="post" novalidate>
-      <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">Specification: Distributor capacitor PAL</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="Distributor capacitor PAL">
-          <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="distributor-capacitor-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
-          <tbody class="shop-profile-option">
-          <tr>
-            <td><label class="shop-profile-radio-label" for="distributor-capacitor-option-standard">
-              <input type="radio" name="option" value="standard" id="distributor-capacitor-option-standard" aria-labelledby="distributor-capacitor-option-standard-name distributor-capacitor-price-heading distributor-capacitor-option-standard-price">
-              <span id="distributor-capacitor-option-standard-name" class="shop-profile-method">Distributor capacitor PAL</span>
-            </label></td>
-            <td class="shop-profile-price"><label for="distributor-capacitor-option-standard"><span id="distributor-capacitor-option-standard-price" class="shop-profile-value">180 CZK</span></label></td>
-          </tr>
-
-        </tbody>
-          <tbody class="shop-profile-fields" data-profile-fields hidden>
-
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-capacitor">Quantity *</label></th>
-              <td><div class="form-group">
-                <input id="quantity-distributor-capacitor" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
-              </div></td>
-            </tr>
-            <tr class="shop-profile-field shop-profile-submit">
-              <td></td><td><button class="btn-submit" type="submit" disabled>Add to order</button>
-                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </fieldset>
-    </form>
-    </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="ignition-wiring" data-product="ignition-wiring" aria-labelledby="name-ignition-wiring">
-      <h3 class="shop-product-title" id="name-ignition-wiring">HT ignition wiring</h3>
-      <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-ignition-wiring-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="Enlarge photo: HT ignition wiring">
-        <span class="tech-frame">
-          <img src="/assets/desktop/shop-placeholder.webp" alt="Product photo not yet available" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
-        </span>
-      </a>
-    </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">For TAZ firefighting aggregate engines.</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-ignition-wiring" data-order-product="ignition-wiring" aria-label="HT ignition wiring" method="post" novalidate>
-      <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">Specification: HT ignition wiring</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="HT ignition wiring">
-          <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="ignition-wiring-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
-          <tbody class="shop-profile-option">
-          <tr>
-            <td><label class="shop-profile-radio-label" for="ignition-wiring-option-standard">
-              <input type="radio" name="option" value="standard" id="ignition-wiring-option-standard" aria-labelledby="ignition-wiring-option-standard-name ignition-wiring-price-heading ignition-wiring-option-standard-price">
-              <span id="ignition-wiring-option-standard-name" class="shop-profile-method">HT ignition wiring</span>
-            </label></td>
-            <td class="shop-profile-price"><label for="ignition-wiring-option-standard"><span id="ignition-wiring-option-standard-price" class="shop-profile-value">280 CZK</span></label></td>
-          </tr>
-
-        </tbody>
-          <tbody class="shop-profile-fields" data-profile-fields hidden>
-
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-ignition-wiring">Quantity *</label></th>
-              <td><div class="form-group">
-                <input id="quantity-ignition-wiring" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-distributor-parts">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Distributor spare parts" aria-controls="quantity-distributor-parts" disabled>−</button>
+                  <input id="quantity-distributor-parts" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-distributor-parts-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Distributor spare parts" aria-controls="quantity-distributor-parts" disabled>+</button>
+                </div>
+                <span id="quantity-distributor-parts-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -882,12 +758,7 @@
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">For TAZ firefighting aggregate engines.</p>
-
-        </div>
-      </div>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">For engines with an enlarged bore; cylinder spacing 88-88-88 mm, thickness 1.5 mm.</p><p class="shop-description">Other thicknesses and cylinder spacings on request.</p></div></div>
       <form class="shop-wizard-form shop-item-form" id="item-head-gasket" data-order-product="head-gasket" aria-label="Cylinder head gasket" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">Specification: Cylinder head gasket</legend>
@@ -896,38 +767,162 @@
           <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="head-gasket-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="head-gasket-option-custom">
-              <input type="radio" name="option" value="custom" id="head-gasket-option-custom" aria-labelledby="head-gasket-option-custom-name head-gasket-price-heading head-gasket-option-custom-price" aria-describedby="head-gasket-option-custom-description">
-              <span id="head-gasket-option-custom-name" class="shop-profile-method">Cylinder head gasket</span>
+            <td><label class="shop-profile-radio-label" for="head-gasket-option-80-5">
+              <input type="radio" name="option" value="80-5" id="head-gasket-option-80-5" aria-labelledby="head-gasket-option-80-5-name head-gasket-price-heading head-gasket-option-80-5-price">
+              <span id="head-gasket-option-80-5-name" class="shop-profile-method">For 80.5 mm bore</span>
             </label></td>
-            <td class="shop-profile-price" rowspan="2"><label for="head-gasket-option-custom"><span id="head-gasket-option-custom-price" class="shop-profile-value">620 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="head-gasket-option-80-5"><span id="head-gasket-option-80-5-price" class="shop-profile-value">620 CZK</span></label></td>
           </tr>
-          <tr><td><label class="shop-profile-description" id="head-gasket-option-custom-description" for="head-gasket-option-custom">bore 80.5mm / 82.0mm - Cylinder spacing 88-88-88mm, thickness 1.5mm - Different spacing and thickness can be manufactured on order (price will be specified upon order)</label></td></tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="head-gasket-option-82-0">
+              <input type="radio" name="option" value="82-0" id="head-gasket-option-82-0" aria-labelledby="head-gasket-option-82-0-name head-gasket-price-heading head-gasket-option-82-0-price">
+              <span id="head-gasket-option-82-0-name" class="shop-profile-method">For 82 mm bore</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="head-gasket-option-82-0"><span id="head-gasket-option-82-0-price" class="shop-profile-value">620 CZK</span></label></td>
+          </tr>
+
         </tbody><tbody class="shop-profile-option">
           <tr>
             <td><label class="shop-profile-radio-label" for="head-gasket-option-stock">
               <input type="radio" name="option" value="stock" id="head-gasket-option-stock" aria-labelledby="head-gasket-option-stock-name head-gasket-price-heading head-gasket-option-stock-price">
-              <span id="head-gasket-option-stock-name" class="shop-profile-method">Stock (silicone treatment)</span>
+              <span id="head-gasket-option-stock-name" class="shop-profile-method">For stock TAZ 1.43 (silicone)</span>
             </label></td>
             <td class="shop-profile-price"><label for="head-gasket-option-stock"><span id="head-gasket-option-stock-price" class="shop-profile-value">160 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
-            <tr class="shop-profile-field" data-order-variant-fields="custom" hidden>
-              <th scope="row"><label id="label-head-gasket-variant-custom" for="head-gasket-variant-custom">Bore (mm) *</label></th>
-              <td><div class="form-group shop-variant">
-                <select id="head-gasket-variant-custom" name="variant-custom" class="custom-select validate-me" data-order-variant data-warning-id="head-gasket-variant-custom-warning" required disabled>
-                  <option value="">Choose a specification</option><option value="80-5">80.5 mm</option><option value="82-0">82.0 mm</option>
-                </select>
-                <span id="head-gasket-variant-custom-warning" class="warning-msg">This field is mandatory.</span>
+
+
+            <tr class="shop-profile-field">
+              <th scope="row"><label id="label-quantity-head-gasket" for="quantity-head-gasket">Quantity *</label></th>
+              <td><div class="form-group">
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-head-gasket">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Cylinder head gasket" aria-controls="quantity-head-gasket" disabled>−</button>
+                  <input id="quantity-head-gasket" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-head-gasket-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Cylinder head gasket" aria-controls="quantity-head-gasket" disabled>+</button>
+                </div>
+                <span id="quantity-head-gasket-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
+            <tr class="shop-profile-field shop-profile-submit">
+              <td></td><td><button class="btn-submit" type="submit" disabled>Add to order</button>
+                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </form>
+    </article>
+<article class="blog-card shop-product shop-wizard-product shop-option-product" id="cylinder-piston-kit" data-product="cylinder-piston-kit" aria-labelledby="name-cylinder-piston-kit">
+      <h3 class="shop-product-title" id="name-cylinder-piston-kit">Ø82 mm cylinder, piston, ring, pin and circlip set</h3>
+      <figure class="shop-photo shop-photo-placeholder">
+      <a class="shop-photo-link" id="photo-cylinder-piston-kit-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="Enlarge photo: Ø82 mm cylinder, piston, ring, pin and circlip set">
+        <span class="tech-frame">
+          <img src="/assets/desktop/shop-placeholder.webp" alt="Product photo not yet available" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
+        </span>
+      </a>
+    </figure>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">Prices are always for a complete engine (4 cylinders).</p><p class="shop-description">Cylinder shims on request.</p></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-cylinder-piston-kit" data-order-product="cylinder-piston-kit" aria-label="Ø82 mm cylinder, piston, ring, pin and circlip set" method="post" novalidate>
+      <fieldset class="shop-profile-options">
+        <legend class="shop-sr-only">Specification: Ø82 mm cylinder, piston, ring, pin and circlip set</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="Ø82 mm cylinder, piston, ring, pin and circlip set">
+          <colgroup><col class="shop-item-option-column"><col></colgroup>
+          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="cylinder-piston-kit-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
+          <tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="cylinder-piston-kit-option-complete">
+              <input type="radio" name="option" value="complete" id="cylinder-piston-kit-option-complete" aria-labelledby="cylinder-piston-kit-option-complete-name cylinder-piston-kit-price-heading cylinder-piston-kit-option-complete-price">
+              <span id="cylinder-piston-kit-option-complete-name" class="shop-profile-method">Complete set</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="cylinder-piston-kit-option-complete"><span id="cylinder-piston-kit-option-complete-price" class="shop-profile-value">18 000 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="cylinder-piston-kit-option-pistons-rings">
+              <input type="radio" name="option" value="pistons-rings" id="cylinder-piston-kit-option-pistons-rings" aria-labelledby="cylinder-piston-kit-option-pistons-rings-name cylinder-piston-kit-price-heading cylinder-piston-kit-option-pistons-rings-price">
+              <span id="cylinder-piston-kit-option-pistons-rings-name" class="shop-profile-method">Piston and piston-ring set</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="cylinder-piston-kit-option-pistons-rings"><span id="cylinder-piston-kit-option-pistons-rings-price" class="shop-profile-value">10 400 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="cylinder-piston-kit-option-rings">
+              <input type="radio" name="option" value="rings" id="cylinder-piston-kit-option-rings" aria-labelledby="cylinder-piston-kit-option-rings-name cylinder-piston-kit-price-heading cylinder-piston-kit-option-rings-price">
+              <span id="cylinder-piston-kit-option-rings-name" class="shop-profile-method">Piston-ring set</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="cylinder-piston-kit-option-rings"><span id="cylinder-piston-kit-option-rings-price" class="shop-profile-value">1 600 CZK</span></label></td>
+          </tr>
+
+        </tbody>
+          <tbody class="shop-profile-fields" data-profile-fields hidden>
+
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-head-gasket">Quantity *</label></th>
+              <th scope="row"><label id="label-quantity-cylinder-piston-kit" for="quantity-cylinder-piston-kit">Quantity *</label></th>
               <td><div class="form-group">
-                <input id="quantity-head-gasket" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-cylinder-piston-kit">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Ø82 mm cylinder, piston, ring, pin and circlip set" aria-controls="quantity-cylinder-piston-kit" disabled>−</button>
+                  <input id="quantity-cylinder-piston-kit" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-cylinder-piston-kit-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Ø82 mm cylinder, piston, ring, pin and circlip set" aria-controls="quantity-cylinder-piston-kit" disabled>+</button>
+                </div>
+                <span id="quantity-cylinder-piston-kit-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+              </div></td>
+            </tr>
+            <tr class="shop-profile-field shop-profile-submit">
+              <td></td><td><button class="btn-submit" type="submit" disabled>Add to order</button>
+                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </form>
+    </article>
+<article class="blog-card shop-product shop-wizard-product shop-option-product" id="carburetor-38-38" data-product="carburetor-38-38" aria-labelledby="name-carburetor-38-38">
+      <h3 class="shop-product-title" id="name-carburetor-38-38">Twin-choke 38/38 carburetor including modification</h3>
+      <figure class="shop-photo shop-photo-placeholder">
+      <a class="shop-photo-link" id="photo-carburetor-38-38-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="Enlarge photo: Twin-choke 38/38 carburetor including modification">
+        <span class="tech-frame">
+          <img src="/assets/desktop/shop-placeholder.webp" alt="Product photo not yet available" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
+        </span>
+      </a>
+    </figure>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">Suitable for TAZ 2.0 and larger engines.</p><p class="shop-description">Carburetor including modification; we recommend final tuning on an engine dynamometer (on request).</p></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-carburetor-38-38" data-order-product="carburetor-38-38" aria-label="Twin-choke 38/38 carburetor including modification" method="post" novalidate>
+      <fieldset class="shop-profile-options">
+        <legend class="shop-sr-only">Specification: Twin-choke 38/38 carburetor including modification</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="Twin-choke 38/38 carburetor including modification">
+          <colgroup><col class="shop-item-option-column"><col></colgroup>
+          <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="carburetor-38-38-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
+          <tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="carburetor-38-38-option-standard">
+              <input type="radio" name="option" value="standard" id="carburetor-38-38-option-standard" aria-labelledby="carburetor-38-38-option-standard-name carburetor-38-38-price-heading carburetor-38-38-option-standard-price">
+              <span id="carburetor-38-38-option-standard-name" class="shop-profile-method">Twin-choke 38/38 carburetor including modification</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="carburetor-38-38-option-standard"><span id="carburetor-38-38-option-standard-price" class="shop-profile-value">7 900 CZK</span></label></td>
+          </tr>
+
+        </tbody>
+          <tbody class="shop-profile-fields" data-profile-fields hidden>
+
+
+            <tr class="shop-profile-field">
+              <th scope="row"><label id="label-quantity-carburetor-38-38" for="quantity-carburetor-38-38">Quantity *</label></th>
+              <td><div class="form-group">
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-carburetor-38-38">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Twin-choke 38/38 carburetor including modification" aria-controls="quantity-carburetor-38-38" disabled>−</button>
+                  <input id="quantity-carburetor-38-38" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-carburetor-38-38-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Twin-choke 38/38 carburetor including modification" aria-controls="quantity-carburetor-38-38" disabled>+</button>
+                </div>
+                <span id="quantity-carburetor-38-38-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -949,12 +944,7 @@
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">For TAZ firefighting aggregate engines.</p><p class="shop-description">Price according to dimensions and quantity from 40 CZK.</p>
-
-        </div>
-      </div>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">For TAZ firefighting aggregate engines.</p><p class="shop-description">Price according to dimensions and quantity from 40 CZK.</p></div></div>
       <form class="shop-wizard-form shop-item-form" id="item-copper-rings" data-order-product="copper-rings" aria-label="Copper shim rings under cylinders" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">Specification: Copper shim rings under cylinders</legend>
@@ -973,11 +963,16 @@
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-copper-rings">Quantity *</label></th>
+              <th scope="row"><label id="label-quantity-copper-rings" for="quantity-copper-rings">Quantity *</label></th>
               <td><div class="form-group">
-                <input id="quantity-copper-rings" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-copper-rings">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Copper shim rings under cylinders" aria-controls="quantity-copper-rings" disabled>−</button>
+                  <input id="quantity-copper-rings" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-copper-rings-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Copper shim rings under cylinders" aria-controls="quantity-copper-rings" disabled>+</button>
+                </div>
+                <span id="quantity-copper-rings-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -991,43 +986,43 @@
     </form>
     </article>
 <article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-overhaul" data-product="distributor-overhaul" aria-labelledby="name-distributor-overhaul">
-      <h3 class="shop-product-title" id="name-distributor-overhaul">Distributor overhaul</h3>
+      <h3 class="shop-product-title" id="name-distributor-overhaul">Distributor overhaul and modification</h3>
       <figure class="shop-photo">
-      <a class="shop-photo-link" id="photo-distributor-overhaul-1" href="/assets/desktop/repas-rozdelovac-01.jpeg" style="--shop-photo-width: 600px" aria-haspopup="dialog" aria-label="Enlarge photo: Distributor overhaul">
+      <a class="shop-photo-link" id="photo-distributor-overhaul-1" href="/assets/desktop/repas-rozdelovac-01.jpeg" style="--shop-photo-width: 600px" aria-haspopup="dialog" aria-label="Enlarge photo: Distributor overhaul and modification">
         <span class="tech-frame">
-          <img src="/assets/desktop/repas-rozdelovac-01.jpeg" alt="Distributor overhaul" width="600" height="800" loading="lazy" decoding="async">
+          <img src="/assets/desktop/repas-rozdelovac-01.jpeg" alt="Distributor overhaul and modification" width="600" height="800" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">Spare parts not included in price (contacts, capacitor, coil...) - Only CZ manufactured distributors (cannot guarantee proper function for Chinese/Polish copies) - Always supply washed and degreased parts for modification</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-distributor-overhaul" data-order-product="distributor-overhaul" aria-label="Distributor overhaul" method="post" novalidate>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">Spare parts (contacts, condenser, coil, etc.) are not included in the price.</p><p class="shop-description">Czech-made distributors only; we cannot guarantee correct operation of Chinese/Polish copies.</p><p class="shop-description">Always supply washed and degreased parts for modification.</p><p class="shop-description">Price depends on the scope of work, approximately CZK 1,600.</p></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-distributor-overhaul" data-order-product="distributor-overhaul" aria-label="Distributor overhaul and modification" method="post" novalidate>
       <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">Specification: Distributor overhaul</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="Distributor overhaul">
+        <legend class="shop-sr-only">Specification: Distributor overhaul and modification</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="Distributor overhaul and modification">
           <colgroup><col class="shop-item-option-column"><col></colgroup>
           <thead><tr><th class="shop-profile-label" scope="col">Specification</th><th id="distributor-overhaul-price-heading" class="shop-profile-label shop-profile-price" scope="col">Price / pc.</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
             <td><label class="shop-profile-radio-label" for="distributor-overhaul-option-standard">
               <input type="radio" name="option" value="standard" id="distributor-overhaul-option-standard" aria-labelledby="distributor-overhaul-option-standard-name distributor-overhaul-price-heading distributor-overhaul-option-standard-price">
-              <span id="distributor-overhaul-option-standard-name" class="shop-profile-method">Distributor overhaul</span>
+              <span id="distributor-overhaul-option-standard-name" class="shop-profile-method">Distributor overhaul and modification</span>
             </label></td>
-            <td class="shop-profile-price"><label for="distributor-overhaul-option-standard"><span id="distributor-overhaul-option-standard-price" class="shop-profile-value">1 600 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="distributor-overhaul-option-standard"><span id="distributor-overhaul-option-standard-price" class="shop-profile-value">Approx. 1 600 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-overhaul">Quantity *</label></th>
+              <th scope="row"><label id="label-quantity-distributor-overhaul" for="quantity-distributor-overhaul">Quantity *</label></th>
               <td><div class="form-group">
-                <input id="quantity-distributor-overhaul" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-distributor-overhaul">
+                  <button type="button" data-order-change="-1" aria-label="Remove one: Distributor overhaul and modification" aria-controls="quantity-distributor-overhaul" disabled>−</button>
+                  <input id="quantity-distributor-overhaul" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-distributor-overhaul-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="Add one: Distributor overhaul and modification" aria-controls="quantity-distributor-overhaul" disabled>+</button>
+                </div>
+                <span id="quantity-distributor-overhaul-warning" class="warning-msg">Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -1047,7 +1042,7 @@
         <p id="basket-empty">Your basket is empty. Choose a part to get started.</p>
         <ul id="basket-items" class="shop-basket-items"></ul>
         <div class="shop-totals"><span>Indicative price</span><strong id="basket-subtotal">0 CZK</strong></div>
-        <p id="basket-quote-notice" class="shop-muted" hidden>Items priced on request or from a starting price are not included in this subtotal. We will confirm their price.</p>
+        <p id="basket-quote-notice" class="shop-muted" hidden>Items priced on request, with a starting price or an approximate price are not included in the subtotal. We will confirm their price.</p>
         <p class="shop-muted">Delivery is not included. Availability, delivery cost and the final price will be confirmed by email.</p>
         <a class="shop-button" href="#order">Order <span aria-hidden="true">↓</span></a>
       </div>
@@ -1167,6 +1162,6 @@
     <img class="lightbox-img" alt="">
   </dialog>
   <div id="shop-status" class="shop-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
-  <script id="shop-config" type="application/json">{"products": [{"id": "skoda-ohv-camshaft", "name": "Škoda OHV camshaft", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/camshaft-options.csv", "profiles": [{"id": "regrind-262-248", "manufacture": "regrind", "duration": "262° / 248°", "lift": "6,4 / 5,8 mm", "price": 5600, "description": "KOM version"}, {"id": "regrind-272-266", "manufacture": "regrind", "duration": "272° / 266°", "lift": "6,6 / 6,4 mm", "price": 5600, "description": "TOP version"}, {"id": "new-294-294", "manufacture": "new", "duration": "294° / 294°", "lift": "7,2 / 7,2 mm", "price": 11400, "description": "Sprints, road use with two twin-choke Weber carburettors (short intake)"}, {"id": "new-316-316", "manufacture": "new", "duration": "316° / 316°", "lift": "7,5 / 7,5 mm", "price": 11400, "description": "Circuit racing, hill climbs"}, {"id": "new-320-320", "manufacture": "new", "duration": "320° / 320°", "lift": "8,0 / 8,0 mm", "price": 13200, "description": "Road use with two twin-choke Weber carburettors (short intake); stiffer valve springs required (included in the price)"}, {"id": "new-324-324", "manufacture": "new", "duration": "324°/ 324°", "lift": "7,5 / 7,2 mm", "price": 11400, "description": "130 LR / RS with two twin-choke Weber carburettors (curved intake runners)"}], "bearings": [{"id": "small", "labelKey": "smallBearings", "diameters": "39-38,5-30"}, {"id": "large", "labelKey": "largeBearings", "diameters": "40,5-40-30"}], "fields": [{"id": "engineType", "labelKey": "engineType", "type": "text", "required": true, "maxLength": 120}, {"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "rockerRatio", "labelKey": "rockerRatio", "type": "number", "required": true, "unit": ""}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "taz-camshaft", "name": "TAZ camshaft", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/taz-camshaft-options.csv", "profiles": [{"id": "regrind-258-248", "manufacture": "regrind", "duration": "258° / 248°", "lift": "6,4 / 5,8 mm", "price": 4400, "description": "Suitable for TAZ 1.43 to 1.6 engines"}, {"id": "regrind-278-272", "manufacture": "regrind", "duration": "278°/ 272°", "lift": "7,0 / 6,6 mm", "price": 4400, "description": "Suitable for TAZ 1.8 engines"}, {"id": "new-284-284-7-0", "manufacture": "new", "duration": "284° / 284°", "lift": "7,0 / 7,0 mm", "price": 11500, "description": "Suitable for TAZ 1.9 engines (slightly worn camshaft)"}, {"id": "new-284-284-8-0", "manufacture": "new", "duration": "284° / 284°", "lift": "8,0 / 8,0 mm", "price": 15500, "description": "Suitable for TAZ 2.0 and larger engines"}], "bearings": [], "fields": [{"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "exhaust-headers", "name": "Tuned exhaust headers", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43 l"}, {"id": "large", "label": "TAZ 2.0 l +"}], "options": [{"id": "small", "name": "TAZ 1.43 l", "description": "", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43 l"}]}, {"id": "large", "name": "TAZ 2.0 l +", "description": "", "price": 6600, "priceType": "fixed", "variants": [{"id": "large", "label": "TAZ 2.0 l +"}]}], "legacyItems": []}, {"id": "resonance-exhaust", "name": "Resonance exhaust", "price": 2700, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "Resonance exhaust", "description": "", "price": 2700, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "connecting-rod", "name": "Forged H-beam Connecting Rod", "price": 12500, "priceType": "fixed", "variants": [{"id": "160", "label": "160 mm", "price": 12500}, {"id": "156", "label": "156 mm", "price": 11500}], "options": [{"id": "160", "name": "160 mm", "description": "", "price": 12500, "priceType": "fixed", "variants": [{"id": "160", "label": "160 mm", "price": 12500}]}, {"id": "156", "name": "156 mm", "description": "", "price": 11500, "priceType": "fixed", "variants": [{"id": "156", "label": "156 mm", "price": 11500}]}], "legacyItems": [{"id": "connecting-rod-160", "variant": "", "targetVariant": "160"}, {"id": "connecting-rod-156", "variant": "", "targetVariant": "156"}]}, {"id": "ignition-coil-contact", "name": "Ignition coil for PAL contact ignition", "price": 780, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "Ignition coil for PAL contact ignition", "description": "", "price": 780, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "ignition-coil-contactless", "name": "Ignition coil for PAL contactless ignition", "price": 1100, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "Ignition coil for PAL contactless ignition", "description": "", "price": 1100, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "distributor-rotor", "name": "Distributor rotor with limiter", "price": null, "priceType": "quote", "variants": [], "options": [{"id": "standard", "name": "Distributor rotor with limiter", "description": "", "price": null, "priceType": "quote", "variants": []}], "legacyItems": []}, {"id": "distributor-cap", "name": "Distributor cap", "price": 260, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "Distributor cap", "description": "", "price": 260, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "distributor-contacts", "name": "Distributor contacts BOSCH", "price": 150, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "Distributor contacts BOSCH", "description": "", "price": 150, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "distributor-capacitor", "name": "Distributor capacitor PAL", "price": 180, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "Distributor capacitor PAL", "description": "", "price": 180, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "ignition-wiring", "name": "HT ignition wiring", "price": 280, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "HT ignition wiring", "description": "", "price": 280, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "head-gasket", "name": "Cylinder head gasket", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "80.5 mm"}, {"id": "82-0", "label": "82.0 mm"}, {"id": "stock", "label": "Stock (silicone treatment)", "price": 160}], "options": [{"id": "custom", "name": "Cylinder head gasket", "description": "bore 80.5mm / 82.0mm - Cylinder spacing 88-88-88mm, thickness 1.5mm - Different spacing and thickness can be manufactured on order (price will be specified upon order)", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "80.5 mm"}, {"id": "82-0", "label": "82.0 mm"}]}, {"id": "stock", "name": "Stock (silicone treatment)", "description": "", "price": 160, "priceType": "fixed", "variants": [{"id": "stock", "label": "Stock (silicone treatment)", "price": 160}]}], "legacyItems": [{"id": "head-gasket-stock", "variant": "", "targetVariant": "stock"}]}, {"id": "copper-rings", "name": "Copper shim rings under cylinders", "price": 40, "priceType": "from", "variants": [], "options": [{"id": "standard", "name": "Copper shim rings under cylinders", "description": "", "price": 40, "priceType": "from", "variants": []}], "legacyItems": []}, {"id": "distributor-overhaul", "name": "Distributor overhaul", "price": 1600, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "Distributor overhaul", "description": "", "price": 1600, "priceType": "fixed", "variants": []}], "legacyItems": []}], "currency": "CZK", "locale": "en", "email": "info@petramuckova.cz", "text": {"title": "Shop", "home": "Main site", "shop": "Shop", "blog": "Blog", "catalog": "Parts \u0026 services", "basket": "Your order", "empty": "Your basket is empty. Choose a part to get started.", "quantity": "Quantity", "quantityLimit": "Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.", "increase": "Add one", "decrease": "Remove one", "remove": "Remove", "variant": "Specification", "details": "Details \u0026 dealer pricing", "noPhoto": "Product photo not yet available", "enlargePhoto": "Enlarge photo", "closePhoto": "Close photo", "retail": "Price / pc.", "dealer": "Dealer price", "dealerMinimum": "Minimum dealer quantity", "from": "From", "quote": "Price on request", "subtotal": "Indicative price", "quoteNotice": "Items priced on request or from a starting price are not included in this subtotal. We will confirm their price.", "deliveryNotice": "Delivery is not included. Availability, delivery cost and the final price will be confirmed by email.", "checkout": "Order", "fullName": "Full name", "company": "Company", "phone": "Phone", "email": "Email", "street": "Street, house no.", "city": "City", "postcode": "Postal code", "country": "Country", "notes": "Notes", "delivery": "Delivery method", "postal": "Delivery to a postal address", "prepare": "Prepare order email", "draft": "Review your email", "openEmail": "Open email application", "copy": "Copy order text", "copied": "Order text copied. Paste it into an email to info@petramuckova.cz.", "copyManual": "Select and copy the text below, then email it to info@petramuckova.cz.", "draftNotice": "Nothing has been sent. Review the details, open your email application and send the message. If no application opens, copy the text and email it to info@petramuckova.cz.", "privacy": "Only product selections are saved in this browser. Your email and address are not saved by this website; they are included in the email you choose to send.", "confirmation": "This is a non-binding order, not a payment or the conclusion of a distance contract.", "storageNotice": "Browser storage is unavailable. Your basket will work on this page but may not survive a reload.", "noScript": "Enable JavaScript to use the basket, or send your selection and postal address to info@petramuckova.cz.", "cartUpdated": "Basket updated", "browse": "Browse parts", "goShop": "Browse parts \u0026 prepare an order", "defaultDescription": "For TAZ firefighting aggregate engines.", "orderSubject": "Mücková / Mück — Order", "requiredFields": "* mandatory fields", "variantChoose": "Choose a specification", "totalItems": "Items in basket", "configure": "Camshaft configuration", "profileHeading": "Operation", "camDuration": "Cam duration", "camLift": "Max. lift", "price": "Price", "profileDescription": "Description", "manufactureRegrind": "Regrind", "manufactureNew": "Manufacture", "installationInstructions": "Installation instructions", "bearings": "Bearings", "smallBearings": "Small bearings, dia.", "largeBearings": "Large bearings, dia.", "chooseBearings": "Choose bearings", "engineHeading": "Engine details", "engineType": "Engine type", "bore": "Bore", "stroke": "Stroke", "intakeValve": "Intake valve head diameter", "exhaustValve": "Exhaust valve head diameter", "rockerRatio": "Rocker arm ratio", "positiveNumber": "Enter a number greater than zero.", "addConfigured": "Add to order", "basketFull": "Your basket is full. Remove an item before adding another.", "legacyCamshafts": "The old camshaft items have been replaced by the configurator. Please choose a new configuration; other basket items have been kept.", "contactHeading": "YOUR CONTACT", "requiredWarning": "This field is mandatory.", "emailWarning": "Enter a valid email.", "phoneWarning": "Enter a valid phone number."}}</script>
+  <script id="shop-config" type="application/json">{"products": [{"id": "skoda-ohv-camshaft", "name": "Škoda OHV camshaft", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/camshaft-options.csv", "profiles": [{"id": "regrind-262-248", "manufacture": "regrind", "duration": "262° / 248°", "lift": "6,4 / 5,8 mm", "price": 5600, "description": "KOM version"}, {"id": "regrind-272-266", "manufacture": "regrind", "duration": "272° / 266°", "lift": "6,6 / 6,4 mm", "price": 5600, "description": "TOP version"}, {"id": "new-294-294", "manufacture": "new", "duration": "294° / 294°", "lift": "7,2 / 7,2 mm", "price": 11400, "description": "Sprints, road use with two twin-choke Weber carburettors (short intake)"}, {"id": "new-316-316", "manufacture": "new", "duration": "316° / 316°", "lift": "7,5 / 7,5 mm", "price": 11400, "description": "Circuit racing, hill climbs"}, {"id": "new-320-320", "manufacture": "new", "duration": "320° / 320°", "lift": "8,0 / 8,0 mm", "price": 13200, "description": "Road use with two twin-choke Weber carburettors (short intake); stiffer valve springs required (included in the price)"}, {"id": "new-324-324", "manufacture": "new", "duration": "324°/ 324°", "lift": "7,5 / 7,2 mm", "price": 11400, "description": "130 LR / RS with two twin-choke Weber carburettors (curved intake runners)"}], "bearings": [{"id": "small", "labelKey": "smallBearings", "diameters": "39-38,5-30"}, {"id": "large", "labelKey": "largeBearings", "diameters": "40,5-40-30"}], "fields": [{"id": "engineType", "labelKey": "engineType", "type": "text", "required": true, "maxLength": 120}, {"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "rockerRatio", "labelKey": "rockerRatio", "type": "number", "required": true, "unit": ""}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "taz-camshaft", "name": "TAZ camshaft", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/taz-camshaft-options.csv", "profiles": [{"id": "regrind-258-248", "manufacture": "regrind", "duration": "258° / 248°", "lift": "6,4 / 5,8 mm", "price": 4400, "description": "Suitable for TAZ 1.43 to 1.6 engines"}, {"id": "regrind-278-272", "manufacture": "regrind", "duration": "278°/ 272°", "lift": "7,0 / 6,6 mm", "price": 4400, "description": "Suitable for TAZ 1.8 engines"}, {"id": "new-284-284-7-0", "manufacture": "new", "duration": "284° / 284°", "lift": "7,0 / 7,0 mm", "price": 11500, "description": "Suitable for TAZ 1.9 engines (slightly worn camshaft)"}, {"id": "new-284-284-8-0", "manufacture": "new", "duration": "284° / 284°", "lift": "8,0 / 8,0 mm", "price": 15500, "description": "Suitable for TAZ 2.0 and larger engines"}], "bearings": [], "fields": [{"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "exhaust-headers", "name": "Tuned exhaust manifold", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43", "price": 6600}, {"id": "large", "label": "TAZ 2.0 and larger", "price": 6600}], "options": [{"id": "small", "name": "TAZ 1.43", "description": "", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43", "price": 6600}]}, {"id": "large", "name": "TAZ 2.0 and larger", "description": "", "price": 6600, "priceType": "fixed", "variants": [{"id": "large", "label": "TAZ 2.0 and larger", "price": 6600}]}], "legacyItems": []}, {"id": "resonance-exhaust", "name": "Resonance exhaust", "price": 2700, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "TAZ 1.43 – TAZ 1.6", "description": "", "price": 2700, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "connecting-rod", "name": "Forged H-beam Connecting Rod", "price": 12500, "priceType": "fixed", "variants": [{"id": "160", "label": "160 mm – stock", "price": 12500}, {"id": "156", "label": "156 mm – weld-built crankshaft", "price": 11500}, {"id": "156-engitec", "label": "156 mm – “Engitec” crankshaft", "price": 12500}], "options": [{"id": "160", "name": "160 mm – stock", "description": "", "price": 12500, "priceType": "fixed", "variants": [{"id": "160", "label": "160 mm – stock", "price": 12500}]}, {"id": "156", "name": "156 mm – weld-built crankshaft", "description": "", "price": 11500, "priceType": "fixed", "variants": [{"id": "156", "label": "156 mm – weld-built crankshaft", "price": 11500}]}, {"id": "156-engitec", "name": "156 mm – “Engitec” crankshaft", "description": "", "price": 12500, "priceType": "fixed", "variants": [{"id": "156-engitec", "label": "156 mm – “Engitec” crankshaft", "price": 12500}]}], "legacyItems": [{"id": "connecting-rod-160", "variant": "", "targetVariant": "160"}, {"id": "connecting-rod-156", "variant": "", "targetVariant": "156"}]}, {"id": "ignition-coil", "name": "Ignition coil", "price": 780, "priceType": "fixed", "variants": [{"id": "contact", "label": "For contact ignition", "price": 780}, {"id": "contactless", "label": "For contactless ignition", "price": 1100}], "options": [{"id": "contact", "name": "For contact ignition", "description": "", "price": 780, "priceType": "fixed", "variants": [{"id": "contact", "label": "For contact ignition", "price": 780}]}, {"id": "contactless", "name": "For contactless ignition", "description": "", "price": 1100, "priceType": "fixed", "variants": [{"id": "contactless", "label": "For contactless ignition", "price": 1100}]}], "legacyItems": [{"id": "ignition-coil-contact", "variant": "", "targetVariant": "contact"}, {"id": "ignition-coil-contactless", "variant": "", "targetVariant": "contactless"}]}, {"id": "distributor-rotor", "name": "Distributor rotor with limiter", "price": null, "priceType": "quote", "variants": [{"id": "4800-5100", "label": "Modified for 4800–5100 rpm"}, {"id": "custom", "label": "Modified to order", "fields": [{"id": "min-rpm", "labelKey": "minRpm"}, {"id": "max-rpm", "labelKey": "maxRpm", "minimumField": "min-rpm"}]}, {"id": "original", "label": "Genuine Bosch / Facet, EPS", "description": "no cheap substitutes!"}], "options": [{"id": "4800-5100", "name": "Modified for 4800–5100 rpm", "description": "", "price": null, "priceType": "quote", "variants": [{"id": "4800-5100", "label": "Modified for 4800–5100 rpm"}]}, {"id": "custom", "name": "Modified to order", "description": "", "price": null, "priceType": "quote", "variants": [{"id": "custom", "label": "Modified to order", "fields": [{"id": "min-rpm", "labelKey": "minRpm"}, {"id": "max-rpm", "labelKey": "maxRpm", "minimumField": "min-rpm"}]}]}, {"id": "original", "name": "Genuine Bosch / Facet, EPS", "description": "no cheap substitutes!", "price": null, "priceType": "quote", "variants": [{"id": "original", "label": "Genuine Bosch / Facet, EPS", "description": "no cheap substitutes!"}]}], "legacyItems": []}, {"id": "distributor-parts", "name": "Distributor spare parts", "price": 260, "priceType": "fixed", "variants": [{"id": "cap", "label": "Distributor cap", "price": 260}, {"id": "wiring", "label": "High-voltage ignition leads", "price": 280}, {"id": "contacts", "label": "Bosch distributor contacts", "price": 150}, {"id": "capacitor", "label": "PAL distributor condenser", "price": 180}], "options": [{"id": "cap", "name": "Distributor cap", "description": "", "price": 260, "priceType": "fixed", "variants": [{"id": "cap", "label": "Distributor cap", "price": 260}]}, {"id": "wiring", "name": "High-voltage ignition leads", "description": "", "price": 280, "priceType": "fixed", "variants": [{"id": "wiring", "label": "High-voltage ignition leads", "price": 280}]}, {"id": "contacts", "name": "Bosch distributor contacts", "description": "", "price": 150, "priceType": "fixed", "variants": [{"id": "contacts", "label": "Bosch distributor contacts", "price": 150}]}, {"id": "capacitor", "name": "PAL distributor condenser", "description": "", "price": 180, "priceType": "fixed", "variants": [{"id": "capacitor", "label": "PAL distributor condenser", "price": 180}]}], "legacyItems": [{"id": "distributor-cap", "variant": "", "targetVariant": "cap"}, {"id": "ignition-wiring", "variant": "", "targetVariant": "wiring"}, {"id": "distributor-contacts", "variant": "", "targetVariant": "contacts"}, {"id": "distributor-capacitor", "variant": "", "targetVariant": "capacitor"}]}, {"id": "head-gasket", "name": "Cylinder head gasket", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "For 80.5 mm bore", "price": 620}, {"id": "82-0", "label": "For 82 mm bore", "price": 620}, {"id": "stock", "label": "For stock TAZ 1.43 (silicone)", "price": 160}], "options": [{"id": "80-5", "name": "For 80.5 mm bore", "description": "", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "For 80.5 mm bore", "price": 620}]}, {"id": "82-0", "name": "For 82 mm bore", "description": "", "price": 620, "priceType": "fixed", "variants": [{"id": "82-0", "label": "For 82 mm bore", "price": 620}]}, {"id": "stock", "name": "For stock TAZ 1.43 (silicone)", "description": "", "price": 160, "priceType": "fixed", "variants": [{"id": "stock", "label": "For stock TAZ 1.43 (silicone)", "price": 160}]}], "legacyItems": [{"id": "head-gasket-stock", "variant": "", "targetVariant": "stock"}]}, {"id": "cylinder-piston-kit", "name": "Ø82 mm cylinder, piston, ring, pin and circlip set", "price": 18000, "priceType": "fixed", "variants": [{"id": "complete", "label": "Complete set", "price": 18000}, {"id": "pistons-rings", "label": "Piston and piston-ring set", "price": 10400}, {"id": "rings", "label": "Piston-ring set", "price": 1600}], "options": [{"id": "complete", "name": "Complete set", "description": "", "price": 18000, "priceType": "fixed", "variants": [{"id": "complete", "label": "Complete set", "price": 18000}]}, {"id": "pistons-rings", "name": "Piston and piston-ring set", "description": "", "price": 10400, "priceType": "fixed", "variants": [{"id": "pistons-rings", "label": "Piston and piston-ring set", "price": 10400}]}, {"id": "rings", "name": "Piston-ring set", "description": "", "price": 1600, "priceType": "fixed", "variants": [{"id": "rings", "label": "Piston-ring set", "price": 1600}]}], "legacyItems": []}, {"id": "carburetor-38-38", "name": "Twin-choke 38/38 carburetor including modification", "price": 7900, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "Twin-choke 38/38 carburetor including modification", "description": "", "price": 7900, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "copper-rings", "name": "Copper shim rings under cylinders", "price": 40, "priceType": "from", "variants": [], "options": [{"id": "standard", "name": "Copper shim rings under cylinders", "description": "", "price": 40, "priceType": "from", "variants": []}], "legacyItems": []}, {"id": "distributor-overhaul", "name": "Distributor overhaul and modification", "price": 1600, "priceType": "approx", "variants": [], "options": [{"id": "standard", "name": "Distributor overhaul and modification", "description": "", "price": 1600, "priceType": "approx", "variants": []}], "legacyItems": []}], "currency": "CZK", "locale": "en", "email": "info@petramuckova.cz", "text": {"title": "Shop", "home": "Main site", "shop": "Shop", "blog": "Blog", "catalog": "Parts \u0026 services", "basket": "Your order", "empty": "Your basket is empty. Choose a part to get started.", "quantity": "Quantity", "quantityLimit": "Enter a whole number from 1 to 9999. Maximum 9999 units of each option per order.", "increase": "Add one", "decrease": "Remove one", "remove": "Remove", "variant": "Specification", "details": "Details \u0026 dealer pricing", "noPhoto": "Product photo not yet available", "enlargePhoto": "Enlarge photo", "closePhoto": "Close photo", "retail": "Price / pc.", "dealer": "Dealer price", "dealerMinimum": "Minimum dealer quantity", "from": "From", "quote": "Price on request", "subtotal": "Indicative price", "quoteNotice": "Items priced on request, with a starting price or an approximate price are not included in the subtotal. We will confirm their price.", "approx": "Approx.", "deliveryNotice": "Delivery is not included. Availability, delivery cost and the final price will be confirmed by email.", "checkout": "Order", "fullName": "Full name", "company": "Company", "phone": "Phone", "email": "Email", "street": "Street, house no.", "city": "City", "postcode": "Postal code", "country": "Country", "notes": "Notes", "delivery": "Delivery method", "postal": "Delivery to a postal address", "prepare": "Prepare order email", "draft": "Review your email", "openEmail": "Open email application", "copy": "Copy order text", "copied": "Order text copied. Paste it into an email to info@petramuckova.cz.", "copyManual": "Select and copy the text below, then email it to info@petramuckova.cz.", "draftNotice": "Nothing has been sent. Review the details, open your email application and send the message. If no application opens, copy the text and email it to info@petramuckova.cz.", "privacy": "Only product selections are saved in this browser. Your email and address are not saved by this website; they are included in the email you choose to send.", "confirmation": "This is a non-binding order, not a payment or the conclusion of a distance contract.", "storageNotice": "Browser storage is unavailable. Your basket will work on this page but may not survive a reload.", "noScript": "Enable JavaScript to use the basket, or send your selection and postal address to info@petramuckova.cz.", "cartUpdated": "Basket updated", "browse": "Browse parts", "goShop": "Browse parts \u0026 prepare an order", "defaultDescription": "For TAZ firefighting aggregate engines.", "orderSubject": "Mücková / Mück — Order", "requiredFields": "* mandatory fields", "variantChoose": "Choose a specification", "totalItems": "Items in basket", "configure": "Camshaft configuration", "profileHeading": "Operation", "camDuration": "Cam duration", "camLift": "Max. lift", "price": "Price", "profileDescription": "Description", "manufactureRegrind": "Regrind", "manufactureNew": "Manufacture", "installationInstructions": "Installation instructions", "bearings": "Bearings", "smallBearings": "Small bearings, dia.", "largeBearings": "Large bearings, dia.", "chooseBearings": "Choose bearings", "engineHeading": "Engine details", "engineType": "Engine type", "bore": "Bore", "stroke": "Stroke", "intakeValve": "Intake valve head diameter", "exhaustValve": "Exhaust valve head diameter", "rockerRatio": "Rocker arm ratio", "positiveNumber": "Enter a number greater than zero.", "minRpm": "Min rpm", "maxRpm": "Max rpm", "rpmWarning": "Enter positive whole RPM values; the maximum must not be below the minimum.", "legacyRotors": "The distributor rotor now has new options. Please select it again; your other order items have been kept.", "addConfigured": "Add to order", "basketFull": "Your basket is full. Remove an item before adding another.", "legacyCamshafts": "The old camshaft items have been replaced by the configurator. Please choose a new configuration; other basket items have been kept.", "contactHeading": "YOUR CONTACT", "requiredWarning": "This field is mandatory.", "emailWarning": "Enter a valid email.", "phoneWarning": "Enter a valid phone number."}}</script>
 </body>
 </html>

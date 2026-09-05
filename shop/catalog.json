@@ -651,69 +651,95 @@
           "width": 435,
           "height": 493,
           "alt": {
-            "cs": "Výfukové svody laděné",
-            "en": "Tuned exhaust headers",
-            "de": "Fächerkrümmer (Ladbare Abgaskrümmer)",
-            "fr": "Collecteurs d'échappement accordés",
-            "it": "Collettori di scarico accordati",
-            "es": "Colectores de escape afinados",
-            "pl": "Sportowe kolektory wydechowe (tzw. barany)",
-            "ru": "Выпускные коллекторы настроенные",
-            "ja": "チューニングエキゾーストマニホールド",
-            "zh": "高性能排气歧管"
+            "cs": "Výfukový svod laděný",
+            "en": "Tuned exhaust manifold",
+            "de": "Abgestimmter Abgaskrümmer",
+            "fr": "Collecteur d’échappement accordé",
+            "it": "Collettore di scarico accordato",
+            "es": "Colector de escape afinado",
+            "pl": "Strojony kolektor wydechowy",
+            "ru": "Настроенный выпускной коллектор",
+            "ja": "チューニング排気マニホールド",
+            "zh": "调谐排气歧管"
           }
         }
       ],
       "variants": [
         {
           "id": "small",
-          "label": "TAZ 1.43 l"
+          "label": "TAZ 1.43",
+          "translations": {
+            "cs": "TAZ 1,43",
+            "en": "TAZ 1.43",
+            "de": "TAZ 1,43",
+            "fr": "TAZ 1,43",
+            "it": "TAZ 1,43",
+            "es": "TAZ 1,43",
+            "pl": "TAZ 1,43",
+            "ru": "TAZ 1,43",
+            "ja": "TAZ 1.43",
+            "zh": "TAZ 1.43"
+          },
+          "price": 6600
         },
         {
           "id": "large",
-          "label": "TAZ 2.0 l +"
+          "label": "TAZ 2.0 and larger",
+          "translations": {
+            "cs": "TAZ 2,0 a větší",
+            "en": "TAZ 2.0 and larger",
+            "de": "TAZ 2,0 und größer",
+            "fr": "TAZ 2,0 et plus",
+            "it": "TAZ 2,0 e superiori",
+            "es": "TAZ 2,0 y mayores",
+            "pl": "TAZ 2,0 i większe",
+            "ru": "TAZ 2,0 и больше",
+            "ja": "TAZ 2.0以上",
+            "zh": "TAZ 2.0及以上"
+          },
+          "price": 6600
         }
       ],
       "translations": {
         "cs": {
-          "name": "Výfukové svody laděné",
-          "description": "malé (1,43l) / velké (2,0l a větší)"
+          "name": "Výfukový svod laděný",
+          "description": ""
         },
         "en": {
-          "name": "Tuned exhaust headers",
-          "description": "small (1.43l) / large (2.0l and larger)"
+          "name": "Tuned exhaust manifold",
+          "description": ""
         },
         "de": {
-          "name": "Fächerkrümmer (Ladbare Abgaskrümmer)",
-          "description": "klein (1,43l) / groß (2,0l und größer)"
+          "name": "Abgestimmter Abgaskrümmer",
+          "description": ""
         },
         "fr": {
-          "name": "Collecteurs d'échappement accordés",
-          "description": "petits (1,43l) / grands (2,0l et plus)"
+          "name": "Collecteur d’échappement accordé",
+          "description": ""
         },
         "it": {
-          "name": "Collettori di scarico accordati",
-          "description": "piccoli (1,43l) / grandi (2,0l e superiore)"
+          "name": "Collettore di scarico accordato",
+          "description": ""
         },
         "es": {
-          "name": "Colectores de escape afinados",
-          "description": "pequeños (1,43l) / grandes (2,0l y más)"
+          "name": "Colector de escape afinado",
+          "description": ""
         },
         "pl": {
-          "name": "Sportowe kolektory wydechowe (tzw. barany)",
-          "description": "małe (1,43l) / duże (2,0l i większe)"
+          "name": "Strojony kolektor wydechowy",
+          "description": ""
         },
         "ru": {
-          "name": "Выпускные коллекторы настроенные",
-          "description": "малые (1,43 л) / большие (2,0 л и более)"
+          "name": "Настроенный выпускной коллектор",
+          "description": ""
         },
         "ja": {
-          "name": "チューニングエキゾーストマニホールド",
-          "description": "小 (1.43l) / 大 (2.0l 以上)"
+          "name": "チューニング排気マニホールド",
+          "description": ""
         },
         "zh": {
-          "name": "高性能排气歧管",
-          "description": "小型 (1.43l) / 大型 (2.0l 及以上)"
+          "name": "调谐排气歧管",
+          "description": ""
         }
       },
       "dealerPrice": 6400,
@@ -723,52 +749,81 @@
       "id": "resonance-exhaust",
       "price": 2700,
       "priceType": "fixed",
-      "image": null,
+      "image": "/assets/desktop/rezonancni-vyfuk-01.jpg",
       "variants": [],
       "translations": {
         "cs": {
           "name": "Rezonanční výfuk",
-          "description": "(na litinové svody) - TAZ 1,43l"
+          "description": "Rezonanční výfuk montovaný na sériový litinový svod.",
+          "optionName": "TAZ 1,43 – TAZ 1,6"
         },
         "en": {
           "name": "Resonance exhaust",
-          "description": "(for cast iron manifold) - TAZ 1.43l"
+          "description": "Resonance exhaust mounted on the stock cast-iron manifold.",
+          "optionName": "TAZ 1.43 – TAZ 1.6"
         },
         "de": {
           "name": "Resonanzauspuff",
-          "description": "(für Gusseisenkrümmer) - TAZ 1,43l"
+          "description": "Resonanzauspuff zur Montage am serienmäßigen Gusskrümmer.",
+          "optionName": "TAZ 1.43 – TAZ 1.6"
         },
         "fr": {
           "name": "Échappement à résonance",
-          "description": "(pour collecteur en fonte) - TAZ 1,43l"
+          "description": "Échappement à résonance monté sur le collecteur en fonte de série.",
+          "optionName": "TAZ 1.43 – TAZ 1.6"
         },
         "it": {
           "name": "Scarico a risonanza",
-          "description": "(per collettore in ghisa) - TAZ 1,43l"
+          "description": "Scarico a risonanza montato sul collettore in ghisa di serie.",
+          "optionName": "TAZ 1.43 – TAZ 1.6"
         },
         "es": {
           "name": "Escape de resonancia",
-          "description": "(para colector de hierro fundido) - TAZ 1,43l"
+          "description": "Escape de resonancia montado en el colector de fundición de serie.",
+          "optionName": "TAZ 1.43 – TAZ 1.6"
         },
         "pl": {
           "name": "Wydech rezonansowy",
-          "description": "(na kolektor żeliwny) - TAZ 1,43l"
+          "description": "Wydech rezonansowy montowany na seryjnym żeliwnym kolektorze.",
+          "optionName": "TAZ 1.43 – TAZ 1.6"
         },
         "ru": {
           "name": "Резонансный глушитель",
-          "description": "(на чугунный коллектор) - TAZ 1,43 л"
+          "description": "Резонансный выхлоп для установки на штатный чугунный коллектор.",
+          "optionName": "TAZ 1.43 – TAZ 1.6"
         },
         "ja": {
           "name": "レゾネーターマフラー",
-          "description": "(鋳鉄マニホールド用) - TAZ 1.43l"
+          "description": "純正の鋳鉄製マニホールドに取り付けるレゾナンスエキゾースト。",
+          "optionName": "TAZ 1.43 – TAZ 1.6"
         },
         "zh": {
           "name": "谐振消声器",
-          "description": "(用于铸铁歧管) - TAZ 1.43l"
+          "description": "安装在原厂铸铁歧管上的共振排气。",
+          "optionName": "TAZ 1.43 – TAZ 1.6"
         }
       },
       "dealerPrice": 2500,
-      "dealerMinimum": 3
+      "dealerMinimum": 3,
+      "images": [
+        {
+          "src": "/assets/desktop/rezonancni-vyfuk-01.jpg",
+          "width": 600,
+          "height": 639,
+          "alt": {
+            "cs": "Rezonanční výfuk",
+            "en": "Resonance exhaust",
+            "de": "Resonanzauspuff",
+            "fr": "Échappement à résonance",
+            "it": "Scarico a risonanza",
+            "es": "Escape de resonancia",
+            "pl": "Wydech rezonansowy",
+            "ru": "Резонансный глушитель",
+            "ja": "レゾネーターマフラー",
+            "zh": "谐振消声器"
+          }
+        }
+      ]
     },
     {
       "id": "connecting-rod",
@@ -797,55 +852,96 @@
       "variants": [
         {
           "id": "160",
-          "label": "160 mm",
+          "label": "160 mm – stock",
+          "translations": {
+            "cs": "160 mm – série",
+            "en": "160 mm – stock",
+            "de": "160 mm – Serie",
+            "fr": "160 mm – série",
+            "it": "160 mm – serie",
+            "es": "160 mm – serie",
+            "pl": "160 mm – seria",
+            "ru": "160 мм – штатный",
+            "ja": "160 mm – 純正仕様",
+            "zh": "160 mm – 原厂规格"
+          },
           "price": 12500
         },
         {
           "id": "156",
-          "label": "156 mm",
+          "label": "156 mm – weld-built crankshaft",
+          "translations": {
+            "cs": "156 mm – KH navařovaná",
+            "en": "156 mm – weld-built crankshaft",
+            "de": "156 mm – aufgeschweißte Kurbelwelle",
+            "fr": "156 mm – vilebrequin rechargé par soudure",
+            "it": "156 mm – albero motore con riporto saldato",
+            "es": "156 mm – cigüeñal recrecido por soldadura",
+            "pl": "156 mm – wał korbowy napawany",
+            "ru": "156 мм – коленвал с наплавкой",
+            "ja": "156 mm – 肉盛り溶接クランクシャフト用",
+            "zh": "156 mm – 堆焊曲轴用"
+          },
           "price": 11500
+        },
+        {
+          "id": "156-engitec",
+          "label": "156 mm – “Engitec” crankshaft",
+          "translations": {
+            "cs": "156 mm – KH „Engitec“",
+            "en": "156 mm – “Engitec” crankshaft",
+            "de": "156 mm – „Engitec“-Kurbelwelle",
+            "fr": "156 mm – vilebrequin « Engitec »",
+            "it": "156 mm – albero motore “Engitec”",
+            "es": "156 mm – cigüeñal «Engitec»",
+            "pl": "156 mm – wał korbowy „Engitec”",
+            "ru": "156 мм – коленвал «Engitec»",
+            "ja": "156 mm – 「Engitec」クランクシャフト用",
+            "zh": "156 mm – “Engitec”曲轴用"
+          },
+          "price": 12500
         }
       ],
       "translations": {
         "cs": {
           "name": "Ojnice H kovaná",
-          "description": "Délka 160mm (série)\n\nDélka 156mm (pro motory se zvětšeným zdvihem - lze upravit vyosení také pro KH \"Vošvrda\")"
+          "description": ""
         },
         "en": {
           "name": "Forged H-beam Connecting Rod",
-          "description": "Length 160mm (stock)\n\nLength 156mm (for engines with increased stroke - offset can also be adjusted for \"Vošvrda\" crankshafts)"
+          "description": ""
         },
         "de": {
           "name": "Geschmiedetes H-Schaft-Pleuel",
-          "description": "Länge 160mm (Serie)\n\nLänge 156mm (für Motoren mit vergrößertem Hub - Versatz kann auch für Kurbelwelle \"Vošvrda\" angepasst werden)"
+          "description": ""
         },
         "fr": {
           "name": "Bielle forgée en H",
-          "description": "Longueur 160mm (série)\n\nLongueur 156mm (pour moteurs à course augmentée - le déport peut également être ajusté pour vilebrequin \"Vošvrda\")"
+          "description": ""
         },
         "it": {
           "name": "Biella forgiata ad H",
-          "description": "Lunghezza 160mm (serie)\n\nLunghezza 156mm (per motori con corsa maggiorata - l'offset può essere regolato anche per alberi motore \"Vošvrda\")"
+          "description": ""
         },
         "es": {
           "name": "Biela forjada en H",
-          "description": "Longitud 160mm (serie)\n\nLongitud 156mm (para motores con carrera aumentada - el desplazamiento también se puede ajustar para cigüeñales \"Vošvrda\")"
+          "description": ""
         },
         "pl": {
           "name": "Korbowód kuty H",
-          "description": "Długość 160mm (seria)\n\nDługość 156mm (do silników o zwiększonym skoku - przesunięcie można dostosować również dla wałów \"Vošvrda\")"
+          "description": ""
         },
         "ru": {
           "name": "Шатун H-образный кованый",
-          "description": "Длина 160 мм (серия)\n\nДлина 156 мм (для двигателей с увеличенным ходом поршня - можно изменить смещение также для коленвала \"Vošvrda\")"
+          "description": ""
         },
         "ja": {
           "name": "鍛造H断面コンロッド",
-          "description": "長さ 160mm (純正)\n\n長さ 156mm (ストロークアップエンジン用 - \"Vošvrda\"クランクシャフト用にオフセット調整可能)"
+          "description": ""
         },
         "zh": {
           "name": "H型锻造连杆",
-          "description": "长度 160mm (原厂)\n\n长度 156mm (用于加长冲程发动机 - 也可调整偏移量以适配 \"Vošvrda\" 曲轴)"
+          "description": ""
         }
       },
       "legacyItems": [
@@ -862,7 +958,7 @@
       ]
     },
     {
-      "id": "ignition-coil-contact",
+      "id": "ignition-coil",
       "price": 780,
       "priceType": "fixed",
       "image": "/assets/desktop/zapalovaci-civka-01.jpeg",
@@ -872,134 +968,109 @@
           "width": 2252,
           "height": 4000,
           "alt": {
-            "cs": "Zapalovací cívka kontaktního zapalování PAL",
-            "en": "Ignition coil for PAL contact ignition",
-            "de": "Zündspule für PAL Kontaktzündung",
-            "fr": "Bobine d'allumage pour allumage à contact PAL",
-            "it": "Bobina di accensione per accensione a contatti PAL",
-            "es": "Bobina de encendido para encendido por contacto PAL",
-            "pl": "Cewka zapłonowa do zapłonu kontaktowego PAL",
-            "ru": "Катушка зажигания контактного зажигания PAL",
-            "ja": "PAL ポイント式イグニッションコイル",
-            "zh": "PAL 触点式点火线圈"
+            "cs": "Zapalovací cívka",
+            "en": "Ignition coil",
+            "de": "Zündspule",
+            "fr": "Bobine d’allumage",
+            "it": "Bobina di accensione",
+            "es": "Bobina de encendido",
+            "pl": "Cewka zapłonowa",
+            "ru": "Катушка зажигания",
+            "ja": "イグニッションコイル",
+            "zh": "点火线圈"
           }
         }
       ],
-      "variants": [],
-      "translations": {
-        "cs": {
-          "name": "Zapalovací cívka kontaktního zapalování PAL",
-          "description": "Pro motory TAZ hasičských agregátů."
-        },
-        "en": {
-          "name": "Ignition coil for PAL contact ignition",
-          "description": "For TAZ firefighting aggregate engines."
-        },
-        "de": {
-          "name": "Zündspule für PAL Kontaktzündung",
-          "description": "Für TAZ-Motoren von Feuerwehraggregaten."
-        },
-        "fr": {
-          "name": "Bobine d'allumage pour allumage à contact PAL",
-          "description": "Pour moteurs TAZ de groupes de pompage incendie."
-        },
-        "it": {
-          "name": "Bobina di accensione per accensione a contatti PAL",
-          "description": "Per motori TAZ di motopompe antincendio."
-        },
-        "es": {
-          "name": "Bobina de encendido para encendido por contacto PAL",
-          "description": "Para motores TAZ de equipos de bombeo contra incendios."
-        },
-        "pl": {
-          "name": "Cewka zapłonowa do zapłonu kontaktowego PAL",
-          "description": "Do silników TAZ agregatów pożarniczych."
-        },
-        "ru": {
-          "name": "Катушка зажигания контактного зажигания PAL",
-          "description": "Для двигателей TAZ пожарных агрегатов."
-        },
-        "ja": {
-          "name": "PAL ポイント式イグニッションコイル",
-          "description": "消防用ポンプユニットの TAZ エンジン用。"
-        },
-        "zh": {
-          "name": "PAL 触点式点火线圈",
-          "description": "适用于消防泵组的 TAZ 发动机。"
-        }
-      },
-      "dealerPrice": null,
-      "dealerMinimum": null
-    },
-    {
-      "id": "ignition-coil-contactless",
-      "price": 1100,
-      "priceType": "fixed",
-      "image": "/assets/desktop/zapalovaci-civka-01.jpeg",
-      "images": [
+      "variants": [
         {
-          "src": "/assets/desktop/zapalovaci-civka-01.jpeg",
-          "width": 2252,
-          "height": 4000,
-          "alt": {
-            "cs": "Zapalovací cívka bezkontaktního zapalování PAL",
-            "en": "Ignition coil for PAL contactless ignition",
-            "de": "Zündspule für PAL kontaktlose Zündung",
-            "fr": "Bobine d'allumage pour allumage sans contact PAL",
-            "it": "Bobina di accensione per accensione senza contatti PAL",
-            "es": "Bobina de encendido para encendido sin contacto PAL",
-            "pl": "Cewka zapłonowa do zapłonu bezkontaktowego PAL",
-            "ru": "Катушка зажигания бесконтактного зажигания PAL",
-            "ja": "PAL フルトラ式イグニッションコイル",
-            "zh": "PAL 无触点式点火线圈"
-          }
+          "id": "contact",
+          "label": "For contact ignition",
+          "translations": {
+            "cs": "Pro kontaktní zapalování",
+            "en": "For contact ignition",
+            "de": "Für Kontaktzündung",
+            "fr": "Pour allumage à contacts",
+            "it": "Per accensione a contatti",
+            "es": "Para encendido con contactos",
+            "pl": "Do zapłonu stykowego",
+            "ru": "Для контактного зажигания",
+            "ja": "接点式点火用",
+            "zh": "用于触点式点火"
+          },
+          "price": 780
+        },
+        {
+          "id": "contactless",
+          "label": "For contactless ignition",
+          "translations": {
+            "cs": "Pro bezkontaktní zapalování",
+            "en": "For contactless ignition",
+            "de": "Für kontaktlose Zündung",
+            "fr": "Pour allumage sans contacts",
+            "it": "Per accensione senza contatti",
+            "es": "Para encendido sin contactos",
+            "pl": "Do zapłonu bezstykowego",
+            "ru": "Для бесконтактного зажигания",
+            "ja": "無接点式点火用",
+            "zh": "用于无触点式点火"
+          },
+          "price": 1100
         }
       ],
-      "variants": [],
       "translations": {
         "cs": {
-          "name": "Zapalovací cívka bezkontaktního zapalování PAL",
-          "description": "Pro motory TAZ hasičských agregátů."
+          "name": "Zapalovací cívka",
+          "description": ""
         },
         "en": {
-          "name": "Ignition coil for PAL contactless ignition",
-          "description": "For TAZ firefighting aggregate engines."
+          "name": "Ignition coil",
+          "description": ""
         },
         "de": {
-          "name": "Zündspule für PAL kontaktlose Zündung",
-          "description": "Für TAZ-Motoren von Feuerwehraggregaten."
+          "name": "Zündspule",
+          "description": ""
         },
         "fr": {
-          "name": "Bobine d'allumage pour allumage sans contact PAL",
-          "description": "Pour moteurs TAZ de groupes de pompage incendie."
+          "name": "Bobine d’allumage",
+          "description": ""
         },
         "it": {
-          "name": "Bobina di accensione per accensione senza contatti PAL",
-          "description": "Per motori TAZ di motopompe antincendio."
+          "name": "Bobina di accensione",
+          "description": ""
         },
         "es": {
-          "name": "Bobina de encendido para encendido sin contacto PAL",
-          "description": "Para motores TAZ de equipos de bombeo contra incendios."
+          "name": "Bobina de encendido",
+          "description": ""
         },
         "pl": {
-          "name": "Cewka zapłonowa do zapłonu bezkontaktowego PAL",
-          "description": "Do silników TAZ agregatów pożarniczych."
+          "name": "Cewka zapłonowa",
+          "description": ""
         },
         "ru": {
-          "name": "Катушка зажигания бесконтактного зажигания PAL",
-          "description": "Для двигателей TAZ пожарных агрегатов."
+          "name": "Катушка зажигания",
+          "description": ""
         },
         "ja": {
-          "name": "PAL フルトラ式イグニッションコイル",
-          "description": "消防用ポンプユニットの TAZ エンジン用。"
+          "name": "イグニッションコイル",
+          "description": ""
         },
         "zh": {
-          "name": "PAL 无触点式点火线圈",
-          "description": "适用于消防泵组的 TAZ 发动机。"
+          "name": "点火线圈",
+          "description": ""
         }
       },
-      "dealerPrice": null,
-      "dealerMinimum": null
+      "legacyItems": [
+        {
+          "id": "ignition-coil-contact",
+          "variant": "",
+          "targetVariant": "contact"
+        },
+        {
+          "id": "ignition-coil-contactless",
+          "variant": "",
+          "targetVariant": "contactless"
+        }
+      ]
     },
     {
       "id": "distributor-rotor",
@@ -1025,255 +1096,263 @@
           }
         }
       ],
-      "variants": [],
+      "variants": [
+        {
+          "id": "4800-5100",
+          "label": "Modified for 4800–5100 rpm",
+          "translations": {
+            "cs": "Upravený na 4800-5100 ot/min",
+            "en": "Modified for 4800–5100 rpm",
+            "de": "Auf 4800–5100 U/min angepasst",
+            "fr": "Modifié pour 4800–5100 tr/min",
+            "it": "Modificato per 4800–5100 giri/min",
+            "es": "Modificado para 4800–5100 rpm",
+            "pl": "Zmodyfikowany na 4800–5100 obr./min",
+            "ru": "Доработан для 4800–5100 об/мин",
+            "ja": "4800～5100 rpm用に調整",
+            "zh": "调整为4800–5100转/分"
+          }
+        },
+        {
+          "id": "custom",
+          "label": "Modified to order",
+          "translations": {
+            "cs": "Upravený na přání",
+            "en": "Modified to order",
+            "de": "Anpassung auf Wunsch",
+            "fr": "Modification sur demande",
+            "it": "Modifica su richiesta",
+            "es": "Modificación a petición",
+            "pl": "Modyfikacja na życzenie",
+            "ru": "Доработка по заказу",
+            "ja": "ご希望に合わせて調整",
+            "zh": "按要求调整"
+          },
+          "fields": [
+            {
+              "id": "min-rpm",
+              "labelKey": "minRpm"
+            },
+            {
+              "id": "max-rpm",
+              "labelKey": "maxRpm",
+              "minimumField": "min-rpm"
+            }
+          ]
+        },
+        {
+          "id": "original",
+          "label": "Genuine Bosch / Facet, EPS",
+          "translations": {
+            "cs": "Originál Bosch / Facet, EPS",
+            "en": "Genuine Bosch / Facet, EPS",
+            "de": "Original Bosch / Facet, EPS",
+            "fr": "Pièce d’origine Bosch / Facet, EPS",
+            "it": "Originale Bosch / Facet, EPS",
+            "es": "Original Bosch / Facet, EPS",
+            "pl": "Oryginał Bosch / Facet, EPS",
+            "ru": "Оригинал Bosch / Facet, EPS",
+            "ja": "Bosch / Facet、EPS純正品",
+            "zh": "Bosch / Facet、EPS原装"
+          },
+          "descriptions": {
+            "cs": "žádné levné náhrady!",
+            "en": "no cheap substitutes!",
+            "de": "keine billigen Ersatzprodukte!",
+            "fr": "pas de substituts bon marché !",
+            "it": "nessun sostituto economico!",
+            "es": "¡sin sustitutos baratos!",
+            "pl": "żadnych tanich zamienników!",
+            "ru": "никаких дешёвых заменителей!",
+            "ja": "安価な代替品ではありません！",
+            "zh": "绝非廉价替代品！"
+          }
+        }
+      ],
       "translations": {
         "cs": {
           "name": "Palec rozdělovače s omezovačem",
-          "description": "upravený na 4800-5100 ot/min, popř. na přání (Bosch/Facet)"
+          "description": ""
         },
         "en": {
           "name": "Distributor rotor with limiter",
-          "description": "modified to 4800-5100 rpm, or upon request (Bosch/Facet)"
+          "description": ""
         },
         "de": {
           "name": "Verteilerläufer mit Begrenzer",
-          "description": "modifiziert auf 4800-5100 U/min, oder auf Wunsch (Bosch/Facet)"
+          "description": ""
         },
         "fr": {
           "name": "Doigt d'allumeur avec limiteur",
-          "description": "modifié à 4800-5100 tr/min, ou sur demande (Bosch/Facet)"
+          "description": ""
         },
         "it": {
           "name": "Spazzola rotante dello spinterogeno con limitatore",
-          "description": "modificata a 4800-5100 giri/min, o su richiesta (Bosch/Facet)"
+          "description": ""
         },
         "es": {
           "name": "Rotor del distribuidor con limitador",
-          "description": "modificado a 4800-5100 rpm, o bajo pedido (Bosch/Facet)"
+          "description": ""
         },
         "pl": {
           "name": "Palec rozdzielacza z ogranicznikiem",
-          "description": "zmodyfikowany na 4800-5100 obr/min, lub na życzenie (Bosch/Facet)"
+          "description": ""
         },
         "ru": {
           "name": "Бегунок распределителя с ограничителем",
-          "description": "настроен на 4800-5100 об/мин, или по желанию (Bosch/Facet)"
+          "description": ""
         },
         "ja": {
           "name": "リミッター付きディストリビューターローター",
-          "description": "4800-5100 rpmに調整済み、またはご要望に応じて (Bosch/Facet)"
+          "description": ""
         },
         "zh": {
           "name": "带限速器的分电器转子",
-          "description": "调整至 4800-5100 转/分，或根据要求 (Bosch/Facet)"
+          "description": ""
         }
       },
       "dealerPrice": null,
       "dealerMinimum": null
     },
     {
-      "id": "distributor-cap",
+      "id": "distributor-parts",
       "price": 260,
       "priceType": "fixed",
       "image": null,
-      "variants": [],
+      "variants": [
+        {
+          "id": "cap",
+          "label": "Distributor cap",
+          "translations": {
+            "cs": "Víko rozdělovače",
+            "en": "Distributor cap",
+            "de": "Verteilerkappe",
+            "fr": "Tête de distributeur",
+            "it": "Calotta dello spinterogeno",
+            "es": "Tapa del distribuidor",
+            "pl": "Kopułka rozdzielacza",
+            "ru": "Крышка распределителя",
+            "ja": "ディストリビューターキャップ",
+            "zh": "分电器盖"
+          },
+          "price": 260
+        },
+        {
+          "id": "wiring",
+          "label": "High-voltage ignition leads",
+          "translations": {
+            "cs": "VN kabeláž",
+            "en": "High-voltage ignition leads",
+            "de": "Hochspannungs-Zündkabel",
+            "fr": "Faisceau d’allumage haute tension",
+            "it": "Cavi di accensione ad alta tensione",
+            "es": "Cables de encendido de alta tensión",
+            "pl": "Przewody zapłonowe wysokiego napięcia",
+            "ru": "Высоковольтные провода зажигания",
+            "ja": "高電圧イグニッションケーブル",
+            "zh": "高压点火线"
+          },
+          "price": 280
+        },
+        {
+          "id": "contacts",
+          "label": "Bosch distributor contacts",
+          "translations": {
+            "cs": "Kontakty rozdělovače Bosch",
+            "en": "Bosch distributor contacts",
+            "de": "Bosch-Unterbrecherkontakte",
+            "fr": "Contacts de distributeur Bosch",
+            "it": "Contatti dello spinterogeno Bosch",
+            "es": "Contactos del distribuidor Bosch",
+            "pl": "Styki rozdzielacza Bosch",
+            "ru": "Контакты распределителя Bosch",
+            "ja": "Bosch製ディストリビューター接点",
+            "zh": "Bosch分电器触点"
+          },
+          "price": 150
+        },
+        {
+          "id": "capacitor",
+          "label": "PAL distributor condenser",
+          "translations": {
+            "cs": "Kondenzátor rozdělovače PAL",
+            "en": "PAL distributor condenser",
+            "de": "PAL-Zündkondensator",
+            "fr": "Condensateur de distributeur PAL",
+            "it": "Condensatore dello spinterogeno PAL",
+            "es": "Condensador del distribuidor PAL",
+            "pl": "Kondensator rozdzielacza PAL",
+            "ru": "Конденсатор распределителя PAL",
+            "ja": "PAL製ディストリビューターコンデンサー",
+            "zh": "PAL分电器电容器"
+          },
+          "price": 180
+        }
+      ],
       "translations": {
         "cs": {
-          "name": "Víko rozdělovače",
-          "description": "Pro motory TAZ hasičských agregátů."
+          "name": "ND rozdělovače",
+          "description": "Náhradní díly rozdělovače pro motory TAZ hasičských agregátů."
         },
         "en": {
-          "name": "Distributor cap",
-          "description": "For TAZ firefighting aggregate engines."
+          "name": "Distributor spare parts",
+          "description": "Distributor spare parts for TAZ firefighting aggregate engines."
         },
         "de": {
-          "name": "Verteilerkappe",
-          "description": "Für TAZ-Motoren von Feuerwehraggregaten."
+          "name": "Zündverteiler-Ersatzteile",
+          "description": "Ersatzteile für Zündverteiler von TAZ-Motoren in Feuerwehraggregaten."
         },
         "fr": {
-          "name": "Tête d'allumeur",
-          "description": "Pour moteurs TAZ de groupes de pompage incendie."
+          "name": "Pièces détachées de distributeur",
+          "description": "Pièces de distributeur pour moteurs TAZ de groupes motopompes d’incendie."
         },
         "it": {
-          "name": "Calotta spinterogeno",
-          "description": "Per motori TAZ di motopompe antincendio."
+          "name": "Ricambi dello spinterogeno",
+          "description": "Ricambi dello spinterogeno per motori TAZ di gruppi antincendio."
         },
         "es": {
-          "name": "Tapa del distribuidor",
-          "description": "Para motores TAZ de equipos de bombeo contra incendios."
+          "name": "Recambios del distribuidor",
+          "description": "Recambios del distribuidor para motores TAZ de equipos contra incendios."
         },
         "pl": {
-          "name": "Kopułka rozdzielacza",
-          "description": "Do silników TAZ agregatów pożarniczych."
+          "name": "Części zamienne rozdzielacza",
+          "description": "Części rozdzielacza do silników TAZ agregatów pożarniczych."
         },
         "ru": {
-          "name": "Крышка распределителя",
-          "description": "Для двигателей TAZ пожарных агрегатов."
+          "name": "Запчасти распределителя зажигания",
+          "description": "Запчасти распределителя для двигателей TAZ пожарных агрегатов."
         },
         "ja": {
-          "name": "ディストリビューターキャップ",
-          "description": "消防用ポンプユニットの TAZ エンジン用。"
+          "name": "ディストリビューター用補修部品",
+          "description": "消防用ポンプユニットのTAZエンジン向けディストリビューター部品。"
         },
         "zh": {
-          "name": "分电器盖",
-          "description": "适用于消防泵组的 TAZ 发动机。"
+          "name": "分电器配件",
+          "description": "适用于消防泵组TAZ发动机的分电器配件。"
         }
       },
-      "dealerPrice": null,
-      "dealerMinimum": null
-    },
-    {
-      "id": "distributor-contacts",
-      "price": 150,
-      "priceType": "fixed",
-      "image": null,
-      "variants": [],
-      "translations": {
-        "cs": {
-          "name": "Kontakty rozdělovače BOSCH",
-          "description": "Pro motory TAZ hasičských agregátů."
+      "legacyItems": [
+        {
+          "id": "distributor-cap",
+          "variant": "",
+          "targetVariant": "cap"
         },
-        "en": {
-          "name": "Distributor contacts BOSCH",
-          "description": "For TAZ firefighting aggregate engines."
+        {
+          "id": "ignition-wiring",
+          "variant": "",
+          "targetVariant": "wiring"
         },
-        "de": {
-          "name": "Verteilerkontakte BOSCH",
-          "description": "Für TAZ-Motoren von Feuerwehraggregaten."
+        {
+          "id": "distributor-contacts",
+          "variant": "",
+          "targetVariant": "contacts"
         },
-        "fr": {
-          "name": "Contacts d'allumeur BOSCH",
-          "description": "Pour moteurs TAZ de groupes de pompage incendie."
-        },
-        "it": {
-          "name": "Contatti spinterogeno (puntine) BOSCH",
-          "description": "Per motori TAZ di motopompe antincendio."
-        },
-        "es": {
-          "name": "Contactos del distribuidor (platinos) BOSCH",
-          "description": "Para motores TAZ de equipos de bombeo contra incendios."
-        },
-        "pl": {
-          "name": "Styki rozdzielacza (przerywacz) BOSCH",
-          "description": "Do silników TAZ agregatów pożarniczych."
-        },
-        "ru": {
-          "name": "Контакты распределителя BOSCH",
-          "description": "Для двигателей TAZ пожарных агрегатов."
-        },
-        "ja": {
-          "name": "BOSCH ディストリビューターポイント",
-          "description": "消防用ポンプユニットの TAZ エンジン用。"
-        },
-        "zh": {
-          "name": "BOSCH 分电器触点",
-          "description": "适用于消防泵组的 TAZ 发动机。"
+        {
+          "id": "distributor-capacitor",
+          "variant": "",
+          "targetVariant": "capacitor"
         }
-      },
-      "dealerPrice": null,
-      "dealerMinimum": null
-    },
-    {
-      "id": "distributor-capacitor",
-      "price": 180,
-      "priceType": "fixed",
-      "image": null,
-      "variants": [],
-      "translations": {
-        "cs": {
-          "name": "Kondenzátor rozdělovače PAL",
-          "description": "Pro motory TAZ hasičských agregátů."
-        },
-        "en": {
-          "name": "Distributor capacitor PAL",
-          "description": "For TAZ firefighting aggregate engines."
-        },
-        "de": {
-          "name": "Verteilerkondensator PAL",
-          "description": "Für TAZ-Motoren von Feuerwehraggregaten."
-        },
-        "fr": {
-          "name": "Condensateur d'allumeur PAL",
-          "description": "Pour moteurs TAZ de groupes de pompage incendie."
-        },
-        "it": {
-          "name": "Condensatore spinterogeno PAL",
-          "description": "Per motori TAZ di motopompe antincendio."
-        },
-        "es": {
-          "name": "Condensador del distribuidor PAL",
-          "description": "Para motores TAZ de equipos de bombeo contra incendios."
-        },
-        "pl": {
-          "name": "Kondensator rozdzielacza PAL",
-          "description": "Do silników TAZ agregatów pożarniczych."
-        },
-        "ru": {
-          "name": "Конденсатор распределителя PAL",
-          "description": "Для двигателей TAZ пожарных агрегатов."
-        },
-        "ja": {
-          "name": "PAL ディストリビューターコンデンサー",
-          "description": "消防用ポンプユニットの TAZ エンジン用。"
-        },
-        "zh": {
-          "name": "PAL 分电器电容器",
-          "description": "适用于消防泵组的 TAZ 发动机。"
-        }
-      },
-      "dealerPrice": null,
-      "dealerMinimum": null
-    },
-    {
-      "id": "ignition-wiring",
-      "price": 280,
-      "priceType": "fixed",
-      "image": null,
-      "variants": [],
-      "translations": {
-        "cs": {
-          "name": "VN kabeláž",
-          "description": "Pro motory TAZ hasičských agregátů."
-        },
-        "en": {
-          "name": "HT ignition wiring",
-          "description": "For TAZ firefighting aggregate engines."
-        },
-        "de": {
-          "name": "Zündkabelsatz",
-          "description": "Für TAZ-Motoren von Feuerwehraggregaten."
-        },
-        "fr": {
-          "name": "faisceau HT d’allumage",
-          "description": "Pour moteurs TAZ de groupes de pompage incendie."
-        },
-        "it": {
-          "name": "cablaggio AT d’accensione",
-          "description": "Per motori TAZ di motopompe antincendio."
-        },
-        "es": {
-          "name": "cableado AT de encendido",
-          "description": "Para motores TAZ de equipos de bombeo contra incendios."
-        },
-        "pl": {
-          "name": "przewody WN",
-          "description": "Do silników TAZ agregatów pożarniczych."
-        },
-        "ru": {
-          "name": "ВВ-провода зажигания",
-          "description": "Для двигателей TAZ пожарных агрегатов."
-        },
-        "ja": {
-          "name": "点火高圧配線",
-          "description": "消防用ポンプユニットの TAZ エンジン用。"
-        },
-        "zh": {
-          "name": "点火高压线束",
-          "description": "适用于消防泵组的 TAZ 发动机。"
-        }
-      },
-      "dealerPrice": null,
-      "dealerMinimum": null
+      ]
     },
     {
       "id": "head-gasket",
@@ -1319,26 +1398,52 @@
       "variants": [
         {
           "id": "80-5",
-          "label": "80.5 mm"
+          "label": "For 80.5 mm bore",
+          "translations": {
+            "cs": "Pro vrtání 80,5 mm",
+            "en": "For 80.5 mm bore",
+            "de": "Für Bohrung 80,5 mm",
+            "fr": "Pour alésage de 80,5 mm",
+            "it": "Per alesaggio 80,5 mm",
+            "es": "Para diámetro de 80,5 mm",
+            "pl": "Do średnicy 80,5 mm",
+            "ru": "Для диаметра цилиндров 80,5 мм",
+            "ja": "ボア80.5 mm用",
+            "zh": "用于80.5 mm缸径"
+          },
+          "price": 620
         },
         {
           "id": "82-0",
-          "label": "82.0 mm"
+          "label": "For 82 mm bore",
+          "translations": {
+            "cs": "Pro vrtání 82 mm",
+            "en": "For 82 mm bore",
+            "de": "Für Bohrung 82 mm",
+            "fr": "Pour alésage de 82 mm",
+            "it": "Per alesaggio 82 mm",
+            "es": "Para diámetro de 82 mm",
+            "pl": "Do średnicy 82 mm",
+            "ru": "Для диаметра цилиндров 82 мм",
+            "ja": "ボア82 mm用",
+            "zh": "用于82 mm缸径"
+          },
+          "price": 620
         },
         {
           "id": "stock",
-          "label": "Stock (silicone treatment)",
+          "label": "For stock TAZ 1.43 (silicone)",
           "translations": {
-            "cs": "Série (silikonová úprava)",
-            "en": "Stock (silicone treatment)",
-            "de": "Serie (Silikonbehandlung)",
-            "fr": "Série (traitement silicone)",
-            "it": "Di serie (trattamento al silicone)",
-            "es": "De serie (tratamiento de silicona)",
-            "pl": "Seryjna (wykończenie silikonowe)",
-            "ru": "Серийная (силиконовая обработка)",
-            "ja": "純正（シリコン処理）",
-            "zh": "原厂（硅胶处理）"
+            "cs": "Pro sériový TAZ 1,43 (silikon)",
+            "en": "For stock TAZ 1.43 (silicone)",
+            "de": "Für serienmäßigen TAZ 1,43 (Silikon)",
+            "fr": "Pour TAZ 1,43 de série (silicone)",
+            "it": "Per TAZ 1,43 di serie (silicone)",
+            "es": "Para TAZ 1,43 de serie (silicona)",
+            "pl": "Do seryjnego TAZ 1,43 (silikon)",
+            "ru": "Для штатного TAZ 1,43 (силикон)",
+            "ja": "純正TAZ 1.43用（シリコン処理）",
+            "zh": "用于原厂TAZ 1.43（硅胶处理）"
           },
           "price": 160
         }
@@ -1346,144 +1451,45 @@
       "translations": {
         "cs": {
           "name": "Těsnění hlavy válců",
-          "description": "Pro motory TAZ hasičských agregátů."
+          "description": "Pro motory se zvětšeným vrtáním, rozteč válců 88-88-88 mm, tloušťka 1,5 mm.\n\nDalší varianty (tloušťka, rozteče) na dotaz."
         },
         "en": {
           "name": "Cylinder head gasket",
-          "description": "For TAZ firefighting aggregate engines."
+          "description": "For engines with an enlarged bore; cylinder spacing 88-88-88 mm, thickness 1.5 mm.\n\nOther thicknesses and cylinder spacings on request."
         },
         "de": {
           "name": "Zylinderkopfdichtung",
-          "description": "Für TAZ-Motoren von Feuerwehraggregaten."
+          "description": "Für Motoren mit vergrößerter Bohrung; Zylinderabstand 88-88-88 mm, Dicke 1,5 mm.\n\nAndere Dicken und Zylinderabstände auf Anfrage."
         },
         "fr": {
           "name": "Joint de culasse",
-          "description": "Pour moteurs TAZ de groupes de pompage incendie."
+          "description": "Pour moteurs à alésage augmenté ; entraxe des cylindres 88-88-88 mm, épaisseur 1,5 mm.\n\nAutres épaisseurs et entraxes sur demande."
         },
         "it": {
           "name": "Guarnizione testa cilindri",
-          "description": "Per motori TAZ di motopompe antincendio."
+          "description": "Per motori con alesaggio maggiorato; interasse cilindri 88-88-88 mm, spessore 1,5 mm.\n\nAltri spessori e interassi su richiesta."
         },
         "es": {
           "name": "Junta de culata",
-          "description": "Para motores TAZ de equipos de bombeo contra incendios."
+          "description": "Para motores con diámetro de cilindro aumentado; distancia entre cilindros 88-88-88 mm, espesor 1,5 mm.\n\nOtros espesores y distancias entre cilindros bajo consulta."
         },
         "pl": {
           "name": "Uszczelka głowicy cylindrów",
-          "description": "Do silników TAZ agregatów pożarniczych."
+          "description": "Do silników o powiększonej średnicy cylindrów; rozstaw cylindrów 88-88-88 mm, grubość 1,5 mm.\n\nInne grubości i rozstawy na zapytanie."
         },
         "ru": {
           "name": "Прокладка головки блока цилиндров (ГБЦ)",
-          "description": "Для двигателей TAZ пожарных агрегатов."
+          "description": "Для двигателей с увеличенным диаметром цилиндров; межосевые расстояния 88-88-88 мм, толщина 1,5 мм.\n\nДругие варианты толщины и межосевых расстояний по запросу."
         },
         "ja": {
           "name": "シリンダーヘッドガスケット",
-          "description": "消防用ポンプユニットの TAZ エンジン用。"
+          "description": "ボアを拡大したエンジン用。ボアピッチ88-88-88 mm、厚さ1.5 mm。\n\nその他の厚さ・ボアピッチはお問い合わせください。"
         },
         "zh": {
           "name": "气缸盖垫片",
-          "description": "适用于消防泵组的 TAZ 发动机。"
+          "description": "用于扩缸发动机；缸间距88-88-88 mm，厚度1.5 mm。\n\n其他厚度和缸间距可咨询。"
         }
       },
-      "options": [
-        {
-          "id": "custom",
-          "variantIds": [
-            "80-5",
-            "82-0"
-          ],
-          "translations": {
-            "cs": {
-              "name": "Těsnění hlavy válců",
-              "description": "vrtání 80,5mm / 82,0mm - Rozteč válců 88-88-88mm, tloušťka 1,5mm - Na objednávku lze vyrobit jinou rozteč a tloušťku (cena bude upřesněna při objednávce)"
-            },
-            "en": {
-              "name": "Cylinder head gasket",
-              "description": "bore 80.5mm / 82.0mm - Cylinder spacing 88-88-88mm, thickness 1.5mm - Different spacing and thickness can be manufactured on order (price will be specified upon order)"
-            },
-            "de": {
-              "name": "Zylinderkopfdichtung",
-              "description": "Bohrung 80,5mm / 82,0mm - Zylinderabstand 88-88-88mm, Dicke 1,5mm - Auf Bestellung kann ein anderer Abstand und eine andere Dicke gefertigt werden (Preis wird bei Bestellung präzisiert)"
-            },
-            "fr": {
-              "name": "Joint de culasse",
-              "description": "alésage 80,5mm / 82,0mm - Entraxe cylindres 88-88-88mm, épaisseur 1,5mm - Sur commande, possibilité de fabriquer un autre entraxe et épaisseur (prix précisé à la commande)"
-            },
-            "it": {
-              "name": "Guarnizione testa cilindri",
-              "description": "alesaggio 80,5mm / 82,0mm - Interasse cilindri 88-88-88mm, spessore 1,5mm - Su ordinazione è possibile produrre altri interassi e spessori (il prezzo sarà specificato all'ordine)"
-            },
-            "es": {
-              "name": "Junta de culata",
-              "description": "diámetro 80,5mm / 82,0mm - Distancia entre cilindros 88-88-88mm, espesor 1,5mm - Bajo pedido se puede fabricar otra distancia y espesor (el precio se especificará en el pedido)"
-            },
-            "pl": {
-              "name": "Uszczelka głowicy cylindrów",
-              "description": "średnica 80,5mm / 82,0mm - Rozstaw cylindrów 88-88-88mm, grubość 1,5mm - Na zamówienie można wyprodukować inny rozstaw i grubość (cena zostanie określona przy zamówieniu)"
-            },
-            "ru": {
-              "name": "Прокладка головки блока цилиндров (ГБЦ)",
-              "description": "диаметр 80,5 мм / 82,0 мм - Расстояние между цилиндрами 88-88-88 мм, толщина 1,5 мм - На заказ можно изготовить другое расстояние и толщину (цена будет уточнена при заказе)"
-            },
-            "ja": {
-              "name": "シリンダーヘッドガスケット",
-              "description": "ボア 80.5mm / 82.0mm - ボアピッチ 88-88-88mm、厚さ 1.5mm - 注文に応じて他のピッチや厚さも製造可能（価格は注文時に確定）"
-            },
-            "zh": {
-              "name": "气缸盖垫片",
-              "description": "缸径 80.5mm / 82.0mm - 缸间距 88-88-88mm，厚度 1.5mm - 可按订单生产其他间距和厚度（订货时确定价格）"
-            }
-          }
-        },
-        {
-          "id": "stock",
-          "variantIds": [
-            "stock"
-          ],
-          "translations": {
-            "cs": {
-              "name": "Série (silikonová úprava)",
-              "description": ""
-            },
-            "en": {
-              "name": "Stock (silicone treatment)",
-              "description": ""
-            },
-            "de": {
-              "name": "Serie (Silikonbehandlung)",
-              "description": ""
-            },
-            "fr": {
-              "name": "Série (traitement silicone)",
-              "description": ""
-            },
-            "it": {
-              "name": "Di serie (trattamento al silicone)",
-              "description": ""
-            },
-            "es": {
-              "name": "De serie (tratamiento de silicona)",
-              "description": ""
-            },
-            "pl": {
-              "name": "Seryjna (wykończenie silikonowe)",
-              "description": ""
-            },
-            "ru": {
-              "name": "Серийная (силиконовая обработка)",
-              "description": ""
-            },
-            "ja": {
-              "name": "純正（シリコン処理）",
-              "description": ""
-            },
-            "zh": {
-              "name": "原厂（硅胶处理）",
-              "description": ""
-            }
-          }
-        }
-      ],
       "legacyItems": [
         {
           "id": "head-gasket-stock",
@@ -1491,6 +1497,156 @@
           "targetVariant": "stock"
         }
       ]
+    },
+    {
+      "id": "cylinder-piston-kit",
+      "price": 18000,
+      "priceType": "fixed",
+      "image": null,
+      "variants": [
+        {
+          "id": "complete",
+          "label": "Complete set",
+          "translations": {
+            "cs": "Kompletní sada",
+            "en": "Complete set",
+            "de": "Kompletter Satz",
+            "fr": "Kit complet",
+            "it": "Kit completo",
+            "es": "Kit completo",
+            "pl": "Kompletny zestaw",
+            "ru": "Полный комплект",
+            "ja": "フルセット",
+            "zh": "完整套件"
+          },
+          "price": 18000
+        },
+        {
+          "id": "pistons-rings",
+          "label": "Piston and piston-ring set",
+          "translations": {
+            "cs": "Sada pístů a PK",
+            "en": "Piston and piston-ring set",
+            "de": "Kolben- und Kolbenringsatz",
+            "fr": "Kit pistons et segments",
+            "it": "Kit pistoni e fasce elastiche",
+            "es": "Kit de pistones y segmentos",
+            "pl": "Zestaw tłoków i pierścieni tłokowych",
+            "ru": "Комплект поршней и поршневых колец",
+            "ja": "ピストン・ピストンリングセット",
+            "zh": "活塞及活塞环套件"
+          },
+          "price": 10400
+        },
+        {
+          "id": "rings",
+          "label": "Piston-ring set",
+          "translations": {
+            "cs": "Sada PK",
+            "en": "Piston-ring set",
+            "de": "Kolbenringsatz",
+            "fr": "Jeu de segments",
+            "it": "Kit fasce elastiche",
+            "es": "Juego de segmentos",
+            "pl": "Zestaw pierścieni tłokowych",
+            "ru": "Комплект поршневых колец",
+            "ja": "ピストンリングセット",
+            "zh": "活塞环套件"
+          },
+          "price": 1600
+        }
+      ],
+      "translations": {
+        "cs": {
+          "name": "Sada válců, pístů, PK, PČ, poj. kroužků Ø82 mm",
+          "description": "Cena je uvedena vždy pro celý motor (pro 4 válce).\n\nVymezovací podložky pod válce na dotaz."
+        },
+        "en": {
+          "name": "Ø82 mm cylinder, piston, ring, pin and circlip set",
+          "description": "Prices are always for a complete engine (4 cylinders).\n\nCylinder shims on request."
+        },
+        "de": {
+          "name": "Ø82-mm-Satz aus Zylindern, Kolben, Kolbenringen, Bolzen und Sicherungsringen",
+          "description": "Die Preise gelten stets für einen kompletten Motor (4 Zylinder).\n\nAusgleichsscheiben unter den Zylindern auf Anfrage."
+        },
+        "fr": {
+          "name": "Kit Ø82 mm : cylindres, pistons, segments, axes et circlips",
+          "description": "Les prix sont toujours indiqués pour un moteur complet (4 cylindres).\n\nCales sous cylindres sur demande."
+        },
+        "it": {
+          "name": "Kit Ø82 mm di cilindri, pistoni, fasce, spinotti e anelli di arresto",
+          "description": "I prezzi si riferiscono sempre a un motore completo (4 cilindri).\n\nSpessori sotto i cilindri su richiesta."
+        },
+        "es": {
+          "name": "Kit Ø82 mm de cilindros, pistones, segmentos, bulones y anillos de retención",
+          "description": "Los precios corresponden siempre a un motor completo (4 cilindros).\n\nArandelas de ajuste bajo los cilindros disponibles bajo consulta."
+        },
+        "pl": {
+          "name": "Zestaw Ø82 mm: cylindry, tłoki, pierścienie, sworznie i zabezpieczenia",
+          "description": "Ceny zawsze dotyczą całego silnika (4 cylindry).\n\nPodkładki regulacyjne pod cylindry na zapytanie."
+        },
+        "ru": {
+          "name": "Комплект Ø82 мм: цилиндры, поршни, кольца, пальцы и стопорные кольца",
+          "description": "Цены всегда указаны за полный двигатель (4 цилиндра).\n\nРегулировочные шайбы под цилиндры по запросу."
+        },
+        "ja": {
+          "name": "Ø82 mmシリンダー・ピストン・リング・ピン・サークリップセット",
+          "description": "価格はすべてエンジン1基分（4気筒分）です。\n\nシリンダー下の調整シムはお問い合わせください。"
+        },
+        "zh": {
+          "name": "Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件",
+          "description": "所有价格均为整台发动机（4缸）的价格。\n\n缸套下的调整垫片请咨询。"
+        }
+      }
+    },
+    {
+      "id": "carburetor-38-38",
+      "price": 7900,
+      "priceType": "fixed",
+      "image": null,
+      "variants": [],
+      "translations": {
+        "cs": {
+          "name": "Dvojitý karburátor 38/38 vč. úpravy",
+          "description": "Vhodný pro motory TAZ 2,0 a větší.\n\nKarburátor vč. úpravy, doporučujeme doladění karburátoru na motorové brzdě (na dotaz)."
+        },
+        "en": {
+          "name": "Twin-choke 38/38 carburetor including modification",
+          "description": "Suitable for TAZ 2.0 and larger engines.\n\nCarburetor including modification; we recommend final tuning on an engine dynamometer (on request)."
+        },
+        "de": {
+          "name": "Doppelvergaser 38/38 inklusive Modifikation",
+          "description": "Geeignet für TAZ 2,0 und größere Motoren.\n\nVergaser inklusive Modifikation; wir empfehlen die Feinabstimmung auf einem Motorenprüfstand (auf Anfrage)."
+        },
+        "fr": {
+          "name": "Carburateur double corps 38/38 avec modification",
+          "description": "Adapté aux moteurs TAZ 2,0 et plus.\n\nCarburateur avec modification ; nous recommandons un réglage final au banc moteur (sur demande)."
+        },
+        "it": {
+          "name": "Carburatore doppio corpo 38/38 con modifica",
+          "description": "Adatto ai motori TAZ 2,0 e superiori.\n\nCarburatore con modifica; consigliamo la messa a punto finale al banco motore (su richiesta)."
+        },
+        "es": {
+          "name": "Carburador de doble cuerpo 38/38 con modificación",
+          "description": "Adecuado para motores TAZ 2,0 y superiores.\n\nCarburador con modificación; recomendamos el ajuste final en banco de motores (bajo consulta)."
+        },
+        "pl": {
+          "name": "Gaźnik dwugardzielowy 38/38 z modyfikacją",
+          "description": "Odpowiedni do silników TAZ 2,0 i większych.\n\nGaźnik z modyfikacją; zalecamy końcowe strojenie na hamowni silnikowej (na zapytanie)."
+        },
+        "ru": {
+          "name": "Двухкамерный карбюратор 38/38 с доработкой",
+          "description": "Подходит для двигателей TAZ 2,0 и большего объёма.\n\nКарбюратор с доработкой; рекомендуем окончательную настройку на моторном стенде (по запросу)."
+        },
+        "ja": {
+          "name": "加工込み38/38ツインバレルキャブレター",
+          "description": "TAZ 2.0以上のエンジンに適しています。\n\n加工込みのキャブレターです。エンジンダイナモでの最終調整をお勧めします（要問い合わせ）。"
+        },
+        "zh": {
+          "name": "38/38双腔化油器（含改装）",
+          "description": "适用于TAZ 2.0及更大排量发动机。\n\n化油器含改装；建议在发动机测功机上进行最终调校（请咨询）。"
+        }
+      }
     },
     {
       "id": "copper-rings",
@@ -1546,7 +1702,7 @@
     {
       "id": "distributor-overhaul",
       "price": 1600,
-      "priceType": "fixed",
+      "priceType": "approx",
       "image": "/assets/desktop/repas-rozdelovac-01.jpeg",
       "images": [
         {
@@ -1554,60 +1710,60 @@
           "width": 600,
           "height": 800,
           "alt": {
-            "cs": "Repase rozdělovače",
-            "en": "Distributor overhaul",
-            "de": "Überholung des Verteilers",
-            "fr": "Réfection de l'allumeur",
-            "it": "Revisione spinterogeno",
-            "es": "Revisión del distribuidor",
-            "pl": "Regeneracja aparatu zapłonowego",
-            "ru": "Реставрация распределителя",
-            "ja": "ディストリビューターのオーバーホール",
-            "zh": "分电器翻新"
+            "cs": "Repase a úprava rozdělovače",
+            "en": "Distributor overhaul and modification",
+            "de": "Überholung und Modifikation des Zündverteilers",
+            "fr": "Réfection et modification du distributeur",
+            "it": "Revisione e modifica dello spinterogeno",
+            "es": "Reacondicionamiento y modificación del distribuidor",
+            "pl": "Regeneracja i modyfikacja rozdzielacza",
+            "ru": "Восстановление и доработка распределителя",
+            "ja": "ディストリビューターのオーバーホール・加工",
+            "zh": "分电器翻新与改装"
           }
         }
       ],
       "variants": [],
       "translations": {
         "cs": {
-          "name": "Repase rozdělovače",
-          "description": "V ceně nejsou zahrnuty ND (kontakty, kondenzátor, cívka...) - Pouze rozdělovače CZ výroby (u čínských/polských kopií nemohu zaručit správnou funkci) - Na úpravu dodejte vždy umyté a odmaštěné díly"
+          "name": "Repase a úprava rozdělovače",
+          "description": "V ceně nejsou zahrnuty ND (kontakty, kondenzátor, cívka...).\n\nPouze rozdělovače CZ výroby (u čínských/polských kopií nemůžeme zaručit správnou funkci).\n\nNa úpravu dodejte vždy umyté a odmaštěné díly.\n\nCena dle rozsahu prací, cca 1 600 Kč."
         },
         "en": {
-          "name": "Distributor overhaul",
-          "description": "Spare parts not included in price (contacts, capacitor, coil...) - Only CZ manufactured distributors (cannot guarantee proper function for Chinese/Polish copies) - Always supply washed and degreased parts for modification"
+          "name": "Distributor overhaul and modification",
+          "description": "Spare parts (contacts, condenser, coil, etc.) are not included in the price.\n\nCzech-made distributors only; we cannot guarantee correct operation of Chinese/Polish copies.\n\nAlways supply washed and degreased parts for modification.\n\nPrice depends on the scope of work, approximately CZK 1,600."
         },
         "de": {
-          "name": "Überholung des Verteilers",
-          "description": "Im Preis sind Ersatzteile nicht enthalten (Kontakte, Kondensator, Spule...) - Nur Verteiler aus CZ-Produktion (bei chinesischen/polnischen Kopien kann ich keine ordnungsgemäße Funktion garantieren) - Zur Bearbeitung immer gewaschene und entfettete Teile liefern"
+          "name": "Überholung und Modifikation des Zündverteilers",
+          "description": "Ersatzteile (Kontakte, Kondensator, Spule usw.) sind nicht im Preis enthalten.\n\nNur Zündverteiler aus tschechischer Produktion; bei chinesischen/polnischen Kopien können wir die korrekte Funktion nicht garantieren.\n\nTeile zur Modifikation immer gewaschen und entfettet anliefern.\n\nPreis nach Arbeitsumfang, ca. 1.600 CZK."
         },
         "fr": {
-          "name": "Réfection de l'allumeur",
-          "description": "Le prix n'inclut pas les pièces détachées (contacts, condensateur, bobine...) - Uniquement allumeurs de fabrication CZ (nous ne pouvons garantir le bon fonctionnement des copies chinoises/polonaises) - Toujours fournir des pièces lavées et dégraissées pour la modification"
+          "name": "Réfection et modification du distributeur",
+          "description": "Les pièces détachées (contacts, condensateur, bobine, etc.) ne sont pas comprises dans le prix.\n\nUniquement les distributeurs de fabrication tchèque ; nous ne pouvons pas garantir le bon fonctionnement des copies chinoises/polonaises.\n\nToujours fournir les pièces lavées et dégraissées pour modification.\n\nPrix selon l’étendue des travaux, environ 1 600 CZK."
         },
         "it": {
-          "name": "Revisione spinterogeno",
-          "description": "Il prezzo non include i ricambi (contatti, condensatore, bobina...) - Solo spinterogeni di produzione CZ (non possiamo garantire il corretto funzionamento per copie cinesi/polacche) - Consegnare sempre parti lavate e sgrassate per la modifica"
+          "name": "Revisione e modifica dello spinterogeno",
+          "description": "I ricambi (contatti, condensatore, bobina, ecc.) non sono inclusi nel prezzo.\n\nSolo spinterogeni di produzione ceca; non possiamo garantire il corretto funzionamento delle copie cinesi/polacche.\n\nConsegnare sempre i componenti lavati e sgrassati per la modifica.\n\nPrezzo in base all’entità del lavoro, circa 1.600 CZK."
         },
         "es": {
-          "name": "Revisión del distribuidor",
-          "description": "El precio no incluye repuestos (contactos, condensador, bobina...) - Solo distribuidores de fabricación CZ (no podemos garantizar el correcto funcionamiento de copias chinas/polacas) - Entregue siempre las piezas lavadas y desengrasadas para su modificación"
+          "name": "Reacondicionamiento y modificación del distribuidor",
+          "description": "El precio no incluye recambios (contactos, condensador, bobina, etc.).\n\nSolo distribuidores de fabricación checa; no podemos garantizar el funcionamiento correcto de las copias chinas/polacas.\n\nEntregue siempre las piezas lavadas y desengrasadas para su modificación.\n\nPrecio según el alcance del trabajo, aproximadamente 1600 CZK."
         },
         "pl": {
-          "name": "Regeneracja aparatu zapłonowego",
-          "description": "Cena nie obejmuje części zamiennych (styki, kondensator, cewka...) - Tylko aparaty produkcji CZ (nie możemy zagwarantować poprawnego działania kopii chińskich/polskich) - Do modyfikacji zawsze dostarczaj umyte i odtłuszczone części"
+          "name": "Regeneracja i modyfikacja rozdzielacza",
+          "description": "Cena nie obejmuje części zamiennych (styków, kondensatora, cewki itp.).\n\nWyłącznie rozdzielacze produkcji czeskiej; w przypadku kopii chińskich/polskich nie możemy zagwarantować prawidłowego działania.\n\nDo modyfikacji zawsze dostarczaj części umyte i odtłuszczone.\n\nCena zależy od zakresu prac, około 1600 CZK."
         },
         "ru": {
-          "name": "Реставрация распределителя",
-          "description": "В цену не включены запчасти (контакты, конденсатор, катушка...) - Только распределители производства CZ (у китайских/польских копий не могу гарантировать правильную работу) - Для модификации предоставляйте всегда вымытые и обезжиренные детали"
+          "name": "Восстановление и доработка распределителя",
+          "description": "Запчасти (контакты, конденсатор, катушка и т. п.) в цену не включены.\n\nТолько распределители чешского производства; для китайских/польских копий мы не можем гарантировать правильную работу.\n\nДля доработки всегда предоставляйте вымытые и обезжиренные детали.\n\nЦена зависит от объёма работ, ориентировочно 1600 CZK."
         },
         "ja": {
-          "name": "ディストリビューターのオーバーホール",
-          "description": "価格にはスペアパーツ（ポイント、コンデンサー、コイル等）は含まれていません - チェコ製ディストリビューターのみ対応（中国/ポーランド製コピー品は正常な機能を保証できません） - 改造用パーツは必ず洗浄・脱脂してご提供ください"
+          "name": "ディストリビューターのオーバーホール・加工",
+          "description": "交換部品（接点、コンデンサー、コイルなど）は価格に含まれません。\n\nチェコ製ディストリビューターのみ対応します。中国製・ポーランド製のコピー品については正常な動作を保証できません。\n\n加工に出す部品は必ず洗浄・脱脂してください。\n\n価格は作業範囲により異なり、目安は1,600 CZKです。"
         },
         "zh": {
-          "name": "分电器翻新",
-          "description": "价格不含备件（触点、电容器、线圈...） - 仅限捷克产分电器（对于中国/波兰的仿制品无法保证功能正常） - 请务必提供清洗并脱脂的零件进行改装"
+          "name": "分电器翻新与改装",
+          "description": "价格不含配件（触点、电容器、线圈等）。\n\n仅限捷克制造的分电器；对于中国或波兰的仿制品，我们无法保证正常工作。\n\n送来改装的零件必须清洗并脱脂。\n\n价格视工作范围而定，约为1,600 CZK。"
         }
       },
       "dealerPrice": 1450,

@@ -7,7 +7,27 @@
     const MAX_ITEMS = 500;
 
     function lineKey(id, variant = '') { return id + ':' + variant; }
-    function basketLineKey(item) { return item.lineId ? item.id + ':@' + item.lineId : lineKey(item.id, item.variant); }
+    function basketLineKey(item) {
+        if (item.lineId) return item.id + ':@' + item.lineId;
+        const parameters = Object.keys(item.parameters || {}).sort().map(key => key + '=' + item.parameters[key]);
+        return lineKey(item.id, item.variant) + (parameters.length ? ':' + parameters.join(',') : '');
+    }
+
+    function positiveInteger(value) {
+        return (typeof value === 'number' || typeof value === 'string') && /^\d+$/.test(String(value).trim())
+            && Number.isSafeInteger(Number(value)) && Number(value) > 0;
+    }
+
+    function normaliseOrderParameters(value, product, variantId) {
+        const fields = product.variants.find(variant => variant.id === variantId)?.fields || [];
+        const parameters = {};
+        for (const field of fields) {
+            if (!positiveInteger(value?.[field.id])) return null;
+            parameters[field.id] = String(Number(value[field.id]));
+        }
+        if (fields.some(field => field.minimumField && Number(parameters[field.id]) < Number(parameters[field.minimumField]))) return null;
+        return parameters;
+    }
 
     function normaliseConfiguration(value, product) {
         if (product?.kind !== 'wizard' || !value || typeof value !== 'object') return null;
@@ -52,6 +72,11 @@
             && value.items.some(row => row && ['camshaft-regrind', 'camshaft-new'].includes(row.id));
     }
 
+    function hasLegacyRotors(value) {
+        return value?.version === 1 && Array.isArray(value.items)
+            && value.items.some(row => row?.id === 'distributor-rotor' && !row.variant);
+    }
+
     function normaliseBasket(value, products) {
         const rows = value && value.version === 1 && Array.isArray(value.items) ? value.items : [];
         const catalog = new Map(products.map(product => [product.id, product]));
@@ -76,30 +101,36 @@
             }
             const variant = typeof row.variant === 'string' ? row.variant : '';
             if (product.variants.length ? !product.variants.some(v => v.id === variant) : variant !== '') return;
-            const key = lineKey(product.id, variant);
+            const parameters = normaliseOrderParameters(row.parameters, product, variant);
+            if (!parameters) return;
+            const item = { id: product.id, variant, ...(Object.keys(parameters).length ? { parameters } : {}) };
+            const key = basketLineKey(item);
             const quantity = Math.min(MAX_QUANTITY, row.quantity + (items.get(key)?.quantity || 0));
-            items.set(key, { id: product.id, variant, quantity });
+            items.set(key, { ...item, quantity });
         });
         return [...items.values()];
     }
 
-    function setQuantity(items, id, variant, quantity, products) {
+    function setQuantity(items, id, variant, quantity, products, parameters) {
         if (!Number.isFinite(quantity) || products.find(product => product.id === id)?.kind === 'wizard') return items;
-        const key = lineKey(id, variant);
-        const next = items.map(item => lineKey(item.id, item.variant) === key ? { id, variant, quantity: Math.min(MAX_QUANTITY, Math.floor(quantity)) } : item);
-        if (quantity > 0 && !items.some(item => lineKey(item.id, item.variant) === key)) {
-            next.push({ id, variant, quantity: Math.min(MAX_QUANTITY, Math.floor(quantity)) });
+        const key = basketLineKey({ id, variant, parameters });
+        const next = items.map(item => basketLineKey(item) === key ? { ...item, quantity: Math.min(MAX_QUANTITY, Math.floor(quantity)) } : item);
+        if (quantity > 0 && !items.some(item => basketLineKey(item) === key)) {
+            next.push({ id, variant, parameters, quantity: Math.min(MAX_QUANTITY, Math.floor(quantity)) });
         }
         return normaliseBasket({ version: 1, items: next }, products);
     }
 
-    function addOrderItem(items, id, variant, quantity, products) {
+    function addOrderItem(items, id, variant, quantity, products, values) {
         const product = products.find(product => product.id === id);
         if (!product || product.kind === 'wizard' || !Number.isInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY
             || (product.variants.length ? !product.variants.some(value => value.id === variant) : variant !== '')) return items;
-        const existing = items.find(item => item.id === id && item.variant === variant);
+        const parameters = normaliseOrderParameters(values, product, variant);
+        if (!parameters) return items;
+        const key = basketLineKey({ id, variant, parameters });
+        const existing = items.find(item => basketLineKey(item) === key);
         if ((!existing && items.length >= MAX_ITEMS) || quantity + (existing?.quantity || 0) > MAX_QUANTITY) return items;
-        return setQuantity(items, id, variant, quantity + (existing?.quantity || 0), products);
+        return setQuantity(items, id, variant, quantity + (existing?.quantity || 0), products, parameters);
     }
 
     function basketSummary(items, products) {
@@ -125,7 +156,10 @@
     }
 
     function configurationDetails(item, product, config) {
-        if (product.kind !== 'wizard') return [];
+        if (product.kind !== 'wizard') {
+            const fields = product.variants.find(variant => variant.id === item.variant)?.fields || [];
+            return fields.map(field => [config.text[field.labelKey], item.parameters[field.id]]);
+        }
         const t = config.text;
         const selected = item.configuration;
         const profile = product.wizard.profiles.find(profile => profile.id === selected.profile);
@@ -158,7 +192,7 @@
     function formatPrice(product, config, quantity = 1) {
         if (product.priceType === 'quote') return config.text.quote;
         const amount = new Intl.NumberFormat(config.locale, { style: 'currency', currency: config.currency, maximumFractionDigits: 0 }).format(product.price * quantity);
-        return product.priceType === 'from' ? config.text.from + ' ' + amount : amount;
+        return ['from', 'approx'].includes(product.priceType) ? config.text[product.priceType] + ' ' + amount : amount;
     }
 
     function orderText(items, details, config) {
@@ -191,7 +225,7 @@
     }
 
     function initNavigation(doc, viewport) {
-        const menus = [...doc.querySelectorAll('button[aria-controls]')].map(trigger => ({
+        const menus = [...doc.querySelectorAll('button[aria-controls="mobile-menu-overlay"], button[aria-controls="mobile-langchooser-overlay"]')].map(trigger => ({
             trigger, panel: doc.getElementById(trigger.getAttribute('aria-controls')),
         })).filter(menu => menu.panel);
 
@@ -400,7 +434,70 @@
         return () => selected?.value || '';
     }
 
+    function initOrderQuantitySpinner(form) {
+        const input = form.querySelector('[data-order-quantity]');
+        const buttons = [...form.querySelectorAll('[data-order-change]')];
+        function sync() {
+            buttons.forEach(button => {
+                const change = Number(button.dataset.orderChange);
+                button.disabled = input.disabled || input.readOnly
+                    || (change < 0 ? input.valueAsNumber <= 1 : input.valueAsNumber >= MAX_QUANTITY);
+            });
+        }
+        buttons.forEach(button => button.addEventListener('click', () => {
+            if (button.disabled || input.disabled || input.readOnly) return;
+            const current = Number.isFinite(input.valueAsNumber) ? input.valueAsNumber : 0;
+            input.value = String(Math.max(1, Math.min(MAX_QUANTITY, Math.floor(current) + Number(button.dataset.orderChange))));
+            // Only update the draft and its validation. Add to order remains explicit.
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+        }));
+        input.addEventListener('input', sync);
+        input.addEventListener('change', sync);
+        sync();
+        return sync;
+    }
+
+    function initOrderParameterFields(form, message) {
+        const rows = [...form.querySelectorAll('[data-order-field-row]')];
+        const inputs = rows.map(row => row.querySelector('[data-order-field]'));
+        function syncValidity() {
+            inputs.forEach(input => {
+                const minimum = inputs.find(other => other.dataset.orderField === input.dataset.minimumField)?.value;
+                const invalid = !positiveInteger(input.value) || (positiveInteger(minimum) && Number(input.value) < Number(minimum));
+                input.setCustomValidity(!input.disabled && input.value && invalid ? message : '');
+            });
+        }
+        let refreshing = false;
+        function refresh(event) {
+            if (refreshing) return;
+            refreshing = true;
+            syncValidity();
+            inputs.filter(input => !input.disabled && input.value && input.dataset.minimumField === event.target.dataset.orderField)
+                .forEach(input => input.dispatchEvent(new Event('change', { bubbles: true })));
+            refreshing = false;
+        }
+        inputs.forEach(input => {
+            input.addEventListener('input', refresh);
+            input.addEventListener('change', refresh);
+        });
+        return {
+            select(variant) {
+                rows.forEach((row, index) => {
+                    row.hidden = row.dataset.orderFieldRow !== variant;
+                    inputs[index].disabled = row.hidden;
+                });
+                syncValidity();
+            },
+            read() {
+                syncValidity();
+                return Object.fromEntries(inputs.filter(input => !input.disabled).map(input => [input.dataset.orderField, input.value]));
+            },
+        };
+    }
+
     function initOrderItemForm(form, product, siteForm, selectInstances, text, onAdd) {
+        // Register parameter constraints before the shared inline validation handlers.
+        const parameterFields = initOrderParameterFields(form, text.rpmWarning);
         const validation = siteForm.initValidation(form, { requiredMessage: text.requiredWarning });
         const quantity = form.querySelector('[data-order-quantity]');
         const variantRows = [...form.querySelectorAll('[data-order-variant-fields]')];
@@ -408,11 +505,14 @@
         const status = form.querySelector('.shop-wizard-status');
         let selectedOption = null;
         let variantSelect = null;
-        initBasketQuantitySelection(form, 'input[data-order-quantity]');
+        const syncQuantity = initOrderQuantitySpinner(form);
+        initBasketQuantitySelection(form, 'input[data-order-quantity], input[data-order-field]');
+        const syncParameters = () => parameterFields.select(variantSelect ? variantSelect.value : selectedOption?.variants[0]?.id || '');
         initRadioSubform(form, 'option', value => {
             selectedOption = product.options.find(option => option.id === value);
             variantSelect = null;
             quantity.disabled = !selectedOption;
+            syncQuantity();
             submit.disabled = !selectedOption;
             variantRows.forEach(row => {
                 const select = row.querySelector('select');
@@ -425,20 +525,25 @@
                 if (active) { choices?.enable(); variantSelect = select; }
                 else choices?.disable();
             });
+            syncParameters();
             validation.reset();
             status.hidden = true;
         });
         form.addEventListener('input', () => { status.hidden = true; });
-        form.addEventListener('change', () => { status.hidden = true; });
+        form.addEventListener('change', event => {
+            status.hidden = true;
+            if (event.target === variantSelect) syncParameters();
+        });
         form.addEventListener('submit', event => {
             event.preventDefault();
             status.hidden = true;
+            const parameters = parameterFields.read();
             if (!selectedOption || !validation.validate()) return;
             const variant = variantSelect ? variantSelect.value : selectedOption.variants[0]?.id || '';
             if (selectedOption.variants.length && !selectedOption.variants.some(option => option.id === variant)) return;
             const count = Number(quantity.value);
             if (!Number.isInteger(count) || count < 1 || count > MAX_QUANTITY) return;
-            const error = onAdd(variant, count);
+            const error = onAdd(variant, count, parameters);
             if (error) { status.textContent = error; status.hidden = false; }
         });
     }
@@ -499,7 +604,7 @@
         });
     }
 
-    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseConfiguration, addConfiguredItem, addOrderItem, removeBasketItem, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, initPhotoGalleries, basketRemoveButton, initBasketQuantitySelection, initRadioSubform, initOrderItemForm, initWizardForm };
+    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseOrderParameters, hasLegacyRotors, normaliseConfiguration, addConfiguredItem, addOrderItem, removeBasketItem, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, initPhotoGalleries, basketRemoveButton, initBasketQuantitySelection, initRadioSubform, initOrderQuantitySpinner, initOrderItemForm, initOrderParameterFields, initWizardForm };
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     if (!root.document) return;
 
@@ -528,6 +633,7 @@
                 const parsed = JSON.parse(saved);
                 items = normaliseBasket(parsed, config.products);
                 document.getElementById('shop-legacy-notice').hidden = !hasLegacyCamshafts(parsed);
+                document.getElementById('shop-legacy-rotor-notice').hidden = !hasLegacyRotors(parsed);
             } catch (_) { items = []; }
             localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, items }));
         } catch (_) { storageUnavailable(); }
@@ -544,8 +650,6 @@
             catch (_) { storageUnavailable(); }
         }
 
-        function quantity(id, variant) { return items.find(item => item.id === id && item.variant === variant)?.quantity || 0; }
-
         function element(tag, className, text) {
             const node = document.createElement(tag);
             if (className) node.className = className;
@@ -553,7 +657,8 @@
             return node;
         }
 
-        function controls(id, variant, name, value) {
+        function controls(item, name) {
+            const value = item.quantity;
             const group = element('div', 'shop-quantity');
             group.setAttribute('role', 'group');
             group.setAttribute('aria-label', t.quantity + ': ' + name);
@@ -568,7 +673,7 @@
                     control.inputMode = 'numeric'; control.value = String(value); control.dataset.quantity = '';
                     control.setAttribute('aria-label', t.quantity + ': ' + name);
                 }
-                control.dataset.focusKey = lineKey(id, variant) + ':' + change;
+                control.dataset.focusKey = basketLineKey(item) + ':' + change;
                 group.append(control);
             });
             return group;
@@ -587,15 +692,17 @@
                 row.dataset.lineKey = basketLineKey(item);
                 row.append(element('h3', '', name), basketRemoveButton(document, item, name, t.remove),
                     element('p', '', formatPrice(itemPrice(item, product), config, item.quantity)));
-                if (product.kind === 'wizard') {
+                const specifications = configurationDetails(item, product, config);
+                if (specifications.length) {
                     const details = element('dl', 'shop-basket-configuration');
-                    configurationDetails(item, product, config).forEach(([label, value]) => {
+                    specifications.forEach(([label, value]) => {
                         const entry = element('div');
                         entry.append(element('dt', '', label), element('dd', '', value));
                         details.append(entry);
                     });
                     row.append(details);
-                } else row.append(controls(item.id, item.variant, name, item.quantity));
+                }
+                if (product.kind !== 'wizard') row.append(controls(item, name));
                 basketList.append(row);
             });
             const summary = basketSummary(items, config.products);
@@ -618,15 +725,16 @@
             document.getElementById('shop-status').textContent = t.cartUpdated + '. ' + t.totalItems + ': ' + summary.count + '. ' + t.subtotal + ': ' + money.format(summary.subtotalCents / 100);
         }
 
-        function update(id, variant, value) {
-            items = setQuantity(items, id, variant, value, config.products);
+        function update(id, variant, value, parameters) {
+            items = setQuantity(items, id, variant, value, config.products, parameters);
             basketChanged();
         }
 
         function targetItem(control) {
             const card = control.closest('.shop-basket-item');
             if (!card) return null;
-            return { id: card.dataset.product, variant: card.dataset.variantId || '', key: card.dataset.lineKey };
+            const item = items.find(item => basketLineKey(item) === card.dataset.lineKey);
+            return item ? { ...item, key: card.dataset.lineKey } : null;
         }
 
         document.addEventListener('click', event => {
@@ -639,8 +747,8 @@
                 basketChanged();
                 return;
             }
-            const next = control.hasAttribute('data-remove') ? 0 : quantity(item.id, item.variant) + Number(control.dataset.change);
-            update(item.id, item.variant, next);
+            const next = control.hasAttribute('data-remove') ? 0 : item.quantity + Number(control.dataset.change);
+            update(item.id, item.variant, next, item.parameters);
         });
         document.addEventListener('change', event => {
             if (!event.target.matches('[data-quantity]')) return;
@@ -649,7 +757,7 @@
             if (!Number.isInteger(value) || value < 0 || value > MAX_QUANTITY) {
                 event.target.reportValidity(); render(); return;
             }
-            update(item.id, item.variant, value);
+            update(item.id, item.variant, value, item.parameters);
         });
         window.addEventListener('storage', event => {
             if (event.key !== STORAGE_KEY && event.key !== null) return;
@@ -659,10 +767,11 @@
 
         document.querySelectorAll('form[data-order-product]').forEach(itemForm => {
             const product = products.get(itemForm.dataset.orderProduct);
-            initOrderItemForm(itemForm, product, root.SiteForm, selectInstances, t, (variant, count) => {
-                const existing = items.find(item => item.id === product.id && item.variant === variant);
+            initOrderItemForm(itemForm, product, root.SiteForm, selectInstances, t, (variant, count, parameters) => {
+                const key = basketLineKey({ id: product.id, variant, parameters });
+                const existing = items.find(item => basketLineKey(item) === key);
                 if (count + (existing?.quantity || 0) > MAX_QUANTITY) return t.quantityLimit;
-                const next = addOrderItem(items, product.id, variant, count, config.products);
+                const next = addOrderItem(items, product.id, variant, count, config.products, parameters);
                 if (next === items) return t.basketFull;
                 items = next;
                 basketChanged();

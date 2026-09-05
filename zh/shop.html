@@ -32,10 +32,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/styles/choices.min.css">
   <link rel="stylesheet" href="/main.css">
   <link rel="stylesheet" href="/blog.css?v=c87d129dc6cb">
-  <link rel="stylesheet" href="/shop.css?v=4629316ee9fb">
+  <link rel="stylesheet" href="/shop.css?v=d24495b187c7">
   <script src="https://cdn.jsdelivr.net/npm/choices.js@11.1.0/public/assets/scripts/choices.min.js" defer></script>
   <script src="/form.js?v=ab5bb64dc1ce" defer></script>
-  <script src="/shop.js?v=29cb9c4d3e61" defer></script>
+  <script src="/shop.js?v=45a39d538079" defer></script>
 </head>
 <body id="home" class="shop-page bg-loaded">
   <a class="shop-skip" href="#catalog">浏览备件</a>
@@ -108,6 +108,7 @@
         <noscript><p class="shop-notice">请启用 JavaScript 使用购物车，或将商品选择和地址发至 info@petramuckova.cz。</p></noscript>
         <p id="shop-storage-notice" class="shop-notice" role="status" hidden>浏览器存储不可用。购物车仍可使用，但刷新后可能丢失。</p>
         <p id="shop-legacy-notice" class="shop-notice" role="status" hidden>原凸轮轴商品已替换为配置表单。请重新配置；其他商品已保留。</p>
+        <p id="shop-legacy-rotor-notice" class="shop-notice" role="status" hidden>分电器转子现有新的选项，请重新选择；订单中的其他商品已保留。</p>
         <h1 id="catalog-title" class="shop-sr-only">商店</h1>
         <div class="blog-card shop-catalog-notes"><p>我们专注于消防运动组件的改装和供应。对于大量采购的经销商和改装商，我们提供单独的价格条款和优惠价格。</p><p>所有提供的零件均为捷克原厂件，而非廉价替代品。其他零件请询价。</p><p>价格表自 2025年11月5日 起生效</p><p>我们是非增值税纳税人</p></div>
         <div class="shop-grid"><article class="blog-card shop-product shop-wizard-product" id="skoda-ohv-camshaft" data-product="skoda-ohv-camshaft" aria-labelledby="name-skoda-ohv-camshaft">
@@ -352,31 +353,26 @@
     </form>
     </article>
 <article class="blog-card shop-product shop-wizard-product shop-option-product" id="exhaust-headers" data-product="exhaust-headers" aria-labelledby="name-exhaust-headers">
-      <h3 class="shop-product-title" id="name-exhaust-headers">高性能排气歧管</h3>
+      <h3 class="shop-product-title" id="name-exhaust-headers">调谐排气歧管</h3>
       <figure class="shop-photo">
-      <a class="shop-photo-link" id="photo-exhaust-headers-1" href="/assets/desktop/svody-ladene-01.jpeg" style="--shop-photo-width: 435px" aria-haspopup="dialog" aria-label="放大照片: 高性能排气歧管">
+      <a class="shop-photo-link" id="photo-exhaust-headers-1" href="/assets/desktop/svody-ladene-01.jpeg" style="--shop-photo-width: 435px" aria-haspopup="dialog" aria-label="放大照片: 调谐排气歧管">
         <span class="tech-frame">
-          <img src="/assets/desktop/svody-ladene-01.jpeg" alt="高性能排气歧管" width="435" height="493" loading="lazy" decoding="async">
+          <img src="/assets/desktop/svody-ladene-01.jpeg" alt="调谐排气歧管" width="435" height="493" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">小型 (1.43l) / 大型 (2.0l 及以上)</p>
-          <a href="/zh/blog#post-2-title">博客: TAZ 1.43 / PS12 ↗</a>
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-exhaust-headers" data-order-product="exhaust-headers" aria-label="高性能排气歧管" method="post" novalidate>
+      <div class="shop-product-content"><div class="shop-product-body"><a href="/zh/blog#post-2-title">博客: TAZ 1.43 / PS12 ↗</a></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-exhaust-headers" data-order-product="exhaust-headers" aria-label="调谐排气歧管" method="post" novalidate>
       <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">规格: 高性能排气歧管</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="高性能排气歧管">
+        <legend class="shop-sr-only">规格: 调谐排气歧管</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="调谐排气歧管">
           <colgroup><col class="shop-item-option-column"><col></colgroup>
           <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="exhaust-headers-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
             <td><label class="shop-profile-radio-label" for="exhaust-headers-option-small">
               <input type="radio" name="option" value="small" id="exhaust-headers-option-small" aria-labelledby="exhaust-headers-option-small-name exhaust-headers-price-heading exhaust-headers-option-small-price">
-              <span id="exhaust-headers-option-small-name" class="shop-profile-method">TAZ 1.43 l</span>
+              <span id="exhaust-headers-option-small-name" class="shop-profile-method">TAZ 1.43</span>
             </label></td>
             <td class="shop-profile-price"><label for="exhaust-headers-option-small"><span id="exhaust-headers-option-small-price" class="shop-profile-value">6 600 CZK</span></label></td>
           </tr>
@@ -385,7 +381,7 @@
           <tr>
             <td><label class="shop-profile-radio-label" for="exhaust-headers-option-large">
               <input type="radio" name="option" value="large" id="exhaust-headers-option-large" aria-labelledby="exhaust-headers-option-large-name exhaust-headers-price-heading exhaust-headers-option-large-price">
-              <span id="exhaust-headers-option-large-name" class="shop-profile-method">TAZ 2.0 l +</span>
+              <span id="exhaust-headers-option-large-name" class="shop-profile-method">TAZ 2.0及以上</span>
             </label></td>
             <td class="shop-profile-price"><label for="exhaust-headers-option-large"><span id="exhaust-headers-option-large-price" class="shop-profile-value">6 600 CZK</span></label></td>
           </tr>
@@ -393,11 +389,16 @@
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-exhaust-headers">数量 *</label></th>
+              <th scope="row"><label id="label-quantity-exhaust-headers" for="quantity-exhaust-headers">数量 *</label></th>
               <td><div class="form-group">
-                <input id="quantity-exhaust-headers" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-exhaust-headers">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: 调谐排气歧管" aria-controls="quantity-exhaust-headers" disabled>−</button>
+                  <input id="quantity-exhaust-headers" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-exhaust-headers-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: 调谐排气歧管" aria-controls="quantity-exhaust-headers" disabled>+</button>
+                </div>
+                <span id="quantity-exhaust-headers-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -412,19 +413,14 @@
     </article>
 <article class="blog-card shop-product shop-wizard-product shop-option-product" id="resonance-exhaust" data-product="resonance-exhaust" aria-labelledby="name-resonance-exhaust">
       <h3 class="shop-product-title" id="name-resonance-exhaust">谐振消声器</h3>
-      <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-resonance-exhaust-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="放大照片: 谐振消声器">
+      <figure class="shop-photo">
+      <a class="shop-photo-link" id="photo-resonance-exhaust-1" href="/assets/desktop/rezonancni-vyfuk-01.jpg" style="--shop-photo-width: 600px" aria-haspopup="dialog" aria-label="放大照片: 谐振消声器">
         <span class="tech-frame">
-          <img src="/assets/desktop/shop-placeholder.webp" alt="暂无商品照片" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
+          <img src="/assets/desktop/rezonancni-vyfuk-01.jpg" alt="谐振消声器" width="600" height="639" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">(用于铸铁歧管) - TAZ 1.43l</p>
-
-        </div>
-      </div>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">安装在原厂铸铁歧管上的共振排气。</p></div></div>
       <form class="shop-wizard-form shop-item-form" id="item-resonance-exhaust" data-order-product="resonance-exhaust" aria-label="谐振消声器" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">规格: 谐振消声器</legend>
@@ -435,7 +431,7 @@
           <tr>
             <td><label class="shop-profile-radio-label" for="resonance-exhaust-option-standard">
               <input type="radio" name="option" value="standard" id="resonance-exhaust-option-standard" aria-labelledby="resonance-exhaust-option-standard-name resonance-exhaust-price-heading resonance-exhaust-option-standard-price">
-              <span id="resonance-exhaust-option-standard-name" class="shop-profile-method">谐振消声器</span>
+              <span id="resonance-exhaust-option-standard-name" class="shop-profile-method">TAZ 1.43 – TAZ 1.6</span>
             </label></td>
             <td class="shop-profile-price"><label for="resonance-exhaust-option-standard"><span id="resonance-exhaust-option-standard-price" class="shop-profile-value">2 700 CZK</span></label></td>
           </tr>
@@ -443,11 +439,16 @@
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-resonance-exhaust">数量 *</label></th>
+              <th scope="row"><label id="label-quantity-resonance-exhaust" for="quantity-resonance-exhaust">数量 *</label></th>
               <td><div class="form-group">
-                <input id="quantity-resonance-exhaust" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-resonance-exhaust">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: 谐振消声器" aria-controls="quantity-resonance-exhaust" disabled>−</button>
+                  <input id="quantity-resonance-exhaust" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-resonance-exhaust-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: 谐振消声器" aria-controls="quantity-resonance-exhaust" disabled>+</button>
+                </div>
+                <span id="quantity-resonance-exhaust-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -460,7 +461,7 @@
       </fieldset>
     </form>
     </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="connecting-rod" data-product="connecting-rod" aria-labelledby="name-connecting-rod">
+<article class="blog-card shop-product shop-wizard-product shop-option-product shop-no-description" id="connecting-rod" data-product="connecting-rod" aria-labelledby="name-connecting-rod">
       <h3 class="shop-product-title" id="name-connecting-rod">H型锻造连杆</h3>
       <figure class="shop-photo">
       <a class="shop-photo-link" id="photo-connecting-rod-1" href="/assets/desktop/ojnice-h-kovana-01.jpeg" style="--shop-photo-width: 4000px" aria-haspopup="dialog" aria-label="放大照片: H型锻造连杆">
@@ -469,12 +470,7 @@
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">长度 160mm (原厂)</p><p class="shop-description">长度 156mm (用于加长冲程发动机 - 也可调整偏移量以适配 &quot;Vošvrda&quot; 曲轴)</p>
 
-        </div>
-      </div>
       <form class="shop-wizard-form shop-item-form" id="item-connecting-rod" data-order-product="connecting-rod" aria-label="H型锻造连杆" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">规格: H型锻造连杆</legend>
@@ -485,7 +481,7 @@
           <tr>
             <td><label class="shop-profile-radio-label" for="connecting-rod-option-160">
               <input type="radio" name="option" value="160" id="connecting-rod-option-160" aria-labelledby="connecting-rod-option-160-name connecting-rod-price-heading connecting-rod-option-160-price">
-              <span id="connecting-rod-option-160-name" class="shop-profile-method">160 mm</span>
+              <span id="connecting-rod-option-160-name" class="shop-profile-method">160 mm – 原厂规格</span>
             </label></td>
             <td class="shop-profile-price"><label for="connecting-rod-option-160"><span id="connecting-rod-option-160-price" class="shop-profile-value">12 500 CZK</span></label></td>
           </tr>
@@ -494,69 +490,33 @@
           <tr>
             <td><label class="shop-profile-radio-label" for="connecting-rod-option-156">
               <input type="radio" name="option" value="156" id="connecting-rod-option-156" aria-labelledby="connecting-rod-option-156-name connecting-rod-price-heading connecting-rod-option-156-price">
-              <span id="connecting-rod-option-156-name" class="shop-profile-method">156 mm</span>
+              <span id="connecting-rod-option-156-name" class="shop-profile-method">156 mm – 堆焊曲轴用</span>
             </label></td>
             <td class="shop-profile-price"><label for="connecting-rod-option-156"><span id="connecting-rod-option-156-price" class="shop-profile-value">11 500 CZK</span></label></td>
           </tr>
 
-        </tbody>
-          <tbody class="shop-profile-fields" data-profile-fields hidden>
-
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-connecting-rod">数量 *</label></th>
-              <td><div class="form-group">
-                <input id="quantity-connecting-rod" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
-              </div></td>
-            </tr>
-            <tr class="shop-profile-field shop-profile-submit">
-              <td></td><td><button class="btn-submit" type="submit" disabled>添加到订单</button>
-                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </fieldset>
-    </form>
-    </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="ignition-coil-contact" data-product="ignition-coil-contact" aria-labelledby="name-ignition-coil-contact">
-      <h3 class="shop-product-title" id="name-ignition-coil-contact">PAL 触点式点火线圈</h3>
-      <figure class="shop-photo">
-      <a class="shop-photo-link" id="photo-ignition-coil-contact-1" href="/assets/desktop/zapalovaci-civka-01.jpeg" style="--shop-photo-width: 2252px" aria-haspopup="dialog" aria-label="放大照片: PAL 触点式点火线圈">
-        <span class="tech-frame">
-          <img src="/assets/desktop/zapalovaci-civka-01.jpeg" alt="PAL 触点式点火线圈" width="2252" height="4000" loading="lazy" decoding="async">
-        </span>
-      </a>
-    </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">适用于消防泵组的 TAZ 发动机。</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-ignition-coil-contact" data-order-product="ignition-coil-contact" aria-label="PAL 触点式点火线圈" method="post" novalidate>
-      <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">规格: PAL 触点式点火线圈</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="PAL 触点式点火线圈">
-          <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="ignition-coil-contact-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
-          <tbody class="shop-profile-option">
+        </tbody><tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="ignition-coil-contact-option-standard">
-              <input type="radio" name="option" value="standard" id="ignition-coil-contact-option-standard" aria-labelledby="ignition-coil-contact-option-standard-name ignition-coil-contact-price-heading ignition-coil-contact-option-standard-price">
-              <span id="ignition-coil-contact-option-standard-name" class="shop-profile-method">PAL 触点式点火线圈</span>
+            <td><label class="shop-profile-radio-label" for="connecting-rod-option-156-engitec">
+              <input type="radio" name="option" value="156-engitec" id="connecting-rod-option-156-engitec" aria-labelledby="connecting-rod-option-156-engitec-name connecting-rod-price-heading connecting-rod-option-156-engitec-price">
+              <span id="connecting-rod-option-156-engitec-name" class="shop-profile-method">156 mm – “Engitec”曲轴用</span>
             </label></td>
-            <td class="shop-profile-price"><label for="ignition-coil-contact-option-standard"><span id="ignition-coil-contact-option-standard-price" class="shop-profile-value">780 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="connecting-rod-option-156-engitec"><span id="connecting-rod-option-156-engitec-price" class="shop-profile-value">12 500 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-ignition-coil-contact">数量 *</label></th>
+              <th scope="row"><label id="label-quantity-connecting-rod" for="quantity-connecting-rod">数量 *</label></th>
               <td><div class="form-group">
-                <input id="quantity-ignition-coil-contact" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-connecting-rod">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: H型锻造连杆" aria-controls="quantity-connecting-rod" disabled>−</button>
+                  <input id="quantity-connecting-rod" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-connecting-rod-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: H型锻造连杆" aria-controls="quantity-connecting-rod" disabled>+</button>
+                </div>
+                <span id="quantity-connecting-rod-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -569,44 +529,53 @@
       </fieldset>
     </form>
     </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="ignition-coil-contactless" data-product="ignition-coil-contactless" aria-labelledby="name-ignition-coil-contactless">
-      <h3 class="shop-product-title" id="name-ignition-coil-contactless">PAL 无触点式点火线圈</h3>
+<article class="blog-card shop-product shop-wizard-product shop-option-product shop-no-description" id="ignition-coil" data-product="ignition-coil" aria-labelledby="name-ignition-coil">
+      <h3 class="shop-product-title" id="name-ignition-coil">点火线圈</h3>
       <figure class="shop-photo">
-      <a class="shop-photo-link" id="photo-ignition-coil-contactless-1" href="/assets/desktop/zapalovaci-civka-01.jpeg" style="--shop-photo-width: 2252px" aria-haspopup="dialog" aria-label="放大照片: PAL 无触点式点火线圈">
+      <a class="shop-photo-link" id="photo-ignition-coil-1" href="/assets/desktop/zapalovaci-civka-01.jpeg" style="--shop-photo-width: 2252px" aria-haspopup="dialog" aria-label="放大照片: 点火线圈">
         <span class="tech-frame">
-          <img src="/assets/desktop/zapalovaci-civka-01.jpeg" alt="PAL 无触点式点火线圈" width="2252" height="4000" loading="lazy" decoding="async">
+          <img src="/assets/desktop/zapalovaci-civka-01.jpeg" alt="点火线圈" width="2252" height="4000" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">适用于消防泵组的 TAZ 发动机。</p>
 
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-ignition-coil-contactless" data-order-product="ignition-coil-contactless" aria-label="PAL 无触点式点火线圈" method="post" novalidate>
+      <form class="shop-wizard-form shop-item-form" id="item-ignition-coil" data-order-product="ignition-coil" aria-label="点火线圈" method="post" novalidate>
       <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">规格: PAL 无触点式点火线圈</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="PAL 无触点式点火线圈">
+        <legend class="shop-sr-only">规格: 点火线圈</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="点火线圈">
           <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="ignition-coil-contactless-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
+          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="ignition-coil-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="ignition-coil-contactless-option-standard">
-              <input type="radio" name="option" value="standard" id="ignition-coil-contactless-option-standard" aria-labelledby="ignition-coil-contactless-option-standard-name ignition-coil-contactless-price-heading ignition-coil-contactless-option-standard-price">
-              <span id="ignition-coil-contactless-option-standard-name" class="shop-profile-method">PAL 无触点式点火线圈</span>
+            <td><label class="shop-profile-radio-label" for="ignition-coil-option-contact">
+              <input type="radio" name="option" value="contact" id="ignition-coil-option-contact" aria-labelledby="ignition-coil-option-contact-name ignition-coil-price-heading ignition-coil-option-contact-price">
+              <span id="ignition-coil-option-contact-name" class="shop-profile-method">用于触点式点火</span>
             </label></td>
-            <td class="shop-profile-price"><label for="ignition-coil-contactless-option-standard"><span id="ignition-coil-contactless-option-standard-price" class="shop-profile-value">1 100 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="ignition-coil-option-contact"><span id="ignition-coil-option-contact-price" class="shop-profile-value">780 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="ignition-coil-option-contactless">
+              <input type="radio" name="option" value="contactless" id="ignition-coil-option-contactless" aria-labelledby="ignition-coil-option-contactless-name ignition-coil-price-heading ignition-coil-option-contactless-price">
+              <span id="ignition-coil-option-contactless-name" class="shop-profile-method">用于无触点式点火</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="ignition-coil-option-contactless"><span id="ignition-coil-option-contactless-price" class="shop-profile-value">1 100 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-ignition-coil-contactless">数量 *</label></th>
+              <th scope="row"><label id="label-quantity-ignition-coil" for="quantity-ignition-coil">数量 *</label></th>
               <td><div class="form-group">
-                <input id="quantity-ignition-coil-contactless" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-ignition-coil">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: 点火线圈" aria-controls="quantity-ignition-coil" disabled>−</button>
+                  <input id="quantity-ignition-coil" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-ignition-coil-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: 点火线圈" aria-controls="quantity-ignition-coil" disabled>+</button>
+                </div>
+                <span id="quantity-ignition-coil-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -619,7 +588,7 @@
       </fieldset>
     </form>
     </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-rotor" data-product="distributor-rotor" aria-labelledby="name-distributor-rotor">
+<article class="blog-card shop-product shop-wizard-product shop-option-product shop-no-description" id="distributor-rotor" data-product="distributor-rotor" aria-labelledby="name-distributor-rotor">
       <h3 class="shop-product-title" id="name-distributor-rotor">带限速器的分电器转子</h3>
       <figure class="shop-photo">
       <a class="shop-photo-link" id="photo-distributor-rotor-1" href="/assets/desktop/palec-rozdelovace-omezovac-01.jpeg" style="--shop-photo-width: 2046px" aria-haspopup="dialog" aria-label="放大照片: 带限速器的分电器转子">
@@ -628,12 +597,7 @@
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">调整至 4800-5100 转/分，或根据要求 (Bosch/Facet)</p>
 
-        </div>
-      </div>
       <form class="shop-wizard-form shop-item-form" id="item-distributor-rotor" data-order-product="distributor-rotor" aria-label="带限速器的分电器转子" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">规格: 带限速器的分电器转子</legend>
@@ -642,21 +606,56 @@
           <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="distributor-rotor-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="distributor-rotor-option-standard">
-              <input type="radio" name="option" value="standard" id="distributor-rotor-option-standard" aria-labelledby="distributor-rotor-option-standard-name distributor-rotor-price-heading distributor-rotor-option-standard-price">
-              <span id="distributor-rotor-option-standard-name" class="shop-profile-method">带限速器的分电器转子</span>
+            <td><label class="shop-profile-radio-label" for="distributor-rotor-option-4800-5100">
+              <input type="radio" name="option" value="4800-5100" id="distributor-rotor-option-4800-5100" aria-labelledby="distributor-rotor-option-4800-5100-name distributor-rotor-price-heading distributor-rotor-option-4800-5100-price">
+              <span id="distributor-rotor-option-4800-5100-name" class="shop-profile-method">调整为4800–5100转/分</span>
             </label></td>
-            <td class="shop-profile-price"><label for="distributor-rotor-option-standard"><span id="distributor-rotor-option-standard-price" class="shop-profile-value">价格请咨询</span></label></td>
+            <td class="shop-profile-price"><label for="distributor-rotor-option-4800-5100"><span id="distributor-rotor-option-4800-5100-price" class="shop-profile-value">价格请咨询</span></label></td>
           </tr>
 
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-rotor-option-custom">
+              <input type="radio" name="option" value="custom" id="distributor-rotor-option-custom" aria-labelledby="distributor-rotor-option-custom-name distributor-rotor-price-heading distributor-rotor-option-custom-price">
+              <span id="distributor-rotor-option-custom-name" class="shop-profile-method">按要求调整</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="distributor-rotor-option-custom"><span id="distributor-rotor-option-custom-price" class="shop-profile-value">价格请咨询</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-rotor-option-original">
+              <input type="radio" name="option" value="original" id="distributor-rotor-option-original" aria-labelledby="distributor-rotor-option-original-name distributor-rotor-price-heading distributor-rotor-option-original-price" aria-describedby="distributor-rotor-option-original-description">
+              <span id="distributor-rotor-option-original-name" class="shop-profile-method">Bosch / Facet、EPS原装</span>
+            </label></td>
+            <td class="shop-profile-price" rowspan="2"><label for="distributor-rotor-option-original"><span id="distributor-rotor-option-original-price" class="shop-profile-value">价格请咨询</span></label></td>
+          </tr>
+          <tr><td><label class="shop-profile-description" id="distributor-rotor-option-original-description" for="distributor-rotor-option-original">绝非廉价替代品！</label></td></tr>
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-rotor">数量 *</label></th>
+            <tr class="shop-profile-field" data-order-field-row="custom" hidden>
+              <th scope="row"><label for="distributor-rotor-custom-min-rpm">最低转速 (转/分) *</label></th>
               <td><div class="form-group">
-                <input id="quantity-distributor-rotor" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+                <input id="distributor-rotor-custom-min-rpm" name="min-rpm" data-order-field="min-rpm" type="number" min="1" max="9007199254740991" step="1" inputmode="numeric" class="validate-me" required disabled>
+                <span class="warning-msg">请输入正整数转速；最高转速不得低于最低转速。</span>
+              </div></td>
+            </tr><tr class="shop-profile-field" data-order-field-row="custom" hidden>
+              <th scope="row"><label for="distributor-rotor-custom-max-rpm">最高转速 (转/分) *</label></th>
+              <td><div class="form-group">
+                <input id="distributor-rotor-custom-max-rpm" name="max-rpm" data-order-field="max-rpm" data-minimum-field="min-rpm" type="number" min="1" max="9007199254740991" step="1" inputmode="numeric" class="validate-me" required disabled>
+                <span class="warning-msg">请输入正整数转速；最高转速不得低于最低转速。</span>
+              </div></td>
+            </tr>
+            <tr class="shop-profile-field">
+              <th scope="row"><label id="label-quantity-distributor-rotor" for="quantity-distributor-rotor">数量 *</label></th>
+              <td><div class="form-group">
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-distributor-rotor">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: 带限速器的分电器转子" aria-controls="quantity-distributor-rotor" disabled>−</button>
+                  <input id="quantity-distributor-rotor" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-distributor-rotor-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: 带限速器的分电器转子" aria-controls="quantity-distributor-rotor" disabled>+</button>
+                </div>
+                <span id="quantity-distributor-rotor-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -669,194 +668,71 @@
       </fieldset>
     </form>
     </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-cap" data-product="distributor-cap" aria-labelledby="name-distributor-cap">
-      <h3 class="shop-product-title" id="name-distributor-cap">分电器盖</h3>
+<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-parts" data-product="distributor-parts" aria-labelledby="name-distributor-parts">
+      <h3 class="shop-product-title" id="name-distributor-parts">分电器配件</h3>
       <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-distributor-cap-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="放大照片: 分电器盖">
+      <a class="shop-photo-link" id="photo-distributor-parts-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="放大照片: 分电器配件">
         <span class="tech-frame">
           <img src="/assets/desktop/shop-placeholder.webp" alt="暂无商品照片" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">适用于消防泵组的 TAZ 发动机。</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-distributor-cap" data-order-product="distributor-cap" aria-label="分电器盖" method="post" novalidate>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">适用于消防泵组TAZ发动机的分电器配件。</p></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-distributor-parts" data-order-product="distributor-parts" aria-label="分电器配件" method="post" novalidate>
       <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">规格: 分电器盖</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="分电器盖">
+        <legend class="shop-sr-only">规格: 分电器配件</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="分电器配件">
           <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="distributor-cap-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
+          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="distributor-parts-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="distributor-cap-option-standard">
-              <input type="radio" name="option" value="standard" id="distributor-cap-option-standard" aria-labelledby="distributor-cap-option-standard-name distributor-cap-price-heading distributor-cap-option-standard-price">
-              <span id="distributor-cap-option-standard-name" class="shop-profile-method">分电器盖</span>
+            <td><label class="shop-profile-radio-label" for="distributor-parts-option-cap">
+              <input type="radio" name="option" value="cap" id="distributor-parts-option-cap" aria-labelledby="distributor-parts-option-cap-name distributor-parts-price-heading distributor-parts-option-cap-price">
+              <span id="distributor-parts-option-cap-name" class="shop-profile-method">分电器盖</span>
             </label></td>
-            <td class="shop-profile-price"><label for="distributor-cap-option-standard"><span id="distributor-cap-option-standard-price" class="shop-profile-value">260 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="distributor-parts-option-cap"><span id="distributor-parts-option-cap-price" class="shop-profile-value">260 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-parts-option-wiring">
+              <input type="radio" name="option" value="wiring" id="distributor-parts-option-wiring" aria-labelledby="distributor-parts-option-wiring-name distributor-parts-price-heading distributor-parts-option-wiring-price">
+              <span id="distributor-parts-option-wiring-name" class="shop-profile-method">高压点火线</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="distributor-parts-option-wiring"><span id="distributor-parts-option-wiring-price" class="shop-profile-value">280 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-parts-option-contacts">
+              <input type="radio" name="option" value="contacts" id="distributor-parts-option-contacts" aria-labelledby="distributor-parts-option-contacts-name distributor-parts-price-heading distributor-parts-option-contacts-price">
+              <span id="distributor-parts-option-contacts-name" class="shop-profile-method">Bosch分电器触点</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="distributor-parts-option-contacts"><span id="distributor-parts-option-contacts-price" class="shop-profile-value">150 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="distributor-parts-option-capacitor">
+              <input type="radio" name="option" value="capacitor" id="distributor-parts-option-capacitor" aria-labelledby="distributor-parts-option-capacitor-name distributor-parts-price-heading distributor-parts-option-capacitor-price">
+              <span id="distributor-parts-option-capacitor-name" class="shop-profile-method">PAL分电器电容器</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="distributor-parts-option-capacitor"><span id="distributor-parts-option-capacitor-price" class="shop-profile-value">180 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-cap">数量 *</label></th>
-              <td><div class="form-group">
-                <input id="quantity-distributor-cap" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
-              </div></td>
-            </tr>
-            <tr class="shop-profile-field shop-profile-submit">
-              <td></td><td><button class="btn-submit" type="submit" disabled>添加到订单</button>
-                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </fieldset>
-    </form>
-    </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-contacts" data-product="distributor-contacts" aria-labelledby="name-distributor-contacts">
-      <h3 class="shop-product-title" id="name-distributor-contacts">BOSCH 分电器触点</h3>
-      <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-distributor-contacts-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="放大照片: BOSCH 分电器触点">
-        <span class="tech-frame">
-          <img src="/assets/desktop/shop-placeholder.webp" alt="暂无商品照片" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
-        </span>
-      </a>
-    </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">适用于消防泵组的 TAZ 发动机。</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-distributor-contacts" data-order-product="distributor-contacts" aria-label="BOSCH 分电器触点" method="post" novalidate>
-      <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">规格: BOSCH 分电器触点</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="BOSCH 分电器触点">
-          <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="distributor-contacts-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
-          <tbody class="shop-profile-option">
-          <tr>
-            <td><label class="shop-profile-radio-label" for="distributor-contacts-option-standard">
-              <input type="radio" name="option" value="standard" id="distributor-contacts-option-standard" aria-labelledby="distributor-contacts-option-standard-name distributor-contacts-price-heading distributor-contacts-option-standard-price">
-              <span id="distributor-contacts-option-standard-name" class="shop-profile-method">BOSCH 分电器触点</span>
-            </label></td>
-            <td class="shop-profile-price"><label for="distributor-contacts-option-standard"><span id="distributor-contacts-option-standard-price" class="shop-profile-value">150 CZK</span></label></td>
-          </tr>
-
-        </tbody>
-          <tbody class="shop-profile-fields" data-profile-fields hidden>
 
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-contacts">数量 *</label></th>
+              <th scope="row"><label id="label-quantity-distributor-parts" for="quantity-distributor-parts">数量 *</label></th>
               <td><div class="form-group">
-                <input id="quantity-distributor-contacts" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
-              </div></td>
-            </tr>
-            <tr class="shop-profile-field shop-profile-submit">
-              <td></td><td><button class="btn-submit" type="submit" disabled>添加到订单</button>
-                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </fieldset>
-    </form>
-    </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-capacitor" data-product="distributor-capacitor" aria-labelledby="name-distributor-capacitor">
-      <h3 class="shop-product-title" id="name-distributor-capacitor">PAL 分电器电容器</h3>
-      <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-distributor-capacitor-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="放大照片: PAL 分电器电容器">
-        <span class="tech-frame">
-          <img src="/assets/desktop/shop-placeholder.webp" alt="暂无商品照片" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
-        </span>
-      </a>
-    </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">适用于消防泵组的 TAZ 发动机。</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-distributor-capacitor" data-order-product="distributor-capacitor" aria-label="PAL 分电器电容器" method="post" novalidate>
-      <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">规格: PAL 分电器电容器</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="PAL 分电器电容器">
-          <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="distributor-capacitor-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
-          <tbody class="shop-profile-option">
-          <tr>
-            <td><label class="shop-profile-radio-label" for="distributor-capacitor-option-standard">
-              <input type="radio" name="option" value="standard" id="distributor-capacitor-option-standard" aria-labelledby="distributor-capacitor-option-standard-name distributor-capacitor-price-heading distributor-capacitor-option-standard-price">
-              <span id="distributor-capacitor-option-standard-name" class="shop-profile-method">PAL 分电器电容器</span>
-            </label></td>
-            <td class="shop-profile-price"><label for="distributor-capacitor-option-standard"><span id="distributor-capacitor-option-standard-price" class="shop-profile-value">180 CZK</span></label></td>
-          </tr>
-
-        </tbody>
-          <tbody class="shop-profile-fields" data-profile-fields hidden>
-
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-capacitor">数量 *</label></th>
-              <td><div class="form-group">
-                <input id="quantity-distributor-capacitor" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
-              </div></td>
-            </tr>
-            <tr class="shop-profile-field shop-profile-submit">
-              <td></td><td><button class="btn-submit" type="submit" disabled>添加到订单</button>
-                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </fieldset>
-    </form>
-    </article>
-<article class="blog-card shop-product shop-wizard-product shop-option-product" id="ignition-wiring" data-product="ignition-wiring" aria-labelledby="name-ignition-wiring">
-      <h3 class="shop-product-title" id="name-ignition-wiring">点火高压线束</h3>
-      <figure class="shop-photo shop-photo-placeholder">
-      <a class="shop-photo-link" id="photo-ignition-wiring-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="放大照片: 点火高压线束">
-        <span class="tech-frame">
-          <img src="/assets/desktop/shop-placeholder.webp" alt="暂无商品照片" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
-        </span>
-      </a>
-    </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">适用于消防泵组的 TAZ 发动机。</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-ignition-wiring" data-order-product="ignition-wiring" aria-label="点火高压线束" method="post" novalidate>
-      <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">规格: 点火高压线束</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="点火高压线束">
-          <colgroup><col class="shop-item-option-column"><col></colgroup>
-          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="ignition-wiring-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
-          <tbody class="shop-profile-option">
-          <tr>
-            <td><label class="shop-profile-radio-label" for="ignition-wiring-option-standard">
-              <input type="radio" name="option" value="standard" id="ignition-wiring-option-standard" aria-labelledby="ignition-wiring-option-standard-name ignition-wiring-price-heading ignition-wiring-option-standard-price">
-              <span id="ignition-wiring-option-standard-name" class="shop-profile-method">点火高压线束</span>
-            </label></td>
-            <td class="shop-profile-price"><label for="ignition-wiring-option-standard"><span id="ignition-wiring-option-standard-price" class="shop-profile-value">280 CZK</span></label></td>
-          </tr>
-
-        </tbody>
-          <tbody class="shop-profile-fields" data-profile-fields hidden>
-
-            <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-ignition-wiring">数量 *</label></th>
-              <td><div class="form-group">
-                <input id="quantity-ignition-wiring" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-distributor-parts">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: 分电器配件" aria-controls="quantity-distributor-parts" disabled>−</button>
+                  <input id="quantity-distributor-parts" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-distributor-parts-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: 分电器配件" aria-controls="quantity-distributor-parts" disabled>+</button>
+                </div>
+                <span id="quantity-distributor-parts-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -882,12 +758,7 @@
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">适用于消防泵组的 TAZ 发动机。</p>
-
-        </div>
-      </div>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">用于扩缸发动机；缸间距88-88-88 mm，厚度1.5 mm。</p><p class="shop-description">其他厚度和缸间距可咨询。</p></div></div>
       <form class="shop-wizard-form shop-item-form" id="item-head-gasket" data-order-product="head-gasket" aria-label="气缸盖垫片" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">规格: 气缸盖垫片</legend>
@@ -896,38 +767,162 @@
           <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="head-gasket-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
-            <td><label class="shop-profile-radio-label" for="head-gasket-option-custom">
-              <input type="radio" name="option" value="custom" id="head-gasket-option-custom" aria-labelledby="head-gasket-option-custom-name head-gasket-price-heading head-gasket-option-custom-price" aria-describedby="head-gasket-option-custom-description">
-              <span id="head-gasket-option-custom-name" class="shop-profile-method">气缸盖垫片</span>
+            <td><label class="shop-profile-radio-label" for="head-gasket-option-80-5">
+              <input type="radio" name="option" value="80-5" id="head-gasket-option-80-5" aria-labelledby="head-gasket-option-80-5-name head-gasket-price-heading head-gasket-option-80-5-price">
+              <span id="head-gasket-option-80-5-name" class="shop-profile-method">用于80.5 mm缸径</span>
             </label></td>
-            <td class="shop-profile-price" rowspan="2"><label for="head-gasket-option-custom"><span id="head-gasket-option-custom-price" class="shop-profile-value">620 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="head-gasket-option-80-5"><span id="head-gasket-option-80-5-price" class="shop-profile-value">620 CZK</span></label></td>
           </tr>
-          <tr><td><label class="shop-profile-description" id="head-gasket-option-custom-description" for="head-gasket-option-custom">缸径 80.5mm / 82.0mm - 缸间距 88-88-88mm，厚度 1.5mm - 可按订单生产其他间距和厚度（订货时确定价格）</label></td></tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="head-gasket-option-82-0">
+              <input type="radio" name="option" value="82-0" id="head-gasket-option-82-0" aria-labelledby="head-gasket-option-82-0-name head-gasket-price-heading head-gasket-option-82-0-price">
+              <span id="head-gasket-option-82-0-name" class="shop-profile-method">用于82 mm缸径</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="head-gasket-option-82-0"><span id="head-gasket-option-82-0-price" class="shop-profile-value">620 CZK</span></label></td>
+          </tr>
+
         </tbody><tbody class="shop-profile-option">
           <tr>
             <td><label class="shop-profile-radio-label" for="head-gasket-option-stock">
               <input type="radio" name="option" value="stock" id="head-gasket-option-stock" aria-labelledby="head-gasket-option-stock-name head-gasket-price-heading head-gasket-option-stock-price">
-              <span id="head-gasket-option-stock-name" class="shop-profile-method">原厂（硅胶处理）</span>
+              <span id="head-gasket-option-stock-name" class="shop-profile-method">用于原厂TAZ 1.43（硅胶处理）</span>
             </label></td>
             <td class="shop-profile-price"><label for="head-gasket-option-stock"><span id="head-gasket-option-stock-price" class="shop-profile-value">160 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
-            <tr class="shop-profile-field" data-order-variant-fields="custom" hidden>
-              <th scope="row"><label id="label-head-gasket-variant-custom" for="head-gasket-variant-custom">缸径 (mm) *</label></th>
-              <td><div class="form-group shop-variant">
-                <select id="head-gasket-variant-custom" name="variant-custom" class="custom-select validate-me" data-order-variant data-warning-id="head-gasket-variant-custom-warning" required disabled>
-                  <option value="">选择规格</option><option value="80-5">80.5 mm</option><option value="82-0">82.0 mm</option>
-                </select>
-                <span id="head-gasket-variant-custom-warning" class="warning-msg">此字段为必填项。</span>
+
+
+            <tr class="shop-profile-field">
+              <th scope="row"><label id="label-quantity-head-gasket" for="quantity-head-gasket">数量 *</label></th>
+              <td><div class="form-group">
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-head-gasket">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: 气缸盖垫片" aria-controls="quantity-head-gasket" disabled>−</button>
+                  <input id="quantity-head-gasket" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-head-gasket-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: 气缸盖垫片" aria-controls="quantity-head-gasket" disabled>+</button>
+                </div>
+                <span id="quantity-head-gasket-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
+            <tr class="shop-profile-field shop-profile-submit">
+              <td></td><td><button class="btn-submit" type="submit" disabled>添加到订单</button>
+                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </form>
+    </article>
+<article class="blog-card shop-product shop-wizard-product shop-option-product" id="cylinder-piston-kit" data-product="cylinder-piston-kit" aria-labelledby="name-cylinder-piston-kit">
+      <h3 class="shop-product-title" id="name-cylinder-piston-kit">Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件</h3>
+      <figure class="shop-photo shop-photo-placeholder">
+      <a class="shop-photo-link" id="photo-cylinder-piston-kit-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="放大照片: Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件">
+        <span class="tech-frame">
+          <img src="/assets/desktop/shop-placeholder.webp" alt="暂无商品照片" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
+        </span>
+      </a>
+    </figure>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">所有价格均为整台发动机（4缸）的价格。</p><p class="shop-description">缸套下的调整垫片请咨询。</p></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-cylinder-piston-kit" data-order-product="cylinder-piston-kit" aria-label="Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件" method="post" novalidate>
+      <fieldset class="shop-profile-options">
+        <legend class="shop-sr-only">规格: Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件">
+          <colgroup><col class="shop-item-option-column"><col></colgroup>
+          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="cylinder-piston-kit-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
+          <tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="cylinder-piston-kit-option-complete">
+              <input type="radio" name="option" value="complete" id="cylinder-piston-kit-option-complete" aria-labelledby="cylinder-piston-kit-option-complete-name cylinder-piston-kit-price-heading cylinder-piston-kit-option-complete-price">
+              <span id="cylinder-piston-kit-option-complete-name" class="shop-profile-method">完整套件</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="cylinder-piston-kit-option-complete"><span id="cylinder-piston-kit-option-complete-price" class="shop-profile-value">18 000 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="cylinder-piston-kit-option-pistons-rings">
+              <input type="radio" name="option" value="pistons-rings" id="cylinder-piston-kit-option-pistons-rings" aria-labelledby="cylinder-piston-kit-option-pistons-rings-name cylinder-piston-kit-price-heading cylinder-piston-kit-option-pistons-rings-price">
+              <span id="cylinder-piston-kit-option-pistons-rings-name" class="shop-profile-method">活塞及活塞环套件</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="cylinder-piston-kit-option-pistons-rings"><span id="cylinder-piston-kit-option-pistons-rings-price" class="shop-profile-value">10 400 CZK</span></label></td>
+          </tr>
+
+        </tbody><tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="cylinder-piston-kit-option-rings">
+              <input type="radio" name="option" value="rings" id="cylinder-piston-kit-option-rings" aria-labelledby="cylinder-piston-kit-option-rings-name cylinder-piston-kit-price-heading cylinder-piston-kit-option-rings-price">
+              <span id="cylinder-piston-kit-option-rings-name" class="shop-profile-method">活塞环套件</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="cylinder-piston-kit-option-rings"><span id="cylinder-piston-kit-option-rings-price" class="shop-profile-value">1 600 CZK</span></label></td>
+          </tr>
+
+        </tbody>
+          <tbody class="shop-profile-fields" data-profile-fields hidden>
+
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-head-gasket">数量 *</label></th>
+              <th scope="row"><label id="label-quantity-cylinder-piston-kit" for="quantity-cylinder-piston-kit">数量 *</label></th>
               <td><div class="form-group">
-                <input id="quantity-head-gasket" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-cylinder-piston-kit">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件" aria-controls="quantity-cylinder-piston-kit" disabled>−</button>
+                  <input id="quantity-cylinder-piston-kit" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-cylinder-piston-kit-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件" aria-controls="quantity-cylinder-piston-kit" disabled>+</button>
+                </div>
+                <span id="quantity-cylinder-piston-kit-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+              </div></td>
+            </tr>
+            <tr class="shop-profile-field shop-profile-submit">
+              <td></td><td><button class="btn-submit" type="submit" disabled>添加到订单</button>
+                <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </form>
+    </article>
+<article class="blog-card shop-product shop-wizard-product shop-option-product" id="carburetor-38-38" data-product="carburetor-38-38" aria-labelledby="name-carburetor-38-38">
+      <h3 class="shop-product-title" id="name-carburetor-38-38">38/38双腔化油器（含改装）</h3>
+      <figure class="shop-photo shop-photo-placeholder">
+      <a class="shop-photo-link" id="photo-carburetor-38-38-1" href="/assets/desktop/shop-placeholder.webp" style="--shop-photo-width: 640px" aria-haspopup="dialog" aria-label="放大照片: 38/38双腔化油器（含改装）">
+        <span class="tech-frame">
+          <img src="/assets/desktop/shop-placeholder.webp" alt="暂无商品照片" width="640" height="480" loading="lazy" decoding="async" data-placeholder="true">
+        </span>
+      </a>
+    </figure>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">适用于TAZ 2.0及更大排量发动机。</p><p class="shop-description">化油器含改装；建议在发动机测功机上进行最终调校（请咨询）。</p></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-carburetor-38-38" data-order-product="carburetor-38-38" aria-label="38/38双腔化油器（含改装）" method="post" novalidate>
+      <fieldset class="shop-profile-options">
+        <legend class="shop-sr-only">规格: 38/38双腔化油器（含改装）</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="38/38双腔化油器（含改装）">
+          <colgroup><col class="shop-item-option-column"><col></colgroup>
+          <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="carburetor-38-38-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
+          <tbody class="shop-profile-option">
+          <tr>
+            <td><label class="shop-profile-radio-label" for="carburetor-38-38-option-standard">
+              <input type="radio" name="option" value="standard" id="carburetor-38-38-option-standard" aria-labelledby="carburetor-38-38-option-standard-name carburetor-38-38-price-heading carburetor-38-38-option-standard-price">
+              <span id="carburetor-38-38-option-standard-name" class="shop-profile-method">38/38双腔化油器（含改装）</span>
+            </label></td>
+            <td class="shop-profile-price"><label for="carburetor-38-38-option-standard"><span id="carburetor-38-38-option-standard-price" class="shop-profile-value">7 900 CZK</span></label></td>
+          </tr>
+
+        </tbody>
+          <tbody class="shop-profile-fields" data-profile-fields hidden>
+
+
+            <tr class="shop-profile-field">
+              <th scope="row"><label id="label-quantity-carburetor-38-38" for="quantity-carburetor-38-38">数量 *</label></th>
+              <td><div class="form-group">
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-carburetor-38-38">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: 38/38双腔化油器（含改装）" aria-controls="quantity-carburetor-38-38" disabled>−</button>
+                  <input id="quantity-carburetor-38-38" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-carburetor-38-38-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: 38/38双腔化油器（含改装）" aria-controls="quantity-carburetor-38-38" disabled>+</button>
+                </div>
+                <span id="quantity-carburetor-38-38-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -949,12 +944,7 @@
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">适用于消防泵组的 TAZ 发动机。</p><p class="shop-description">价格视尺寸和数量而定，起价 40 CZK.</p>
-
-        </div>
-      </div>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">适用于消防泵组的 TAZ 发动机。</p><p class="shop-description">价格视尺寸和数量而定，起价 40 CZK.</p></div></div>
       <form class="shop-wizard-form shop-item-form" id="item-copper-rings" data-order-product="copper-rings" aria-label="缸套下调节铜环" method="post" novalidate>
       <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">规格: 缸套下调节铜环</legend>
@@ -973,11 +963,16 @@
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-copper-rings">数量 *</label></th>
+              <th scope="row"><label id="label-quantity-copper-rings" for="quantity-copper-rings">数量 *</label></th>
               <td><div class="form-group">
-                <input id="quantity-copper-rings" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-copper-rings">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: 缸套下调节铜环" aria-controls="quantity-copper-rings" disabled>−</button>
+                  <input id="quantity-copper-rings" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-copper-rings-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: 缸套下调节铜环" aria-controls="quantity-copper-rings" disabled>+</button>
+                </div>
+                <span id="quantity-copper-rings-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -991,43 +986,43 @@
     </form>
     </article>
 <article class="blog-card shop-product shop-wizard-product shop-option-product" id="distributor-overhaul" data-product="distributor-overhaul" aria-labelledby="name-distributor-overhaul">
-      <h3 class="shop-product-title" id="name-distributor-overhaul">分电器翻新</h3>
+      <h3 class="shop-product-title" id="name-distributor-overhaul">分电器翻新与改装</h3>
       <figure class="shop-photo">
-      <a class="shop-photo-link" id="photo-distributor-overhaul-1" href="/assets/desktop/repas-rozdelovac-01.jpeg" style="--shop-photo-width: 600px" aria-haspopup="dialog" aria-label="放大照片: 分电器翻新">
+      <a class="shop-photo-link" id="photo-distributor-overhaul-1" href="/assets/desktop/repas-rozdelovac-01.jpeg" style="--shop-photo-width: 600px" aria-haspopup="dialog" aria-label="放大照片: 分电器翻新与改装">
         <span class="tech-frame">
-          <img src="/assets/desktop/repas-rozdelovac-01.jpeg" alt="分电器翻新" width="600" height="800" loading="lazy" decoding="async">
+          <img src="/assets/desktop/repas-rozdelovac-01.jpeg" alt="分电器翻新与改装" width="600" height="800" loading="lazy" decoding="async">
         </span>
       </a>
     </figure>
-      <div class="shop-product-content">
-        <div class="shop-product-body">
-          <p class="shop-description">价格不含备件（触点、电容器、线圈...） - 仅限捷克产分电器（对于中国/波兰的仿制品无法保证功能正常） - 请务必提供清洗并脱脂的零件进行改装</p>
-
-        </div>
-      </div>
-      <form class="shop-wizard-form shop-item-form" id="item-distributor-overhaul" data-order-product="distributor-overhaul" aria-label="分电器翻新" method="post" novalidate>
+      <div class="shop-product-content"><div class="shop-product-body"><p class="shop-description">价格不含配件（触点、电容器、线圈等）。</p><p class="shop-description">仅限捷克制造的分电器；对于中国或波兰的仿制品，我们无法保证正常工作。</p><p class="shop-description">送来改装的零件必须清洗并脱脂。</p><p class="shop-description">价格视工作范围而定，约为1,600 CZK。</p></div></div>
+      <form class="shop-wizard-form shop-item-form" id="item-distributor-overhaul" data-order-product="distributor-overhaul" aria-label="分电器翻新与改装" method="post" novalidate>
       <fieldset class="shop-profile-options">
-        <legend class="shop-sr-only">规格: 分电器翻新</legend>
-        <table class="shop-profile-table shop-item-table" aria-label="分电器翻新">
+        <legend class="shop-sr-only">规格: 分电器翻新与改装</legend>
+        <table class="shop-profile-table shop-item-table" aria-label="分电器翻新与改装">
           <colgroup><col class="shop-item-option-column"><col></colgroup>
           <thead><tr><th class="shop-profile-label" scope="col">规格</th><th id="distributor-overhaul-price-heading" class="shop-profile-label shop-profile-price" scope="col">价格 / 件</th></tr></thead>
           <tbody class="shop-profile-option">
           <tr>
             <td><label class="shop-profile-radio-label" for="distributor-overhaul-option-standard">
               <input type="radio" name="option" value="standard" id="distributor-overhaul-option-standard" aria-labelledby="distributor-overhaul-option-standard-name distributor-overhaul-price-heading distributor-overhaul-option-standard-price">
-              <span id="distributor-overhaul-option-standard-name" class="shop-profile-method">分电器翻新</span>
+              <span id="distributor-overhaul-option-standard-name" class="shop-profile-method">分电器翻新与改装</span>
             </label></td>
-            <td class="shop-profile-price"><label for="distributor-overhaul-option-standard"><span id="distributor-overhaul-option-standard-price" class="shop-profile-value">1 600 CZK</span></label></td>
+            <td class="shop-profile-price"><label for="distributor-overhaul-option-standard"><span id="distributor-overhaul-option-standard-price" class="shop-profile-value">约 1 600 CZK</span></label></td>
           </tr>
 
         </tbody>
           <tbody class="shop-profile-fields" data-profile-fields hidden>
 
+
             <tr class="shop-profile-field">
-              <th scope="row"><label for="quantity-distributor-overhaul">数量 *</label></th>
+              <th scope="row"><label id="label-quantity-distributor-overhaul" for="quantity-distributor-overhaul">数量 *</label></th>
               <td><div class="form-group">
-                <input id="quantity-distributor-overhaul" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
+                <div class="shop-quantity" role="group" aria-labelledby="label-quantity-distributor-overhaul">
+                  <button type="button" data-order-change="-1" aria-label="减少一件: 分电器翻新与改装" aria-controls="quantity-distributor-overhaul" disabled>−</button>
+                  <input id="quantity-distributor-overhaul" name="quantity" data-order-quantity type="number" min="1" max="9999" step="1" value="1" inputmode="numeric" class="validate-me" data-warning-id="quantity-distributor-overhaul-warning" required disabled>
+                  <button type="button" data-order-change="1" aria-label="增加一件: 分电器翻新与改装" aria-controls="quantity-distributor-overhaul" disabled>+</button>
+                </div>
+                <span id="quantity-distributor-overhaul-warning" class="warning-msg">请输入1至9999的整数。每个订单中每种规格最多9999件。</span>
               </div></td>
             </tr>
             <tr class="shop-profile-field shop-profile-submit">
@@ -1047,7 +1042,7 @@
         <p id="basket-empty">购物车为空。请选择商品。</p>
         <ul id="basket-items" class="shop-basket-items"></ul>
         <div class="shop-totals"><span>参考价格</span><strong id="basket-subtotal">0 CZK</strong></div>
-        <p id="basket-quote-notice" class="shop-muted" hidden>需报价或标注起价的商品不计入小计。我们将另行确认价格。</p>
+        <p id="basket-quote-notice" class="shop-muted" hidden>询价商品、起价商品及概算价格商品不计入小计。我们将另行确认其价格。</p>
         <p class="shop-muted">不含运费。库存、运费及最终价格将通过电子邮件确认。</p>
         <a class="shop-button" href="#order">订单 <span aria-hidden="true">↓</span></a>
       </div>
@@ -1167,6 +1162,6 @@
     <img class="lightbox-img" alt="">
   </dialog>
   <div id="shop-status" class="shop-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
-  <script id="shop-config" type="application/json">{"products": [{"id": "skoda-ohv-camshaft", "name": "Škoda OHV 凸轮轴", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/camshaft-options.csv", "profiles": [{"id": "regrind-262-248", "manufacture": "regrind", "duration": "262° / 248°", "lift": "6,4 / 5,8 mm", "price": 5600, "description": "KOM 版本"}, {"id": "regrind-272-266", "manufacture": "regrind", "duration": "272° / 266°", "lift": "6,6 / 6,4 mm", "price": 5600, "description": "TOP 版本"}, {"id": "new-294-294", "manufacture": "new", "duration": "294° / 294°", "lift": "7,2 / 7,2 mm", "price": 11400, "description": "冲刺赛、搭配两只 Weber 双腔化油器的道路使用（短进气道）"}, {"id": "new-316-316", "manufacture": "new", "duration": "316° / 316°", "lift": "7,5 / 7,5 mm", "price": 11400, "description": "场地赛、爬山赛"}, {"id": "new-320-320", "manufacture": "new", "duration": "320° / 320°", "lift": "8,0 / 8,0 mm", "price": 13200, "description": "搭配两只 Weber 双腔化油器的道路使用（短进气道）；需使用更硬的气门弹簧（已含在价格中）"}, {"id": "new-324-324", "manufacture": "new", "duration": "324°/ 324°", "lift": "7,5 / 7,2 mm", "price": 11400, "description": "130 LR / RS，搭配两只 Weber 双腔化油器（弯曲进气管）"}], "bearings": [{"id": "small", "labelKey": "smallBearings", "diameters": "39-38,5-30"}, {"id": "large", "labelKey": "largeBearings", "diameters": "40,5-40-30"}], "fields": [{"id": "engineType", "labelKey": "engineType", "type": "text", "required": true, "maxLength": 120}, {"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "rockerRatio", "labelKey": "rockerRatio", "type": "number", "required": true, "unit": ""}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "taz-camshaft", "name": "TAZ 凸轮轴", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/taz-camshaft-options.csv", "profiles": [{"id": "regrind-258-248", "manufacture": "regrind", "duration": "258° / 248°", "lift": "6,4 / 5,8 mm", "price": 4400, "description": "适用于 TAZ 1.43 至 1.6 发动机"}, {"id": "regrind-278-272", "manufacture": "regrind", "duration": "278°/ 272°", "lift": "7,0 / 6,6 mm", "price": 4400, "description": "适用于 TAZ 1.8 发动机"}, {"id": "new-284-284-7-0", "manufacture": "new", "duration": "284° / 284°", "lift": "7,0 / 7,0 mm", "price": 11500, "description": "适用于 TAZ 1.9 发动机（凸轮轴轻微磨损）"}, {"id": "new-284-284-8-0", "manufacture": "new", "duration": "284° / 284°", "lift": "8,0 / 8,0 mm", "price": 15500, "description": "适用于 TAZ 2.0 及更大发动机"}], "bearings": [], "fields": [{"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "exhaust-headers", "name": "高性能排气歧管", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43 l"}, {"id": "large", "label": "TAZ 2.0 l +"}], "options": [{"id": "small", "name": "TAZ 1.43 l", "description": "", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43 l"}]}, {"id": "large", "name": "TAZ 2.0 l +", "description": "", "price": 6600, "priceType": "fixed", "variants": [{"id": "large", "label": "TAZ 2.0 l +"}]}], "legacyItems": []}, {"id": "resonance-exhaust", "name": "谐振消声器", "price": 2700, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "谐振消声器", "description": "", "price": 2700, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "connecting-rod", "name": "H型锻造连杆", "price": 12500, "priceType": "fixed", "variants": [{"id": "160", "label": "160 mm", "price": 12500}, {"id": "156", "label": "156 mm", "price": 11500}], "options": [{"id": "160", "name": "160 mm", "description": "", "price": 12500, "priceType": "fixed", "variants": [{"id": "160", "label": "160 mm", "price": 12500}]}, {"id": "156", "name": "156 mm", "description": "", "price": 11500, "priceType": "fixed", "variants": [{"id": "156", "label": "156 mm", "price": 11500}]}], "legacyItems": [{"id": "connecting-rod-160", "variant": "", "targetVariant": "160"}, {"id": "connecting-rod-156", "variant": "", "targetVariant": "156"}]}, {"id": "ignition-coil-contact", "name": "PAL 触点式点火线圈", "price": 780, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "PAL 触点式点火线圈", "description": "", "price": 780, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "ignition-coil-contactless", "name": "PAL 无触点式点火线圈", "price": 1100, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "PAL 无触点式点火线圈", "description": "", "price": 1100, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "distributor-rotor", "name": "带限速器的分电器转子", "price": null, "priceType": "quote", "variants": [], "options": [{"id": "standard", "name": "带限速器的分电器转子", "description": "", "price": null, "priceType": "quote", "variants": []}], "legacyItems": []}, {"id": "distributor-cap", "name": "分电器盖", "price": 260, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "分电器盖", "description": "", "price": 260, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "distributor-contacts", "name": "BOSCH 分电器触点", "price": 150, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "BOSCH 分电器触点", "description": "", "price": 150, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "distributor-capacitor", "name": "PAL 分电器电容器", "price": 180, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "PAL 分电器电容器", "description": "", "price": 180, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "ignition-wiring", "name": "点火高压线束", "price": 280, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "点火高压线束", "description": "", "price": 280, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "head-gasket", "name": "气缸盖垫片", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "80.5 mm"}, {"id": "82-0", "label": "82.0 mm"}, {"id": "stock", "label": "原厂（硅胶处理）", "price": 160}], "options": [{"id": "custom", "name": "气缸盖垫片", "description": "缸径 80.5mm / 82.0mm - 缸间距 88-88-88mm，厚度 1.5mm - 可按订单生产其他间距和厚度（订货时确定价格）", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "80.5 mm"}, {"id": "82-0", "label": "82.0 mm"}]}, {"id": "stock", "name": "原厂（硅胶处理）", "description": "", "price": 160, "priceType": "fixed", "variants": [{"id": "stock", "label": "原厂（硅胶处理）", "price": 160}]}], "legacyItems": [{"id": "head-gasket-stock", "variant": "", "targetVariant": "stock"}]}, {"id": "copper-rings", "name": "缸套下调节铜环", "price": 40, "priceType": "from", "variants": [], "options": [{"id": "standard", "name": "缸套下调节铜环", "description": "", "price": 40, "priceType": "from", "variants": []}], "legacyItems": []}, {"id": "distributor-overhaul", "name": "分电器翻新", "price": 1600, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "分电器翻新", "description": "", "price": 1600, "priceType": "fixed", "variants": []}], "legacyItems": []}], "currency": "CZK", "locale": "zh", "email": "info@petramuckova.cz", "text": {"title": "商店", "home": "首页", "shop": "商店", "blog": "博客", "catalog": "零件与服务", "basket": "您的订单", "empty": "购物车为空。请选择商品。", "quantity": "数量", "quantityLimit": "请输入1至9999的整数。每个订单中每种规格最多9999件。", "increase": "增加一件", "decrease": "减少一件", "remove": "移除", "variant": "规格", "details": "详情与经销商价格", "noPhoto": "暂无商品照片", "enlargePhoto": "放大照片", "closePhoto": "关闭照片", "retail": "价格 / 件", "dealer": "经销商价格", "dealerMinimum": "经销商最小采购量", "from": "起价", "quote": "价格请咨询", "subtotal": "参考价格", "quoteNotice": "需报价或标注起价的商品不计入小计。我们将另行确认价格。", "deliveryNotice": "不含运费。库存、运费及最终价格将通过电子邮件确认。", "checkout": "订单", "fullName": "姓名", "company": "公司", "phone": "电话", "email": "电子邮箱", "street": "街道与门牌号", "city": "城市", "postcode": "邮政编码", "country": "国家", "notes": "备注", "delivery": "配送方式", "postal": "配送至邮寄地址", "prepare": "准备订单邮件", "draft": "请核对邮件", "openEmail": "打开邮件应用", "copy": "复制订单内容", "copied": "已复制。请粘贴到发往 info@petramuckova.cz 的邮件中。", "copyManual": "请复制以下内容并发送至 info@petramuckova.cz。", "draftNotice": "尚未发送任何内容。请核对信息，并在邮件应用中发送。如果应用未打开，请复制内容并发邮件至 info@petramuckova.cz。", "privacy": "浏览器仅保存所选商品。网站不保存您的邮箱和地址；这些信息将包含在您自行发送的邮件中。", "confirmation": "这是不具约束力的订单，并非付款或订立远程销售合同。", "storageNotice": "浏览器存储不可用。购物车仍可使用，但刷新后可能丢失。", "noScript": "请启用 JavaScript 使用购物车，或将商品选择和地址发至 info@petramuckova.cz。", "cartUpdated": "购物车已更新", "browse": "浏览备件", "goShop": "浏览备件并准备订单", "defaultDescription": "适用于消防泵组的 TAZ 发动机。", "orderSubject": "Mücková / Mück — 订单", "requiredFields": "* 必填项", "variantChoose": "选择规格", "totalItems": "购物车商品数量", "configure": "凸轮轴配置", "profileHeading": "工序", "camDuration": "凸轮持续角", "camLift": "最大升程", "price": "价格", "profileDescription": "说明", "manufactureRegrind": "重磨", "manufactureNew": "制造", "installationInstructions": "安装说明", "bearings": "轴承", "smallBearings": "小轴承，直径", "largeBearings": "大轴承，直径", "chooseBearings": "选择轴承", "engineHeading": "发动机信息", "engineType": "发动机型号", "bore": "缸径", "stroke": "冲程", "intakeValve": "进气门头部直径", "exhaustValve": "排气门头部直径", "rockerRatio": "摇臂比", "positiveNumber": "请输入大于零的数字。", "addConfigured": "添加到订单", "basketFull": "购物车已满。请先移除一项商品。", "legacyCamshafts": "原凸轮轴商品已替换为配置表单。请重新配置；其他商品已保留。", "contactHeading": "您的联系方式", "requiredWarning": "此字段为必填项。", "emailWarning": "请输入有效的邮箱。", "phoneWarning": "请输入有效的电话号码。"}}</script>
+  <script id="shop-config" type="application/json">{"products": [{"id": "skoda-ohv-camshaft", "name": "Škoda OHV 凸轮轴", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/camshaft-options.csv", "profiles": [{"id": "regrind-262-248", "manufacture": "regrind", "duration": "262° / 248°", "lift": "6,4 / 5,8 mm", "price": 5600, "description": "KOM 版本"}, {"id": "regrind-272-266", "manufacture": "regrind", "duration": "272° / 266°", "lift": "6,6 / 6,4 mm", "price": 5600, "description": "TOP 版本"}, {"id": "new-294-294", "manufacture": "new", "duration": "294° / 294°", "lift": "7,2 / 7,2 mm", "price": 11400, "description": "冲刺赛、搭配两只 Weber 双腔化油器的道路使用（短进气道）"}, {"id": "new-316-316", "manufacture": "new", "duration": "316° / 316°", "lift": "7,5 / 7,5 mm", "price": 11400, "description": "场地赛、爬山赛"}, {"id": "new-320-320", "manufacture": "new", "duration": "320° / 320°", "lift": "8,0 / 8,0 mm", "price": 13200, "description": "搭配两只 Weber 双腔化油器的道路使用（短进气道）；需使用更硬的气门弹簧（已含在价格中）"}, {"id": "new-324-324", "manufacture": "new", "duration": "324°/ 324°", "lift": "7,5 / 7,2 mm", "price": 11400, "description": "130 LR / RS，搭配两只 Weber 双腔化油器（弯曲进气管）"}], "bearings": [{"id": "small", "labelKey": "smallBearings", "diameters": "39-38,5-30"}, {"id": "large", "labelKey": "largeBearings", "diameters": "40,5-40-30"}], "fields": [{"id": "engineType", "labelKey": "engineType", "type": "text", "required": true, "maxLength": 120}, {"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "rockerRatio", "labelKey": "rockerRatio", "type": "number", "required": true, "unit": ""}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "taz-camshaft", "name": "TAZ 凸轮轴", "price": null, "priceType": "configured", "variants": [], "kind": "wizard", "wizard": {"source": "shop/taz-camshaft-options.csv", "profiles": [{"id": "regrind-258-248", "manufacture": "regrind", "duration": "258° / 248°", "lift": "6,4 / 5,8 mm", "price": 4400, "description": "适用于 TAZ 1.43 至 1.6 发动机"}, {"id": "regrind-278-272", "manufacture": "regrind", "duration": "278°/ 272°", "lift": "7,0 / 6,6 mm", "price": 4400, "description": "适用于 TAZ 1.8 发动机"}, {"id": "new-284-284-7-0", "manufacture": "new", "duration": "284° / 284°", "lift": "7,0 / 7,0 mm", "price": 11500, "description": "适用于 TAZ 1.9 发动机（凸轮轴轻微磨损）"}, {"id": "new-284-284-8-0", "manufacture": "new", "duration": "284° / 284°", "lift": "8,0 / 8,0 mm", "price": 15500, "description": "适用于 TAZ 2.0 及更大发动机"}], "bearings": [], "fields": [{"id": "bore", "labelKey": "bore", "type": "number", "required": true, "unit": "mm"}, {"id": "stroke", "labelKey": "stroke", "type": "number", "required": true, "unit": "mm"}, {"id": "exhaustValve", "labelKey": "exhaustValve", "type": "number", "required": true, "unit": "mm"}, {"id": "intakeValve", "labelKey": "intakeValve", "type": "number", "required": true, "unit": "mm"}]}}, {"id": "exhaust-headers", "name": "调谐排气歧管", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43", "price": 6600}, {"id": "large", "label": "TAZ 2.0及以上", "price": 6600}], "options": [{"id": "small", "name": "TAZ 1.43", "description": "", "price": 6600, "priceType": "fixed", "variants": [{"id": "small", "label": "TAZ 1.43", "price": 6600}]}, {"id": "large", "name": "TAZ 2.0及以上", "description": "", "price": 6600, "priceType": "fixed", "variants": [{"id": "large", "label": "TAZ 2.0及以上", "price": 6600}]}], "legacyItems": []}, {"id": "resonance-exhaust", "name": "谐振消声器", "price": 2700, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "TAZ 1.43 – TAZ 1.6", "description": "", "price": 2700, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "connecting-rod", "name": "H型锻造连杆", "price": 12500, "priceType": "fixed", "variants": [{"id": "160", "label": "160 mm – 原厂规格", "price": 12500}, {"id": "156", "label": "156 mm – 堆焊曲轴用", "price": 11500}, {"id": "156-engitec", "label": "156 mm – “Engitec”曲轴用", "price": 12500}], "options": [{"id": "160", "name": "160 mm – 原厂规格", "description": "", "price": 12500, "priceType": "fixed", "variants": [{"id": "160", "label": "160 mm – 原厂规格", "price": 12500}]}, {"id": "156", "name": "156 mm – 堆焊曲轴用", "description": "", "price": 11500, "priceType": "fixed", "variants": [{"id": "156", "label": "156 mm – 堆焊曲轴用", "price": 11500}]}, {"id": "156-engitec", "name": "156 mm – “Engitec”曲轴用", "description": "", "price": 12500, "priceType": "fixed", "variants": [{"id": "156-engitec", "label": "156 mm – “Engitec”曲轴用", "price": 12500}]}], "legacyItems": [{"id": "connecting-rod-160", "variant": "", "targetVariant": "160"}, {"id": "connecting-rod-156", "variant": "", "targetVariant": "156"}]}, {"id": "ignition-coil", "name": "点火线圈", "price": 780, "priceType": "fixed", "variants": [{"id": "contact", "label": "用于触点式点火", "price": 780}, {"id": "contactless", "label": "用于无触点式点火", "price": 1100}], "options": [{"id": "contact", "name": "用于触点式点火", "description": "", "price": 780, "priceType": "fixed", "variants": [{"id": "contact", "label": "用于触点式点火", "price": 780}]}, {"id": "contactless", "name": "用于无触点式点火", "description": "", "price": 1100, "priceType": "fixed", "variants": [{"id": "contactless", "label": "用于无触点式点火", "price": 1100}]}], "legacyItems": [{"id": "ignition-coil-contact", "variant": "", "targetVariant": "contact"}, {"id": "ignition-coil-contactless", "variant": "", "targetVariant": "contactless"}]}, {"id": "distributor-rotor", "name": "带限速器的分电器转子", "price": null, "priceType": "quote", "variants": [{"id": "4800-5100", "label": "调整为4800–5100转/分"}, {"id": "custom", "label": "按要求调整", "fields": [{"id": "min-rpm", "labelKey": "minRpm"}, {"id": "max-rpm", "labelKey": "maxRpm", "minimumField": "min-rpm"}]}, {"id": "original", "label": "Bosch / Facet、EPS原装", "description": "绝非廉价替代品！"}], "options": [{"id": "4800-5100", "name": "调整为4800–5100转/分", "description": "", "price": null, "priceType": "quote", "variants": [{"id": "4800-5100", "label": "调整为4800–5100转/分"}]}, {"id": "custom", "name": "按要求调整", "description": "", "price": null, "priceType": "quote", "variants": [{"id": "custom", "label": "按要求调整", "fields": [{"id": "min-rpm", "labelKey": "minRpm"}, {"id": "max-rpm", "labelKey": "maxRpm", "minimumField": "min-rpm"}]}]}, {"id": "original", "name": "Bosch / Facet、EPS原装", "description": "绝非廉价替代品！", "price": null, "priceType": "quote", "variants": [{"id": "original", "label": "Bosch / Facet、EPS原装", "description": "绝非廉价替代品！"}]}], "legacyItems": []}, {"id": "distributor-parts", "name": "分电器配件", "price": 260, "priceType": "fixed", "variants": [{"id": "cap", "label": "分电器盖", "price": 260}, {"id": "wiring", "label": "高压点火线", "price": 280}, {"id": "contacts", "label": "Bosch分电器触点", "price": 150}, {"id": "capacitor", "label": "PAL分电器电容器", "price": 180}], "options": [{"id": "cap", "name": "分电器盖", "description": "", "price": 260, "priceType": "fixed", "variants": [{"id": "cap", "label": "分电器盖", "price": 260}]}, {"id": "wiring", "name": "高压点火线", "description": "", "price": 280, "priceType": "fixed", "variants": [{"id": "wiring", "label": "高压点火线", "price": 280}]}, {"id": "contacts", "name": "Bosch分电器触点", "description": "", "price": 150, "priceType": "fixed", "variants": [{"id": "contacts", "label": "Bosch分电器触点", "price": 150}]}, {"id": "capacitor", "name": "PAL分电器电容器", "description": "", "price": 180, "priceType": "fixed", "variants": [{"id": "capacitor", "label": "PAL分电器电容器", "price": 180}]}], "legacyItems": [{"id": "distributor-cap", "variant": "", "targetVariant": "cap"}, {"id": "ignition-wiring", "variant": "", "targetVariant": "wiring"}, {"id": "distributor-contacts", "variant": "", "targetVariant": "contacts"}, {"id": "distributor-capacitor", "variant": "", "targetVariant": "capacitor"}]}, {"id": "head-gasket", "name": "气缸盖垫片", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "用于80.5 mm缸径", "price": 620}, {"id": "82-0", "label": "用于82 mm缸径", "price": 620}, {"id": "stock", "label": "用于原厂TAZ 1.43（硅胶处理）", "price": 160}], "options": [{"id": "80-5", "name": "用于80.5 mm缸径", "description": "", "price": 620, "priceType": "fixed", "variants": [{"id": "80-5", "label": "用于80.5 mm缸径", "price": 620}]}, {"id": "82-0", "name": "用于82 mm缸径", "description": "", "price": 620, "priceType": "fixed", "variants": [{"id": "82-0", "label": "用于82 mm缸径", "price": 620}]}, {"id": "stock", "name": "用于原厂TAZ 1.43（硅胶处理）", "description": "", "price": 160, "priceType": "fixed", "variants": [{"id": "stock", "label": "用于原厂TAZ 1.43（硅胶处理）", "price": 160}]}], "legacyItems": [{"id": "head-gasket-stock", "variant": "", "targetVariant": "stock"}]}, {"id": "cylinder-piston-kit", "name": "Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件", "price": 18000, "priceType": "fixed", "variants": [{"id": "complete", "label": "完整套件", "price": 18000}, {"id": "pistons-rings", "label": "活塞及活塞环套件", "price": 10400}, {"id": "rings", "label": "活塞环套件", "price": 1600}], "options": [{"id": "complete", "name": "完整套件", "description": "", "price": 18000, "priceType": "fixed", "variants": [{"id": "complete", "label": "完整套件", "price": 18000}]}, {"id": "pistons-rings", "name": "活塞及活塞环套件", "description": "", "price": 10400, "priceType": "fixed", "variants": [{"id": "pistons-rings", "label": "活塞及活塞环套件", "price": 10400}]}, {"id": "rings", "name": "活塞环套件", "description": "", "price": 1600, "priceType": "fixed", "variants": [{"id": "rings", "label": "活塞环套件", "price": 1600}]}], "legacyItems": []}, {"id": "carburetor-38-38", "name": "38/38双腔化油器（含改装）", "price": 7900, "priceType": "fixed", "variants": [], "options": [{"id": "standard", "name": "38/38双腔化油器（含改装）", "description": "", "price": 7900, "priceType": "fixed", "variants": []}], "legacyItems": []}, {"id": "copper-rings", "name": "缸套下调节铜环", "price": 40, "priceType": "from", "variants": [], "options": [{"id": "standard", "name": "缸套下调节铜环", "description": "", "price": 40, "priceType": "from", "variants": []}], "legacyItems": []}, {"id": "distributor-overhaul", "name": "分电器翻新与改装", "price": 1600, "priceType": "approx", "variants": [], "options": [{"id": "standard", "name": "分电器翻新与改装", "description": "", "price": 1600, "priceType": "approx", "variants": []}], "legacyItems": []}], "currency": "CZK", "locale": "zh", "email": "info@petramuckova.cz", "text": {"title": "商店", "home": "首页", "shop": "商店", "blog": "博客", "catalog": "零件与服务", "basket": "您的订单", "empty": "购物车为空。请选择商品。", "quantity": "数量", "quantityLimit": "请输入1至9999的整数。每个订单中每种规格最多9999件。", "increase": "增加一件", "decrease": "减少一件", "remove": "移除", "variant": "规格", "details": "详情与经销商价格", "noPhoto": "暂无商品照片", "enlargePhoto": "放大照片", "closePhoto": "关闭照片", "retail": "价格 / 件", "dealer": "经销商价格", "dealerMinimum": "经销商最小采购量", "from": "起价", "quote": "价格请咨询", "subtotal": "参考价格", "quoteNotice": "询价商品、起价商品及概算价格商品不计入小计。我们将另行确认其价格。", "approx": "约", "deliveryNotice": "不含运费。库存、运费及最终价格将通过电子邮件确认。", "checkout": "订单", "fullName": "姓名", "company": "公司", "phone": "电话", "email": "电子邮箱", "street": "街道与门牌号", "city": "城市", "postcode": "邮政编码", "country": "国家", "notes": "备注", "delivery": "配送方式", "postal": "配送至邮寄地址", "prepare": "准备订单邮件", "draft": "请核对邮件", "openEmail": "打开邮件应用", "copy": "复制订单内容", "copied": "已复制。请粘贴到发往 info@petramuckova.cz 的邮件中。", "copyManual": "请复制以下内容并发送至 info@petramuckova.cz。", "draftNotice": "尚未发送任何内容。请核对信息，并在邮件应用中发送。如果应用未打开，请复制内容并发邮件至 info@petramuckova.cz。", "privacy": "浏览器仅保存所选商品。网站不保存您的邮箱和地址；这些信息将包含在您自行发送的邮件中。", "confirmation": "这是不具约束力的订单，并非付款或订立远程销售合同。", "storageNotice": "浏览器存储不可用。购物车仍可使用，但刷新后可能丢失。", "noScript": "请启用 JavaScript 使用购物车，或将商品选择和地址发至 info@petramuckova.cz。", "cartUpdated": "购物车已更新", "browse": "浏览备件", "goShop": "浏览备件并准备订单", "defaultDescription": "适用于消防泵组的 TAZ 发动机。", "orderSubject": "Mücková / Mück — 订单", "requiredFields": "* 必填项", "variantChoose": "选择规格", "totalItems": "购物车商品数量", "configure": "凸轮轴配置", "profileHeading": "工序", "camDuration": "凸轮持续角", "camLift": "最大升程", "price": "价格", "profileDescription": "说明", "manufactureRegrind": "重磨", "manufactureNew": "制造", "installationInstructions": "安装说明", "bearings": "轴承", "smallBearings": "小轴承，直径", "largeBearings": "大轴承，直径", "chooseBearings": "选择轴承", "engineHeading": "发动机信息", "engineType": "发动机型号", "bore": "缸径", "stroke": "冲程", "intakeValve": "进气门头部直径", "exhaustValve": "排气门头部直径", "rockerRatio": "摇臂比", "positiveNumber": "请输入大于零的数字。", "minRpm": "最低转速 (转/分)", "maxRpm": "最高转速 (转/分)", "rpmWarning": "请输入正整数转速；最高转速不得低于最低转速。", "legacyRotors": "分电器转子现有新的选项，请重新选择；订单中的其他商品已保留。", "addConfigured": "添加到订单", "basketFull": "购物车已满。请先移除一项商品。", "legacyCamshafts": "原凸轮轴商品已替换为配置表单。请重新配置；其他商品已保留。", "contactHeading": "您的联系方式", "requiredWarning": "此字段为必填项。", "emailWarning": "请输入有效的邮箱。", "phoneWarning": "请输入有效的电话号码。"}}</script>
 </body>
 </html>
