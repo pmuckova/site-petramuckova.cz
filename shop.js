@@ -289,6 +289,39 @@
         });
     }
 
+    function initPhotoGalleries(doc) {
+        doc.querySelectorAll('.shop-photo-gallery').forEach(gallery => {
+            const links = [...gallery.querySelectorAll('.shop-photo-link')];
+            if (links.length < 2) return;
+            const thumbnails = doc.createElement('div');
+            thumbnails.className = 'shop-photo-thumbnails';
+            thumbnails.setAttribute('role', 'group');
+            thumbnails.setAttribute('aria-label', gallery.closest('.shop-product').querySelector('.shop-product-title').textContent);
+            const buttons = links.map((link, index) => {
+                const button = doc.createElement('button');
+                const photo = link.querySelector('img');
+                button.type = 'button';
+                button.className = 'shop-photo-thumbnail';
+                button.setAttribute('aria-label', photo.alt);
+                button.setAttribute('aria-controls', link.id);
+                button.setAttribute('aria-pressed', String(index === 0));
+                const thumbnail = photo.cloneNode(false);
+                thumbnail.alt = '';
+                thumbnail.loading = 'lazy';
+                button.append(thumbnail);
+                button.addEventListener('click', () => {
+                    links.forEach((item, selected) => { item.hidden = selected !== index; });
+                    buttons.forEach((item, selected) => item.setAttribute('aria-pressed', String(selected === index)));
+                });
+                return button;
+            });
+            thumbnails.append(...buttons);
+            gallery.append(thumbnails);
+            links.forEach((link, index) => { link.hidden = index !== 0; });
+            gallery.classList.add('is-enhanced');
+        });
+    }
+
     function basketRemoveButton(doc, item, name, label) {
         const button = doc.createElement('button');
         button.type = 'button';
@@ -304,30 +337,35 @@
         return button;
     }
 
-    function initBasketQuantitySelection(container) {
+    function initBasketQuantitySelection(container, selector = 'input[data-quantity]') {
         const selectQuantity = event => {
             const input = event.target;
-            if (input.matches('input[data-quantity]') && !input.disabled && !input.readOnly) {
+            if (input.matches(selector) && !input.disabled && !input.readOnly) {
                 input.select();
             }
         };
         // Delegation survives basket-row replacement. Selecting on click as well
         // as focus prevents clicking the field's padding from leaving a caret.
+        // Wizard engine fields reuse the same behavior with their own selector.
         container.addEventListener('focusin', selectQuantity);
         container.addEventListener('click', selectQuantity);
     }
 
     function initWizardForm(form, product, siteForm, selectInstances, text, onAdd) {
         const validation = siteForm.initValidation(form);
+        initBasketQuantitySelection(form, 'input[data-engine-field]');
         const bearing = form.elements.namedItem('bearing');
+        const profileFields = form.querySelector('[data-profile-fields]');
         const bearingFields = form.querySelector('[data-bearing-fields]');
+        const engineFields = [...form.querySelectorAll('[data-engine-field]')];
         const bearingSelect = selectInstances.get(bearing);
         const status = form.querySelector('.shop-wizard-status');
+        const submit = form.querySelector('button[type="submit"]');
         const read = name => form.elements.namedItem(name)?.value || '';
+        let selectedProfile = null;
 
-        function syncBearings() {
+        function syncBearings(profile) {
             if (!bearing || !bearingFields) return;
-            const profile = product.wizard.profiles.find(option => option.id === read('profile'));
             const available = profile?.manufacture === 'new';
             bearingFields.hidden = !available;
             bearing.disabled = !available;
@@ -341,16 +379,51 @@
             }
         }
 
+        function syncProfileFields() {
+            const selected = form.querySelector('input[name="profile"]:checked');
+            selectedProfile = selected;
+            const profile = product.wizard.profiles.find(option => option.id === selected?.value);
+            const option = selected?.closest('.shop-profile-option');
+            if (profileFields) {
+                profileFields.hidden = !option;
+                if (option) option.after(profileFields);
+            }
+            engineFields.forEach(field => { field.disabled = !profile; });
+            submit.disabled = !profile;
+            syncBearings(profile);
+            // The optional radio group opens/closes the subform; it is not a
+            // validated order field. Closing it also clears its field warnings.
+            if (!profile) validation.reset();
+        }
+
+        // Native radio activation happens before click. Track the previous
+        // selection so activating it again can clear the group, including
+        // label clicks and touch, without disturbing arrow-key navigation.
+        form.addEventListener('click', event => {
+            const radio = event.target;
+            if (event.defaultPrevented || radio.type !== 'radio' || radio.name !== 'profile') return;
+            if (radio === selectedProfile) {
+                radio.checked = false;
+                radio.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        });
+        // Browsers do not emit a click for Space on an already checked radio.
+        form.addEventListener('keydown', event => {
+            const radio = event.target;
+            if (event.key !== ' ' || radio.type !== 'radio' || radio.name !== 'profile') return;
+            event.preventDefault();
+            if (!event.repeat) radio.click();
+        });
         form.addEventListener('input', () => { status.hidden = true; });
         form.addEventListener('change', event => {
             status.hidden = true;
-            if (event.target.name === 'profile') syncBearings();
+            if (event.target.name === 'profile') syncProfileFields();
         });
         form.addEventListener('submit', event => {
             event.preventDefault();
             status.hidden = true;
             status.textContent = '';
-            if (!validation.validate()) return;
+            if (!selectedProfile || !validation.validate()) return;
             const configuration = normaliseConfiguration({
                 profile: read('profile'), bearing: read('bearing'),
                 values: Object.fromEntries(product.wizard.fields.map(field => [field.id, read(field.id)])),
@@ -361,17 +434,17 @@
                 status.hidden = false;
             }
         });
-        syncBearings();
-        form.querySelector('button[type="submit"]').disabled = false;
+        syncProfileFields();
     }
 
-    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseConfiguration, addConfiguredItem, removeBasketItem, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, basketRemoveButton, initBasketQuantitySelection, initWizardForm };
+    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseConfiguration, addConfiguredItem, removeBasketItem, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, initPhotoGalleries, basketRemoveButton, initBasketQuantitySelection, initWizardForm };
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     if (!root.document) return;
 
     function init() {
         initNavigation(document, window);
         const selectInstances = initVariantSelects(document, root.Choices);
+        initPhotoGalleries(document);
         initPhotoViewer(document);
         const configNode = document.getElementById('shop-config');
         if (!configNode) return;

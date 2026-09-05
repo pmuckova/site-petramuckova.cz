@@ -175,24 +175,34 @@ function node(initial = {}) {
         classList: { toggle(name, on) { if (on) classes.add(name); else classes.delete(name); }, contains: name => classes.has(name) },
         getAttribute: name => attrs.get(name) ?? null, setAttribute: (name, value) => attrs.set(name, value),
         addEventListener(type, fn) { if (!handlers.has(type)) handlers.set(type, []); handlers.get(type).push(fn); },
-        dispatchEvent(event) { for (const handler of handlers.get(event.type) || []) handler({ target: this, preventDefault() {}, ...event }); },
+        dispatchEvent(event) {
+            for (const handler of handlers.get(event.type) || []) handler({ target: this, preventDefault() {}, ...event });
+            if (event.bubbles) this.parent?.fire(event.type, this);
+        },
         fire(type, target) { for (const handler of handlers.get(type) || []) handler({ target: target || this, preventDefault() {} }); },
-        closest: () => null, focus() { this.focused = true; },
+        closest: () => null, matches: () => false, focus() { this.focused = true; },
     }, initial);
 }
 
 function wizardFixture(enhanced = true, canAdd = true) {
     const form = node({ id: 'wizard-test' });
-    const warnings = { 'profile-warning': node({ textContent: 'Required' }), 'bearing-warning': node({ textContent: 'Required' }) };
-    const radios = product.wizard.profiles.map(profile => {
-        const radio = node({ type: 'radio', name: 'profile', value: profile.id, required: true, checked: false });
-        radio.setAttribute('data-warning-id', 'profile-warning');
-        return radio;
+    const warnings = { 'bearing-warning': node({ textContent: 'Required' }) };
+    const profileFields = node({ hidden: true, moves: 0 });
+    const radios = product.wizard.profiles.map(profile => node({
+        type: 'radio', name: 'profile', value: profile.id, checked: false, parent: form,
+    }));
+    const options = radios.map(radio => {
+        const option = node();
+        option.after = fields => { assert.equal(fields, profileFields); fields.afterOption = option; fields.moves++; };
+        radio.closest = selector => selector === '.shop-profile-option' ? option : null;
+        return option;
     });
     const bearing = node({ name: 'bearing', type: 'select-one' });
     bearing.setAttribute('data-warning-id', 'bearing-warning');
     const fields = product.wizard.fields.map(field => {
-        const input = node({ name: field.id, type: field.type, required: true,
+        const input = node({ name: field.id, type: field.type, required: true, disabled: true,
+            matches: selector => selector === 'input[data-engine-field]',
+            selections: [], select() { this.selections.push(this.value); },
             nextElementSibling: node({ textContent: field.type === 'number' ? 'Positive number required' : 'Required' }) });
         if (field.type === 'number') input.setAttribute('data-positive', '');
         return input;
@@ -201,14 +211,22 @@ function wizardFixture(enhanced = true, canAdd = true) {
     const added = [];
     const choices = { enabled: false, resets: 0, enable() { this.enabled = true; }, disable() { this.enabled = false; },
         setChoiceByValue(value) { assert.equal(value, ''); this.resets++; } };
-    form.querySelectorAll = selector => { assert.equal(selector, '.validate-me'); return [...radios, bearing, ...fields]; };
-    form.querySelector = selector => ({ '[data-bearing-fields]': wrapper, '.shop-wizard-status': status, 'button[type="submit"]': submit,
-        '#profile-warning': warnings['profile-warning'], '#bearing-warning': warnings['bearing-warning'] })[selector];
+    form.querySelectorAll = selector => {
+        if (selector === '.validate-me') return [bearing, ...fields];
+        if (selector === '[data-engine-field]') return fields;
+        assert.fail('Unexpected selector: ' + selector);
+    };
+    form.querySelector = selector => ({
+        '[data-profile-fields]': profileFields, '[data-bearing-fields]': wrapper,
+        'input[name="profile"]:checked': radios.find(radio => radio.checked) || null,
+        '.shop-wizard-status': status, 'button[type="submit"]': submit,
+        '#bearing-warning': warnings['bearing-warning'],
+    })[selector];
     form.elements = { namedItem(name) { return name === 'profile' ? { value: radios.find(r => r.checked)?.value || '' }
         : name === 'bearing' ? bearing : fields.find(field => field.name === name); } };
     shop.initWizardForm(form, product, SiteForm, enhanced ? new Map([[bearing, choices]]) : new Map(), texts.cs,
         value => { if (canAdd) added.push(value); return canAdd; });
-    return { form, radios, bearing, fields, wrapper, status, submit, choices, added, warnings,
+    return { form, radios, options, bearing, fields, profileFields, wrapper, status, submit, choices, added, warnings,
         select(id) { radios.forEach(radio => { radio.checked = radio.value === id; });
             const selected = radios.find(radio => radio.checked); selected.fire('change'); form.fire('change', selected); },
         fill() { fields.forEach(field => { field.value = engine[field.name]; }); },
@@ -225,17 +243,72 @@ test('wizard shows only add failures, not a success message', () => {
     assert.equal(f.status.hidden, false);
 });
 
-test('wizard validates empty submissions with the shared warnings and focuses the radio group', () => {
+test('activating the selected profile again clears it and hides its fields without losing engine details', () => {
     const f = wizardFixture();
-    assert.equal(f.submit.disabled, false);
+    f.fill();
+    f.select('new-294-294');
+    f.bearing.value = 'large';
+    const selected = f.radios.find(radio => radio.checked);
+    f.form.fire('click', selected);
+    assert.ok(f.radios.every(radio => !radio.checked));
+    assert.equal(f.profileFields.hidden, true);
+    assert.ok(f.fields.every(field => field.disabled));
+    assert.equal(f.bearing.disabled, true);
+    assert.equal(f.bearing.value, '');
+    assert.equal(f.submit.disabled, true);
+    assert.ok(f.radios.every(radio => radio.getAttribute('aria-invalid') === null));
+    assert.deepEqual(Object.fromEntries(f.fields.map(field => [field.name, field.value])), engine);
     f.form.fire('submit');
     assert.equal(f.added.length, 0);
-    assert.equal(f.radios[0].focused, true);
-    assert.equal(f.warnings['profile-warning'].style.display, 'block');
-    for (const field of f.fields) assert.equal(field.getAttribute('aria-invalid'), 'true');
     f.select('regrind-262-248');
-    assert.ok(f.radios.every(radio => radio.getAttribute('aria-invalid') === 'false'));
-    assert.equal(f.warnings['profile-warning'].style.display, 'none');
+    f.form.fire('submit');
+    assert.equal(f.added.length, 1);
+});
+
+test('wizard text and number fields select their complete value on click and focus', () => {
+    const f = wizardFixture();
+    f.fill();
+    for (const field of f.fields) f.form.fire('click', field);
+    assert.ok(f.fields.every(field => field.selections.length === 0));
+    f.select('regrind-262-248');
+    for (const field of f.fields) {
+        f.form.fire('focusin', field);
+        f.form.fire('click', field);
+        assert.deepEqual(field.selections, [engine[field.name], engine[field.name]]);
+    }
+});
+
+test('no selected profile is neutral; only the active subform contributes validation errors', () => {
+    const f = wizardFixture();
+    assert.equal(f.submit.disabled, true);
+    assert.equal(f.profileFields.hidden, true);
+    assert.ok(f.fields.every(field => field.disabled));
+    f.form.fire('submit');
+    assert.equal(f.added.length, 0);
+    assert.ok(f.radios.every(radio => !radio.focused && radio.getAttribute('aria-invalid') === null));
+    for (const field of f.fields) assert.equal(field.getAttribute('aria-invalid'), 'false');
+    f.select('regrind-262-248');
+    assert.equal(f.profileFields.hidden, false);
+    assert.ok(f.fields.every(field => !field.disabled));
+    assert.equal(f.profileFields.afterOption, f.options[0]);
+    assert.equal(f.submit.disabled, false);
+    assert.ok(f.radios.every(radio => radio.getAttribute('aria-invalid') === null));
+    f.form.fire('submit');
+    for (const field of f.fields) assert.equal(field.getAttribute('aria-invalid'), 'true');
+    f.form.fire('click', f.radios[0]);
+    assert.equal(f.profileFields.hidden, true);
+    assert.equal(f.submit.disabled, true);
+    for (const field of f.fields) {
+        assert.equal(field.getAttribute('aria-invalid'), 'false');
+        assert.equal(field.nextElementSibling.style.display, 'none');
+    }
+    // Native input/change events following deselection cannot mark radios invalid.
+    f.radios[0].fire('input');
+    f.radios[0].fire('change');
+    f.form.fire('change', f.radios[0]);
+    f.form.fire('submit');
+    assert.ok(f.radios.every(radio => radio.getAttribute('aria-invalid') === null));
+    assert.equal(f.added.length, 0);
 });
 
 for (const enhanced of [true, false]) {
@@ -245,6 +318,8 @@ for (const enhanced of [true, false]) {
         assert.equal(f.bearing.disabled, true);
         f.fill();
         f.select('new-294-294');
+        assert.equal(f.profileFields.hidden, false);
+        assert.equal(f.profileFields.afterOption, f.options[2]);
         assert.equal(f.wrapper.hidden, false);
         assert.equal(f.bearing.required, true);
         assert.equal(f.bearing.disabled, false);
@@ -264,6 +339,7 @@ for (const enhanced of [true, false]) {
         assert.equal(f.bearing.disabled, true);
         assert.equal(f.bearing.required, false);
         assert.equal(f.wrapper.hidden, true);
+        assert.equal(f.profileFields.afterOption, f.options[1]);
         if (enhanced) assert.equal(f.choices.enabled, false);
         assert.deepEqual(Object.fromEntries(f.fields.map(field => [field.name, field.value])), engine);
         f.form.fire('submit');
@@ -278,8 +354,12 @@ for (const enhanced of [true, false]) {
 test('TAZ wizard initializes and submits without a bearing control', () => {
     const form = node({ id: 'wizard-taz-test' });
     const profile = node({ name: 'profile', type: 'radio', value: 'new-284-284-8-0', checked: true });
+    const profileFields = node({ hidden: true });
+    const option = node();
+    option.after = fields => { fields.afterOption = option; };
+    profile.closest = selector => selector === '.shop-profile-option' ? option : null;
     const fields = tazProduct.wizard.fields.map(field => node({
-        name: field.id, type: field.type, required: true, value: tazEngine[field.id],
+        name: field.id, type: field.type, required: true, disabled: true, value: tazEngine[field.id],
     }));
     const status = node({ hidden: true });
     const submit = node({ disabled: true });
@@ -288,8 +368,14 @@ test('TAZ wizard initializes and submits without a bearing control', () => {
         if (name === 'bearing') return null;
         return fields.find(field => field.name === name) || null;
     } };
+    form.querySelectorAll = selector => {
+        assert.equal(selector, '[data-engine-field]');
+        return fields;
+    };
     form.querySelector = selector => ({
+        '[data-profile-fields]': profileFields,
         '[data-bearing-fields]': null,
+        'input[name="profile"]:checked': profile,
         '.shop-wizard-status': status,
         'button[type="submit"]': submit,
     })[selector] ?? null;
@@ -301,6 +387,9 @@ test('TAZ wizard initializes and submits without a bearing control', () => {
     });
 
     assert.equal(submit.disabled, false);
+    assert.equal(profileFields.hidden, false);
+    assert.equal(profileFields.afterOption, option);
+    assert.ok(fields.every(field => !field.disabled));
     form.fire('submit');
     assert.equal(added.length, 1);
     assert.equal(added[0].profile, 'new-284-284-8-0');

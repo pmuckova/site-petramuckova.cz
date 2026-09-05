@@ -62,6 +62,18 @@ def load_catalog(root=ROOT):
         for lang in data['languages']:
             if not product['translations'].get(lang, {}).get('name'):
                 raise ValueError(f'Missing {lang} name: {product_id}')
+        if 'descriptionGroups' in product:
+            groups = product['descriptionGroups']
+            if (not isinstance(groups, list) or any(not isinstance(group, dict) for group in groups)
+                    or [group.get('kind') for group in groups] != ['lead', 'regrind', 'new', 'instructions']):
+                raise ValueError(f'Invalid description groups: {product_id}')
+            if any(not isinstance(group.get('paragraphs'), list) or not group['paragraphs'] for group in groups):
+                raise ValueError(f'Description groups must contain paragraph indices: {product_id}')
+            indices = [index for group in groups for index in group['paragraphs']]
+            for lang in data['languages']:
+                paragraphs = product['translations'][lang]['description'].split('\n\n')
+                if any(type(index) is not int for index in indices) or sorted(indices) != list(range(len(paragraphs))):
+                    raise ValueError(f'Description groups must include every paragraph exactly once: {product_id}/{lang}')
     return data
 
 
@@ -134,7 +146,7 @@ def wizard_form(product, lang, t):
         options.append(f'''<tbody class="shop-profile-option">
           <tr>
             <td><label class="shop-profile-radio-label" for="{option_id}">
-              <input type="radio" name="profile" value="{escape(profile['id'])}" id="{option_id}" required class="validate-me" data-warning-id="{prefix}-profile-warning" aria-labelledby="{labelled_by}" aria-describedby="{option_id}-description {prefix}-profile-warning">
+              <input type="radio" name="profile" value="{escape(profile['id'])}" id="{option_id}" aria-labelledby="{labelled_by}" aria-describedby="{option_id}-description">
               <span id="{option_id}-profileHeading" class="shop-profile-method">{escape(method)}</span>
             </label></td>
             {''.join(cells)}
@@ -143,44 +155,49 @@ def wizard_form(product, lang, t):
         </tbody>''')
     bearings = ''.join(f'<option value="{escape(b["id"])}">{escape(t[b["labelKey"]])} {escape(b["diameters"])}</option>'
                        for b in wizard['bearings'])
-    bearing_fields = f'''      <div class="shop-bearing-fields" data-bearing-fields hidden>
-        <div class="form-group shop-variant">
-          <label id="label-{prefix}-bearing" for="{prefix}-bearing">{escape(t['bearings'])} *</label>
-          <select id="{prefix}-bearing" name="bearing" class="custom-select validate-me" data-bearing data-warning-id="{prefix}-bearing-warning" disabled>
-            <option value="">{escape(t['chooseBearings'])}</option>{bearings}
-          </select>
-          <span id="{prefix}-bearing-warning" class="warning-msg">{escape(t['requiredWarning'])}</span>
-        </div>
-      </div>
+    bearing_row = f'''        <tr class="shop-profile-field shop-bearing-fields" data-bearing-fields hidden>
+          <th scope="row"><label id="label-{prefix}-bearing" for="{prefix}-bearing">{escape(t['bearings'])} *</label></th>
+          <td colspan="3"><div class="form-group shop-variant">
+            <select id="{prefix}-bearing" name="bearing" class="custom-select validate-me" data-bearing data-warning-id="{prefix}-bearing-warning" disabled>
+              <option value="">{escape(t['chooseBearings'])}</option>{bearings}
+            </select>
+            <span id="{prefix}-bearing-warning" class="warning-msg">{escape(t['requiredWarning'])}</span>
+          </div></td>
+        </tr>
 ''' if wizard['bearings'] else ''
-    fields = []
+    field_rows = []
     for field in wizard['fields']:
         key = escape(field['id'])
         label = t[field['labelKey']] + (f' ({field["unit"]})' if field.get('unit') else '')
         constraints = 'min="0" step="any" inputmode="decimal" data-positive' if field['type'] == 'number' else f'maxlength="{field["maxLength"]}"'
         warning = t['positiveNumber'] if field['type'] == 'number' else t['requiredWarning']
-        fields.append(f'''<div class="form-group">
-          <label for="{prefix}-{key}">{escape(label)}{' *' if field['required'] else ''}</label>
-          <input id="{prefix}-{key}" name="{key}" type="{field['type']}" {constraints} {'required' if field['required'] else ''} class="validate-me">
-          <span class="warning-msg">{escape(warning)}</span>
-        </div>''')
-    rows = ''.join('<div class="form-row">' + ''.join(fields[index:index + 2]) + '</div>' for index in range(0, len(fields), 2))
+        field_rows.append(f'''        <tr class="shop-profile-field shop-engine-field">
+          <th scope="row"><label for="{prefix}-{key}">{escape(label)}{' *' if field['required'] else ''}</label></th>
+          <td colspan="3"><div class="form-group">
+            <input id="{prefix}-{key}" name="{key}" type="{field['type']}" {constraints} {'required' if field['required'] else ''} class="validate-me" data-engine-field disabled>
+            <span class="warning-msg">{escape(warning)}</span>
+          </div></td>
+        </tr>''')
+    profile_fields = f'''      <tbody id="{prefix}-profile-fields" class="shop-profile-fields" data-profile-fields hidden>
+{bearing_row}{''.join(field_rows)}
+        <tr class="shop-profile-field shop-profile-submit">
+          <td></td>
+          <td colspan="3">
+            <button class="btn-submit" type="submit" disabled>{escape(t['addConfigured'])}</button>
+            <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
+          </td>
+        </tr>
+      </tbody>'''
     return f'''<form class="shop-wizard-form" id="wizard-{prefix}" data-wizard="{prefix}" aria-label="{escape(t['configure'])}: {escape(product['translations'][lang]['name'])}" method="post" novalidate>
-      <fieldset class="shop-profile-options" aria-describedby="{prefix}-profile-warning">
+      <fieldset class="shop-profile-options">
         <legend class="shop-sr-only">{escape(t['configure'])}</legend>
         <table class="shop-profile-table" aria-label="{escape(t['configure'])}">
           <colgroup><col class="shop-profile-operation-column"><col class="shop-profile-spec-column"><col class="shop-profile-spec-column"><col class="shop-profile-price-column"></colgroup>
           <thead><tr>{headers}</tr></thead>
           {''.join(options)}
+{profile_fields}
         </table>
       </fieldset>
-      <span id="{prefix}-profile-warning" class="warning-msg">{escape(t['requiredWarning'])}</span>
-{bearing_fields}      <fieldset class="shop-engine-fields">
-        <legend class="shop-sr-only">{escape(t['engineHeading'])}</legend>
-        {rows}
-      </fieldset>
-      <button class="btn-submit" type="submit" disabled>{escape(t['addConfigured'])}</button>
-      <p class="shop-wizard-status" role="status" aria-live="polite" hidden></p>
     </form>'''
 
 
@@ -197,7 +214,7 @@ def product_photos(product, lang, t, position, placeholder_image):
         alt = image['alt'][lang]
         link_label = t['enlargePhoto'] + ': ' + (alt if len(images) > 1 else name)
         loading = 'eager' if position < 2 and index == 0 else 'lazy'
-        links.append(f'''<a class="shop-photo-link" href="{escape(image['src'])}" aria-haspopup="dialog" aria-label="{escape(link_label)}">
+        links.append(f'''<a class="shop-photo-link" id="photo-{escape(product['id'])}-{index + 1}" href="{escape(image['src'])}" aria-haspopup="dialog" aria-label="{escape(link_label)}">
         <span class="tech-frame">
           <img src="{escape(image['src'])}" alt="{escape(alt)}" width="{image['width']}" height="{image['height']}" loading="{loading}" decoding="async"{placeholder_attr}>
         </span>
@@ -207,6 +224,22 @@ def product_photos(product, lang, t, position, placeholder_image):
     return f'''<figure class="shop-photo{gallery_class}{placeholder_class}">
       {''.join(links)}
     </figure>'''
+
+
+def wizard_description(product, lang, t):
+    paragraphs = product['translations'][lang]['description'].split('\n\n')
+    groups = product.get('descriptionGroups')
+    if not groups:
+        return ''.join(f'<p class="shop-description">{escape(paragraph)}</p>' for paragraph in paragraphs)
+    headings = {'regrind': t['manufactureRegrind'], 'new': t['manufactureNew'], 'instructions': t['installationInstructions']}
+    sections = []
+    for group in groups:
+        kind = group['kind']
+        classes = 'shop-description-section' + (' shop-description-wide' if kind in ('lead', 'instructions') else '')
+        heading = f'<h4>{escape(headings[kind])}</h4>' if kind in headings else ''
+        content = ''.join(f'<p class="shop-description">{escape(paragraphs[index])}</p>' for index in group['paragraphs'])
+        sections.append(f'<section class="{classes}" data-description-group="{kind}">{heading}{content}</section>')
+    return ''.join(sections)
 
 
 def product_card(product, lang, t, position, placeholder_image):
@@ -226,7 +259,7 @@ def product_card(product, lang, t, position, placeholder_image):
         return f'''<article class="blog-card shop-product shop-wizard-product" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
       <h3 class="shop-product-title" id="name-{product_id}">{name}</h3>
       {photo}
-      <div class="shop-product-content"><div class="shop-product-body">{description}</div></div>
+      <div class="shop-product-content"><div class="shop-product-body shop-description-layout">{wizard_description(product, lang, t)}</div></div>
       {wizard_form(product, lang, t)}
     </article>'''
     variant = ''

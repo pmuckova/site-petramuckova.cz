@@ -121,6 +121,12 @@
     {
       "id": "skoda-ohv-camshaft",
       "kind": "wizard",
+      "descriptionGroups": [
+        {"kind": "lead", "paragraphs": [0]},
+        {"kind": "regrind", "paragraphs": [1, 3]},
+        {"kind": "new", "paragraphs": [2, 4]},
+        {"kind": "instructions", "paragraphs": [5]}
+      ],
       "price": null,
       "priceType": "configured",
       "image": "/assets/desktop/skoda-ohv-1.jpeg",
@@ -157,6 +163,40 @@
             "ru": "Распредвал Škoda OHV с клапанными пружинами и крепёжным винтом",
             "ja": "Škoda OHVカムシャフトとバルブスプリング、固定ねじ",
             "zh": "Škoda OHV凸轮轴、气门弹簧和固定螺钉"
+          }
+        },
+        {
+          "src": "/assets/desktop/skoda-ohv-3.jpeg",
+          "width": 2252,
+          "height": 4000,
+          "alt": {
+            "cs": "Ventilové pružiny pro Škoda OHV",
+            "en": "Valve springs for Škoda OHV",
+            "de": "Ventilfedern für Škoda OHV",
+            "fr": "Ressorts de soupapes pour Škoda OHV",
+            "it": "Molle delle valvole per Škoda OHV",
+            "es": "Muelles de válvula para Škoda OHV",
+            "pl": "Sprężyny zaworowe do Škody OHV",
+            "ru": "Клапанные пружины для Škoda OHV",
+            "ja": "Škoda OHV用バルブスプリング",
+            "zh": "Škoda OHV气门弹簧"
+          }
+        },
+        {
+          "src": "/assets/desktop/skoda-ohv-4.jpeg",
+          "width": 2252,
+          "height": 4000,
+          "alt": {
+            "cs": "Upevňovací šroub vačkové hřídele Škoda OHV",
+            "en": "Škoda OHV camshaft retaining screw",
+            "de": "Befestigungsschraube der Škoda OHV Nockenwelle",
+            "fr": "Vis de fixation de l’arbre à cames Škoda OHV",
+            "it": "Vite di fissaggio dell’albero a camme Škoda OHV",
+            "es": "Tornillo de fijación del árbol de levas Škoda OHV",
+            "pl": "Śruba mocująca wałek rozrządu Škoda OHV",
+            "ru": "Крепёжный винт распредвала Škoda OHV",
+            "ja": "Škoda OHVカムシャフト固定ねじ",
+            "zh": "Škoda OHV凸轮轴固定螺钉"
           }
         }
       ],
@@ -382,6 +422,12 @@
     {
       "id": "taz-camshaft",
       "kind": "wizard",
+      "descriptionGroups": [
+        {"kind": "lead", "paragraphs": [0]},
+        {"kind": "regrind", "paragraphs": [2]},
+        {"kind": "new", "paragraphs": [1]},
+        {"kind": "instructions", "paragraphs": [3]}
+      ],
       "price": null,
       "priceType": "configured",
       "image": "/assets/desktop/taz-1.jpeg",
@@ -418,6 +464,23 @@
             "ru": "Распределительный вал TAZ — общий вид",
             "ja": "TAZ カムシャフトの全体像",
             "zh": "TAZ 凸轮轴整体视图"
+          }
+        },
+        {
+          "src": "/assets/desktop/taz-3.jpeg",
+          "width": 4000,
+          "height": 2252,
+          "alt": {
+            "cs": "Vačková hřídel TAZ – pohled shora",
+            "en": "TAZ camshaft – top view",
+            "de": "TAZ-Nockenwelle – Draufsicht",
+            "fr": "Arbre à cames TAZ – vue de dessus",
+            "it": "Albero a camme TAZ – vista dall’alto",
+            "es": "Árbol de levas TAZ – vista superior",
+            "pl": "Wałek rozrządu TAZ – widok z góry",
+            "ru": "Распределительный вал TAZ — вид сверху",
+            "ja": "TAZ カムシャフトの上面図",
+            "zh": "TAZ 凸轮轴俯视图"
           }
         }
       ],

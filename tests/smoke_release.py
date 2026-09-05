@@ -90,13 +90,13 @@ def main():
                     assert wizard.select_one('button[type=submit].btn-submit')
                     assert not wizard.select('.mandatory-note, [id$="-profile-title"]')
                     bearing = wizard.select_one('[data-bearing]')
+                    profile_fields = wizard.select_one('.shop-profile-table > tbody[data-profile-fields][hidden]')
+                    assert profile_fields
                     if source_product['wizard']['bearings']:
-                        assert bearing and wizard.select_one('[data-bearing-fields][hidden]')
+                        assert bearing and profile_fields.select_one(':scope > tr[data-bearing-fields][hidden]')
                     else:
                         assert not bearing and not wizard.select('[data-bearing-fields]')
                     assert not wizard.select(':scope > h4.form-section-title')
-                    engine_fields = wizard.select_one(':scope > fieldset.shop-engine-fields')
-                    assert engine_fields and engine_fields.select_one(':scope > legend.shop-sr-only')
                     profiles = wizard.select_one(':scope > fieldset.shop-profile-options:not([aria-labelledby])')
                     assert profiles
                     assert wizard.find(recursive=False) is profiles
@@ -114,8 +114,12 @@ def main():
                         assert 'shop-profile-price' in cells[-1]['class']
                         assert len(rows[1].find_all('td', recursive=False)) == 1
                         assert rows[1].select_one('td > .shop-profile-description')
-                    assert [field['name'] for field in wizard.select('.form-row input')] == [
+                    field_rows = profile_fields.select(':scope > tr.shop-engine-field')
+                    assert len(field_rows) == len(expected_fields)
+                    assert all(row.th['scope'] == 'row' and row.td['colspan'] == '3' for row in field_rows)
+                    assert [field['name'] for field in profile_fields.select('[data-engine-field]')] == [
                         field['id'] for field in expected_fields]
+                    assert all(field.has_attr('disabled') for field in profile_fields.select('[data-engine-field]'))
                     assert 'Ø' not in wizard.get_text()
                     assert not card.select('[data-quantity], [data-change]')
                 else:

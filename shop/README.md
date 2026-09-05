@@ -54,7 +54,7 @@ indicative price, delivery notices and order button stay visible. Quantity edits
 preserve the list's scroll position. Below the blog's 1400px breakpoint it stays
 inline between the catalogue and order form, with normal page scrolling.
 
-The catalogue always has one product per row. Each card has an image-only left
+The catalogue always has one product per row. Standard cards have an image-only left
 column and a right column containing a centered heading, justified description,
 prices and quantity controls. CSS Grid places the heading in its own right-column
 row, with the photo and description starting together in the row beneath it.
@@ -71,7 +71,7 @@ quantity buttons and native/enhanced dropdowns all follow that size. Prices and
 supporting links use 13px, while small option labels and warnings stay at 12px.
 The Chakra Petch product headings, form-section headings and submit text retain
 their relative hierarchy at 1.8, 1.1 and 1.2 times the smaller base respectively.
-Control heights and spacing are unchanged. The basket, final order form, blog
+The basket, final order form, blog
 and main page retain their original typography. Keep font-family resets and
 white focus outlines off these fields and the Choices controls;
 other keyboard-operated controls still have a visible focus outline.
@@ -171,10 +171,23 @@ customer-facing terms before enabling direct orders.
 
 ## Configured camshaft items
 
-`skoda-ohv-camshaft` and `taz-camshaft` use `kind: "wizard"`. Each uses two supplied
-photographs copied unchanged to `assets/desktop/skoda-ohv-1.jpeg` and
-`skoda-ohv-2.jpeg`, or `assets/desktop/taz-1.jpeg` and `taz-2.jpeg`. The two images
-appear one below the other in each product's photo column. The Škoda product has six
+`skoda-ohv-camshaft` and `taz-camshaft` use `kind: "wizard"`. Škoda OHV uses four supplied
+photographs copied unchanged to `assets/desktop/skoda-ohv-1.jpeg` through
+`skoda-ohv-4.jpeg`; TAZ uses three photographs, `assets/desktop/taz-1.jpeg` through
+`taz-3.jpeg`. The images
+appear in a gallery under a left-aligned, red-underlined heading. The main photo
+and thumbnails align with the inner text and form edges, using the same responsive
+side inset (28px on desktop, 18px on small screens).
+Thumbnail buttons switch the large photo; clicking the large photo retains the
+existing magnifier and fullscreen viewer. Without JavaScript, all linked photos
+remain visible one below the other. Main and enlarged photos keep their natural
+aspect ratios; only the compact thumbnail previews use a center crop.
+The description follows the gallery, with an introductory paragraph,
+side-by-side regrinding/manufacturing sections and installation instructions below.
+These sections stack on small screens. The catalogue's `descriptionGroups` maps
+the existing translated paragraphs into these sections without rewriting or
+dropping their contents. Standard product cards keep their two-column layout.
+The Škoda product has six
 description paragraphs and six profiles; the TAZ product has four paragraphs and four
 profiles. All content is translated for all ten languages. Profile duration, lift,
 description and prices were imported from the supplied CSV files.
@@ -184,23 +197,38 @@ snapshots used by the regression tests; the editable runtime catalogue remains
 revising these specifications.
 
 The form spans the card below the photo and description. It reuses the main form's
-labels, text/number fields, submit button and `form.js` inline validation. The engine
-fields retain a screen-reader group label but have no visible heading or separator.
-Each product's options form one required native radio group in a compact table
-with four shared column headings. Each option has two rows in its first column:
+labels, text/number fields, submit button and `form.js` inline validation. Each
+product's options form one optional native radio group in a compact table
+with four shared column headings, internal row dividers and no outer border.
+Each option has two rows in its first column:
 radio button plus operation above, description below. Duration, lift and price each
 span both rows and are vertically centered. All content is left-aligned except the
 right-aligned price and its heading. Column widths are 44% / 20% / 20% / 16%, changing
 to 40% / 20% / 20% / 20% on narrow screens to give prices more room. Every value
 and description is a native label for its radio, preserving
-click-to-select and keyboard behavior without extra JavaScript. Cells wrap on small
+click-to-select and keyboard behavior. Activating the selected radio again (or
+one of its labels) clears the selection and hides the subform; engine values are
+retained, while the conditional bearing selector is cleared and disabled.
+The radios only control which subform is open: they have no `required` attribute,
+validation class or shared yellow warning. With no selection, the add button is
+disabled and submission is ignored. Closing the subform clears its warnings;
+the visible engine fields and applicable bearing selector still validate normally.
+Arrow-key navigation remains native. Cells wrap on small
 screens rather than changing the two-row layout or shrinking the 14px body text.
 The radio fieldset has a screen-reader legend but no visible inquiry subheading or
 mandatory-fields note. In the Škoda configurator, choosing a new shaft reveals a
 required bearing selector using the existing Choices component (with a native
 fallback). Switching to a regrind hides, disables and clears that selector, without
-clearing engine details. The TAZ configurator has no bearing selector. Every
-displayed engine field is required. The Škoda configurator collects engine type,
+clearing engine details. The TAZ configurator has no bearing selector. A single
+shared group of field rows is hidden until an operation is selected, then moves
+directly below that selected option inside the same table. Each row keeps its label
+in the first column and lets its control span the remaining three columns. Changing
+the selected operation moves the same controls, preserving their values and avoiding
+duplicate form state. The add-to-order button occupies the group's final row,
+spanning the last three columns below the inputs. Every displayed engine field is
+required. Clicking anywhere in an engine text/number field or focusing it from the
+keyboard selects its complete content, matching basket quantity inputs.
+The Škoda configurator collects engine type,
 bore, stroke, rocker ratio and both valve-head diameters. The TAZ configurator does
 not ask for engine type or rocker ratio, and collects only bore, stroke and both
 valve-head diameters. Numeric values accept positive decimals, with millimetres

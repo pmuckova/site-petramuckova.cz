@@ -258,18 +258,20 @@ class ShopBuildTests(unittest.TestCase):
         self.assertEqual(rules['.shop-page']['font-size'], '1rem')
         self.assertEqual(rules['.shop-basket-item h3']['font-size'], '1rem')
 
-    def test_wizard_engine_fields_use_the_profile_tables_compact_scale(self):
+    def test_wizard_field_rows_use_the_profile_tables_compact_scale(self):
         rules = dict(css_rules(ROOT / 'shop.css'))
-        group = rules['.shop-wizard-form .shop-engine-fields']
-        self.assertEqual(group['margin'], '22px 0 0')
-        self.assertEqual(group['padding'], '0')
-        self.assertEqual(group['border'], '0')
+        self.assertEqual(rules['.shop-profile-fields']['background'], '#100909')
+        cells = rules['.shop-profile-field > th, .shop-profile-field > td']
+        self.assertEqual(cells['padding'], '.45rem .5rem')
+        self.assertEqual(cells['vertical-align'], 'top')
+        self.assertEqual(rules['.shop-profile-field > th']['box-shadow'], 'inset 3px 0 var(--accent)')
 
-        labels = rules['.shop-wizard-form .form-group > label']
+        labels = rules['.shop-profile-field > th label']
         self.assertEqual(labels['font-size'], 'var(--shop-product-small-font-size)')
-        self.assertEqual(labels['margin-bottom'], '5px')
+        self.assertEqual(labels['margin'], '0')
         self.assertEqual(labels['letter-spacing'], '.5px')
-        self.assertEqual(rules['.shop-wizard-form .form-row']['margin-bottom'], '14px')
+        self.assertEqual(rules['.shop-profile-field > td > .form-group']['width'], '100%')
+        self.assertEqual(rules['.shop-profile-field > td > .form-group']['min-width'], '0')
 
         input_selector = next(selector for selector in rules
                               if selector.startswith('.shop-wizard-form input[type="text"]'))
@@ -828,18 +830,22 @@ class ShopBuildTests(unittest.TestCase):
             self.assertFalse(soup.select('#camshaft-regrind, #camshaft-new'))
             sections = card.find_all(recursive=False)
             self.assertEqual([node.name for node in sections], ['h3', 'figure', 'div', 'form'])
-            self.assertEqual([node.get_text() for node in card.select('.shop-description')],
+            self.assertCountEqual([node.get_text() for node in card.select('.shop-description')],
                              wizard['translations'][lang]['description'].split('\n\n'))
             self.assertEqual(len(card.select('.shop-description')), 6)
             self.assertFalse(card.select('[data-quantity], [data-change], .shop-prices'))
             self.assertFalse(card.select('form form, form.terminal-form'))
-            self.assertTrue(card.select_one('form[data-wizard][novalidate] > button.btn-submit[type=submit]'))
+            self.assertTrue(card.select_one('form[data-wizard][novalidate] button.btn-submit[type=submit]'))
 
-    def test_camshaft_galleries_stack_two_selected_photos_with_individual_zoom(self):
+    def test_camshaft_galleries_keep_all_zoomable_photos_for_progressive_enhancement(self):
         products = {product['id']: product for product in self.catalog['products'] if product.get('kind') == 'wizard'}
         expected = {
-            'skoda-ohv-camshaft': [f'/assets/desktop/skoda-ohv-{index}.jpeg' for index in range(1, 3)],
-            'taz-camshaft': [f'/assets/desktop/taz-{index}.jpeg' for index in range(1, 3)],
+            'skoda-ohv-camshaft': [f'/assets/desktop/skoda-ohv-{index}.jpeg' for index in range(1, 5)],
+            'taz-camshaft': [f'/assets/desktop/taz-{index}.jpeg' for index in range(1, 4)],
+        }
+        expected_dimensions = {
+            'skoda-ohv-camshaft': [(4000, 2252), (4000, 2252), (2252, 4000), (2252, 4000)],
+            'taz-camshaft': [(4000, 2252), (4000, 2252), (4000, 2252)],
         }
         self.assertEqual(set(products), set(expected))
         for product_id, expected_paths in expected.items():
@@ -848,7 +854,7 @@ class ShopBuildTests(unittest.TestCase):
             self.assertEqual([image['src'] for image in images], expected_paths)
             self.assertEqual(product['image'], expected_paths[0])
             self.assertEqual([(image['width'], image['height']) for image in images],
-                             [(4000, 2252), (4000, 2252)])
+                             expected_dimensions[product_id])
             for path in expected_paths:
                 data = (ROOT / path.lstrip('/')).read_bytes()
                 self.assertTrue(data.startswith(b'\xff\xd8'))
@@ -862,7 +868,7 @@ class ShopBuildTests(unittest.TestCase):
                 gallery = card.select_one(':scope > figure.shop-photo.shop-photo-gallery')
                 self.assertIsNotNone(gallery)
                 links = gallery.select(':scope > a.shop-photo-link')
-                self.assertEqual(len(links), 2)
+                self.assertEqual(len(links), len(expected_paths))
                 self.assertEqual([link['href'] for link in links], expected_paths)
                 self.assertFalse(gallery.select('figcaption, .shop-description, form'))
                 for index, (link, image) in enumerate(zip(links, images)):
@@ -879,6 +885,10 @@ class ShopBuildTests(unittest.TestCase):
         self.assertEqual(rules['.shop-photo-gallery'], {
             'display': 'grid', 'grid-template-columns': 'minmax(0, 1fr)', 'gap': '18px',
         })
+        self.assertEqual(rules['.shop-photo-thumbnail']['height'], '60px')
+        self.assertEqual(rules['.shop-photo-thumbnail img'], {
+            'width': '100%', 'height': '100%', 'object-fit': 'cover',
+        })
 
     def test_taz_camshaft_uses_requested_name_and_four_description_paragraphs(self):
         product = next(product for product in self.catalog['products'] if product['id'] == 'taz-camshaft')
@@ -892,10 +902,26 @@ class ShopBuildTests(unittest.TestCase):
         for lang, soup in self.pages():
             card = soup.find(id=product['id'])
             self.assertEqual(card.select_one(':scope > h3').get_text(), product['translations'][lang]['name'])
-            self.assertEqual([node.get_text() for node in card.select('.shop-description')],
+            self.assertCountEqual([node.get_text() for node in card.select('.shop-description')],
                              product['translations'][lang]['description'].split('\n\n'))
             self.assertEqual(len(card.select('.shop-description')), 4)
             self.assertTrue(card.select_one('form[data-wizard="taz-camshaft"]'))
+
+    def test_camshaft_description_groups_preserve_copy_and_group_the_matching_operations(self):
+        expected_groups = {
+            'skoda-ohv-camshaft': {'lead': [0], 'regrind': [1, 3], 'new': [2, 4], 'instructions': [5]},
+            'taz-camshaft': {'lead': [0], 'regrind': [2], 'new': [1], 'instructions': [3]},
+        }
+        for lang, soup in self.pages():
+            for product in self.catalog['products']:
+                if product['id'] not in expected_groups:
+                    continue
+                paragraphs = product['translations'][lang]['description'].split('\n\n')
+                card = soup.find(id=product['id'])
+                for kind, indices in expected_groups[product['id']].items():
+                    section = card.select_one(f'[data-description-group="{kind}"]')
+                    self.assertEqual([node.get_text() for node in section.select('.shop-description')],
+                                     [paragraphs[index] for index in indices])
 
     def test_gallery_rejects_missing_images_dimensions_and_translations(self):
         for mutate in (
@@ -943,9 +969,11 @@ class ShopBuildTests(unittest.TestCase):
                 clients = client_products[product['id']]['wizard']['profiles']
                 for option, profile, client in zip(options, wizard['profiles'], clients):
                     self.assertEqual(option.input['value'], profile['id'])
-                    self.assertTrue(option.input.has_attr('required'))
+                    self.assertFalse(option.input.has_attr('required'))
                     self.assertFalse(option.input.has_attr('checked'))
-                    self.assertTrue(card.find(id=option.input['data-warning-id']))
+                    self.assertNotIn('validate-me', option.input.get('class', []))
+                    self.assertFalse(option.input.has_attr('data-warning-id'))
+                    self.assertFalse(card.select('[id$="-profile-warning"]'))
                     for value in (profile['duration'], profile['lift'], money(profile['price'], lang),
                                   profile['translations'][lang]):
                         self.assertIn(value, option.get_text())
@@ -1002,7 +1030,7 @@ class ShopBuildTests(unittest.TestCase):
                     accessible_names.append(' '.join(node.get_text() for node in named_by))
                     described_by = radio['aria-describedby'].split()
                     self.assertEqual(soup.find(id=described_by[0]).get_text(), profile['translations'][lang])
-                    self.assertEqual(described_by[1], radio['data-warning-id'])
+                    self.assertEqual(len(described_by), 1)
                 self.assertEqual(len(set(accessible_names)), len(product['wizard']['profiles']))
                 self.assertFalse(table.select('.shop-profile-content, .shop-profile-stats'))
 
@@ -1012,6 +1040,7 @@ class ShopBuildTests(unittest.TestCase):
         self.assertEqual(rules['.shop-profile-table']['width'], '100%')
         self.assertEqual(rules['.shop-profile-table']['table-layout'], 'fixed')
         self.assertEqual(rules['.shop-profile-table']['border-collapse'], 'collapse')
+        self.assertEqual(rules['.shop-profile-table']['border'], '0')
         self.assertEqual(rules['.shop-profile-option label']['padding'], '.5rem')
         self.assertEqual(rules['.shop-profile-option label']['overflow-wrap'], 'anywhere')
         self.assertEqual(rules['.shop-profile-option .shop-profile-description']['padding-block'], '0 .5rem')
@@ -1043,12 +1072,19 @@ class ShopBuildTests(unittest.TestCase):
                 source_product = next(product for product in self.catalog['products']
                                       if product['id'] == form['data-wizard'])
                 expected_names = [field['id'] for field in source_product['wizard']['fields']]
-                fields = form.select(':scope > .shop-engine-fields > .form-row > .form-group > input.validate-me')
+                profile_fields = form.select_one('.shop-profile-table > tbody.shop-profile-fields[data-profile-fields][hidden]')
+                self.assertIsNotNone(profile_fields)
+                fields = profile_fields.select(':scope > tr.shop-engine-field input.validate-me[data-engine-field]')
                 self.assertEqual([field['name'] for field in fields], expected_names)
                 self.assertEqual(len(form.select('input[name=bore]')), 1)
                 for field in fields:
                     self.assertTrue(field.has_attr('required'))
-                    self.assertTrue(form.find('label', attrs={'for': field['id']}))
+                    self.assertTrue(field.has_attr('disabled'))
+                    row = field.find_parent('tr')
+                    self.assertEqual(row.find_all(['th', 'td'], recursive=False)[0].name, 'th')
+                    self.assertEqual(row.th['scope'], 'row')
+                    self.assertEqual(row.td['colspan'], '3')
+                    self.assertTrue(row.th.find('label', attrs={'for': field['id']}))
                     self.assertIn('warning-msg', field.find_next_sibling()['class'])
                     if field['name'] == 'engineType':
                         self.assertEqual(field['type'], 'text')
@@ -1062,7 +1098,10 @@ class ShopBuildTests(unittest.TestCase):
                 bearing = form.select_one('.shop-variant > select.custom-select[data-bearing]')
                 if source_product['wizard']['bearings']:
                     self.assertTrue(bearing.has_attr('disabled'))
-                    self.assertTrue(form.select_one('[data-bearing-fields][hidden]'))
+                    bearing_row = form.select_one('tbody[data-profile-fields] > tr[data-bearing-fields][hidden]')
+                    self.assertIsNotNone(bearing_row)
+                    self.assertEqual(bearing_row.th['scope'], 'row')
+                    self.assertEqual(bearing_row.td['colspan'], '3')
                     self.assertEqual([option['value'] for option in bearing.select('option')], ['', 'small', 'large'])
                     self.assertIn('39-38,5-30', bearing.get_text())
                     self.assertIn('40,5-40-30', bearing.get_text())
@@ -1076,7 +1115,8 @@ class ShopBuildTests(unittest.TestCase):
                 self.assertFalse(form.fieldset.has_attr('aria-labelledby'))
                 self.assertEqual(form.fieldset.legend.get_text(), config['text']['configure'])
                 self.assertIn('shop-sr-only', form.fieldset.legend['class'])
-                self.assertTrue(form.find(id=form.fieldset['aria-describedby']))
+                self.assertFalse(form.fieldset.has_attr('aria-describedby'))
+                self.assertIs(profile_fields.parent, form.select_one('.shop-profile-table'))
                 self.assertNotIn('Ø', form.get_text())
                 if lang == 'cs':
                     labels = [form.find('label', attrs={'for': field['id']}).get_text() for field in fields]
@@ -1113,9 +1153,9 @@ class ShopBuildTests(unittest.TestCase):
                 self.assertEqual(form.fieldset.legend.get_text(), text['configure'])
                 self.assertIn('shop-sr-only', form.fieldset.legend['class'])
                 self.assertTrue(form.fieldset.select_one('table.shop-profile-table'))
-                engine_fields = form.select_one(':scope > fieldset.shop-engine-fields')
-                self.assertEqual(engine_fields.legend.get_text(), text['engineHeading'])
-                self.assertIn('shop-sr-only', engine_fields.legend['class'])
+                field_group = form.fieldset.select_one('table > tbody.shop-profile-fields[data-profile-fields][hidden]')
+                self.assertIsNotNone(field_group)
+                self.assertFalse(form.select('.shop-engine-fields, .form-row'))
                 self.assertFalse(form.select('.mandatory-note'))
 
     def test_camshaft_operation_labels_are_used_in_options_and_client_config(self):
@@ -1146,7 +1186,7 @@ class ShopBuildTests(unittest.TestCase):
         for lang, soup in self.pages():
             with self.subTest(lang=lang):
                 config = json.loads(soup.select_one('#shop-config').string)
-                buttons = soup.select('form[data-wizard] > button[type=submit]')
+                buttons = soup.select('form[data-wizard] button[type=submit]')
                 self.assertEqual(config['text']['addConfigured'], expected[lang])
                 self.assertEqual(len(buttons), 2)
                 self.assertTrue(all(button.get_text() == expected[lang] for button in buttons))
