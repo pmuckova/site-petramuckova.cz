@@ -57,6 +57,10 @@ def load_catalog(root=ROOT):
             validate_image(image, product_id, root)
         if 'images' in product:
             validate_gallery(product, data['languages'], root)
+        if 'photoMaxHeight' in product:
+            if (type(product['photoMaxHeight']) is not int or product['photoMaxHeight'] <= 0
+                    or len(product.get('images', [])) != 1):
+                raise ValueError(f'Photo height limit requires one image and positive whole pixels: {product_id}')
         if wizard:
             validate_wizard(product, data['languages'])
         else:
@@ -375,7 +379,12 @@ def product_photos(product, lang, t, position, placeholder_image):
         alt = image['alt'][lang]
         link_label = t['enlargePhoto'] + ': ' + (alt if len(images) > 1 else name)
         loading = 'eager' if position < 2 and index == 0 else 'lazy'
-        links.append(f'''<a class="shop-photo-link" id="photo-{escape(product['id'])}-{index + 1}" href="{escape(image['src'])}" style="--shop-photo-width: {image['width']}px" aria-haspopup="dialog" aria-label="{escape(link_label)}">
+        preview_width = image['width']
+        if product.get('photoMaxHeight'):
+            # Size the whole frame proportionally, including its faded edges.
+            # Keep a nonzero width before lazy decoding and the original zoom source.
+            preview_width = min(preview_width, product['photoMaxHeight'] * image['width'] / image['height'])
+        links.append(f'''<a class="shop-photo-link" id="photo-{escape(product['id'])}-{index + 1}" href="{escape(image['src'])}" style="--shop-photo-width: {preview_width:g}px" aria-haspopup="dialog" aria-label="{escape(link_label)}">
         <span class="tech-frame">
           <img src="{escape(image['src'])}" alt="{escape(alt)}" width="{image['width']}" height="{image['height']}" loading="{loading}" decoding="async"{placeholder_attr}>
         </span>

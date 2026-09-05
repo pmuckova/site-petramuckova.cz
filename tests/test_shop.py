@@ -318,6 +318,8 @@ class ShopBuildTests(unittest.TestCase):
         self.assertEqual(button['padding'], '0')
         self.assertEqual(button['box-shadow'], 'none')
         self.assertEqual(rules['.shop-profile-submit .btn-submit:hover']['box-shadow'], 'none')
+        self.assertEqual(rules['.shop-profile-submit .btn-submit:hover']['transform'], 'none')
+        self.assertEqual(rules['.shop-button:hover, .shop-profile-submit .btn-submit:hover']['background'], '#ff6666')
         for _, soup in self.pages():
             self.assertEqual(len(soup.select('.shop-profile-submit .btn-submit')), len(self.catalog['products']))
             self.assertNotIn(soup.select_one('#order-prepare'), soup.select('.shop-profile-submit .btn-submit'))
@@ -651,7 +653,7 @@ class ShopBuildTests(unittest.TestCase):
             'ignition-coil': [('zapalovaci-civka-01.jpeg', 2252, 4000)],
             'distributor-rotor': [('palec-rozdelovace-omezovac-01.jpeg', 2046, 2048)],
             'distributor-parts': [('rozdelovace-01.jpeg', 1086, 1448)],
-            'cylinder-piston-kit': [('sada-valce-01.jpeg', 2252, 4000), ('sada-valce-02.jpeg', 4000, 2252)],
+            'cylinder-piston-kit': [('sada-valce-02.jpeg', 4000, 2252), ('sada-valce-01.jpeg', 2252, 4000)],
             'carburetor-38-38': [('karburator.jpeg', 3376, 2252)],
             'distributor-overhaul': [('repas-rozdelovac-01.jpeg', 600, 800)],
         }
@@ -669,10 +671,39 @@ class ShopBuildTests(unittest.TestCase):
                         self.assertEqual(link['href'], path)
                         self.assertEqual(link.img['src'], path)
                         self.assertEqual((int(link.img['width']), int(link.img['height'])), (width, height))
-                        self.assertEqual(link['style'], f'--shop-photo-width: {width}px')
+                        preview_width = min(width, product.get('photoMaxHeight', height) * width / height)
+                        self.assertEqual(link['style'], f'--shop-photo-width: {preview_width:g}px')
                         self.assertEqual(link.img['alt'], product['images'][index]['alt'][lang])
                         self.assertEqual(link.img['loading'], 'lazy')
                         self.assertTrue((ROOT / path.lstrip('/')).is_file())
+
+    def test_four_tall_single_photo_previews_are_capped_without_changing_zoom_images(self):
+        compact = {product['id']: product for product in self.catalog['products'] if 'photoMaxHeight' in product}
+        self.assertEqual(set(compact), {'ignition-coil', 'distributor-rotor', 'distributor-parts', 'distributor-overhaul'})
+        for lang, soup in self.pages():
+            for product_id, product in compact.items():
+                with self.subTest(lang=lang, product=product_id):
+                    self.assertEqual(product['photoMaxHeight'], 360)
+                    image = product['images'][0]
+                    card = soup.find(id=product_id)
+                    self.assertFalse(card.select('.shop-photo-gallery'))
+                    link = card.select_one('.shop-photo-link')
+                    width = float(link['style'].removeprefix('--shop-photo-width: ').removesuffix('px'))
+                    self.assertAlmostEqual(width * image['height'] / image['width'], 360, places=2)
+                    self.assertEqual(link['href'], image['src'])
+                    self.assertEqual(link.img['src'], image['src'])
+                    self.assertEqual((int(link.img['width']), int(link.img['height'])), (image['width'], image['height']))
+
+    def test_invalid_single_photo_height_limits_fail_before_rendering(self):
+        for height in (0, -1, True, '360', 1.5, None):
+            invalid = json.loads(json.dumps(self.catalog))
+            next(product for product in invalid['products'] if product['id'] == 'ignition-coil')['photoMaxHeight'] = height
+            with patch('build_shop.json.loads', return_value=invalid), self.assertRaises(ValueError):
+                load_catalog()
+        invalid = json.loads(json.dumps(self.catalog))
+        invalid['products'][0]['photoMaxHeight'] = 360  # Galleries have their own fixed frame.
+        with patch('build_shop.json.loads', return_value=invalid), self.assertRaises(ValueError):
+            load_catalog()
 
     def test_browser_config_matches_visible_products_and_prices(self):
         for lang, soup in self.pages():
@@ -1003,7 +1034,9 @@ class ShopBuildTests(unittest.TestCase):
                     self.assertEqual(soup.footer.select_one('.c-year').get_text(), '© 2026')
                     self.assertFalse(soup.footer.select('.version'))
                     self.assertNotIn('V.2.0', soup.footer.get_text())
-                    self.assertTrue(soup.footer.select_one('.copyright-bar .barcode'))
+                    barcode = soup.footer.select_one('.copyright-bar .barcode')
+                    self.assertIsNotNone(barcode)
+                    self.assertFalse(barcode.has_attr('title'))
 
     def test_navigation_and_original_article_anchors_remain(self):
         for lang in self.catalog['languages']:

@@ -48,7 +48,7 @@ Edit `shop/catalog.json`:
   displayed without a caption. Products with `null` use the shared `placeholderImage`
   automatically; add their photo path when available to replace the placeholder.
   The distributor spare-parts collage uses `rozdelovace-01.jpeg`, the
-  cylinder/piston kit uses `sada-valce-01.jpeg` and `sada-valce-02.jpeg`, and the
+  cylinder/piston kit uses `sada-valce-02.jpeg` first, then `sada-valce-01.jpeg`, and the
   carburetor uses `karburator.jpeg`. Only the copper rings still use a placeholder.
   The resonance exhaust uses `rezonancni-vyfuk-01.jpg` (renamed from
   `blog-article1-1.jpg` in the desktop, 1200 and 800 asset directories).
@@ -59,6 +59,11 @@ Edit `shop/catalog.json`:
   Use a one-entry array for a single photo with explicit dimensions as well;
   only arrays with multiple images create the thumbnail gallery.
   Additional gallery images load lazily; visible captions are not added.
+- `photoMaxHeight`: optional positive pixel height for a single-photo product with
+  explicit image dimensions. The coil, rotor, distributor-parts collage and
+  distributor overhaul use 360px previews. The whole frame scales proportionally
+  and remains centered, without cropping, stretching or empty bars. Full-size
+  lightbox images are unchanged; other products retain their existing sizing.
 - `placeholderImage`: the shared generated image at
   `/assets/desktop/shop-placeholder.webp`. Its alt text identifies a missing product
   photo in each language, never actual product or workshop photography, and it is
@@ -111,8 +116,9 @@ adds that many units, accumulating units of the same variant in the order. A
 submission that would exceed 9999 units of an option is rejected without a partial
 add. Changing the selection moves the same fields and retains the quantity.
 The Add to order button is also 42px high, matching the product form fields;
-it has no glow in either its normal or hovered state. The final checkout button
-keeps its original main-page styling.
+it has no glow or upward movement on hover. Its hover background lightens to the
+same red as the basket's Order button, using a shared rule. The final checkout
+button keeps its original main-page styling.
 Specification dropdowns reuse the main form's pinned Choices.js component and
 shared styling, retaining native selection if the CDN script is unavailable.
 Text fields, textareas and quantity inputs also inherit the main page's field

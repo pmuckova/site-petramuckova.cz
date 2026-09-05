@@ -67,7 +67,7 @@
 .shop-profile-field > td > .form-group { width: 100%; min-width: 0; }
 .shop-profile-submit > td:first-child { box-shadow: inset 3px 0 var(--accent); }
 .shop-profile-submit .btn-submit { margin-top: 0; height: 42px; padding: 0; line-height: 1.15; box-shadow: none; }
-.shop-profile-submit .btn-submit:hover { box-shadow: none; }
+.shop-profile-submit .btn-submit:hover { box-shadow: none; transform: none; }
 .shop-wizard-status { color: var(--accent); margin-top: 16px; }
 .shop-basket-configuration { margin: 12px 0; padding: 0; color: #bbb; font-size: .8rem; overflow-wrap: anywhere; }
 .shop-basket-configuration > div + div { margin-top: 8px; }
@@ -169,7 +169,7 @@
 .shop-muted { color: var(--shop-muted); font-size: .875rem; }
 .shop-basket > p { margin-bottom: 16px; }
 .shop-button, .shop-secondary-button { min-height: 50px; padding: 14px 18px; display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; background: var(--accent); color: #050505 !important; border: 1px solid var(--accent); border-radius: 0; font-family: 'Chakra Petch', sans-serif !important; font-size: 1rem; font-weight: 700; text-align: start; }
-.shop-button:hover { background: #ff6666; }
+.shop-button:hover, .shop-profile-submit .btn-submit:hover { background: #ff6666; }
 .shop-basket > .shop-button { display: flex; }
 .shop-secondary-button { color: white !important; background: transparent; border-color: #777; }
 .shop-catalog-notes { color: var(--shop-muted); border-top: 1px solid #333; padding-top: 24px; margin-bottom: 28px; font-size: .875rem; }

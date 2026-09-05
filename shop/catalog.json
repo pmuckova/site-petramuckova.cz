@@ -962,6 +962,7 @@
       "price": 780,
       "priceType": "fixed",
       "image": "/assets/desktop/zapalovaci-civka-01.jpeg",
+      "photoMaxHeight": 360,
       "images": [
         {
           "src": "/assets/desktop/zapalovaci-civka-01.jpeg",
@@ -1077,6 +1078,7 @@
       "price": null,
       "priceType": "quote",
       "image": "/assets/desktop/palec-rozdelovace-omezovac-01.jpeg",
+      "photoMaxHeight": 360,
       "images": [
         {
           "src": "/assets/desktop/palec-rozdelovace-omezovac-01.jpeg",
@@ -1207,6 +1209,7 @@
       "price": 260,
       "priceType": "fixed",
       "image": "/assets/desktop/rozdelovace-01.jpeg",
+      "photoMaxHeight": 360,
       "variants": [
         {
           "id": "cap",
@@ -1540,7 +1543,7 @@
       "id": "cylinder-piston-kit",
       "price": 18000,
       "priceType": "fixed",
-      "image": "/assets/desktop/sada-valce-01.jpeg",
+      "image": "/assets/desktop/sada-valce-02.jpeg",
       "variants": [
         {
           "id": "complete",
@@ -1638,23 +1641,6 @@
       },
       "images": [
         {
-          "src": "/assets/desktop/sada-valce-01.jpeg",
-          "width": 2252,
-          "height": 4000,
-          "alt": {
-            "cs": "Píst a pístní kroužky Ø82 mm",
-            "en": "Ø82 mm piston and piston rings",
-            "de": "Kolben und Kolbenringe Ø82 mm",
-            "fr": "Piston et segments Ø82 mm",
-            "it": "Pistone e fasce elastiche Ø82 mm",
-            "es": "Pistón y segmentos Ø82 mm",
-            "pl": "Tłok i pierścienie tłokowe Ø82 mm",
-            "ru": "Поршень и поршневые кольца Ø82 мм",
-            "ja": "Ø82 mm ピストンとピストンリング",
-            "zh": "Ø82 mm 活塞和活塞环"
-          }
-        },
-        {
           "src": "/assets/desktop/sada-valce-02.jpeg",
           "width": 4000,
           "height": 2252,
@@ -1669,6 +1655,23 @@
             "ru": "Цилиндр, поршень, поршневые кольца и поршневой палец Ø82 мм",
             "ja": "Ø82 mm シリンダー、ピストン、ピストンリング、ピストンピン",
             "zh": "Ø82 mm 气缸、活塞、活塞环和活塞销"
+          }
+        },
+        {
+          "src": "/assets/desktop/sada-valce-01.jpeg",
+          "width": 2252,
+          "height": 4000,
+          "alt": {
+            "cs": "Píst a pístní kroužky Ø82 mm",
+            "en": "Ø82 mm piston and piston rings",
+            "de": "Kolben und Kolbenringe Ø82 mm",
+            "fr": "Piston et segments Ø82 mm",
+            "it": "Pistone e fasce elastiche Ø82 mm",
+            "es": "Pistón y segmentos Ø82 mm",
+            "pl": "Tłok i pierścienie tłokowe Ø82 mm",
+            "ru": "Поршень и поршневые кольца Ø82 мм",
+            "ja": "Ø82 mm ピストンとピストンリング",
+            "zh": "Ø82 mm 活塞和活塞环"
           }
         }
       ]
@@ -1817,6 +1820,7 @@
       "price": 1600,
       "priceType": "approx",
       "image": "/assets/desktop/repas-rozdelovac-01.jpeg",
+      "photoMaxHeight": 360,
       "images": [
         {
           "src": "/assets/desktop/repas-rozdelovac-01.jpeg",
