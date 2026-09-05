@@ -173,7 +173,7 @@ class ShopBuildTests(unittest.TestCase):
             'connecting-rod': [('160', 12500), ('156', 11500), ('156-engitec', 12500)],
             'ignition-coil': [('contact', 780), ('contactless', 1100)],
             'distributor-parts': [('cap', 260), ('wiring', 280), ('contacts', 150), ('capacitor', 180)],
-            'head-gasket': [('80-5', 620), ('82-0', 620), ('stock', 160)],
+            'head-gasket': [('80-5', 620), ('82-0', 620), ('stock', 160), ('custom', None)],
             'cylinder-piston-kit': [('complete', 18000), ('pistons-rings', 10400), ('rings', 1600)],
         }
         for lang, soup in self.pages():
@@ -191,15 +191,88 @@ class ShopBuildTests(unittest.TestCase):
                     self.assertEqual(len(soup.find(id=product_id).select('input[name=option]')), len(prices))
                 self.assertFalse(soup.select('#head-gasket select[data-order-variant]'))
                 for product_id in ('distributor-parts', 'cylinder-piston-kit', 'carburetor-38-38'):
-                    self.assertTrue(soup.find(id=product_id).select_one('img[data-placeholder]'))
+                    self.assertFalse(soup.find(id=product_id).select_one('img[data-placeholder]'))
                 self.assertEqual(products['carburetor-38-38']['price'], 7900)
                 self.assertEqual(products['distributor-overhaul']['priceType'], 'approx')
                 rings = products['copper-rings']['translations'][lang]
                 self.assertNotIn(' - ', rings['name'])
-                self.assertIn('40', rings['description'])
+                self.assertEqual(rings['description'], '')
                 if lang == 'cs':
                     self.assertEqual(rings['name'], 'Vymezovací Cu kroužky pod válce')
-                    self.assertIn('Cena dle rozměrů a množství od 40 Kč.', rings['description'])
+                    self.assertEqual(rings['optionName'], 'Pro motory TAZ')
+                    self.assertEqual(rings['optionDescription'], 'Cena dle rozměrů a množství')
+
+    def test_custom_gasket_has_quote_price_and_typed_required_option_fields(self):
+        for lang, soup in self.pages():
+            config = json.loads(soup.select_one('#shop-config').string)
+            product = next(product for product in config['products'] if product['id'] == 'head-gasket')
+            option = product['options'][-1]
+            self.assertEqual((option['id'], option['price'], option['priceType']), ('custom', None, 'quote'))
+            form = soup.select_one('#item-head-gasket')
+            self.assertEqual(form.select_one('#head-gasket-option-custom-price').text, config['text']['quote'])
+            self.assertEqual(len(soup.select('#head-gasket .shop-description')), 1)
+            fields = form.select('[data-order-field]')
+            self.assertEqual([field['name'] for field in fields], ['spacing', 'thickness'])
+            for field, key in zip(fields, ('gasketSpacing', 'gasketThickness')):
+                self.assertTrue(field.has_attr('required') and field.has_attr('disabled'))
+                self.assertTrue(field.find_parent('tr').has_attr('hidden'))
+                self.assertEqual(field.find_parent('tr')['data-order-field-row'], 'custom')
+                self.assertEqual(form.find('label', attrs={'for': field['id']}).text, config['text'][key] + ' *')
+            self.assertEqual((fields[0]['type'], fields[0]['maxlength']), ('text', '200'))
+            self.assertFalse(fields[0].has_attr('min'))
+            self.assertEqual((fields[1]['type'], fields[1]['min'], fields[1]['step']), ('number', '0', 'any'))
+            self.assertTrue(fields[1].has_attr('data-positive'))
+            self.assertEqual(fields[1].find_next_sibling('span').text, config['text']['positiveNumber'])
+            if lang == 'cs':
+                self.assertEqual(option['name'], 'Na přání')
+                self.assertEqual(config['text']['gasketSpacing'], 'Rozteč (mm)')
+                self.assertEqual(config['text']['gasketThickness'], 'Tloušťka (mm)')
+
+    def test_single_option_descriptions_and_revised_product_copy_in_every_locale(self):
+        products = {product['id']: product for product in self.catalog['products']}
+        for lang, soup in self.pages():
+            for product_id in ('copper-rings', 'distributor-overhaul'):
+                product = products[product_id]
+                option = standard_options(product, lang)[0]
+                self.assertEqual(option['name'], product['translations'][lang]['optionName'])
+                self.assertEqual(option['description'], product['translations'][lang]['optionDescription'])
+                self.assertTrue(option['description'])
+                card = soup.find(id=product_id)
+                self.assertEqual(card.select_one('.shop-profile-description').text, option['description'])
+                self.assertEqual(card.select_one('.shop-profile-price[rowspan]')['rowspan'], '2')
+            self.assertEqual(len(soup.select('#carburetor-38-38 .shop-description')), 2)
+            self.assertEqual(len(soup.select('#distributor-overhaul .shop-description')), 3)
+            self.assertFalse(soup.select('#copper-rings .shop-product-content'))
+            if lang == 'cs':
+                self.assertEqual(soup.select_one('#name-distributor-parts').text, 'Rozdělovače – náhradní díly')
+                self.assertEqual(soup.select_one('#name-carburetor-38-38').text, 'Dvojitý karburátor 38/38')
+                self.assertEqual(soup.select('#carburetor-38-38 .shop-description')[1].text,
+                                 'Doporučujeme doladění karburátoru na motorové brzdě (na dotaz).')
+                self.assertEqual([p.text for p in soup.select('#distributor-overhaul .shop-description')], [
+                    'V ceně nejsou zahrnuty náhradní díly – kontakty, kondenzátor, cívka a jiné.',
+                    'Pouze rozdělovače CZ výroby – u čínských nebo polských kopií nemůžeme zaručit správnou funkci.',
+                    'Na úpravu dodejte vždy umyté a odmaštěné díly.'])
+
+    def test_invalid_quote_overrides_and_option_field_types_fail_before_rendering(self):
+        for mutate in (
+            lambda v: v.update(price=620),
+            lambda v: v.update(priceType='fixed'),
+            lambda v: v.update(priceType='unknown'),
+            lambda v: v['fields'][0].update(type='unknown'),
+            lambda v: v['fields'][0].update(maxLength=0),
+            lambda v: v['fields'][0].update(maxLength=201),
+            lambda v: v['fields'][0].update(maxLength=True),
+            lambda v: v['fields'][0].update(labelKey='missing'),
+            lambda v: v['fields'][0].update(minimumField='thickness'),
+            lambda v: v['fields'][1].update(minimumField='spacing'),
+            lambda v: v['fields'][1].update(minimumField='missing'),
+            lambda v: v['fields'][1].update(minimumField='thickness'),
+        ):
+            invalid = json.loads(json.dumps(self.catalog))
+            gasket = next(product for product in invalid['products'] if product['id'] == 'head-gasket')
+            mutate(gasket['variants'][-1])
+            with patch('build_shop.json.loads', return_value=invalid), self.assertRaises(ValueError):
+                load_catalog()
 
     def test_invalid_option_groups_prices_and_legacy_mappings_fail_before_rendering(self):
         for mutate in (
@@ -222,6 +295,8 @@ class ShopBuildTests(unittest.TestCase):
                  'translations': {lang: {'name': 'Custom'} for lang in self.catalog['languages']}},
                 {'id': 'stock', 'variantIds': ['stock'],
                  'translations': {lang: {'name': 'Stock'} for lang in self.catalog['languages']}},
+                {'id': 'bespoke', 'variantIds': ['custom'],
+                 'translations': {lang: {'name': 'Bespoke'} for lang in self.catalog['languages']}},
             ]
             mutate(gasket)
             with patch('build_shop.json.loads', return_value=invalid), self.assertRaises(ValueError):
@@ -241,6 +316,8 @@ class ShopBuildTests(unittest.TestCase):
         button = rules['.shop-profile-submit .btn-submit']
         self.assertEqual(button['height'], '42px')
         self.assertEqual(button['padding'], '0')
+        self.assertEqual(button['box-shadow'], 'none')
+        self.assertEqual(rules['.shop-profile-submit .btn-submit:hover']['box-shadow'], 'none')
         for _, soup in self.pages():
             self.assertEqual(len(soup.select('.shop-profile-submit .btn-submit')), len(self.catalog['products']))
             self.assertNotIn(soup.select_one('#order-prepare'), soup.select('.shop-profile-submit .btn-submit'))
@@ -250,7 +327,11 @@ class ShopBuildTests(unittest.TestCase):
             config = json.loads(soup.select_one('#shop-config').string)
             rotor = next(product for product in config['products'] if product['id'] == 'distributor-rotor')
             self.assertEqual([option['id'] for option in rotor['options']], ['4800-5100', 'custom', 'original'])
+            self.assertEqual(rotor['options'][2]['description'], '')
             form = soup.select_one('#item-distributor-rotor')
+            original = form.select_one('input[value="original"]')
+            self.assertFalse(original.has_attr('aria-describedby'))
+            self.assertFalse(original.find_parent('tbody').select('.shop-profile-description'))
             self.assertEqual(len(form.select('input[name=option]')), 3)
             self.assertEqual(len(form.select('[data-order-field]')), 2)
             self.assertEqual([field['data-order-field'] for field in form.select('[data-order-field]')], ['min-rpm', 'max-rpm'])
@@ -273,7 +354,6 @@ class ShopBuildTests(unittest.TestCase):
             if lang == 'cs':
                 self.assertEqual([option['name'] for option in rotor['options']],
                                  ['Upravený na 4800-5100 ot/min', 'Upravený na přání', 'Originál Bosch / Facet, EPS'])
-                self.assertEqual(rotor['options'][2]['description'], 'žádné levné náhrady!')
                 self.assertEqual(resonance.select_one('.shop-profile-method').text, 'TAZ 1,43 – TAZ 1,6')
                 self.assertEqual(resonance.select_one('.shop-description').text, 'Rezonanční výfuk montovaný na sériový litinový svod.')
 
@@ -570,6 +650,9 @@ class ShopBuildTests(unittest.TestCase):
             'connecting-rod': [('ojnice-h-kovana-01.jpeg', 4000, 2252)],
             'ignition-coil': [('zapalovaci-civka-01.jpeg', 2252, 4000)],
             'distributor-rotor': [('palec-rozdelovace-omezovac-01.jpeg', 2046, 2048)],
+            'distributor-parts': [('rozdelovace-01.jpeg', 1086, 1448)],
+            'cylinder-piston-kit': [('sada-valce-01.jpeg', 2252, 4000), ('sada-valce-02.jpeg', 4000, 2252)],
+            'carburetor-38-38': [('karburator.jpeg', 3376, 2252)],
             'distributor-overhaul': [('repas-rozdelovac-01.jpeg', 600, 800)],
         }
         for lang, soup in self.pages():

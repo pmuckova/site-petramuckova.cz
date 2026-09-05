@@ -9,8 +9,9 @@
     function lineKey(id, variant = '') { return id + ':' + variant; }
     function basketLineKey(item) {
         if (item.lineId) return item.id + ':@' + item.lineId;
-        const parameters = Object.keys(item.parameters || {}).sort().map(key => key + '=' + item.parameters[key]);
-        return lineKey(item.id, item.variant) + (parameters.length ? ':' + parameters.join(',') : '');
+        // Structured keys keep free-text specifications containing punctuation distinct.
+        const parameters = Object.keys(item.parameters || {}).sort().map(key => [key, item.parameters[key]]);
+        return lineKey(item.id, item.variant) + (parameters.length ? ':' + JSON.stringify(parameters) : '');
     }
 
     function positiveInteger(value) {
@@ -18,12 +19,29 @@
             && Number.isSafeInteger(Number(value)) && Number(value) > 0;
     }
 
+    function normaliseOrderParameter(value, field) {
+        if (field.type === 'text') {
+            if (typeof value !== 'string') return null;
+            const text = value.replace(/[\s\u0000-\u001f\u007f]+/g, ' ').trim();
+            return text && text.length <= field.maxLength ? text : null;
+        }
+        if (field.type === 'decimal') {
+            if (typeof value !== 'string' && typeof value !== 'number') return null;
+            const decimal = String(value).trim().replace(',', '.');
+            if (decimal.length > 32 || !/^(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(decimal)
+                || !Number.isFinite(Number(decimal)) || Number(decimal) <= 0) return null;
+            return String(Number(decimal));
+        }
+        return positiveInteger(value) ? String(Number(value)) : null;
+    }
+
     function normaliseOrderParameters(value, product, variantId) {
         const fields = product.variants.find(variant => variant.id === variantId)?.fields || [];
         const parameters = {};
         for (const field of fields) {
-            if (!positiveInteger(value?.[field.id])) return null;
-            parameters[field.id] = String(Number(value[field.id]));
+            const parameter = normaliseOrderParameter(value?.[field.id], field);
+            if (parameter === null) return null;
+            parameters[field.id] = parameter;
         }
         if (fields.some(field => field.minimumField && Number(parameters[field.id]) < Number(parameters[field.minimumField]))) return null;
         return parameters;
@@ -149,7 +167,8 @@
         if (!product) return null;
         if (product.kind !== 'wizard') {
             const variant = product.variants.find(variant => variant.id === item.variant);
-            return { price: variant?.price ?? product.price, priceType: product.priceType };
+            return { price: variant && Object.hasOwn(variant, 'price') ? variant.price : product.price,
+                priceType: variant?.priceType || product.priceType };
         }
         const profile = product.wizard.profiles.find(profile => profile.id === item.configuration?.profile);
         return profile ? { price: profile.price, priceType: 'fixed' } : null;
@@ -462,9 +481,11 @@
         const inputs = rows.map(row => row.querySelector('[data-order-field]'));
         function syncValidity() {
             inputs.forEach(input => {
-                const minimum = inputs.find(other => other.dataset.orderField === input.dataset.minimumField)?.value;
-                const invalid = !positiveInteger(input.value) || (positiveInteger(minimum) && Number(input.value) < Number(minimum));
-                input.setCustomValidity(!input.disabled && input.value && invalid ? message : '');
+                const field = { type: input.dataset.orderFieldType, maxLength: input.maxLength };
+                const parameter = normaliseOrderParameter(input.value, field);
+                const minimum = inputs.find(other => !other.disabled && other.dataset.orderField === input.dataset.minimumField)?.value;
+                const invalid = parameter === null || (minimum && Number(parameter) < Number(minimum));
+                input.setCustomValidity(!input.disabled && input.value && invalid ? input.dataset.orderFieldWarning || message : '');
             });
         }
         let refreshing = false;

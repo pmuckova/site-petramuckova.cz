@@ -1154,18 +1154,6 @@
             "ru": "Оригинал Bosch / Facet, EPS",
             "ja": "Bosch / Facet、EPS純正品",
             "zh": "Bosch / Facet、EPS原装"
-          },
-          "descriptions": {
-            "cs": "žádné levné náhrady!",
-            "en": "no cheap substitutes!",
-            "de": "keine billigen Ersatzprodukte!",
-            "fr": "pas de substituts bon marché !",
-            "it": "nessun sostituto economico!",
-            "es": "¡sin sustitutos baratos!",
-            "pl": "żadnych tanich zamienników!",
-            "ru": "никаких дешёвых заменителей!",
-            "ja": "安価な代替品ではありません！",
-            "zh": "绝非廉价替代品！"
           }
         }
       ],
@@ -1218,7 +1206,7 @@
       "id": "distributor-parts",
       "price": 260,
       "priceType": "fixed",
-      "image": null,
+      "image": "/assets/desktop/rozdelovace-01.jpeg",
       "variants": [
         {
           "id": "cap",
@@ -1291,43 +1279,43 @@
       ],
       "translations": {
         "cs": {
-          "name": "ND rozdělovače",
+          "name": "Rozdělovače – náhradní díly",
           "description": "Náhradní díly rozdělovače pro motory TAZ hasičských agregátů."
         },
         "en": {
-          "name": "Distributor spare parts",
+          "name": "Distributors – spare parts",
           "description": "Distributor spare parts for TAZ firefighting aggregate engines."
         },
         "de": {
-          "name": "Zündverteiler-Ersatzteile",
+          "name": "Zündverteiler – Ersatzteile",
           "description": "Ersatzteile für Zündverteiler von TAZ-Motoren in Feuerwehraggregaten."
         },
         "fr": {
-          "name": "Pièces détachées de distributeur",
+          "name": "Allumeurs – pièces détachées",
           "description": "Pièces de distributeur pour moteurs TAZ de groupes motopompes d’incendie."
         },
         "it": {
-          "name": "Ricambi dello spinterogeno",
+          "name": "Spinterogeni – ricambi",
           "description": "Ricambi dello spinterogeno per motori TAZ di gruppi antincendio."
         },
         "es": {
-          "name": "Recambios del distribuidor",
+          "name": "Distribuidores – recambios",
           "description": "Recambios del distribuidor para motores TAZ de equipos contra incendios."
         },
         "pl": {
-          "name": "Części zamienne rozdzielacza",
+          "name": "Aparaty zapłonowe – części zamienne",
           "description": "Części rozdzielacza do silników TAZ agregatów pożarniczych."
         },
         "ru": {
-          "name": "Запчасти распределителя зажигания",
+          "name": "Распределители зажигания – запчасти",
           "description": "Запчасти распределителя для двигателей TAZ пожарных агрегатов."
         },
         "ja": {
-          "name": "ディストリビューター用補修部品",
+          "name": "ディストリビューター – 補修部品",
           "description": "消防用ポンプユニットのTAZエンジン向けディストリビューター部品。"
         },
         "zh": {
-          "name": "分电器配件",
+          "name": "分电器 – 备件",
           "description": "适用于消防泵组TAZ发动机的分电器配件。"
         }
       },
@@ -1351,6 +1339,25 @@
           "id": "distributor-capacitor",
           "variant": "",
           "targetVariant": "capacitor"
+        }
+      ],
+      "images": [
+        {
+          "src": "/assets/desktop/rozdelovace-01.jpeg",
+          "width": 1086,
+          "height": 1448,
+          "alt": {
+            "cs": "Rozdělovače – náhradní díly",
+            "en": "Distributors – spare parts",
+            "de": "Zündverteiler – Ersatzteile",
+            "fr": "Allumeurs – pièces détachées",
+            "it": "Spinterogeni – ricambi",
+            "es": "Distribuidores – recambios",
+            "pl": "Aparaty zapłonowe – części zamienne",
+            "ru": "Распределители зажигания – запчасти",
+            "ja": "ディストリビューター – 補修部品",
+            "zh": "分电器 – 备件"
+          }
         }
       ]
     },
@@ -1446,48 +1453,79 @@
             "zh": "用于原厂TAZ 1.43（硅胶处理）"
           },
           "price": 160
+        },
+        {
+          "id": "custom",
+          "label": "Custom specification",
+          "translations": {
+            "cs": "Na přání",
+            "en": "Custom specification",
+            "de": "Nach Wunsch",
+            "fr": "Sur mesure",
+            "it": "Su richiesta",
+            "es": "A medida",
+            "pl": "Na życzenie",
+            "ru": "По индивидуальному заказу",
+            "ja": "特注",
+            "zh": "按需定制"
+          },
+          "price": null,
+          "priceType": "quote",
+          "fields": [
+            {
+              "id": "spacing",
+              "labelKey": "gasketSpacing",
+              "type": "text",
+              "maxLength": 200
+            },
+            {
+              "id": "thickness",
+              "labelKey": "gasketThickness",
+              "type": "decimal"
+            }
+          ]
         }
       ],
       "translations": {
         "cs": {
           "name": "Těsnění hlavy válců",
-          "description": "Pro motory se zvětšeným vrtáním, rozteč válců 88-88-88 mm, tloušťka 1,5 mm.\n\nDalší varianty (tloušťka, rozteče) na dotaz."
+          "description": "Pro motory se zvětšeným vrtáním, rozteč válců 88-88-88 mm, tloušťka 1,5 mm."
         },
         "en": {
           "name": "Cylinder head gasket",
-          "description": "For engines with an enlarged bore; cylinder spacing 88-88-88 mm, thickness 1.5 mm.\n\nOther thicknesses and cylinder spacings on request."
+          "description": "For engines with an enlarged bore; cylinder spacing 88-88-88 mm, thickness 1.5 mm."
         },
         "de": {
           "name": "Zylinderkopfdichtung",
-          "description": "Für Motoren mit vergrößerter Bohrung; Zylinderabstand 88-88-88 mm, Dicke 1,5 mm.\n\nAndere Dicken und Zylinderabstände auf Anfrage."
+          "description": "Für Motoren mit vergrößerter Bohrung; Zylinderabstand 88-88-88 mm, Dicke 1,5 mm."
         },
         "fr": {
           "name": "Joint de culasse",
-          "description": "Pour moteurs à alésage augmenté ; entraxe des cylindres 88-88-88 mm, épaisseur 1,5 mm.\n\nAutres épaisseurs et entraxes sur demande."
+          "description": "Pour moteurs à alésage augmenté ; entraxe des cylindres 88-88-88 mm, épaisseur 1,5 mm."
         },
         "it": {
           "name": "Guarnizione testa cilindri",
-          "description": "Per motori con alesaggio maggiorato; interasse cilindri 88-88-88 mm, spessore 1,5 mm.\n\nAltri spessori e interassi su richiesta."
+          "description": "Per motori con alesaggio maggiorato; interasse cilindri 88-88-88 mm, spessore 1,5 mm."
         },
         "es": {
           "name": "Junta de culata",
-          "description": "Para motores con diámetro de cilindro aumentado; distancia entre cilindros 88-88-88 mm, espesor 1,5 mm.\n\nOtros espesores y distancias entre cilindros bajo consulta."
+          "description": "Para motores con diámetro de cilindro aumentado; distancia entre cilindros 88-88-88 mm, espesor 1,5 mm."
         },
         "pl": {
           "name": "Uszczelka głowicy cylindrów",
-          "description": "Do silników o powiększonej średnicy cylindrów; rozstaw cylindrów 88-88-88 mm, grubość 1,5 mm.\n\nInne grubości i rozstawy na zapytanie."
+          "description": "Do silników o powiększonej średnicy cylindrów; rozstaw cylindrów 88-88-88 mm, grubość 1,5 mm."
         },
         "ru": {
           "name": "Прокладка головки блока цилиндров (ГБЦ)",
-          "description": "Для двигателей с увеличенным диаметром цилиндров; межосевые расстояния 88-88-88 мм, толщина 1,5 мм.\n\nДругие варианты толщины и межосевых расстояний по запросу."
+          "description": "Для двигателей с увеличенным диаметром цилиндров; межосевые расстояния 88-88-88 мм, толщина 1,5 мм."
         },
         "ja": {
           "name": "シリンダーヘッドガスケット",
-          "description": "ボアを拡大したエンジン用。ボアピッチ88-88-88 mm、厚さ1.5 mm。\n\nその他の厚さ・ボアピッチはお問い合わせください。"
+          "description": "ボアを拡大したエンジン用。ボアピッチ88-88-88 mm、厚さ1.5 mm。"
         },
         "zh": {
           "name": "气缸盖垫片",
-          "description": "用于扩缸发动机；缸间距88-88-88 mm，厚度1.5 mm。\n\n其他厚度和缸间距可咨询。"
+          "description": "用于扩缸发动机；缸间距88-88-88 mm，厚度1.5 mm。"
         }
       },
       "legacyItems": [
@@ -1502,7 +1540,7 @@
       "id": "cylinder-piston-kit",
       "price": 18000,
       "priceType": "fixed",
-      "image": null,
+      "image": "/assets/desktop/sada-valce-01.jpeg",
       "variants": [
         {
           "id": "complete",
@@ -1597,56 +1635,111 @@
           "name": "Ø82 mm气缸、活塞、活塞环、活塞销及卡簧套件",
           "description": "所有价格均为整台发动机（4缸）的价格。\n\n缸套下的调整垫片请咨询。"
         }
-      }
+      },
+      "images": [
+        {
+          "src": "/assets/desktop/sada-valce-01.jpeg",
+          "width": 2252,
+          "height": 4000,
+          "alt": {
+            "cs": "Píst a pístní kroužky Ø82 mm",
+            "en": "Ø82 mm piston and piston rings",
+            "de": "Kolben und Kolbenringe Ø82 mm",
+            "fr": "Piston et segments Ø82 mm",
+            "it": "Pistone e fasce elastiche Ø82 mm",
+            "es": "Pistón y segmentos Ø82 mm",
+            "pl": "Tłok i pierścienie tłokowe Ø82 mm",
+            "ru": "Поршень и поршневые кольца Ø82 мм",
+            "ja": "Ø82 mm ピストンとピストンリング",
+            "zh": "Ø82 mm 活塞和活塞环"
+          }
+        },
+        {
+          "src": "/assets/desktop/sada-valce-02.jpeg",
+          "width": 4000,
+          "height": 2252,
+          "alt": {
+            "cs": "Válec, píst, pístní kroužky a pístní čep Ø82 mm",
+            "en": "Ø82 mm cylinder, piston, piston rings and piston pin",
+            "de": "Zylinder, Kolben, Kolbenringe und Kolbenbolzen Ø82 mm",
+            "fr": "Cylindre, piston, segments et axe de piston Ø82 mm",
+            "it": "Cilindro, pistone, fasce elastiche e spinotto Ø82 mm",
+            "es": "Cilindro, pistón, segmentos y bulón Ø82 mm",
+            "pl": "Cylinder, tłok, pierścienie tłokowe i sworzeń tłokowy Ø82 mm",
+            "ru": "Цилиндр, поршень, поршневые кольца и поршневой палец Ø82 мм",
+            "ja": "Ø82 mm シリンダー、ピストン、ピストンリング、ピストンピン",
+            "zh": "Ø82 mm 气缸、活塞、活塞环和活塞销"
+          }
+        }
+      ]
     },
     {
       "id": "carburetor-38-38",
       "price": 7900,
       "priceType": "fixed",
-      "image": null,
+      "image": "/assets/desktop/karburator.jpeg",
       "variants": [],
       "translations": {
         "cs": {
-          "name": "Dvojitý karburátor 38/38 vč. úpravy",
-          "description": "Vhodný pro motory TAZ 2,0 a větší.\n\nKarburátor vč. úpravy, doporučujeme doladění karburátoru na motorové brzdě (na dotaz)."
+          "name": "Dvojitý karburátor 38/38",
+          "description": "Vhodný pro motory TAZ 2,0 a větší.\n\nDoporučujeme doladění karburátoru na motorové brzdě (na dotaz)."
         },
         "en": {
-          "name": "Twin-choke 38/38 carburetor including modification",
-          "description": "Suitable for TAZ 2.0 and larger engines.\n\nCarburetor including modification; we recommend final tuning on an engine dynamometer (on request)."
+          "name": "Twin-choke 38/38 carburetor",
+          "description": "Suitable for TAZ 2.0 and larger engines.\n\nWe recommend final tuning on an engine dynamometer (on request)."
         },
         "de": {
-          "name": "Doppelvergaser 38/38 inklusive Modifikation",
-          "description": "Geeignet für TAZ 2,0 und größere Motoren.\n\nVergaser inklusive Modifikation; wir empfehlen die Feinabstimmung auf einem Motorenprüfstand (auf Anfrage)."
+          "name": "Doppelvergaser 38/38",
+          "description": "Geeignet für TAZ 2,0 und größere Motoren.\n\nWir empfehlen die Feinabstimmung des Vergasers auf dem Motorprüfstand (auf Anfrage)."
         },
         "fr": {
-          "name": "Carburateur double corps 38/38 avec modification",
-          "description": "Adapté aux moteurs TAZ 2,0 et plus.\n\nCarburateur avec modification ; nous recommandons un réglage final au banc moteur (sur demande)."
+          "name": "Carburateur double corps 38/38",
+          "description": "Adapté aux moteurs TAZ 2,0 et plus.\n\nNous recommandons un réglage final du carburateur sur banc moteur (sur demande)."
         },
         "it": {
-          "name": "Carburatore doppio corpo 38/38 con modifica",
-          "description": "Adatto ai motori TAZ 2,0 e superiori.\n\nCarburatore con modifica; consigliamo la messa a punto finale al banco motore (su richiesta)."
+          "name": "Carburatore doppio corpo 38/38",
+          "description": "Adatto ai motori TAZ 2,0 e superiori.\n\nConsigliamo la messa a punto finale del carburatore al banco prova motore (su richiesta)."
         },
         "es": {
-          "name": "Carburador de doble cuerpo 38/38 con modificación",
-          "description": "Adecuado para motores TAZ 2,0 y superiores.\n\nCarburador con modificación; recomendamos el ajuste final en banco de motores (bajo consulta)."
+          "name": "Carburador de doble cuerpo 38/38",
+          "description": "Adecuado para motores TAZ 2,0 y superiores.\n\nRecomendamos el ajuste final del carburador en banco de pruebas de motor (bajo consulta)."
         },
         "pl": {
-          "name": "Gaźnik dwugardzielowy 38/38 z modyfikacją",
-          "description": "Odpowiedni do silników TAZ 2,0 i większych.\n\nGaźnik z modyfikacją; zalecamy końcowe strojenie na hamowni silnikowej (na zapytanie)."
+          "name": "Gaźnik dwugardzielowy 38/38",
+          "description": "Odpowiedni do silników TAZ 2,0 i większych.\n\nZalecamy końcowe strojenie gaźnika na hamowni silnikowej (na zapytanie)."
         },
         "ru": {
-          "name": "Двухкамерный карбюратор 38/38 с доработкой",
-          "description": "Подходит для двигателей TAZ 2,0 и большего объёма.\n\nКарбюратор с доработкой; рекомендуем окончательную настройку на моторном стенде (по запросу)."
+          "name": "Двухкамерный карбюратор 38/38",
+          "description": "Подходит для двигателей TAZ 2,0 и большего объёма.\n\nРекомендуем окончательную настройку карбюратора на моторном стенде (по запросу)."
         },
         "ja": {
-          "name": "加工込み38/38ツインバレルキャブレター",
-          "description": "TAZ 2.0以上のエンジンに適しています。\n\n加工込みのキャブレターです。エンジンダイナモでの最終調整をお勧めします（要問い合わせ）。"
+          "name": "38/38 ツインチョークキャブレター",
+          "description": "TAZ 2.0以上のエンジンに適しています。\n\nエンジンダイナモでのキャブレターの最終調整をお勧めします（要相談）。"
         },
         "zh": {
-          "name": "38/38双腔化油器（含改装）",
-          "description": "适用于TAZ 2.0及更大排量发动机。\n\n化油器含改装；建议在发动机测功机上进行最终调校（请咨询）。"
+          "name": "38/38 双腔化油器",
+          "description": "适用于TAZ 2.0及更大排量发动机。\n\n建议在发动机测功机上对化油器进行最终调校（请咨询）。"
         }
-      }
+      },
+      "images": [
+        {
+          "src": "/assets/desktop/karburator.jpeg",
+          "width": 3376,
+          "height": 2252,
+          "alt": {
+            "cs": "Dvojitý karburátor 38/38",
+            "en": "Twin-choke 38/38 carburetor",
+            "de": "Doppelvergaser 38/38",
+            "fr": "Carburateur double corps 38/38",
+            "it": "Carburatore doppio corpo 38/38",
+            "es": "Carburador de doble cuerpo 38/38",
+            "pl": "Gaźnik dwugardzielowy 38/38",
+            "ru": "Двухкамерный карбюратор 38/38",
+            "ja": "38/38 ツインチョークキャブレター",
+            "zh": "38/38 双腔化油器"
+          }
+        }
+      ]
     },
     {
       "id": "copper-rings",
@@ -1657,43 +1750,63 @@
       "translations": {
         "cs": {
           "name": "Vymezovací Cu kroužky pod válce",
-          "description": "Pro motory TAZ hasičských agregátů.\n\nCena dle rozměrů a množství od 40 Kč."
+          "description": "",
+          "optionName": "Pro motory TAZ",
+          "optionDescription": "Cena dle rozměrů a množství"
         },
         "en": {
           "name": "Copper shim rings under cylinders",
-          "description": "For TAZ firefighting aggregate engines.\n\nPrice according to dimensions and quantity from 40 CZK."
+          "description": "",
+          "optionName": "For TAZ engines",
+          "optionDescription": "Price according to dimensions and quantity"
         },
         "de": {
           "name": "Kupfer-Ausgleichsringe unter die Zylinder",
-          "description": "Für TAZ-Motoren von Feuerwehraggregaten.\n\nPreis nach Abmessungen und Menge ab 40 CZK."
+          "description": "",
+          "optionName": "Für TAZ-Motoren",
+          "optionDescription": "Preis je nach Abmessungen und Menge"
         },
         "fr": {
           "name": "Bagues d'espacement en Cu sous les cylindres",
-          "description": "Pour moteurs TAZ de groupes de pompage incendie.\n\nPrix selon dimensions et quantité à partir de 40 CZK."
+          "description": "",
+          "optionName": "Pour moteurs TAZ",
+          "optionDescription": "Prix selon les dimensions et la quantité"
         },
         "it": {
           "name": "Anelli di spessoramento in rame sotto i cilindri",
-          "description": "Per motori TAZ di motopompe antincendio.\n\nPrezzo secondo dimensioni e quantità da 40 CZK."
+          "description": "",
+          "optionName": "Per motori TAZ",
+          "optionDescription": "Prezzo in base alle dimensioni e alla quantità"
         },
         "es": {
           "name": "Anillos espaciadores de cobre bajo los cilindros",
-          "description": "Para motores TAZ de equipos de bombeo contra incendios.\n\nPrecio según dimensiones y cantidad desde 40 CZK."
+          "description": "",
+          "optionName": "Para motores TAZ",
+          "optionDescription": "Precio según las dimensiones y la cantidad"
         },
         "pl": {
           "name": "Miedziane pierścienie dystansowe pod cylindry",
-          "description": "Do silników TAZ agregatów pożarniczych.\n\nCena wg wymiarów i ilości od 40 CZK."
+          "description": "",
+          "optionName": "Do silników TAZ",
+          "optionDescription": "Cena zależna od wymiarów i ilości"
         },
         "ru": {
           "name": "Регулировочные медные кольца под гильзы",
-          "description": "Для двигателей TAZ пожарных агрегатов.\n\nЦена в зависимости от размеров и количества от 40 CZK."
+          "description": "",
+          "optionName": "Для двигателей TAZ",
+          "optionDescription": "Цена зависит от размеров и количества"
         },
         "ja": {
           "name": "シリンダーライナー用調整銅リング",
-          "description": "消防用ポンプユニットの TAZ エンジン用。\n\nサイズと数量に応じた価格、最低価格： 40 CZK."
+          "description": "",
+          "optionName": "TAZエンジン用",
+          "optionDescription": "価格は寸法と数量により異なります"
         },
         "zh": {
           "name": "缸套下调节铜环",
-          "description": "适用于消防泵组的 TAZ 发动机。\n\n价格视尺寸和数量而定，起价 40 CZK."
+          "description": "",
+          "optionName": "适用于 TAZ 发动机",
+          "optionDescription": "价格取决于尺寸和数量"
         }
       },
       "dealerPrice": null,
@@ -1727,43 +1840,63 @@
       "translations": {
         "cs": {
           "name": "Repase a úprava rozdělovače",
-          "description": "V ceně nejsou zahrnuty ND (kontakty, kondenzátor, cívka...).\n\nPouze rozdělovače CZ výroby (u čínských/polských kopií nemůžeme zaručit správnou funkci).\n\nNa úpravu dodejte vždy umyté a odmaštěné díly.\n\nCena dle rozsahu prací, cca 1 600 Kč."
+          "description": "V ceně nejsou zahrnuty náhradní díly – kontakty, kondenzátor, cívka a jiné.\n\nPouze rozdělovače CZ výroby – u čínských nebo polských kopií nemůžeme zaručit správnou funkci.\n\nNa úpravu dodejte vždy umyté a odmaštěné díly.",
+          "optionName": "Repase a úprava",
+          "optionDescription": "Cena dle rozsahu prací"
         },
         "en": {
           "name": "Distributor overhaul and modification",
-          "description": "Spare parts (contacts, condenser, coil, etc.) are not included in the price.\n\nCzech-made distributors only; we cannot guarantee correct operation of Chinese/Polish copies.\n\nAlways supply washed and degreased parts for modification.\n\nPrice depends on the scope of work, approximately CZK 1,600."
+          "description": "Spare parts are not included in the price – contacts, condenser, coil and other components.\n\nCzech-made distributors only – we cannot guarantee correct operation of Chinese or Polish copies.\n\nAlways supply washed and degreased parts for modification.",
+          "optionName": "Overhaul and modification",
+          "optionDescription": "Price depends on the scope of work"
         },
         "de": {
           "name": "Überholung und Modifikation des Zündverteilers",
-          "description": "Ersatzteile (Kontakte, Kondensator, Spule usw.) sind nicht im Preis enthalten.\n\nNur Zündverteiler aus tschechischer Produktion; bei chinesischen/polnischen Kopien können wir die korrekte Funktion nicht garantieren.\n\nTeile zur Modifikation immer gewaschen und entfettet anliefern.\n\nPreis nach Arbeitsumfang, ca. 1.600 CZK."
+          "description": "Ersatzteile sind nicht im Preis enthalten – Kontakte, Kondensator, Zündspule und weitere Komponenten.\n\nNur Zündverteiler aus tschechischer Produktion – bei chinesischen oder polnischen Nachbauten können wir die korrekte Funktion nicht gewährleisten.\n\nTeile zur Modifikation immer gewaschen und entfettet anliefern.",
+          "optionName": "Überholung und Modifikation",
+          "optionDescription": "Preis je nach Arbeitsumfang"
         },
         "fr": {
           "name": "Réfection et modification du distributeur",
-          "description": "Les pièces détachées (contacts, condensateur, bobine, etc.) ne sont pas comprises dans le prix.\n\nUniquement les distributeurs de fabrication tchèque ; nous ne pouvons pas garantir le bon fonctionnement des copies chinoises/polonaises.\n\nToujours fournir les pièces lavées et dégraissées pour modification.\n\nPrix selon l’étendue des travaux, environ 1 600 CZK."
+          "description": "Les pièces détachées ne sont pas comprises dans le prix – contacts, condensateur, bobine et autres composants.\n\nUniquement les allumeurs de fabrication tchèque – nous ne pouvons pas garantir le bon fonctionnement des copies chinoises ou polonaises.\n\nToujours fournir les pièces lavées et dégraissées pour modification.",
+          "optionName": "Réfection et modification",
+          "optionDescription": "Prix selon l’étendue des travaux"
         },
         "it": {
           "name": "Revisione e modifica dello spinterogeno",
-          "description": "I ricambi (contatti, condensatore, bobina, ecc.) non sono inclusi nel prezzo.\n\nSolo spinterogeni di produzione ceca; non possiamo garantire il corretto funzionamento delle copie cinesi/polacche.\n\nConsegnare sempre i componenti lavati e sgrassati per la modifica.\n\nPrezzo in base all’entità del lavoro, circa 1.600 CZK."
+          "description": "I ricambi non sono inclusi nel prezzo – contatti, condensatore, bobina e altri componenti.\n\nSolo spinterogeni di produzione ceca – non possiamo garantire il corretto funzionamento delle copie cinesi o polacche.\n\nConsegnare sempre i componenti lavati e sgrassati per la modifica.",
+          "optionName": "Revisione e modifica",
+          "optionDescription": "Prezzo in base all’entità dei lavori"
         },
         "es": {
           "name": "Reacondicionamiento y modificación del distribuidor",
-          "description": "El precio no incluye recambios (contactos, condensador, bobina, etc.).\n\nSolo distribuidores de fabricación checa; no podemos garantizar el funcionamiento correcto de las copias chinas/polacas.\n\nEntregue siempre las piezas lavadas y desengrasadas para su modificación.\n\nPrecio según el alcance del trabajo, aproximadamente 1600 CZK."
+          "description": "Los recambios no están incluidos en el precio – contactos, condensador, bobina y otros componentes.\n\nSolo distribuidores de fabricación checa – no podemos garantizar el funcionamiento correcto de las copias chinas o polacas.\n\nEntregue siempre las piezas lavadas y desengrasadas para su modificación.",
+          "optionName": "Revisión y modificación",
+          "optionDescription": "Precio según el alcance del trabajo"
         },
         "pl": {
           "name": "Regeneracja i modyfikacja rozdzielacza",
-          "description": "Cena nie obejmuje części zamiennych (styków, kondensatora, cewki itp.).\n\nWyłącznie rozdzielacze produkcji czeskiej; w przypadku kopii chińskich/polskich nie możemy zagwarantować prawidłowego działania.\n\nDo modyfikacji zawsze dostarczaj części umyte i odtłuszczone.\n\nCena zależy od zakresu prac, około 1600 CZK."
+          "description": "Cena nie obejmuje części zamiennych – styków, kondensatora, cewki i innych elementów.\n\nTylko aparaty zapłonowe produkcji czeskiej – nie możemy zagwarantować prawidłowego działania kopii chińskich lub polskich.\n\nDo modyfikacji zawsze dostarczaj części umyte i odtłuszczone.",
+          "optionName": "Regeneracja i modyfikacja",
+          "optionDescription": "Cena zależna od zakresu prac"
         },
         "ru": {
           "name": "Восстановление и доработка распределителя",
-          "description": "Запчасти (контакты, конденсатор, катушка и т. п.) в цену не включены.\n\nТолько распределители чешского производства; для китайских/польских копий мы не можем гарантировать правильную работу.\n\nДля доработки всегда предоставляйте вымытые и обезжиренные детали.\n\nЦена зависит от объёма работ, ориентировочно 1600 CZK."
+          "description": "Запасные части не включены в стоимость – контакты, конденсатор, катушка и другие компоненты.\n\nТолько распределители чешского производства – мы не можем гарантировать правильную работу китайских или польских копий.\n\nДля доработки всегда предоставляйте вымытые и обезжиренные детали.",
+          "optionName": "Восстановление и доработка",
+          "optionDescription": "Цена зависит от объёма работ"
         },
         "ja": {
           "name": "ディストリビューターのオーバーホール・加工",
-          "description": "交換部品（接点、コンデンサー、コイルなど）は価格に含まれません。\n\nチェコ製ディストリビューターのみ対応します。中国製・ポーランド製のコピー品については正常な動作を保証できません。\n\n加工に出す部品は必ず洗浄・脱脂してください。\n\n価格は作業範囲により異なり、目安は1,600 CZKです。"
+          "description": "接点、コンデンサー、コイルなどの補修部品は価格に含まれません。\n\nチェコ製ディストリビューターのみ対応 – 中国製またはポーランド製のコピー品は正常動作を保証できません。\n\n加工に出す部品は必ず洗浄・脱脂してください。",
+          "optionName": "オーバーホール・改造",
+          "optionDescription": "価格は作業内容により異なります"
         },
         "zh": {
           "name": "分电器翻新与改装",
-          "description": "价格不含配件（触点、电容器、线圈等）。\n\n仅限捷克制造的分电器；对于中国或波兰的仿制品，我们无法保证正常工作。\n\n送来改装的零件必须清洗并脱脂。\n\n价格视工作范围而定，约为1,600 CZK。"
+          "description": "价格不含备件 – 触点、电容器、点火线圈及其他部件。\n\n仅适用于捷克制造的分电器 – 我们无法保证中国或波兰仿制品正常工作。\n\n送来改装的零件必须清洗并脱脂。",
+          "optionName": "翻修和改装",
+          "optionDescription": "价格取决于工作范围"
         }
       },
       "dealerPrice": 1450,

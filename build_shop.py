@@ -61,7 +61,11 @@ def load_catalog(root=ROOT):
             validate_wizard(product, data['languages'])
         else:
             for variant in product['variants']:
-                if 'price' in variant and (type(variant['price']) is not int or variant['price'] <= 0):
+                variant_price = variant.get('price', price)
+                variant_price_type = variant.get('priceType', product['priceType'])
+                if (variant_price_type not in ('fixed', 'from', 'approx', 'quote')
+                        or (variant_price_type == 'quote' and variant_price is not None)
+                        or (variant_price_type != 'quote' and (type(variant_price) is not int or variant_price <= 0))):
                     raise ValueError(f'Invalid variant price: {product_id}')
                 if 'translations' in variant and any(not variant['translations'].get(lang) for lang in data['languages']):
                     raise ValueError(f'Missing variant translation: {product_id}')
@@ -72,8 +76,13 @@ def load_catalog(root=ROOT):
                 if len(set(field_ids)) != len(field_ids) or any(not re.fullmatch(r'[a-z][a-z0-9-]*', key) for key in field_ids):
                     raise ValueError(f'Invalid option field IDs: {product_id}')
                 for field in fields:
-                    if (field.get('labelKey') not in ('minRpm', 'maxRpm')
-                            or ('minimumField' in field and (field['minimumField'] not in field_ids or field['minimumField'] == field['id']))):
+                    field_type = field.get('type', 'integer')
+                    minimum = next((other for other in fields if other['id'] == field.get('minimumField')), None)
+                    if (field.get('labelKey') not in ('minRpm', 'maxRpm', 'gasketSpacing', 'gasketThickness')
+                            or field_type not in ('integer', 'decimal', 'text')
+                            or (field_type == 'text' and (type(field.get('maxLength')) is not int or not 1 <= field['maxLength'] <= 200))
+                            or ('minimumField' in field and (not minimum or minimum is field
+                                or field_type == 'text' or minimum.get('type', 'integer') == 'text'))):
                         raise ValueError(f'Invalid option field: {product_id}')
             if 'options' in product:
                 option_ids = [option['id'] for option in product['options']]
@@ -85,7 +94,8 @@ def load_catalog(root=ROOT):
                 for option in product['options']:
                     if not option['variantIds'] or any(not option['translations'].get(lang, {}).get('name') for lang in data['languages']):
                         raise ValueError(f'Incomplete option group: {product_id}')
-                    prices = {variant.get('price', price) for variant in product['variants'] if variant['id'] in option['variantIds']}
+                    prices = {(variant.get('price', price), variant.get('priceType', product['priceType']))
+                              for variant in product['variants'] if variant['id'] in option['variantIds']}
                     if len(prices) != 1:
                         raise ValueError(f'Option group must have one displayed price: {product_id}')
         for lang in data['languages']:
@@ -177,15 +187,16 @@ def standard_options(product, lang):
             'id': option['id'], 'name': option['translations'][lang]['name'],
             'description': option['translations'][lang].get('description', ''),
             'price': next(variant for variant in variants if variant['id'] in option['variantIds']).get('price', product['price']),
-            'priceType': product['priceType'],
+            'priceType': next(variant for variant in variants if variant['id'] in option['variantIds']).get('priceType', product['priceType']),
             'variants': [variant for variant in variants if variant['id'] in option['variantIds']],
         } for option in product['options']]
     return [{
         'id': variant['id'] if variant else 'standard',
         'name': variant['label'] if variant else product['translations'][lang].get('optionName', product['translations'][lang]['name']),
-        'description': variant.get('description', '') if variant else '',
+        'description': variant.get('description', '') if variant else product['translations'][lang].get('optionDescription', ''),
         'price': variant.get('price', product['price']) if variant else product['price'],
-        'priceType': product['priceType'], 'variants': [variant] if variant else [],
+        'priceType': variant.get('priceType', product['priceType']) if variant else product['priceType'],
+        'variants': [variant] if variant else [],
     } for variant in (variants or [None])]
 
 
@@ -228,11 +239,21 @@ def order_item_form(product, lang, t):
             for field in variant.get('fields', []):
                 field_id = f'{prefix}-{escape(variant["id"])}-{escape(field["id"])}'
                 minimum = (' data-minimum-field="' + escape(field['minimumField']) + '"') if field.get('minimumField') else ''
+                field_type = field.get('type', 'integer')
+                if field_type == 'text':
+                    attributes = f'type="text" maxlength="{field["maxLength"]}"'
+                    warning = t['requiredWarning']
+                elif field_type == 'decimal':
+                    attributes = 'type="number" min="0" step="any" inputmode="decimal" data-positive'
+                    warning = t['positiveNumber']
+                else:
+                    attributes = 'type="number" min="1" max="9007199254740991" step="1" inputmode="numeric"'
+                    warning = t['rpmWarning']
                 parameter_rows.append(f'''<tr class="shop-profile-field" data-order-field-row="{escape(variant['id'])}" hidden>
               <th scope="row"><label for="{field_id}">{escape(t[field['labelKey']])} *</label></th>
               <td><div class="form-group">
-                <input id="{field_id}" name="{escape(field['id'])}" data-order-field="{escape(field['id'])}"{minimum} type="number" min="1" max="9007199254740991" step="1" inputmode="numeric" class="validate-me" required disabled>
-                <span class="warning-msg">{escape(t['rpmWarning'])}</span>
+                <input id="{field_id}" name="{escape(field['id'])}" data-order-field="{escape(field['id'])}" data-order-field-type="{field_type}" data-order-field-warning="{escape(warning)}"{minimum} {attributes} class="validate-me" required disabled>
+                <span class="warning-msg">{escape(warning)}</span>
               </div></td>
             </tr>''')
     return f'''<form class="shop-wizard-form shop-item-form" id="item-{prefix}" data-order-product="{prefix}" aria-label="{name}" method="post" novalidate>

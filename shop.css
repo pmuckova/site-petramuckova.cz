@@ -66,7 +66,8 @@
 .shop-profile-field > th label { display: block; margin: 0; color: #fff; font-size: var(--shop-product-small-font-size); text-transform: none; letter-spacing: .5px; overflow-wrap: anywhere; cursor: default; }
 .shop-profile-field > td > .form-group { width: 100%; min-width: 0; }
 .shop-profile-submit > td:first-child { box-shadow: inset 3px 0 var(--accent); }
-.shop-profile-submit .btn-submit { margin-top: 0; height: 42px; padding: 0; line-height: 1.15; }
+.shop-profile-submit .btn-submit { margin-top: 0; height: 42px; padding: 0; line-height: 1.15; box-shadow: none; }
+.shop-profile-submit .btn-submit:hover { box-shadow: none; }
 .shop-wizard-status { color: var(--accent); margin-top: 16px; }
 .shop-basket-configuration { margin: 12px 0; padding: 0; color: #bbb; font-size: .8rem; overflow-wrap: anywhere; }
 .shop-basket-configuration > div + div { margin-top: 8px; }

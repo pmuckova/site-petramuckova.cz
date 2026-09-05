@@ -12,22 +12,28 @@ Edit `shop/catalog.json`:
 - `products`: stable ID, customer price in whole CZK, variants, photo path, and
   names/descriptions for the ten existing languages. Legacy dealer reference values
   in the source catalogue are not rendered or used in basket totals.
-- `variants`: stable IDs and labels, with an optional `price` override and localized
+- `variants`: stable IDs and labels, with optional `price` / `priceType` overrides and localized
   labels in `translations`. By default, each variant becomes a radio-table option;
   a product with no variants still has one selectable option. `descriptions` adds
   a localized description row under a variant. For single-option items, the
-  localized product `optionName` can differ from the card heading.
+  localized product `optionName` can differ from the card heading, and
+  `optionDescription` adds a description below it.
   Variants may define `fields` with an ID and localized `labelKey`: these are
-  required positive whole-number fields shown only for the selected variant.
-  `minimumField` names another field that supplies an inclusive lower bound.
+  required fields shown only for the selected variant. Types are `integer`
+  (default, positive whole number), `decimal` (positive number), and `text`
+  (with `maxLength` between 1 and 200). `minimumField` names another numeric
+  field that supplies an inclusive lower bound.
   The rotor's custom variant uses `min-rpm` / `max-rpm`; its other variants have
   no extra fields. All three rotor options remain priced on request.
 - `options`: optional groups containing a stable ID, translated name/description
   and `variantIds`. All variants must appear exactly once and variants in a group
-  must share a price. A group with multiple variants shows a required specification
-  dropdown inside its selected subform. The current head gasket instead has three
+  must share a price and price type. A group with multiple variants shows a required specification
+  dropdown inside its selected subform. The current head gasket instead has four
   direct radio options: 80.5 mm (620 CZK), 82 mm (620 CZK), and stock TAZ 1.43
-  with silicone treatment (160 CZK).
+  with silicone treatment (160 CZK), and a quote-only custom option. The custom
+  option requires cylinder spacing as text (for example `88-88-88`) and thickness
+  as a positive decimal in millimetres. Its explicit `price: null` and
+  `priceType: "quote"` override the product's fixed base price.
 - `legacyItems`: explicit old-ID/variant mappings for merged products. The old
   160/156 mm connecting-rod cards map to `connecting-rod` variants at 12,500/11,500
   CZK; the old stock gasket maps to `head-gasket:stock`. The two coils map to
@@ -41,8 +47,9 @@ Edit `shop/catalog.json`:
 - `image`: a real `/assets/...` path or `null`. Existing workshop images are
   displayed without a caption. Products with `null` use the shared `placeholderImage`
   automatically; add their photo path when available to replace the placeholder.
-  The distributor spare-parts collage is pending photos and uses the placeholder;
-  the cylinder/piston kit and carburetor also use it until photos are supplied.
+  The distributor spare-parts collage uses `rozdelovace-01.jpeg`, the
+  cylinder/piston kit uses `sada-valce-01.jpeg` and `sada-valce-02.jpeg`, and the
+  carburetor uses `karburator.jpeg`. Only the copper rings still use a placeholder.
   The resonance exhaust uses `rezonancni-vyfuk-01.jpg` (renamed from
   `blog-article1-1.jpg` in the desktop, 1200 and 800 asset directories).
 - `images`: optional ordered gallery entries with `src`, actual `width`/`height`,
@@ -104,7 +111,8 @@ adds that many units, accumulating units of the same variant in the order. A
 submission that would exceed 9999 units of an option is rejected without a partial
 add. Changing the selection moves the same fields and retains the quantity.
 The Add to order button is also 42px high, matching the product form fields;
-the final checkout button keeps its original main-page styling.
+it has no glow in either its normal or hovered state. The final checkout button
+keeps its original main-page styling.
 Specification dropdowns reuse the main form's pinned Choices.js component and
 shared styling, retaining native selection if the CDN script is unavailable.
 Text fields, textareas and quantity inputs also inherit the main page's field
@@ -145,7 +153,7 @@ hover or keyboard focus. Single-photo products keep their natural proportions,
 scale down to fit the card's inner width and are horizontally centered. The frame
 reserves the declared photo width before lazy loading, capped to the available
 width, so it cannot collapse or introduce empty strips beside smaller images. Placeholder
-images use the same sizing, without cropping. Camshaft and head-gasket galleries use fixed
+images use the same sizing, without cropping. Camshaft, head-gasket and cylinder-kit galleries use fixed
 landscape frames as described below. Product photos have no visible captions;
 placeholders retain their descriptive alt text for accessibility.
 The zoom cursor and lightbox remain unchanged, and enlarged images are unshaded.
@@ -187,10 +195,14 @@ add, subject to the same per-option limit in the order. Basket controls edit the
 existing line directly; product form edits do not affect it. Clicking anywhere
 inside a basket or product quantity input selects the entire number; keyboard focus does
 the same. These delegated handlers also cover rows rebuilt after quantity edits.
-Custom rotor rows additionally store sanitized `parameters` containing only
-`min-rpm` and `max-rpm`. A product/variant/RPM-range combination is one order line:
-identical ranges accumulate quantity; different ranges remain independently
-editable/removable. RPM settings appear in the order panel and email draft.
+Custom rotor and gasket rows additionally store sanitized `parameters`: respectively
+`min-rpm` / `max-rpm` and `spacing` / `thickness`. Text is whitespace-normalized;
+positive numbers are canonicalized (including decimal-comma values in restored data).
+Each product/variant/specification combination is one order line: identical
+specifications accumulate quantity; different specifications remain independently
+editable/removable. Structured line keys preserve punctuation in free-text spacing.
+All specifications appear in the order panel and email draft. Quote-only gasket
+options never inherit the standard gasket price or contribute to the indicative total.
 Legacy rotor rows without a variant cannot be mapped unambiguously; the page
 asks the customer to select a new option and preserves their other order items.
 Configured products also store a unique `lineId` and the validated `configuration`

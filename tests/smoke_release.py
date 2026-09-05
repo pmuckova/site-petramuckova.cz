@@ -140,6 +140,12 @@ def main():
                     assert len(item_form.select('thead th')) == 2
                     if source_product['id'] == 'distributor-rotor':
                         assert len(item_form.select('[data-order-field-row="custom"][hidden] input[required][disabled]')) == 2
+                    if source_product['id'] == 'head-gasket':
+                        assert item_form.select_one('[data-order-field="spacing"][type=text][required][disabled]')
+                        assert item_form.select_one('[data-order-field="thickness"][type=number][step=any][data-positive][required][disabled]')
+                        gasket = next(product for product in config['products'] if product['id'] == 'head-gasket')
+                        custom = next(option for option in gasket['options'] if option['id'] == 'custom')
+                        assert custom['price'] is None and custom['priceType'] == 'quote'
                 photo_links = card.select('.shop-photo-link')
                 for photo_link in photo_links:
                     assert photo_link['href'] == photo_link.img['src']
