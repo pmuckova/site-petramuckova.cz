@@ -45,11 +45,11 @@ Edit `shop/catalog.json`:
   depending on the work), not a fixed price or a minimum. Wizard products use
   `configured` with a null base price; each profile supplies its own price.
 - `image`: a real `/assets/...` path or `null`. Existing workshop images are
-  displayed without a caption. Products with `null` use the shared `placeholderImage`
-  automatically; add their photo path when available to replace the placeholder.
+  displayed without a caption. Products with `null` or no image path render no
+  image markup or reserved photo space; add their photo path when available.
   The distributor spare-parts collage uses `rozdelovace-01.jpeg`, the
   cylinder/piston kit uses `sada-valce-02.jpeg` first, then `sada-valce-01.jpeg`, and the
-  carburetor uses `karburator.jpeg`. Only the copper rings still use a placeholder.
+  carburetor uses `karburator.jpeg`. The copper rings currently have no photo.
   The resonance exhaust uses `rezonancni-vyfuk-01.jpg` (renamed from
   `blog-article1-1.jpg` in the desktop, 1200 and 800 asset directories).
 - `images`: optional ordered gallery entries with `src`, actual `width`/`height`,
@@ -64,11 +64,6 @@ Edit `shop/catalog.json`:
   distributor overhaul use 360px previews. The whole frame scales proportionally
   and remains centered, without cropping, stretching or empty bars. Full-size
   lightbox images are unchanged; other products retain their existing sizing.
-- `placeholderImage`: the shared generated image at
-  `/assets/desktop/shop-placeholder.webp`. Its alt text identifies a missing product
-  photo in each language, never actual product or workshop photography, and it is
-  excluded from the image sitemap. The generation prompt is in
-  `shop/placeholder-prompt.txt`.
 - `copy`: original article wording and price-list notes. The source price list is
   dated 5 November 2025. The camshaft configurator has separate prices from the
   supplied CSV. The remaining product descriptions, options and prices were revised
@@ -158,10 +153,10 @@ the main equipment section's `.tech-frame` soft-edge shading, which clears on
 hover or keyboard focus. Single-photo products keep their natural proportions,
 scale down to fit the card's inner width and are horizontally centered. The frame
 reserves the declared photo width before lazy loading, capped to the available
-width, so it cannot collapse or introduce empty strips beside smaller images. Placeholder
-images use the same sizing, without cropping. Camshaft, head-gasket and cylinder-kit galleries use fixed
-landscape frames as described below. Product photos have no visible captions;
-placeholders retain their descriptive alt text for accessibility.
+width, so it cannot collapse or introduce empty strips beside smaller images.
+Camshaft, head-gasket and cylinder-kit galleries use fixed landscape frames as
+described below. Product photos have no visible captions. Products without photos
+omit the photo row entirely, leaving the heading, available description and order form.
 The zoom cursor and lightbox remain unchanged, and enlarged images are unshaded.
 Click or press Enter on a photo to enlarge it; click the overlay, use its close
 button or press Escape to close it. Focus returns to the photo, and image links

@@ -2,7 +2,6 @@
   "currency": "CZK",
   "priceListDate": "2025-11-05",
   "orderEmail": "info@petramuckova.cz",
-  "placeholderImage": "/assets/desktop/shop-placeholder.webp",
   "languages": [
     "cs",
     "en",
@@ -961,13 +960,13 @@
       "id": "ignition-coil",
       "price": 780,
       "priceType": "fixed",
-      "image": "/assets/desktop/zapalovaci-civka-01.jpeg",
+      "image": "/assets/desktop/zapalovaci-civka-01.jpg",
       "photoMaxHeight": 360,
       "images": [
         {
-          "src": "/assets/desktop/zapalovaci-civka-01.jpeg",
-          "width": 2252,
-          "height": 4000,
+          "src": "/assets/desktop/zapalovaci-civka-01.jpg",
+          "width": 4000,
+          "height": 2252,
           "alt": {
             "cs": "Zapalovací cívka",
             "en": "Ignition coil",

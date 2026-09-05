@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 from bs4 import BeautifulSoup
 
-from build_shop import ROOT, build_shop, load_catalog, money, standard_options
+from build_shop import ROOT, build_shop, load_catalog, money, product_card, standard_options
 
 
 def css_rules(path):
@@ -26,7 +26,8 @@ class ShopBuildTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.catalog = load_catalog()
-        cls.photo_count = sum(len(product.get('images', [])) or 1 for product in cls.catalog['products'])
+        cls.photo_count = sum(len(product.get('images', [])) or 1
+                              for product in cls.catalog['products'] if product.get('image'))
         cls.tmp = tempfile.TemporaryDirectory(prefix='muckova-shop-test-')
         cls.output = Path(cls.tmp.name)
         with contextlib.redirect_stdout(io.StringIO()):
@@ -134,7 +135,8 @@ class ShopBuildTests(unittest.TestCase):
                     self.assertIn('shop-wizard-product', card['class'])
                     has_content = bool(product['translations'][lang]['description']) or product['id'] == 'exhaust-headers'
                     self.assertEqual([node.name for node in card.find_all(recursive=False)],
-                                     ['h3', 'figure', *(['div'] if has_content else []), 'form'])
+                                     ['h3', *(['figure'] if product.get('image') else []),
+                                      *(['div'] if has_content else []), 'form'])
                     self.assertFalse(card.select('.shop-prices, .shop-product-order, [data-change], [data-quantity]'))
                     self.assertEqual([node.get_text() for node in card.select('.shop-product-body .shop-description')],
                                      [paragraph for paragraph in product['translations'][lang]['description'].split('\n\n') if paragraph.strip()])
@@ -155,8 +157,11 @@ class ShopBuildTests(unittest.TestCase):
     def test_all_cards_share_the_camshaft_layout_at_desktop_and_mobile_widths(self):
         rules = dict(css_rules(ROOT / 'shop.css'))
         self.assertEqual(rules['.shop-wizard-product']['grid-template-areas'], '"title" "photo" "content" "wizard"')
+        self.assertEqual(rules['.shop-wizard-product.shop-no-photo']['grid-template-areas'], '"title" "content" "wizard"')
+        self.assertEqual(rules['.shop-option-product.shop-no-photo.shop-no-description']['grid-template-areas'], '"title" "wizard"')
         heading = next(props for selector, props in css_rules(ROOT / 'shop.css') if selector == '.shop-wizard-product > .shop-product-title')
         self.assertEqual(heading['text-align'], 'left')
+        self.assertEqual(heading['font-size'], 'calc(var(--shop-product-font-size) * 2.1)')
         self.assertEqual(rules['.shop-product-content']['grid-area'], 'content')
         self.assertEqual(rules['.shop-wizard-form']['grid-area'], 'wizard')
         for _, soup in self.pages():
@@ -620,22 +625,23 @@ class ShopBuildTests(unittest.TestCase):
                     self.assertEqual((int(photo['width']), int(photo['height'])),
                                      (source['width'], source['height']))
 
-    def test_generic_placeholder_is_used_only_where_a_photo_is_missing(self):
+    def test_imageless_products_render_no_photo_markup_or_placeholder(self):
         for lang, soup in self.pages():
-            text = json.loads(soup.select_one('#shop-config').string)['text']
             self.assertEqual(len(soup.select('.shop-product img')), self.photo_count)
-            self.assertEqual(len(soup.select('img[data-placeholder]')),
-                             sum(not product['image'] for product in self.catalog['products']))
+            self.assertFalse(soup.select('[data-placeholder], .shop-photo-placeholder'))
+            self.assertNotIn('shop-placeholder.webp', str(soup))
             self.assertFalse(soup.select('.shop-photo figcaption'))
             for product in self.catalog['products']:
-                photo = soup.find(id=product['id']).find('img')
-                self.assertEqual(photo['src'], product['image'] or self.catalog['placeholderImage'])
-                self.assertEqual(photo.has_attr('data-placeholder'), not bool(product['image']))
-                if photo.has_attr('data-placeholder'):
-                    self.assertEqual(photo['alt'], text['noPhoto'])
-                else:
+                card = soup.find(id=product['id'])
+                self.assertEqual('shop-no-photo' in card['class'], not bool(product.get('image')))
+                if product.get('image'):
+                    photo = card.find('img')
+                    self.assertEqual(photo['src'], product['image'])
                     expected_alt = product['images'][0]['alt'][lang] if product.get('images') else product['translations'][lang]['name']
                     self.assertEqual(photo['alt'], expected_alt)
+                else:
+                    self.assertFalse(card.select('figure, img, .shop-photo-link, .tech-frame, figcaption'))
+                    self.assertTrue(card.select_one('form button[type=submit]'))
             self.assertFalse(soup.select('[itemprop=availability]'))
 
     def test_canonical_and_hreflang_are_clean(self):
@@ -650,7 +656,7 @@ class ShopBuildTests(unittest.TestCase):
             'resonance-exhaust': [('rezonancni-vyfuk-01.jpg', 600, 639)],
             'head-gasket': [('tesneni-valce-01.jpeg', 1600, 1200), ('tesneni-valce-02.jpeg', 742, 497)],
             'connecting-rod': [('ojnice-h-kovana-01.jpeg', 4000, 2252)],
-            'ignition-coil': [('zapalovaci-civka-01.jpeg', 2252, 4000)],
+            'ignition-coil': [('zapalovaci-civka-01.jpg', 4000, 2252)],
             'distributor-rotor': [('palec-rozdelovace-omezovac-01.jpeg', 2046, 2048)],
             'distributor-parts': [('rozdelovace-01.jpeg', 1086, 1448)],
             'cylinder-piston-kit': [('sada-valce-02.jpeg', 4000, 2252), ('sada-valce-01.jpeg', 2252, 4000)],
@@ -1494,12 +1500,30 @@ class ShopBuildTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 load_catalog()
 
-    def test_missing_placeholder_fails_before_rendering(self):
-        invalid = json.loads(json.dumps(self.catalog))
-        invalid['placeholderImage'] = '/assets/desktop/nonexistent-photo.webp'
-        with patch('build_shop.json.loads', return_value=invalid):
-            with self.assertRaises(ValueError):
-                load_catalog()
+    def test_catalog_and_cards_support_null_or_absent_images_without_a_fallback(self):
+        self.assertNotIn('placeholderImage', self.catalog)
+        page = BeautifulSoup((self.output / 'cs/shop.html').read_text(), 'html.parser')
+        text = json.loads(page.select_one('#shop-config').string)['text']
+        for missing_key in (False, True):
+            catalog = json.loads(json.dumps(self.catalog))
+            for product in catalog['products']:
+                if missing_key:
+                    product.pop('image', None)
+                else:
+                    product['image'] = None
+                product.pop('images', None)
+                product.pop('photoMaxHeight', None)
+            with patch('build_shop.json.loads', return_value=catalog):
+                self.assertEqual(load_catalog(), catalog)
+            for product in catalog['products']:
+                with self.subTest(product=product['id'], missing_key=missing_key):
+                    card = BeautifulSoup(product_card(product, 'cs', text, 0), 'html.parser').article
+                    self.assertIn('shop-no-photo', card['class'])
+                    self.assertFalse(card.select('figure, img, .shop-photo-link, .tech-frame, figcaption'))
+                    has_content = bool(product['translations']['cs']['description']) or product['id'] == 'exhaust-headers'
+                    self.assertEqual([node.name for node in card.find_all(recursive=False)],
+                                     ['h3', *(['div'] if has_content else []), 'form'])
+                    self.assertEqual('shop-no-description' in card['class'], not has_content)
 
 
 if __name__ == '__main__':

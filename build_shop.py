@@ -29,7 +29,6 @@ def validate_image(image, label, root):
 
 def load_catalog(root=ROOT):
     data = json.loads((root / 'shop/catalog.json').read_text(encoding='utf-8'))
-    validate_image(data.get('placeholderImage'), 'catalogue placeholder', root)
     ids = set()
     for product in data['products']:
         product_id = product['id']
@@ -366,14 +365,14 @@ def wizard_form(product, lang, t):
     </form>'''
 
 
-def product_photos(product, lang, t, position, placeholder_image):
+def product_photos(product, lang, t, position):
+    if not product.get('image'):
+        return ''
     name = product['translations'][lang]['name']
-    is_placeholder = not product.get('image')
     images = product.get('images') or [{
-        'src': product.get('image') or placeholder_image, 'width': 640, 'height': 480,
-        'alt': {lang: t['noPhoto'] if is_placeholder else name},
+        'src': product['image'], 'width': 640, 'height': 480,
+        'alt': {lang: name},
     }]
-    placeholder_attr = ' data-placeholder="true"' if is_placeholder else ''
     links = []
     for index, image in enumerate(images):
         alt = image['alt'][lang]
@@ -386,12 +385,11 @@ def product_photos(product, lang, t, position, placeholder_image):
             preview_width = min(preview_width, product['photoMaxHeight'] * image['width'] / image['height'])
         links.append(f'''<a class="shop-photo-link" id="photo-{escape(product['id'])}-{index + 1}" href="{escape(image['src'])}" style="--shop-photo-width: {preview_width:g}px" aria-haspopup="dialog" aria-label="{escape(link_label)}">
         <span class="tech-frame">
-          <img src="{escape(image['src'])}" alt="{escape(alt)}" width="{image['width']}" height="{image['height']}" loading="{loading}" decoding="async"{placeholder_attr}>
+          <img src="{escape(image['src'])}" alt="{escape(alt)}" width="{image['width']}" height="{image['height']}" loading="{loading}" decoding="async">
         </span>
       </a>''')
     gallery_class = ' shop-photo-gallery' if len(images) > 1 else ''
-    placeholder_class = ' shop-photo-placeholder' if is_placeholder else ''
-    return f'''<figure class="shop-photo{gallery_class}{placeholder_class}">
+    return f'''<figure class="shop-photo{gallery_class}">
       {''.join(links)}
     </figure>'''
 
@@ -412,15 +410,16 @@ def wizard_description(product, lang, t):
     return ''.join(sections)
 
 
-def product_card(product, lang, t, position, placeholder_image):
+def product_card(product, lang, t, position):
     text = product['translations'][lang]
     product_id = escape(product['id'])
     name = escape(text['name'])
     description = ''.join(f'<p class="shop-description">{escape(paragraph)}</p>' for paragraph in text['description'].split('\n\n') if paragraph.strip())
     is_wizard = product.get('kind') == 'wizard'
-    photo = product_photos(product, lang, t, position, placeholder_image)
+    photo = product_photos(product, lang, t, position)
+    photo_class = ' shop-no-photo' if not photo else ''
     if is_wizard:
-        return f'''<article class="blog-card shop-product shop-wizard-product" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
+        return f'''<article class="blog-card shop-product shop-wizard-product{photo_class}" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
       <h3 class="shop-product-title" id="name-{product_id}">{name}</h3>
       {photo}
       <div class="shop-product-content"><div class="shop-product-body shop-description-layout">{wizard_description(product, lang, t)}</div></div>
@@ -428,7 +427,7 @@ def product_card(product, lang, t, position, placeholder_image):
     </article>'''
     article_link = f'<a href="/{lang}/blog#post-2-title">{escape(t["blog"])}: TAZ 1.43 / PS12 ↗</a>' if product['id'] == 'exhaust-headers' else ''
     content = f'<div class="shop-product-content"><div class="shop-product-body">{description}{article_link}</div></div>' if description or article_link else ''
-    card = f'''<article class="blog-card shop-product shop-wizard-product shop-option-product{' shop-no-description' if not content else ''}" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
+    card = f'''<article class="blog-card shop-product shop-wizard-product shop-option-product{photo_class}{' shop-no-description' if not content else ''}" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
       <h3 class="shop-product-title" id="name-{product_id}">{name}</h3>
       {photo}
       {content}
@@ -544,7 +543,7 @@ def build_shop(root=ROOT, languages=None, output_root=None):
             'alternates': '\n'.join(f'<link rel="alternate" hreflang="{code}" href="{BASE_URL}/{code}/shop">' for code in data['languages'])
                           + f'\n<link rel="alternate" hreflang="x-default" href="{BASE_URL}/cs/shop">',
             'header': header, 'footer': footer,
-            'products': '\n'.join(product_card(p, lang, t, i, data['placeholderImage']) for i, p in enumerate(data['products'])),
+            'products': '\n'.join(product_card(p, lang, t, i) for i, p in enumerate(data['products'])),
             'notes_html': ''.join(f'<p>{escape(note)}</p>' for note in copy['notes']),
             'config': config,
             'css_version': asset_version(root, 'shop.css'), 'js_version': asset_version(root, 'shop.js'),

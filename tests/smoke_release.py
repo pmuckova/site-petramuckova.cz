@@ -61,8 +61,8 @@ def main():
             assert soup.select_one('#catalog > .shop-catalog-notes + .shop-grid')
             assert soup.select_one('link[rel=canonical]')['href'].endswith(f'/{language}/shop')
             assert all(image['src'].startswith('https://cdn.jsdelivr.net/gh/pmuckova/site-petramuckova.cz@main/') for image in soup.select('.shop-product img'))
-            assert len(soup.select('img[data-placeholder]')) == sum(not p['image'] for p in catalog['products'])
-            assert (release / catalog['placeholderImage'].lstrip('/')).is_file()
+            assert not soup.select('[data-placeholder], .shop-photo-placeholder')
+            assert 'shop-placeholder.webp' not in str(soup)
             config = json.loads(soup.select_one('#shop-config').string)
             assert config['locale'] == language
             assert all(product['price'] == catalog['products'][index]['price'] for index, product in enumerate(config['products']))
@@ -79,9 +79,13 @@ def main():
                 source_product = next(product for product in catalog['products'] if product['id'] == card['id'])
                 wizard = card.select_one('form[data-wizard]')
                 has_description = bool(source_product['translations'][language]['description'])
-                assert len(card.find_all(recursive=False)) == (4 if has_description or card['id'] == 'exhaust-headers' else 3)
+                has_photo = bool(source_product.get('image'))
+                assert len(card.find_all(recursive=False)) == 2 + has_photo + bool(has_description or card['id'] == 'exhaust-headers')
                 assert card.find(recursive=False).name == 'h3'
-                assert card.select_one(':scope > .shop-photo img')
+                assert bool(card.select_one(':scope > .shop-photo img')) == has_photo
+                assert ('shop-no-photo' in card['class']) == (not has_photo)
+                if not has_photo:
+                    assert not card.select('figure, img, .shop-photo-link, .tech-frame, figcaption')
                 assert bool(card.select_one(':scope > .shop-product-content > .shop-product-body .shop-description')) == has_description
                 if wizard:
                     assert len(wizard.select('input[name=profile]')) == len(source_product['wizard']['profiles'])
@@ -224,7 +228,7 @@ def main():
         for product in catalog['products']:
             for image in product.get('images', []):
                 assert any(loc.text.endswith(image['src']) for loc in image_locations)
-        assert catalog['placeholderImage'] not in (release / 'sitemap.xml').read_text()
+        assert 'shop-placeholder.webp' not in (release / 'sitemap.xml').read_text()
         assert 'vshop-smoke-test' in (release / '.htaccess').read_text()
         assert '{{RELEASE_' not in (release / '.htaccess').read_text()
     release_after = {str(p.relative_to(ROOT / 'release')): hashlib.sha256(p.read_bytes()).hexdigest()

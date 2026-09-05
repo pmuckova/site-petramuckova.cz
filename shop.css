@@ -32,7 +32,9 @@
 /* Photo-led product cards: gallery, copy and order form share the same inner width. */
 .shop-wizard-product { --shop-wizard-padding: 28px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "photo" "content" "wizard"; gap: 26px; padding: 0; }
 .shop-option-product.shop-no-description { grid-template-areas: "title" "photo" "wizard"; }
-.shop-wizard-product > .shop-product-title { justify-self: start; text-align: left; font-size: calc(var(--shop-product-font-size) * 2.3); margin: var(--shop-wizard-padding) var(--shop-wizard-padding) 0; max-width: calc(100% - 2 * var(--shop-wizard-padding)); hyphens: none; }
+.shop-wizard-product.shop-no-photo { grid-template-areas: "title" "content" "wizard"; }
+.shop-option-product.shop-no-photo.shop-no-description { grid-template-areas: "title" "wizard"; }
+.shop-wizard-product > .shop-product-title { justify-self: start; text-align: left; font-size: calc(var(--shop-product-font-size) * 2.1); margin: var(--shop-wizard-padding) var(--shop-wizard-padding) 0; max-width: calc(100% - 2 * var(--shop-wizard-padding)); hyphens: none; }
 .shop-wizard-product > .shop-product-content { padding-inline: var(--shop-wizard-padding); }
 .shop-wizard-product > .shop-photo { margin-inline: var(--shop-wizard-padding); }
 .shop-wizard-product > .shop-wizard-form { margin: 0 var(--shop-wizard-padding) var(--shop-wizard-padding); }
