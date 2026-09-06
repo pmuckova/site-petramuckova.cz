@@ -74,7 +74,7 @@
 .shop-basket-configuration dd { margin: 0; }
 .shop-photo { min-width: 0; }
 .shop-photo-gallery { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
-.shop-photo-thumbnails { display: flex; flex-wrap: wrap; gap: 10px; }
+.shop-photo-thumbnails { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .shop-photo-thumbnail { display: block; width: 96px; height: 60px; margin: 0; padding: 3px; border: 1px solid #484848; border-radius: 0; background: #050505; }
 .shop-photo-thumbnail[aria-pressed="true"] { border-color: var(--accent); }
 .shop-photo-thumbnail:hover { border-color: #bbb; }

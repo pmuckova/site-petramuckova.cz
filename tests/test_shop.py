@@ -695,7 +695,7 @@ class ShopBuildTests(unittest.TestCase):
             'resonance-exhaust': [('rezonancni-vyfuk-01.jpg', 600, 639)],
             'head-gasket': [('tesneni-valce-01.jpeg', 1600, 1200), ('tesneni-valce-02.jpeg', 742, 497)],
             'connecting-rod': [('ojnice-h-kovana-01.jpeg', 4000, 2252)],
-            'ignition-coil': [('zapalovaci-civka.jpg', 2252, 4000)],
+            'ignition-coil': [('zapalovaci-civka-11.jpg', 2234, 1721)],
             'distributor-rotor': [('palec-rozdelovace-omezovac-01.jpeg', 2046, 2048)],
             'distributor-parts': [('rozdelovace-01.jpeg', 1086, 1448)],
             'cylinder-piston-kit': [('sada-valce-02.jpeg', 4000, 2252), ('sada-valce-01.jpeg', 2252, 4000)],
@@ -748,16 +748,16 @@ class ShopBuildTests(unittest.TestCase):
         with patch('build_shop.json.loads', return_value=invalid), self.assertRaises(ValueError):
             load_catalog()
 
-    def test_rotated_coil_photo_matches_exhaust_preview_width(self):
+    def test_supplied_coil_photo_matches_exhaust_preview_width(self):
         for lang, soup in self.pages():
             with self.subTest(lang=lang):
                 coil = soup.select_one('#ignition-coil .shop-photo-link')
                 for product_id in ('exhaust-headers', 'resonance-exhaust'):
                     self.assertEqual(coil['style'], soup.select_one(f'#{product_id} .shop-photo-link')['style'])
                 self.assertEqual(coil['style'], '--shop-photo-width: 435px')
-                self.assertEqual(coil['href'], '/assets/desktop/zapalovaci-civka.jpg')
+                self.assertEqual(coil['href'], '/assets/desktop/zapalovaci-civka-11.jpg')
                 self.assertEqual(coil.img['src'], coil['href'])
-                self.assertEqual((int(coil.img['width']), int(coil.img['height'])), (2252, 4000))
+                self.assertEqual((int(coil.img['width']), int(coil.img['height'])), (2234, 1721))
                 self.assertFalse(soup.select('#ignition-coil .shop-photo-gallery'))
 
     def test_three_tall_single_photo_previews_are_capped_without_changing_zoom_images(self):
@@ -1296,6 +1296,9 @@ class ShopBuildTests(unittest.TestCase):
         rules = dict(css_rules(ROOT / 'shop.css'))
         self.assertEqual(rules['.shop-photo-gallery'], {
             'display': 'grid', 'grid-template-columns': 'minmax(0, 1fr)', 'gap': '18px',
+        })
+        self.assertEqual(rules['.shop-photo-thumbnails'], {
+            'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'center', 'gap': '10px',
         })
         self.assertEqual(rules['.shop-photo-thumbnail']['height'], '60px')
         self.assertEqual(rules['.shop-photo-thumbnail img'], {

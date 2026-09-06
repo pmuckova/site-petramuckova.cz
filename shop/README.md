@@ -72,7 +72,7 @@ Edit `shop/catalog.json`:
 - `photoMaxWidth`: optional positive pixel width for a single-photo product with
   explicit image dimensions. The resonance exhaust and coil use 435px previews,
   matching the tuned manifold photo. Height scales automatically with the original
-  aspect ratio. The clockwise-rotated coil photo is `zapalovaci-civka.jpg`.
+  aspect ratio. The supplied replacement coil photo is `zapalovaci-civka-11.jpg`.
 - `copy`: original article wording and price-list notes. The source price list is
   dated 5 November 2025. The camshaft configurator has separate prices from the
   supplied CSV. The remaining product descriptions, options and prices were revised

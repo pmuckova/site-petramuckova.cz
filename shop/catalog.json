@@ -973,13 +973,13 @@
       "tags": ["TAZ"],
       "price": 780,
       "priceType": "fixed",
-      "image": "/assets/desktop/zapalovaci-civka.jpg",
+      "image": "/assets/desktop/zapalovaci-civka-11.jpg",
       "photoMaxWidth": 435,
       "images": [
         {
-          "src": "/assets/desktop/zapalovaci-civka.jpg",
-          "width": 2252,
-          "height": 4000,
+          "src": "/assets/desktop/zapalovaci-civka-11.jpg",
+          "width": 2234,
+          "height": 1721,
           "alt": {
             "cs": "Zapalovací cívka",
             "en": "Ignition coil",
