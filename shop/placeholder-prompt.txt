@@ -1,5 +1,6 @@
 Tool: built-in image generation (no API/CLI fallback).
-Use: shared placeholder for products without a photograph, not actual product imagery.
-Asset: assets/desktop/shop-placeholder.webp (1024 x 768, WebP quality 82).
+Use: archived generic placeholder, not actual product imagery. Currently unused; imageless products render no photo.
+Asset: assets/desktop/eshop-placeholder.webp (1024 x 768, supplied optimized WebP).
+The original generation prompt is preserved below for provenance; its caption/fallback instructions no longer describe the shop UI.
 
 Use case: stylized-concept. Create one generic product-photo placeholder image for a mechanical engineering company's online catalogue. Landscape 4:3 composition. A single plain closed charcoal-grey parts box, unbranded, centered on a dark graphite workshop surface, with soft studio lighting, subtle brushed-metal texture in the background and a restrained red edge highlight matching a black-and-red industrial website. Quiet, minimal, understated, realistic materials, generous empty space around the box. This is a neutral placeholder used for many unrelated engine parts and services, NOT a photograph of any actual product. Do not show engine components, camshafts, gears, tools, people, logos, writing, letters, numbers or watermarks. No UI, no border, no collage. Keep the central subject easily readable at a small catalogue-card size. No baked-in text: the website supplies its own translated 'photo unavailable' caption.

@@ -321,6 +321,165 @@
         });
     }
 
+    function initProductContents(doc, viewport) {
+        const nav = doc.querySelector('#shop-contents .toc-nav');
+        if (!nav) return;
+        const links = [...nav.querySelectorAll('.toc-link')];
+        const targets = new Map(links.map(link => [link.getAttribute('href').slice(1), link]));
+        function activate(id) {
+            const active = targets.get(id);
+            if (!active) return;
+            links.forEach(link => {
+                link.classList.toggle('is-active', link === active);
+                if (link === active) link.setAttribute('aria-current', 'location');
+                else link.removeAttribute('aria-current');
+            });
+            // Scroll only the contents list, never the page or a focused control.
+            const bounds = nav.getBoundingClientRect();
+            const item = active.getBoundingClientRect();
+            if (item.top < bounds.top) nav.scrollTop += item.top - bounds.top;
+            else if (item.bottom > bounds.bottom) nav.scrollTop += item.bottom - bounds.bottom;
+        }
+        links.forEach(link => link.addEventListener('click', () => activate(link.getAttribute('href').slice(1))));
+        const fromHash = () => activate(viewport.location.hash.slice(1));
+        viewport.addEventListener('hashchange', fromHash);
+        fromHash();
+        if (typeof viewport.IntersectionObserver !== 'function') return;
+        // Use the same centre-of-viewport scroll spy as the blog.
+        const observer = new viewport.IntersectionObserver(entries => {
+            entries.forEach(entry => { if (entry.isIntersecting) activate(entry.target.id); });
+        }, { root: null, rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+        targets.forEach((_, id) => {
+            const product = doc.getElementById(id);
+            if (product) observer.observe(product);
+        });
+        return observer;
+    }
+
+    function initShopSidebar(doc, viewport) {
+        const panels = doc.querySelector('.shop-sidebar-panels');
+        const toc = doc.getElementById('shop-contents');
+        const basket = doc.getElementById('basket');
+        const items = doc.getElementById('basket-items');
+        if (!panels || !toc || !basket || !items) return;
+        const title = toc.querySelector('.toc-title');
+        const nav = toc.querySelector('.toc-nav');
+        const pixels = value => parseFloat(value) || 0;
+        function chrome(element) {
+            const style = viewport.getComputedStyle(element);
+            return pixels(style.paddingTop) + pixels(style.paddingBottom)
+                + pixels(style.borderTopWidth) + pixels(style.borderBottomWidth);
+        }
+        function outerHeight(element) {
+            const style = viewport.getComputedStyle(element);
+            if (style.display === 'none') return 0;
+            return element.getBoundingClientRect().height + pixels(style.marginTop) + pixels(style.marginBottom);
+        }
+        function update() {
+            const desktop = viewport.matchMedia('(min-width: 1400px)').matches;
+            const available = viewport.innerHeight - pixels(viewport.getComputedStyle(basket).top) - 20;
+            const fixedBasket = chrome(basket) + [...basket.children]
+                .filter(child => child !== items).reduce((sum, child) => sum + outerHeight(child), 0);
+            // Reserve useful reading space in both independently scrolling lists.
+            const minimumBasket = fixedBasket + (items.children.length ? 120 : 0);
+            const minimumToc = chrome(toc) + outerHeight(title) + Math.min(120, nav.scrollHeight);
+            const together = desktop && available >= minimumBasket + minimumToc + 20;
+            if (together) {
+                const height = Math.max(minimumToc, Math.min(400, available * .4, available - minimumBasket - 20));
+                panels.style.setProperty('--shop-toc-height', `${Math.floor(height)}px`);
+            }
+            panels.classList.toggle('is-sticky', together);
+            // On short screens the contents scroll away first. If even the basket's
+            // fixed summary cannot fit, let the whole panel use normal page scrolling.
+            basket.classList.toggle('is-inline', desktop && available < minimumBasket);
+        }
+        let frame;
+        function schedule() {
+            if (frame) return;
+            frame = viewport.requestAnimationFrame(() => { frame = undefined; update(); });
+        }
+        viewport.addEventListener('resize', schedule);
+        if (typeof viewport.ResizeObserver === 'function') {
+            const observer = new viewport.ResizeObserver(schedule);
+            [basket, ...basket.children, title].forEach(element => observer.observe(element));
+        }
+        schedule();
+        return update;
+    }
+
+    function initPriceInformation(doc, viewport) {
+        const toggle = doc.getElementById('basket-price-info-toggle');
+        const popup = doc.getElementById('basket-price-info');
+        if (!toggle || !popup) return;
+        let pinned = false, closeTimer, frame;
+        const hovered = new Set();
+        function position() {
+            if (popup.hidden) return;
+            const anchor = toggle.getBoundingClientRect();
+            const bounds = popup.getBoundingClientRect();
+            const width = doc.documentElement.clientWidth;
+            const height = viewport.innerHeight;
+            if (anchor.bottom < 0 || anchor.top > height) { hide(); return; }
+            const left = Math.max(12, Math.min(anchor.right - bounds.width, width - bounds.width - 12));
+            const preferredTop = anchor.top - bounds.height - 8;
+            const top = Math.max(12, Math.min(preferredTop >= 12 ? preferredTop : anchor.bottom + 8,
+                height - bounds.height - 12));
+            popup.style.left = `${Math.round(left)}px`;
+            popup.style.top = `${Math.round(top)}px`;
+        }
+        function show() {
+            viewport.clearTimeout(closeTimer);
+            popup.hidden = false;
+            toggle.setAttribute('aria-expanded', 'true');
+            position();
+        }
+        function hide() {
+            viewport.clearTimeout(closeTimer);
+            popup.hidden = true;
+            pinned = false;
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+        function scheduleClose() {
+            viewport.clearTimeout(closeTimer);
+            closeTimer = viewport.setTimeout(() => {
+                if (!pinned && !hovered.size && doc.activeElement !== toggle) hide();
+            }, 150);
+        }
+        [toggle, popup].forEach(element => {
+            element.addEventListener('pointerenter', event => {
+                if (event.pointerType === 'touch') return;
+                hovered.add(element); show();
+            });
+            element.addEventListener('pointerleave', () => { hovered.delete(element); scheduleClose(); });
+        });
+        toggle.addEventListener('focus', show);
+        toggle.addEventListener('blur', scheduleClose);
+        // Focus/hover may already have opened it: the first click pins it for reading.
+        toggle.addEventListener('click', () => {
+            if (pinned) hide();
+            else { pinned = true; show(); }
+        });
+        doc.addEventListener('pointerdown', event => {
+            if (!toggle.contains(event.target) && !popup.contains(event.target)) hide();
+        });
+        doc.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && !popup.hidden) { hide(); event.preventDefault(); }
+        });
+        function schedulePosition() {
+            if (popup.hidden || frame) return;
+            frame = viewport.requestAnimationFrame(() => { frame = undefined; position(); });
+        }
+        viewport.addEventListener('resize', schedulePosition);
+        viewport.addEventListener('scroll', schedulePosition, true);
+        if (typeof viewport.ResizeObserver === 'function') {
+            const observer = new viewport.ResizeObserver(schedulePosition);
+            observer.observe(popup);
+            const basket = doc.getElementById('basket');
+            if (basket) observer.observe(basket);
+        }
+        return { show, hide, position };
+    }
+
     function initVariantSelects(doc, ChoicesClass) {
         const instances = new Map();
         // Keep native variant selection working if the shared CDN script is unavailable.
@@ -340,8 +499,22 @@
         if (!viewer || typeof viewer.showModal !== 'function') return;
         const image = viewer.querySelector('.lightbox-img');
         const closeButton = viewer.querySelector('.shop-lightbox-close');
+        const previousButton = viewer.querySelector('.shop-lightbox-prev');
+        const nextButton = viewer.querySelector('.shop-lightbox-next');
+        const position = viewer.querySelector('.shop-lightbox-position');
         const links = [...doc.querySelectorAll('.shop-photo-link')];
         let opener = null;
+        let photos = [], photoIndex = 0;
+
+        function showPhoto(index) {
+            photoIndex = (index + photos.length) % photos.length;
+            const link = photos[photoIndex];
+            image.src = link.href;
+            image.alt = link.querySelector('img').alt;
+            viewer.setAttribute('aria-label', image.alt);
+            previousButton.hidden = nextButton.hidden = position.hidden = photos.length < 2;
+            position.textContent = `${photoIndex + 1} / ${photos.length}`;
+        }
 
         function setPointerFocus(pointer) {
             viewer.classList.toggle('shop-photo-pointer-focus', pointer);
@@ -353,10 +526,10 @@
             link.addEventListener('click', event => {
                 if (event.defaultPrevented || event.button > 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
                 event.preventDefault();
-                image.src = link.href;
-                image.alt = link.querySelector('img').alt;
-                viewer.setAttribute('aria-label', image.alt);
                 opener = link;
+                // Include hidden gallery slides, but never photos from another product.
+                photos = [...(link.closest('.shop-product')?.querySelectorAll('.shop-photo-link') || [link])];
+                showPhoto(photos.indexOf(link));
                 // Keyboard activation has no pointer type and a click count of zero.
                 setPointerFocus(event.detail > 0 || Boolean(event.pointerType));
                 viewer.showModal();
@@ -370,10 +543,20 @@
             links.forEach(link => link.classList.remove('shop-photo-pointer-focus'));
         });
         viewer.addEventListener('pointerdown', () => setPointerFocus(true));
-        // Match the blog: clicking the enlarged photo or its backdrop closes it.
+        // Arrow clicks stay in the viewer; photo/backdrop/close clicks retain the blog behavior.
         viewer.addEventListener('click', event => {
             setPointerFocus(event.detail > 0 || Boolean(event.pointerType));
-            viewer.close();
+            if (photos.length > 1 && previousButton.contains(event.target)) showPhoto(photoIndex - 1);
+            else if (photos.length > 1 && nextButton.contains(event.target)) showPhoto(photoIndex + 1);
+            else viewer.close();
+        });
+        viewer.addEventListener('keydown', event => {
+            if (!viewer.open || photos.length < 2 || event.defaultPrevented
+                    || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+            const direction = event.key === 'ArrowLeft' ? -1 : event.key === 'ArrowRight' ? 1 : 0;
+            if (!direction) return;
+            event.preventDefault();
+            showPhoto(photoIndex + direction);
         });
         viewer.addEventListener('cancel', event => {
             event.preventDefault();
@@ -384,6 +567,8 @@
             viewer.classList.remove('active');
             opener?.focus({ preventScroll: true });
             opener = null;
+            photos = [];
+            previousButton.hidden = nextButton.hidden = position.hidden = true;
         });
     }
 
@@ -650,12 +835,15 @@
         });
     }
 
-    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseOrderParameters, hasLegacyRotors, normaliseConfiguration, addConfiguredItem, addOrderItem, removeBasketItem, removeSubmittedItems, sendOrder, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, initPhotoGalleries, basketRemoveButton, initBasketQuantitySelection, initRadioSubform, initOrderQuantitySpinner, initOrderItemForm, initOrderParameterFields, initWizardForm };
+    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseOrderParameters, hasLegacyRotors, normaliseConfiguration, addConfiguredItem, addOrderItem, removeBasketItem, removeSubmittedItems, sendOrder, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initProductContents, initShopSidebar, initPriceInformation, initVariantSelects, initPhotoViewer, initPhotoGalleries, basketRemoveButton, initBasketQuantitySelection, initRadioSubform, initOrderQuantitySpinner, initOrderItemForm, initOrderParameterFields, initWizardForm };
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     if (!root.document) return;
 
     function init() {
         initNavigation(document, window);
+        initProductContents(document, window);
+        initShopSidebar(document, window);
+        initPriceInformation(document, window);
         const selectInstances = initVariantSelects(document, root.Choices);
         initPhotoGalleries(document);
         initPhotoViewer(document);

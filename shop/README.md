@@ -52,11 +52,14 @@ Edit `shop/catalog.json`:
 - `image`: a real `/assets/...` path or `null`. Existing workshop images are
   displayed without a caption. Products with `null` or no image path render no
   image markup or reserved photo space; add their photo path when available.
-  The distributor spare-parts collage uses `rozdelovace-01.jpeg`, the
-  cylinder/piston kit uses `sada-valce-02.jpeg` first, then `sada-valce-01.jpeg`, and the
-  carburetor uses `karburator.jpeg`. The copper rings currently have no photo.
-  The resonance exhaust uses `rezonancni-vyfuk-01.jpg` (renamed from
-  `blog-article1-1.jpg` in the desktop, 1200 and 800 asset directories).
+  Product assets use the supplied optimized `eshop-*` filenames in `assets/desktop`;
+  preserve their supplied bytes and record their actual dimensions below.
+  The distributor spare-parts collage uses `eshop-rozdelovac-nd-01.jpg`, the
+  cylinder/piston kit uses `eshop-valce-sada-01.jpg` first (the complete kit), then
+  `eshop-valce-sada-02.jpg`, and the carburetor uses `eshop-karburator-01.webp`.
+  The resonance exhaust uses `eshop-rezonancni-vyfuk-01.jpg`.
+  The copper rings currently have no photo. The supplied `eshop-placeholder.webp`
+  is retained as an unused asset; it is not a fallback and is not indexed in the sitemap.
 - `images`: optional ordered gallery entries with `src`, actual `width`/`height`,
   and `alt` text for each language. Keep `image` equal to the first gallery entry's
   `src`. Gallery photos share a fixed 16:9 viewport inside the blog's red-corner frame; thumbnails switch
@@ -72,7 +75,7 @@ Edit `shop/catalog.json`:
 - `photoMaxWidth`: optional positive pixel width for a single-photo product with
   explicit image dimensions. The resonance exhaust and coil use 435px previews,
   matching the tuned manifold photo. Height scales automatically with the original
-  aspect ratio. The supplied replacement coil photo is `zapalovaci-civka-11.jpg`.
+  aspect ratio. The supplied replacement coil photo is `eshop-zapalovaci-civka-01.jpg`.
 - `copy`: original article wording and price-list notes. The source price list is
   dated 5 November 2025. The camshaft configurator has separate prices from the
   supplied CSV. The remaining product descriptions, options and prices were revised
@@ -93,12 +96,24 @@ pages, like the rest of this repository. Do not edit them directly.
 The generator reuses each language's blog navigation and footer, marking the shop
 as active and keeping language switches on the shop route. The shop loads the
 existing `main.css` and `blog.css` for its background image, typography, panels,
-image frames and mobile header. The basket reuses the blog's `.toc-wrapper`
-appearance in the same 280px desktop sidebar, but uses `position: sticky` within
-the content grid. The sidebar spans the catalogue and order section, so the basket
-follows page scrolling and stops above the footer. The blog's table of contents
-is unchanged. Only the basket's item list scrolls; the heading,
-indicative price, delivery notices and order button stay visible. Quantity edits
+image frames and mobile header. A product table of contents sits above the basket
+in the same 280px desktop sidebar. Its title uses the shop's localized
+`contentsTitle` ("NABÍDKA" in Czech), and its numbered links are generated from
+the product names and IDs. It reuses
+the blog's `.toc-wrapper`, `.toc-title`, `.toc-nav` and `.toc-link` styles, including
+the active product indicator while scrolling. The contents list scrolls separately.
+Both panels stick together within the content grid when the viewport has enough
+room for readable lists and the fixed order summary. On shorter screens the contents
+scroll away before the basket sticks; if the basket summary itself cannot fit,
+it stays in normal page flow. The sidebar spans the catalogue and order section,
+so neither panel overlaps the footer. The blog's table of contents is unchanged.
+Only the basket's item list scrolls inside its panel; the heading,
+indicative price and order button stay visible. The information icon to the right
+of the indicative-price label reveals the delivery notice and, when applicable,
+the quote/starting/approximate-price notice. It opens on hover, keyboard focus or
+click/tap; a click pins it open. Escape, clicking outside, or clicking the icon
+again closes it. The popover lives outside the clipped basket and stays within
+the viewport without changing the sidebar layout. Quantity edits
 preserve the list's scroll position. Below the blog's 1400px breakpoint it stays
 inline between the catalogue and order form, with normal page scrolling.
 
@@ -353,9 +368,9 @@ contact details and order recap are also emailed to the address they supplied.
 ## Configured camshaft items
 
 `skoda-ohv-camshaft` and `taz-camshaft` use `kind: "wizard"`. Škoda OHV uses four supplied
-photographs copied unchanged to `assets/desktop/skoda-ohv-1.jpeg` through
-`skoda-ohv-4.jpeg`; TAZ uses three photographs, `assets/desktop/taz-01.jpeg` through
-`taz-03.jpeg`. The images
+photographs in `assets/desktop`: `eshop-skoda-ohv-01.jpeg`, `eshop-skoda-ohv-02.jpeg`,
+`eshop-skoda-ohv-03.jpg` and `eshop-skoda-ohv-04.jpg`. TAZ uses three photographs,
+`eshop-taz-01.jpeg` through `eshop-taz-03.jpeg`. The images
 appear in a gallery under the blog-style tags, heading and lead. The main photo
 and thumbnails align with the inner text and form edges, using the blog card's
 responsive padding (50px on desktop, 20px horizontally below 1400px).
@@ -364,7 +379,12 @@ existing magnifier and fullscreen viewer. Without JavaScript, all linked photos
 remain visible one below the other. Main gallery photos use a fixed 16:9 frame
 with a center crop, so switching between landscape and portrait photos never
 changes the gallery's height. Thumbnails also use a center crop. Enlarged photos
-keep their original proportions and show the complete image.
+keep their original proportions and show the complete image. In the enlarged
+viewer, previous/next arrows and the Left/Right arrow keys cycle through the
+current product's photos, wrapping at either end. A position counter identifies
+the current photo. Navigation is hidden for single-photo products; Escape and
+photo/backdrop clicks still close the viewer and restore focus to the original
+zoom link without changing the underlying thumbnail selection.
 The introduction appears in the header. Detailed copy follows the gallery with
 side-by-side regrinding/manufacturing sections using `.tech-math-block` and
 `.equation-display` from the blog's formula panels, followed by installation

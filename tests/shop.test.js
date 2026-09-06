@@ -235,7 +235,7 @@ test('native variant controls remain usable when Choices is unavailable', () => 
 
 function photoViewerFixture({ nativeDialog = true, photos = [
     { src: '/assets/desktop/engine.webp', alt: 'Camshaft' },
-    { src: 'https://cdn.jsdelivr.net/gh/pmuckova/site-petramuckova.cz@main/assets/desktop/shop-placeholder.webp', alt: 'Photo not yet available' },
+    { src: 'https://cdn.jsdelivr.net/gh/pmuckova/site-petramuckova.cz@main/assets/desktop/eshop-placeholder.webp', alt: 'Photo not yet available' },
 ] } = {}) {
     const doc = { activeElement: null };
     function node() {
@@ -246,6 +246,7 @@ function photoViewerFixture({ nativeDialog = true, photos = [
             listeners: {}, attributes: {}, classList,
             addEventListener(type, handler) { this.listeners[type] = handler; },
             setAttribute(key, value) { this.attributes[key] = value; },
+            contains(target) { return target === this || target?.parent === this; },
             focus() { doc.activeElement = this; },
             fire(type, props = {}) {
                 const event = { button: 0, detail: 1, defaultPrevented: false, preventDefault() { this.defaultPrevented = true; }, ...props };
@@ -256,20 +257,27 @@ function photoViewerFixture({ nativeDialog = true, photos = [
     }
     Object.assign(doc, node());
     const viewer = node(), image = node(), closeButton = node();
+    const previousButton = node(), nextButton = node(), position = node();
     viewer.open = false;
     if (nativeDialog) viewer.showModal = () => { viewer.open = true; };
     viewer.close = () => { viewer.open = false; viewer.fire('close'); };
-    viewer.querySelector = selector => selector === '.lightbox-img' ? image : closeButton;
+    viewer.querySelector = selector => ({ '.lightbox-img': image, '.shop-lightbox-close': closeButton,
+        '.shop-lightbox-prev': previousButton, '.shop-lightbox-next': nextButton,
+        '.shop-lightbox-position': position })[selector];
     const links = photos.map(photo => {
         const link = node();
         link.href = photo.src;
+        link.product = photo.product || 'product';
         link.querySelector = () => ({ alt: photo.alt });
         return link;
+    });
+    links.forEach(link => {
+        link.closest = () => ({ querySelectorAll: () => links.filter(item => item.product === link.product) });
     });
     doc.getElementById = id => id === 'shop-lightbox' ? viewer : null;
     doc.querySelectorAll = selector => selector === '.shop-photo-link' ? links : [];
     shop.initPhotoViewer(doc);
-    return { doc, viewer, image, closeButton, links };
+    return { doc, viewer, image, closeButton, previousButton, nextButton, position, links };
 }
 
 test('product photos open the blog-style viewer with the full image, alt text and keyboard focus', () => {
@@ -306,6 +314,78 @@ test('all photos in every camshaft gallery enlarge independently and restore the
             assert.equal(link.classList.has('shop-photo-pointer-focus'), true);
         });
     }
+});
+
+test('lightbox arrows cycle through all photos of the current product without closing', () => {
+    const photos = [
+        { src: '/one.jpg', alt: 'First', product: 'a' },
+        { src: '/two.jpg', alt: 'Second', product: 'a' },
+        { src: '/three.jpg', alt: 'Third', product: 'a' },
+        { src: '/other.jpg', alt: 'Other product', product: 'b' },
+    ];
+    const { doc, viewer, image, previousButton, nextButton, position, links } = photoViewerFixture({ photos });
+    links.forEach((link, index) => { link.hidden = index !== 1; });
+    links[1].fire('click');
+    assert.equal(position.textContent, '2 / 3');
+    assert.equal(previousButton.hidden, false);
+    assert.equal(nextButton.hidden, false);
+    viewer.fire('click', { target: { parent: nextButton } });
+    assert.equal(viewer.open, true);
+    assert.equal(image.src, '/three.jpg');
+    assert.equal(image.alt, 'Third');
+    assert.equal(viewer.attributes['aria-label'], 'Third');
+    assert.equal(position.textContent, '3 / 3');
+    viewer.fire('click', { target: nextButton });
+    assert.equal(image.src, '/one.jpg');
+    viewer.fire('click', { target: previousButton });
+    assert.equal(image.src, '/three.jpg');
+    assert.equal(position.textContent, '3 / 3');
+    // Navigation does not replace the selected thumbnail or its focus-restoration target.
+    assert.deepEqual(links.map(link => link.hidden), [true, false, true, true]);
+    viewer.fire('cancel');
+    assert.equal(doc.activeElement, links[1]);
+    assert.equal(previousButton.hidden, true);
+    assert.equal(position.hidden, true);
+});
+
+test('left/right keys navigate only an open multi-photo viewer and preserve Escape', () => {
+    const { viewer, image, links, position } = photoViewerFixture();
+    assert.equal(viewer.fire('keydown', { key: 'ArrowRight' }).defaultPrevented, false);
+    links[0].fire('click', { detail: 0 });
+    assert.equal(viewer.fire('keydown', { key: 'ArrowLeft' }).defaultPrevented, true);
+    assert.equal(image.src, links[1].href);
+    assert.equal(position.textContent, '2 / 2');
+    assert.equal(viewer.fire('keydown', { key: 'ArrowRight' }).defaultPrevented, true);
+    assert.equal(image.src, links[0].href);
+    for (const modifiers of [{ ctrlKey: true }, { metaKey: true }, { altKey: true }, { shiftKey: true }]) {
+        assert.equal(viewer.fire('keydown', { key: 'ArrowRight', ...modifiers }).defaultPrevented, false);
+        assert.equal(image.src, links[0].href);
+    }
+    assert.equal(viewer.fire('keydown', { key: 'Tab' }).defaultPrevented, false);
+    assert.equal(viewer.fire('cancel').defaultPrevented, true);
+    assert.equal(viewer.open, false);
+});
+
+test('single-photo products hide navigation even after visiting another product gallery', () => {
+    const photos = [
+        { src: '/one.jpg', alt: 'First', product: 'a' },
+        { src: '/two.jpg', alt: 'Second', product: 'a' },
+        { src: '/single.jpg', alt: 'Only photo', product: 'b' },
+    ];
+    const { viewer, image, previousButton, nextButton, position, links } = photoViewerFixture({ photos });
+    links[0].fire('click');
+    assert.equal(nextButton.hidden, false);
+    viewer.fire('click');
+    links[2].fire('click');
+    assert.equal(previousButton.hidden, true);
+    assert.equal(nextButton.hidden, true);
+    assert.equal(position.hidden, true);
+    assert.equal(viewer.fire('keydown', { key: 'ArrowRight' }).defaultPrevented, false);
+    assert.equal(image.src, '/single.jpg');
+    viewer.fire('click');
+    links[1].fire('click');
+    assert.equal(nextButton.hidden, false);
+    assert.equal(position.textContent, '2 / 2');
 });
 
 test('Escape after mouse, touch or pen opening restores photo focus without a ring', () => {

@@ -72,7 +72,7 @@ class ReleaseUrlTests(unittest.TestCase):
 
     def test_non_page_links_are_unchanged(self):
         urls = ['#order', '#basket', '/', 'mailto:info@petramuckova.cz', 'tel:+420604487263',
-                '/assets/desktop/shop-placeholder.webp', '/shop.js?v=asset-hash',
+                '/assets/desktop/eshop-placeholder.webp', '/shop.js?v=asset-hash',
                 '/cs/shop-extra', '/cs/blog/category', '/unknown/shop',
                 'https://example.com/cs/shop', '//petramuckova.cz.example.com/cs/blog']
         self.assertEqual(self.links(urls), urls)

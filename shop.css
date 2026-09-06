@@ -3,6 +3,8 @@
 .shop-layout *, .shop-layout *::before, .shop-layout *::after { box-sizing: border-box; }
 .shop-page [hidden] { display: none !important; }
 .shop-page :focus-visible { outline: 2px solid #fff !important; outline-offset: 4px; }
+/* The basket receives restored focus after item removal, but is not a control. */
+.shop-page .shop-basket:focus { outline: none !important; }
 /* Form fields already have the main page's red focus border/glow, not a white ring. */
 .shop-page :is(input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea, select.custom-select, .choices):focus-visible { outline: none !important; }
 /* Modal focus restoration must not leave a keyboard-style ring after a photo click. */
@@ -10,7 +12,7 @@
 /* The entire order section retains the main contact form's typography and spacing. */
 .shop-layout :is(h1, h2, h3, p, figure):not(:where(.shop-order *, .shop-product *)) { margin: 0; }
 .shop-layout :is(h1, h2, h3):not(:where(.shop-order *, .shop-product *)) { line-height: 1.2; }
-.shop-layout a:hover { color: #ff7777; }
+.shop-layout a:not(.toc-link):hover { color: #ff7777; }
 /* Keep shared field styling; product cards have a smaller, locally scoped type scale. */
 .shop-page button:not(.btn-submit) { font: inherit; }
 .shop-page button, .shop-page select, .shop-page summary { cursor: pointer; }
@@ -22,6 +24,16 @@
 .shop-catalog, .shop-basket { line-height: 1.65; }
 .shop-catalog { min-width: 0; gap: 0; }
 .shop-sidebar { grid-column: 2; grid-row: 1 / 3; align-self: stretch; padding-top: calc(var(--navbar-height) + 40px); }
+.shop-sidebar-panels { display: contents; }
+/* Reuse the blog's contents typography, link states and red-topped panel. */
+.shop-toc { position: static; display: flex; flex-direction: column; width: 280px; max-height: 360px; margin-bottom: 20px; }
+.shop-toc .toc-title { flex-shrink: 0; }
+.shop-toc .toc-nav { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding-inline: 1px 6px; overflow-wrap: anywhere; }
+.shop-toc .toc-link[aria-current="location"] { color: var(--accent); border-left-color: var(--accent); }
+/* When there is room, keep both panels together inside the content boundary. */
+.shop-sidebar-panels.is-sticky { position: sticky; top: calc(var(--navbar-height) + 40px); display: flex; flex-direction: column; gap: 20px; max-height: calc(100dvh - var(--navbar-height) - 60px); }
+.shop-sidebar-panels.is-sticky .shop-toc { flex: 0 0 var(--shop-toc-height); height: var(--shop-toc-height); max-height: none; margin-bottom: 0; }
+.shop-sidebar-panels.is-sticky .shop-basket { position: static; flex: 0 1 auto; min-height: 0; max-height: none; }
 .shop-section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 22px; padding-top: 18px; border-top: 2px solid var(--accent); }
 .shop-section-heading h1, .shop-section-heading h2 { font-size: 1.4rem; border: 0; padding: 0; background: none; box-shadow: none; }
 .shop-section-heading > span { color: var(--shop-muted); font-size: .875rem; white-space: nowrap; }
@@ -74,7 +86,7 @@
 .shop-basket-configuration dd { margin: 0; }
 .shop-photo { min-width: 0; }
 .shop-photo-gallery { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
-.shop-photo-thumbnails { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.shop-photo-thumbnails { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 10px; }
 .shop-photo-thumbnail { display: block; width: 96px; height: 60px; margin: 0; padding: 3px; border: 1px solid #484848; border-radius: 0; background: #050505; }
 .shop-photo-thumbnail[aria-pressed="true"] { border-color: var(--accent); }
 .shop-photo-thumbnail:hover { border-color: #bbb; }
@@ -142,6 +154,7 @@
 .shop-wizard-form .choices__list--single { padding-block: 0; }
 /* Keep the blog's appearance and top offset, but stop at the content rail's bottom. */
 .shop-basket { position: sticky; display: flex; flex-direction: column; width: 280px; max-height: calc(100dvh - var(--navbar-height) - 60px); overflow: hidden; scroll-margin-top: calc(var(--navbar-height) + 40px); }
+.shop-basket.is-inline { position: static; max-height: none; }
 /* Only the item list shrinks and scrolls; the heading and checkout summary stay visible. */
 .shop-basket > :not(.shop-basket-items) { flex-shrink: 0; }
 .shop-basket .shop-section-heading { border: 0; padding-top: 0; gap: 8px; margin-bottom: 15px; }
@@ -155,7 +168,16 @@
 .shop-basket-item p { font-size: .875rem; color: #bbb; margin-block: 8px; }
 .shop-basket-item .shop-quantity { margin-top: 12px; }
 .shop-totals { display: flex; justify-content: space-between; flex-direction: column; gap: 8px; border-top: 1px solid #555; margin-block: 22px 16px; padding-top: 20px; }
-.shop-totals span { color: #ccc; font-size: .875rem; }
+.shop-price-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.shop-price-heading > span { color: #ccc; font-size: .875rem; }
+.shop-price-info-toggle { flex: 0 0 32px; display: grid; place-items: center; width: 32px; height: 32px; padding: 4px; border: 0; border-radius: 0; background: transparent; color: var(--accent); }
+.shop-price-info-toggle .mdi { font-size: 1.25rem; line-height: 1; pointer-events: none; }
+.shop-price-info-toggle:hover, .shop-price-info-toggle[aria-expanded="true"] { color: #fff; }
+/* This panel lives outside the basket's clipping/scroll containers. */
+.shop-price-info { position: fixed; z-index: 2100; box-sizing: border-box; width: min(340px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow-y: auto; overscroll-behavior: contain; padding: 18px 20px; border: 1px solid #444; border-top: 2px solid var(--accent); background: #111; color: var(--shop-muted); box-shadow: 0 8px 24px rgba(0, 0, 0, .6); font: .875rem/1.65 'Fira Code', monospace; text-align: start; overflow-wrap: anywhere; }
+.shop-price-info p { margin: 0; }
+.shop-price-info p + p { margin-top: 12px; }
+.shop-price-info p[hidden] + p { margin-top: 0; }
 .shop-totals strong { font: 600 1.2rem 'Chakra Petch', sans-serif; }
 .shop-muted { color: var(--shop-muted); font-size: .875rem; }
 .shop-basket > p { margin-bottom: 16px; }
@@ -164,7 +186,7 @@
 .shop-basket > .shop-button { display: flex; }
 .shop-secondary-button { color: white !important; background: transparent; border-color: #777; }
 .shop-catalog-notes { color: var(--shop-muted); border-top: 1px solid #333; padding-top: 24px; margin-bottom: 28px; font-size: .875rem; }
-.shop-catalog-notes p + p { margin-top: 12px; }
+.shop-catalog-notes .tech-list { margin: 0; }
 /* One main-page form panel, below the unboxed .section / .contact-intro heading. */
 .shop-order { grid-column: 1; min-width: 0; scroll-margin-top: calc(var(--navbar-height) + 40px); }
 .shop-order-form { min-width: 0; }
@@ -180,12 +202,20 @@
 .shop-lightbox { margin: 0; padding: 0; border: 0; max-width: none; max-height: none; }
 .shop-lightbox:not([open]) { display: none; }
 .shop-lightbox::backdrop { background: transparent; }
-.shop-lightbox .shop-lightbox-close { position: absolute; top: 16px; right: 16px; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--accent); border-radius: 50%; background: #050505; color: var(--accent); font-size: 1.5rem; }
-.shop-lightbox-close .mdi { pointer-events: none; }
+.shop-lightbox .shop-lightbox-control { position: absolute; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--accent); border-radius: 50%; background: rgba(5, 5, 5, .85); color: var(--accent); }
+.shop-lightbox-control .mdi { font-size: 1.5rem; line-height: 1; pointer-events: none; }
+.shop-lightbox-control:hover { background: var(--accent); color: #050505; }
+.shop-lightbox-close { top: 16px; right: 16px; }
+.shop-lightbox-prev, .shop-lightbox-next { top: 50%; transform: translateY(-50%); }
+.shop-lightbox-prev { left: 16px; }
+.shop-lightbox-next { right: 16px; }
+.shop-lightbox-position { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); padding: 4px 10px; background: rgba(5, 5, 5, .85); color: #fff; font: .875rem/1.5 'Fira Code', monospace; pointer-events: none; }
 @media (max-width: 1399px) {
   /* The blog switches to its mobile header here. Keep checkout in the normal page flow. */
   .shop-sidebar { padding-top: 0; }
-  .shop-basket { position: static; display: block; width: auto; max-height: none; overflow: visible; margin-top: 40px; }
+  .shop-sidebar-panels.is-sticky { display: contents; }
+  .shop-toc { width: auto; margin-top: 40px; }
+  .shop-basket { position: static; display: block; width: auto; max-height: none; overflow: visible; margin-top: 0; }
   .shop-basket-items { overflow: visible; overscroll-behavior: auto; }
 }
 @media (max-width: 740px) {

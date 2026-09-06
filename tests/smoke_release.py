@@ -56,6 +56,13 @@ def main():
         release = workspace / 'release'
         for filename in ('shop.css', 'shop.js', 'form.js', 'sitemap.xml'):
             assert (release / filename).stat().st_size > 0, filename
+        photo_names = {Path(image['src']).name for product in catalog['products']
+                       for image in product.get('images', [])}
+        supplied_names = {path.name for path in (ROOT / 'assets/desktop').glob('eshop-*')}
+        assert len(supplied_names) == 20
+        assert supplied_names == photo_names | {'eshop-placeholder.webp'}
+        for name in supplied_names:
+            assert (release / 'assets/desktop' / name).read_bytes() == (ROOT / 'assets/desktop' / name).read_bytes()
         for path in release.rglob('*'):
             assert path.suffix.lower() != '.php', path
             assert not {'backend', '.htaccess', '.user.ini'}.intersection(part.lower() for part in path.relative_to(release).parts), path
@@ -69,7 +76,7 @@ def main():
             assert soup.select_one('link[rel=canonical]')['href'].endswith(f'/{language}/shop')
             assert all(image['src'].startswith('https://cdn.jsdelivr.net/gh/pmuckova/site-petramuckova.cz@main/') for image in soup.select('.shop-product img'))
             assert not soup.select('[data-placeholder], .shop-photo-placeholder')
-            assert 'shop-placeholder.webp' not in str(soup)
+            assert 'eshop-placeholder.webp' not in str(soup)
             config = json.loads(soup.select_one('#shop-config').string)
             form = soup.select_one('#shop-order-form')
             assert form['action'] == '/backend/order_form_handler.php'
@@ -185,12 +192,24 @@ def main():
                 assert len(card.select('.blog-img-frame')) == len(photo_links)
                 assert not card.select('.tech-frame')
             assert soup.select_one('dialog#shop-lightbox.lightbox-modal .lightbox-img')
+            for selector, label in (('.shop-lightbox-prev', 'previousPhoto'), ('.shop-lightbox-next', 'nextPhoto')):
+                arrow = soup.select_one(f'#shop-lightbox {selector}[hidden]')
+                assert arrow and arrow['aria-label'] == config['text'][label]
             assert soup.select_one('script[src*="choices.js@11.1.0"][defer]')
             assert soup.select_one('link[href*="choices.js@11.1.0"]')
             assert len(soup.select('select[data-order-variant]')) == sum(len(option['variantIds']) > 1 for p in catalog['products'] for option in p.get('options', []))
             assert urlsplit(soup.select_one('#navLinks > li > a.active-link')['href']).path == f'/{language}/shop'
-            assert soup.select_one('.blog-sidebar > #basket.toc-wrapper')
-            assert soup.select_one('main .shop-layout > .shop-sidebar > #basket')
+            panels = soup.select_one('main .shop-layout > .shop-sidebar > .shop-sidebar-panels')
+            assert panels
+            assert [child['id'] for child in panels.find_all(recursive=False)] == ['shop-contents', 'basket']
+            assert panels.select_one('#basket.toc-wrapper')
+            info = soup.select_one('#basket-price-info[hidden][role=tooltip]')
+            assert info and info.parent is soup.body
+            assert [p.get_text() for p in info.select('p')] == [config['text']['quoteNotice'], config['text']['deliveryNotice']]
+            assert panels.select_one('.shop-price-heading button[aria-controls="basket-price-info"][aria-expanded=false]')
+            assert not panels.select_one('#basket-quote-notice')
+            assert [link['href'] for link in panels.select('#shop-contents .toc-link')] == [
+                f'#{product["id"]}' for product in catalog['products']]
             assert soup.main.find_next_sibling('footer') is soup.footer
             assert not soup.select_one('#basket-clear')
             order = soup.select_one('#order.section')
@@ -225,6 +244,9 @@ def main():
             assert 'bg-loaded' in soup.body['class']
             assert any('/blog.css?' in link['href'] for link in soup.select('link[rel=stylesheet]'))
             blog = BeautifulSoup((release / language / 'blog.html').read_text(), 'html.parser')
+            assert panels.select_one('#shop-toc-title').get_text() == config['text']['contentsTitle']
+            assert not panels.select_one('#shop-toc-title').get_text().startswith('///')
+            assert blog.select_one('.blog-sidebar .toc-title').get_text().startswith('///')
             assert not blog.select('#article-1, #post-1-title, a[href="#post-1-title"]')
             assert [heading['id'] for heading in blog.select('.blog-card h1')] == [f'post-{number}-title' for number in range(2, 9)]
             assert len(blog.select('.toc-nav a')) == 7
@@ -252,7 +274,7 @@ def main():
         for product in catalog['products']:
             for image in product.get('images', []):
                 assert any(loc.text.endswith(image['src']) for loc in image_locations)
-        assert 'shop-placeholder.webp' not in (release / 'sitemap.xml').read_text()
+        assert 'eshop-placeholder.webp' not in (release / 'sitemap.xml').read_text()
     release_after = {str(p.relative_to(ROOT / 'release')): hashlib.sha256(p.read_bytes()).hexdigest()
                      for p in (ROOT / 'release').rglob('*') if p.is_file()}
     assert release_before == release_after, 'Existing release directory changed!'

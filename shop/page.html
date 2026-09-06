@@ -39,18 +39,25 @@
         <p id="shop-legacy-notice" class="shop-notice" role="status" hidden>$legacyCamshafts</p>
         <p id="shop-legacy-rotor-notice" class="shop-notice" role="status" hidden>$legacyRotors</p>
         <h1 id="catalog-title" class="shop-sr-only">$title</h1>
-        <div class="blog-card shop-catalog-notes"><p>$trade</p>$notes_html</div>
+        <div class="blog-card shop-catalog-notes"><ul class="tech-list">$notes_html</ul></div>
         <div class="shop-grid">$products</div>
       </section>
-      <aside class="blog-sidebar shop-sidebar" aria-labelledby="basket-title">
+      <aside class="blog-sidebar shop-sidebar" aria-labelledby="shop-toc-title basket-title">
+      <div class="shop-sidebar-panels">
+      <section id="shop-contents" class="toc-wrapper shop-toc" aria-labelledby="shop-toc-title">
+        <span id="shop-toc-title" class="toc-title">$contents_title</span>
+        <nav class="toc-nav" aria-labelledby="shop-toc-title">$contents_links</nav>
+      </section>
       <div id="basket" class="toc-wrapper shop-basket" tabindex="-1">
         <div class="shop-section-heading"><h2 id="basket-title" class="toc-title">$basket</h2></div>
         <p id="basket-empty">$empty</p>
         <ul id="basket-items" class="shop-basket-items"></ul>
-        <div class="shop-totals"><span>$subtotal</span><strong id="basket-subtotal">0 CZK</strong></div>
-        <p id="basket-quote-notice" class="shop-muted" hidden>$quoteNotice</p>
-        <p class="shop-muted">$deliveryNotice</p>
+        <div class="shop-totals">
+          <div class="shop-price-heading"><span>$subtotal</span><button id="basket-price-info-toggle" class="shop-price-info-toggle" type="button" aria-label="$priceInformation" aria-controls="basket-price-info" aria-describedby="basket-price-info" aria-expanded="false"><span class="mdi mdi-information-outline" aria-hidden="true"></span></button></div>
+          <strong id="basket-subtotal">0 CZK</strong>
+        </div>
         <a class="shop-button" href="#order">$checkout <span aria-hidden="true">↓</span></a>
+      </div>
       </div>
       </aside>
     <section id="order" class="section shop-order" aria-labelledby="order-title">
@@ -114,9 +121,16 @@
     </div>
   </main>
   $footer
+  <div id="basket-price-info" class="shop-price-info" role="tooltip" hidden>
+    <p id="basket-quote-notice" hidden>$quoteNotice</p>
+    <p>$deliveryNotice</p>
+  </div>
   <dialog id="shop-lightbox" class="lightbox-modal shop-lightbox" aria-label="$enlargePhoto">
-    <button type="button" class="shop-lightbox-close" aria-label="$closePhoto"><span class="mdi mdi-close" aria-hidden="true"></span></button>
+    <button type="button" class="shop-lightbox-control shop-lightbox-close" aria-label="$closePhoto"><span class="mdi mdi-close" aria-hidden="true"></span></button>
+    <button type="button" class="shop-lightbox-control shop-lightbox-prev" aria-label="$previousPhoto" hidden><span class="mdi mdi-chevron-left" aria-hidden="true"></span></button>
     <img class="lightbox-img" alt="">
+    <button type="button" class="shop-lightbox-control shop-lightbox-next" aria-label="$nextPhoto" hidden><span class="mdi mdi-chevron-right" aria-hidden="true"></span></button>
+    <span class="shop-lightbox-position" role="status" aria-live="polite" aria-atomic="true" hidden></span>
   </dialog>
   <div id="shop-status" class="shop-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
   <script id="shop-config" type="application/json">$config</script>

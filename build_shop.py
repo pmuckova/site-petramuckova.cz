@@ -615,13 +615,17 @@ def build_shop(root=ROOT, languages=None, output_root=None, include_backend=True
         values = {key: escape(value) for key, value in t.items()}
         values.update({
             'lang': lang, 'canonical': f'{BASE_URL}/{lang}/shop',
-            'intro': escape(copy['intro']), 'trade': escape(copy['trade']),
+            'intro': escape(copy['intro']),
             'email_address': escape(data['orderEmail']),
             'alternates': '\n'.join(f'<link rel="alternate" hreflang="{code}" href="{BASE_URL}/{code}/shop">' for code in data['languages'])
                           + f'\n<link rel="alternate" hreflang="x-default" href="{BASE_URL}/cs/shop">',
             'header': header, 'footer': footer,
+            'contents_title': escape(t['contentsTitle']),
+            'contents_links': '\n'.join(
+                f'<a class="toc-link" href="#{escape(product["id"])}">{index}. {escape(product["translations"][lang]["name"])}</a>'
+                for index, product in enumerate(data['products'], 1)),
             'products': '\n'.join(product_card(p, lang, t, i) for i, p in enumerate(data['products'])),
-            'notes_html': ''.join(f'<p>{escape(note)}</p>' for note in copy['notes']),
+            'notes_html': ''.join(f'<li>{escape(note)}</li>' for note in [*copy['trade'].split('\n\n'), *copy['notes']]),
             'attachments_html': '\n'.join(f'''<div class="file-upload-wrapper"><label class="file-upload-btn"><span class="file-msg">{escape(t['fileChoose'])}</span><span class="btn-txt">{escape(t['fileBrowse'])}</span><input id="order-attachment-{index}" type="file" name="attachment[]" class="file-upload-input" aria-labelledby="order-attachments-title" accept=".jpg,.jpeg,.png,.webp,.gif,.bmp,.tif,.tiff,.pdf,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.rtf,.csv,.md,.zip,.7z,.rar"></label></div>''' for index in range(1, 4)),
             'config': config,
             'css_version': asset_version(root, 'shop.css'), 'js_version': asset_version(root, 'shop.js'),

@@ -76,18 +76,28 @@ class ShopBuildTests(unittest.TestCase):
                 build_shop(languages=['cs'], output_root=target, include_backend=False)
                 self.assertEqual(backend.read_text(encoding='utf-8'), 'private backend catalogue')
 
-    def test_catalog_information_precedes_products_without_changing_copy(self):
+    def test_catalog_information_uses_five_blog_style_bullets_before_products(self):
         for lang, soup in self.pages():
             with self.subTest(lang=lang):
                 self.assertEqual(len(soup.select('.shop-catalog-notes')), 1)
                 notes = soup.select_one('#catalog > .shop-catalog-notes')
-                self.assertEqual(len(notes.select('p')), 4)
+                self.assertFalse(notes.select('p'))
+                bullets = notes.select(':scope > ul.tech-list > li')
+                self.assertEqual(len(bullets), 5)
                 self.assertNotIn('//', notes.get_text())
                 self.assertIsNotNone(soup.select_one('#catalog > .shop-catalog-notes + .shop-grid'))
                 self.assertEqual(soup.select_one('#catalog .blog-card'), notes)
                 copy = self.catalog['copy'][lang]
-                self.assertEqual([paragraph.get_text() for paragraph in notes.select('p')],
-                                 [copy['trade'], *copy['notes']])
+                self.assertEqual([bullet.get_text() for bullet in bullets],
+                                 [*copy['trade'].split('\n\n'), *copy['notes']])
+                if lang == 'cs':
+                    self.assertEqual([bullet.get_text() for bullet in bullets], [
+                        'Specializujeme se na úpravy a dodávky komponentů pro požární sport.',
+                        'Obchodníkům a úpravcům, kteří odebírají zboží ve větším množství, nabízíme individuální cenové podmínky a zvýhodněné ceny.',
+                        'Všechny nabízené díly jsou CZ originály, nikoliv levné náhrady. Další díly na dotaz.',
+                        'CENÍK PLATNÝ OD 5.11.2025',
+                        'NEJSME PLÁTCI DPH',
+                    ])
 
     def test_titles_lead_the_product_card_and_controls_are_labeled(self):
         for lang, soup in self.pages():
@@ -399,7 +409,7 @@ class ShopBuildTests(unittest.TestCase):
                 self.assertIn('shop-no-description', soup.find(id=product_id)['class'])
                 self.assertFalse(soup.find(id=product_id).select('.article-header .lead, .article-body p, .article-body .tech-list'))
             resonance = soup.select_one('#resonance-exhaust')
-            self.assertEqual(resonance.img['src'], '/assets/desktop/rezonancni-vyfuk-01.jpg')
+            self.assertEqual(resonance.img['src'], '/assets/desktop/eshop-rezonancni-vyfuk-01.jpg')
             self.assertFalse(resonance.select('img[data-placeholder]'))
             if lang == 'cs':
                 self.assertEqual([option['name'] for option in rotor['options']],
@@ -570,6 +580,13 @@ class ShopBuildTests(unittest.TestCase):
             self.assertFalse(viewer.has_attr('open'))
             self.assertIsNotNone(viewer.select_one('.lightbox-img'))
             self.assertEqual(viewer.select_one('button')['aria-label'], text['closePhoto'])
+            for selector, label in (('.shop-lightbox-prev', 'previousPhoto'), ('.shop-lightbox-next', 'nextPhoto')):
+                button = viewer.select_one(selector)
+                self.assertEqual(button['type'], 'button')
+                self.assertEqual(button['aria-label'], text[label])
+                self.assertTrue(button.has_attr('hidden'))
+                self.assertIsNotNone(button.select_one('.mdi[aria-hidden=true]'))
+            self.assertTrue(viewer.select_one('.shop-lightbox-position[hidden][role=status][aria-live=polite]'))
             self.assertEqual(len(soup.select('.shop-photo > .shop-photo-link > .blog-img-frame img.blog-img')), self.photo_count)
             for photo in soup.select('.shop-photo-link'):
                 self.assertEqual(photo['href'], photo.img['src'])
@@ -668,7 +685,7 @@ class ShopBuildTests(unittest.TestCase):
         for lang, soup in self.pages():
             self.assertEqual(len(soup.select('.shop-product img')), self.photo_count)
             self.assertFalse(soup.select('[data-placeholder], .shop-photo-placeholder'))
-            self.assertNotIn('shop-placeholder.webp', str(soup))
+            self.assertNotIn('eshop-placeholder.webp', str(soup))
             self.assertFalse(soup.select('.shop-photo figcaption'))
             for product in self.catalog['products']:
                 card = soup.find(id=product['id'])
@@ -691,16 +708,16 @@ class ShopBuildTests(unittest.TestCase):
 
     def test_supplied_standard_product_photos_have_correct_paths_dimensions_and_localized_alt_text(self):
         expected = {
-            'exhaust-headers': [('svody-ladene-01.jpeg', 435, 493)],
-            'resonance-exhaust': [('rezonancni-vyfuk-01.jpg', 600, 639)],
-            'head-gasket': [('tesneni-valce-01.jpeg', 1600, 1200), ('tesneni-valce-02.jpeg', 742, 497)],
-            'connecting-rod': [('ojnice-h-kovana-01.jpeg', 4000, 2252)],
-            'ignition-coil': [('zapalovaci-civka-11.jpg', 2234, 1721)],
-            'distributor-rotor': [('palec-rozdelovace-omezovac-01.jpeg', 2046, 2048)],
-            'distributor-parts': [('rozdelovace-01.jpeg', 1086, 1448)],
-            'cylinder-piston-kit': [('sada-valce-02.jpeg', 4000, 2252), ('sada-valce-01.jpeg', 2252, 4000)],
-            'carburetor-38-38': [('karburator.jpeg', 3376, 2252)],
-            'distributor-overhaul': [('repas-rozdelovac-01.jpeg', 600, 800)],
+            'exhaust-headers': [('eshop-svody-ladene-01.jpeg', 435, 493)],
+            'resonance-exhaust': [('eshop-rezonancni-vyfuk-01.jpg', 600, 639)],
+            'head-gasket': [('eshop-valce-tesneni-01.jpg', 1467, 669), ('eshop-valce-tesneni-02.jpg', 620, 283)],
+            'connecting-rod': [('eshop-ojnice-h-kovana-01.jpg', 2871, 1644)],
+            'ignition-coil': [('eshop-zapalovaci-civka-01.jpg', 2078, 1680)],
+            'distributor-rotor': [('eshop-rozdelovac-omezovac-01.jpg', 1858, 1200)],
+            'distributor-parts': [('eshop-rozdelovac-nd-01.jpg', 1086, 1448)],
+            'cylinder-piston-kit': [('eshop-valce-sada-01.jpg', 2211, 1487), ('eshop-valce-sada-02.jpg', 2165, 1847)],
+            'carburetor-38-38': [('eshop-karburator-01.webp', 3376, 2252)],
+            'distributor-overhaul': [('eshop-rozdelovac-repas-01.jpg', 600, 800)],
         }
         for lang, soup in self.pages():
             for product_id, files in expected.items():
@@ -731,7 +748,7 @@ class ShopBuildTests(unittest.TestCase):
                 self.assertEqual(resonance['style'], manifold['style'])
                 self.assertEqual(resonance['style'], '--shop-photo-width: 435px')
                 self.assertEqual((int(resonance.img['width']), int(resonance.img['height'])), (600, 639))
-                self.assertEqual(resonance['href'], '/assets/desktop/rezonancni-vyfuk-01.jpg')
+                self.assertEqual(resonance['href'], '/assets/desktop/eshop-rezonancni-vyfuk-01.jpg')
                 self.assertFalse(soup.select('#resonance-exhaust .shop-photo-gallery'))
         rules = dict(css_rules(ROOT / 'shop.css'))
         self.assertEqual(rules['.shop-photo img']['height'], 'auto')
@@ -755,9 +772,9 @@ class ShopBuildTests(unittest.TestCase):
                 for product_id in ('exhaust-headers', 'resonance-exhaust'):
                     self.assertEqual(coil['style'], soup.select_one(f'#{product_id} .shop-photo-link')['style'])
                 self.assertEqual(coil['style'], '--shop-photo-width: 435px')
-                self.assertEqual(coil['href'], '/assets/desktop/zapalovaci-civka-11.jpg')
+                self.assertEqual(coil['href'], '/assets/desktop/eshop-zapalovaci-civka-01.jpg')
                 self.assertEqual(coil.img['src'], coil['href'])
-                self.assertEqual((int(coil.img['width']), int(coil.img['height'])), (2234, 1721))
+                self.assertEqual((int(coil.img['width']), int(coil.img['height'])), (2078, 1680))
                 self.assertFalse(soup.select('#ignition-coil .shop-photo-gallery'))
 
     def test_three_tall_single_photo_previews_are_capped_without_changing_zoom_images(self):
@@ -792,7 +809,7 @@ class ShopBuildTests(unittest.TestCase):
         for lang, soup in self.pages():
             config = json.loads(soup.select_one('#shop-config').string)
             self.assertEqual(config['locale'], lang)
-            self.assertEqual(soup.select_one('.shop-totals > span').get_text(), config['text']['subtotal'])
+            self.assertEqual(soup.select_one('.shop-price-heading > span').get_text(), config['text']['subtotal'])
             for product in config['products']:
                 self.assertEqual(soup.find(id='name-' + product['id']).text, product['name'])
                 source = next(p for p in self.catalog['products'] if p['id'] == product['id'])
@@ -1037,10 +1054,44 @@ class ShopBuildTests(unittest.TestCase):
             with self.subTest(lang=lang):
                 title = soup.select_one('#basket-title.toc-title')
                 self.assertEqual(title.get_text(), headings[lang])
-                self.assertEqual(soup.select_one('.shop-sidebar')['aria-labelledby'], title['id'])
+                self.assertIn(title['id'], soup.select_one('.shop-sidebar')['aria-labelledby'].split())
                 self.assertIsNone(soup.select_one('.shop-section-heading [data-basket-count]'))
                 self.assertEqual(json.loads(soup.select_one('#shop-config').string)['text']['basket'], headings[lang])
         self.assertNotIn('[data-basket-count]', (ROOT / 'shop.js').read_text())
+
+    def test_product_contents_reuses_blog_style_and_lists_every_localized_product_above_basket(self):
+        headings = {
+            'cs': 'NABÍDKA', 'en': 'PRODUCTS', 'de': 'ANGEBOT', 'fr': 'CATALOGUE',
+            'it': 'CATALOGO', 'es': 'CATÁLOGO', 'pl': 'OFERTA', 'ru': 'КАТАЛОГ',
+            'ja': '商品一覧', 'zh': '商品目录',
+        }
+        for lang, soup in self.pages():
+            with self.subTest(lang=lang):
+                blog = BeautifulSoup((ROOT / lang / 'blog.html').read_text(), 'html.parser')
+                rail = soup.select_one('.shop-sidebar > .shop-sidebar-panels')
+                self.assertEqual([child['id'] for child in rail.find_all(recursive=False)], ['shop-contents', 'basket'])
+                contents = rail.select_one('#shop-contents.toc-wrapper.shop-toc')
+                title = contents.select_one('#shop-toc-title.toc-title')
+                self.assertEqual(title.get_text(), headings[lang])
+                self.assertEqual(json.loads(soup.select_one('#shop-config').string)['text']['contentsTitle'], headings[lang])
+                self.assertTrue(blog.select_one('.blog-sidebar .toc-title').get_text().startswith('///'))
+                nav = contents.select_one('nav.toc-nav')
+                self.assertEqual(nav['aria-labelledby'], title['id'])
+                links = nav.select('a.toc-link')
+                self.assertEqual([link['href'] for link in links],
+                                 ['#' + product['id'] for product in self.catalog['products']])
+                self.assertEqual([link.get_text() for link in links],
+                                 [f'{index}. {product["translations"][lang]["name"]}'
+                                  for index, product in enumerate(self.catalog['products'], 1)])
+                self.assertTrue(all(soup.select_one(link['href'] + '.shop-product') for link in links))
+        rules = dict(css_rules(ROOT / 'shop.css'))
+        self.assertEqual(rules['.shop-toc .toc-nav']['overflow-y'], 'auto')
+        self.assertEqual(rules['.shop-toc .toc-nav']['overscroll-behavior'], 'contain')
+        self.assertEqual(rules['.shop-sidebar-panels']['display'], 'contents')
+        self.assertNotIn('overflow', rules['.shop-sidebar-panels'])
+        source = (ROOT / 'shop.js').read_text()
+        self.assertIn('initProductContents(document, window);', source)
+        self.assertIn('initShopSidebar(document, window);', source)
 
     def test_only_basket_items_scroll_in_the_floating_panel(self):
         rules = list(css_rules(ROOT / 'shop.css'))
@@ -1064,11 +1115,37 @@ class ShopBuildTests(unittest.TestCase):
                 self.assertIsNotNone(item_list)
                 stationary = soup.select('.shop-basket > :not(.shop-basket-items)')
                 self.assertNotIn(item_list, stationary)
-                for selector in ('.shop-section-heading', '#basket-empty', '.shop-totals',
-                                 '#basket-quote-notice', 'p.shop-muted:not([id])', 'a.shop-button'):
+                for selector in ('.shop-section-heading', '#basket-empty', '.shop-totals', 'a.shop-button'):
                     node = basket.select_one(selector)
                     self.assertIn(node, stationary, selector)
                     self.assertNotIn(item_list, node.parents)
+
+    def test_price_notices_are_hidden_behind_accessible_information_icon(self):
+        for lang, soup in self.pages():
+            with self.subTest(lang=lang):
+                text = json.loads(soup.select_one('#shop-config').string)['text']
+                basket = soup.select_one('#basket')
+                heading = basket.select_one('.shop-price-heading')
+                toggle = heading.select_one('button#basket-price-info-toggle')
+                popup = soup.select_one('#basket-price-info[hidden][role=tooltip]')
+                self.assertEqual(heading.find_all(recursive=False)[1], toggle)
+                self.assertEqual(toggle['type'], 'button')
+                self.assertEqual(toggle['aria-label'], text['priceInformation'])
+                self.assertEqual(toggle['aria-controls'], popup['id'])
+                self.assertEqual(toggle['aria-describedby'], popup['id'])
+                self.assertEqual(toggle['aria-expanded'], 'false')
+                self.assertTrue(toggle.select_one('.mdi-information-outline[aria-hidden=true]'))
+                self.assertIs(popup.parent, soup.body)  # Not clipped by the basket's overflow.
+                self.assertEqual([p.get_text() for p in popup.select('p')],
+                                 [text['quoteNotice'], text['deliveryNotice']])
+                self.assertTrue(popup.select_one('#basket-quote-notice[hidden]'))
+                self.assertNotIn(text['quoteNotice'], basket.get_text())
+                self.assertNotIn(text['deliveryNotice'], basket.get_text())
+                self.assertEqual(soup.select_one('#order .disclaimer').get_text(), text['deliveryNotice'])
+        rules = dict(css_rules(ROOT / 'shop.css'))
+        self.assertEqual(rules['.shop-price-heading']['justify-content'], 'space-between')
+        self.assertEqual(rules['.shop-price-info']['position'], 'fixed')
+        self.assertIn('initPriceInformation(document, window);', (ROOT / 'shop.js').read_text())
 
     def test_sticky_basket_is_bounded_by_the_content_before_the_footer(self):
         rules = list(css_rules(ROOT / 'shop.css'))
@@ -1086,13 +1163,14 @@ class ShopBuildTests(unittest.TestCase):
             with self.subTest(lang=lang):
                 layout = soup.select_one('main.blog-wrapper > .container > .shop-layout')
                 rail = layout.select_one(':scope > .shop-sidebar')
-                self.assertTrue(rail.select_one(':scope > #basket.toc-wrapper.shop-basket'))
+                panels = rail.select_one(':scope > .shop-sidebar-panels')
+                self.assertTrue(panels.select_one(':scope > #basket.toc-wrapper.shop-basket'))
                 self.assertTrue(layout.select_one(':scope > #catalog'))
                 self.assertTrue(layout.select_one(':scope > #order'))
                 self.assertIsNone(layout.find('footer'))
                 self.assertIs(soup.main.find_next_sibling('footer'), soup.footer)
         # No intermediate scroll container may capture the sticky positioning.
-        ancestors = [rail, *rail.parents]
+        ancestors = [panels, rail, *rail.parents]
         for path in ('main.css', 'blog.css', 'shop.css'):
             for selector, declarations in css_rules(ROOT / path):
                 overflow = {prop: value for prop, value in declarations.items()
@@ -1115,6 +1193,18 @@ class ShopBuildTests(unittest.TestCase):
         self.assertEqual(rules['.shop-sidebar']['padding-top'], '0')
         self.assertEqual(rules['.shop-basket-items']['overflow'], 'visible')
         self.assertEqual(rules['.shop-basket-items']['overscroll-behavior'], 'auto')
+
+    def test_basket_focus_restoration_does_not_outline_the_panel(self):
+        rules = dict(css_rules(ROOT / 'shop.css'))
+        self.assertEqual(rules['.shop-page .shop-basket:focus'], {'outline': 'none !important'})
+        # Keep visible keyboard focus on the actual controls inside the panel.
+        self.assertEqual(rules['.shop-page :focus-visible']['outline'], '2px solid #fff !important')
+        for lang, soup in self.pages():
+            with self.subTest(lang=lang):
+                basket = soup.select_one('#basket.shop-basket')
+                self.assertEqual(basket['tabindex'], '-1')
+                self.assertIsNotNone(basket.select_one('#basket-price-info-toggle'))
+                self.assertIsNotNone(basket.select_one('a.shop-button[href="#order"]'))
 
     def test_basket_rerender_preserves_the_item_list_scroll_position(self):
         source = (ROOT / 'shop.js').read_text()
@@ -1209,7 +1299,7 @@ class ShopBuildTests(unittest.TestCase):
             self.assertEqual(styles[-3:], ['/main.css', '/blog.css', '/shop.css'])
             self.assertTrue(soup.select_one('.blog-wrapper > .container > .blog-layout.shop-layout'))
             self.assertTrue(soup.select_one('#catalog.blog-content'))
-            self.assertTrue(soup.select_one('.blog-sidebar > #basket.toc-wrapper'))
+            self.assertTrue(soup.select_one('.blog-sidebar > .shop-sidebar-panels > #basket.toc-wrapper'))
             self.assertTrue(soup.select_one('#basket-title.toc-title'))
             self.assertFalse(soup.select_one('.shop-sidebar.view-desktop'))  # Basket stays available on mobile.
             self.assertEqual([node.get('id') or 'basket-sidebar' for node in soup.select_one('.shop-layout').find_all(recursive=False)],
@@ -1251,11 +1341,11 @@ class ShopBuildTests(unittest.TestCase):
     def test_camshaft_galleries_keep_all_zoomable_photos_for_progressive_enhancement(self):
         products = {product['id']: product for product in self.catalog['products'] if product.get('kind') == 'wizard'}
         expected = {
-            'skoda-ohv-camshaft': [f'/assets/desktop/skoda-ohv-{index}.jpeg' for index in range(1, 5)],
-            'taz-camshaft': [f'/assets/desktop/taz-{index:02d}.jpeg' for index in range(1, 4)],
+            'skoda-ohv-camshaft': ['/assets/desktop/eshop-skoda-ohv-' + name for name in ('01.jpeg', '02.jpeg', '03.jpg', '04.jpg')],
+            'taz-camshaft': [f'/assets/desktop/eshop-taz-{index:02d}.jpeg' for index in range(1, 4)],
         }
         expected_dimensions = {
-            'skoda-ohv-camshaft': [(4000, 2252), (4000, 2252), (2252, 4000), (2252, 4000)],
+            'skoda-ohv-camshaft': [(4000, 2252), (4000, 2252), (1984, 2454), (1939, 1754)],
             'taz-camshaft': [(4000, 2252), (4000, 2252), (4000, 2252)],
         }
         self.assertEqual(set(products), set(expected))
@@ -1298,7 +1388,7 @@ class ShopBuildTests(unittest.TestCase):
             'display': 'grid', 'grid-template-columns': 'minmax(0, 1fr)', 'gap': '18px',
         })
         self.assertEqual(rules['.shop-photo-thumbnails'], {
-            'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'center', 'gap': '10px',
+            'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'flex-start', 'gap': '10px',
         })
         self.assertEqual(rules['.shop-photo-thumbnail']['height'], '60px')
         self.assertEqual(rules['.shop-photo-thumbnail img'], {
@@ -1358,7 +1448,7 @@ class ShopBuildTests(unittest.TestCase):
             lambda p: p.update(images=None),
             lambda p: p.update(images=['not-an-image-record']),
             lambda p: p['images'][1].update(src='/assets/desktop/missing-gallery-image.jpeg'),
-            lambda p: p['images'][1].update(src='/assets/desktop/../desktop/skoda-ohv-2.jpeg'),
+            lambda p: p['images'][1].update(src='/assets/desktop/../desktop/eshop-skoda-ohv-02.jpeg'),
             lambda p: p['images'][1].update(width=0),
             lambda p: p['images'][1].update(height=True),
             lambda p: p['images'][1]['alt'].pop('en'),
