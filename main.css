@@ -320,6 +320,26 @@ h2 {
 }
 .nav-links a.active-link { color: var(--accent); font-weight: bold; }
 
+/* Override page-specific focus rings on navigation, including restored focus.
+   Keyboard navigation keeps a visible indicator without drawing a box. */
+.navbar a:focus,
+.navbar .lang-toggle:focus,
+a.nav-logo-mobile:focus,
+.mobile-menu-list a:focus,
+.mobile-langchooser-list a:focus {
+    outline: none !important;
+}
+.navbar a:focus-visible,
+.navbar .lang-toggle:focus-visible,
+a.nav-logo-mobile:focus-visible,
+.mobile-menu-list a:focus-visible,
+.mobile-langchooser-list a:focus-visible {
+    text-decoration-line: underline !important;
+    text-decoration-color: var(--accent) !important;
+    text-decoration-thickness: 1px !important;
+    text-underline-offset: 0.3em;
+}
+
 /* Language Dropdown */
 .lang-dropdown-wrapper { position: relative; display: inline-block; }
 .lang-toggle {

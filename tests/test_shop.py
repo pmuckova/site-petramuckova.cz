@@ -1110,6 +1110,19 @@ class ShopBuildTests(unittest.TestCase):
                     for link in soup.select('a[href^="#post-"]'):
                         self.assertIsNotNone(soup.find(id=link['href'][1:]))
 
+    def test_navigation_has_keyboard_underlines_without_page_specific_focus_rings(self):
+        rules = {re.sub(r'\s+', ' ', selector): declarations
+                 for selector, declarations in css_rules(ROOT / 'main.css')}
+        selectors = ['.navbar a', '.navbar .lang-toggle', 'a.nav-logo-mobile',
+                     '.mobile-menu-list a', '.mobile-langchooser-list a']
+        focus = rules[', '.join(selector + ':focus' for selector in selectors)]
+        keyboard = rules[', '.join(selector + ':focus-visible' for selector in selectors)]
+        self.assertEqual(focus['outline'], 'none !important')
+        self.assertEqual(keyboard['text-decoration-line'], 'underline !important')
+        self.assertEqual(keyboard['text-decoration-color'], 'var(--accent) !important')
+        self.assertEqual(keyboard['text-decoration-thickness'], '1px !important')
+        self.assertEqual(keyboard['text-underline-offset'], '0.3em')
+
     def test_shop_reuses_blog_header_footer_and_language_navigation(self):
         for lang, soup in self.pages():
             with self.subTest(lang=lang):
