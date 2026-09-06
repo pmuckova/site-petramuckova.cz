@@ -64,11 +64,11 @@ class ReleaseUrlTests(unittest.TestCase):
         self.assertIn('v=v2026-09%2B1', updated[0])
 
     def test_rewriting_is_idempotent_and_supports_both_quote_styles(self):
-        source = '<a href="/cs/shop">Shop</a><a href=\'/cs/blog/#post-1-title\'>Blog</a>'
+        source = '<a href="/cs/shop">Shop</a><a href=\'/cs/blog/#post-8-title\'>Blog</a>'
         once = self.render(source)
         self.assertEqual(self.render(once), once)
         self.assertIn('href="/cs/shop?v=v2026-09%2B1"', once)
-        self.assertIn("href='/cs/blog/?v=v2026-09%2B1#post-1-title'", once)
+        self.assertIn("href='/cs/blog/?v=v2026-09%2B1#post-8-title'", once)
 
     def test_non_page_links_are_unchanged(self):
         urls = ['#order', '#basket', '/', 'mailto:info@petramuckova.cz', 'tel:+420604487263',

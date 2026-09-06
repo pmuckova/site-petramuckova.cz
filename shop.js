@@ -85,6 +85,31 @@
 
     function removeBasketItem(items, key) { return items.filter(item => basketLineKey(item) !== key); }
 
+    function removeSubmittedItems(items, submitted) {
+        const quantities = new Map(submitted.map(item => [basketLineKey(item), item.quantity]));
+        return items.map(item => ({ ...item, quantity: item.quantity - (quantities.get(basketLineKey(item)) || 0) }))
+            .filter(item => item.quantity > 0);
+    }
+
+    async function sendOrder(endpoint, data, fetcher = root.fetch.bind(root)) {
+        async function request(options) {
+            const controller = new AbortController();
+            const timer = root.setTimeout(() => controller.abort(), 45000);
+            try {
+                const response = await fetcher(endpoint, { ...options, credentials: 'same-origin', cache: 'no-store', signal: controller.signal });
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.code || 'send_failed');
+                return result;
+            } finally { root.clearTimeout(timer); }
+        }
+        const session = await request({ method: 'GET' });
+        if (session.status !== 'ready' || !/^[a-f0-9]{64}$/.test(session.token)) throw new Error('send_failed');
+        data.set('csrfToken', session.token);
+        const result = await request({ method: 'POST', body: data });
+        if (result.status !== 'success' || result.reference !== data.get('requestId')) throw new Error('send_failed');
+        return result;
+    }
+
     function hasLegacyCamshafts(value) {
         return value?.version === 1 && Array.isArray(value.items)
             && value.items.some(row => row && ['camshaft-regrind', 'camshaft-new'].includes(row.id));
@@ -625,7 +650,7 @@
         });
     }
 
-    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseOrderParameters, hasLegacyRotors, normaliseConfiguration, addConfiguredItem, addOrderItem, removeBasketItem, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, initPhotoGalleries, basketRemoveButton, initBasketQuantitySelection, initRadioSubform, initOrderQuantitySpinner, initOrderItemForm, initOrderParameterFields, initWizardForm };
+    const api = { STORAGE_KEY, MAX_QUANTITY, MAX_ITEMS, lineKey, basketLineKey, normaliseBasket, normaliseOrderParameters, hasLegacyRotors, normaliseConfiguration, addConfiguredItem, addOrderItem, removeBasketItem, removeSubmittedItems, sendOrder, hasLegacyCamshafts, itemPrice, configurationDetails, setQuantity, basketSummary, orderDetails, orderText, mailtoUrl, initNavigation, initVariantSelects, initPhotoViewer, initPhotoGalleries, basketRemoveButton, initBasketQuantitySelection, initRadioSubform, initOrderQuantitySpinner, initOrderItemForm, initOrderParameterFields, initWizardForm };
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     if (!root.document) return;
 
@@ -637,15 +662,15 @@
         const configNode = document.getElementById('shop-config');
         if (!configNode) return;
         const config = JSON.parse(configNode.textContent);
-        const t = config.text;
+        const t = { ...root.SiteForm.submissionText(config.locale), ...config.text };
         const products = new Map(config.products.map(product => [product.id, product]));
         const money = new Intl.NumberFormat(config.locale, { style: 'currency', currency: config.currency, maximumFractionDigits: 0 });
         const form = document.getElementById('shop-order-form');
         const validation = root.SiteForm.initValidation(form);
-        const draft = document.getElementById('order-draft');
         const basketList = document.getElementById('basket-items');
         initBasketQuantitySelection(basketList);
         let items = [];
+        let submission, lastSubmission;
 
         function storageUnavailable() { document.getElementById('shop-storage-notice').hidden = false; }
         try {
@@ -658,13 +683,6 @@
             } catch (_) { items = []; }
             localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, items }));
         } catch (_) { storageUnavailable(); }
-
-        function invalidateDraft() {
-            draft.hidden = true;
-            document.getElementById('order-draft-text').value = '';
-            document.getElementById('order-mailto').removeAttribute('href');
-            document.getElementById('order-copy-status').textContent = '';
-        }
 
         function persist() {
             try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, items })); }
@@ -730,7 +748,7 @@
             document.getElementById('basket-subtotal').textContent = money.format(summary.subtotalCents / 100);
             document.getElementById('basket-empty').hidden = !!items.length;
             document.getElementById('basket-quote-notice').hidden = !summary.quotedCount;
-            document.getElementById('order-prepare').disabled = !items.length;
+            document.getElementById('order-prepare').disabled = !!submission?.busy || !items.length;
             document.getElementById('order-empty-note').hidden = !!items.length;
             // Rebuilding rows must not jump the independently scrolling list to the top.
             basketList.scrollTop = basketScrollTop;
@@ -741,7 +759,7 @@
         }
 
         function basketChanged() {
-            persist(); invalidateDraft(); render();
+            persist(); render();
             const summary = basketSummary(items, config.products);
             document.getElementById('shop-status').textContent = t.cartUpdated + '. ' + t.totalItems + ': ' + summary.count + '. ' + t.subtotal + ': ' + money.format(summary.subtotalCents / 100);
         }
@@ -783,7 +801,7 @@
         window.addEventListener('storage', event => {
             if (event.key !== STORAGE_KEY && event.key !== null) return;
             try { items = normaliseBasket(JSON.parse(event.newValue), config.products); } catch (_) { items = []; }
-            invalidateDraft(); render();
+            render();
         });
 
         document.querySelectorAll('form[data-order-product]').forEach(itemForm => {
@@ -813,29 +831,50 @@
             });
         });
 
-        form.addEventListener('input', invalidateDraft);
-        form.addEventListener('change', invalidateDraft);
-        form.addEventListener('submit', event => {
-            event.preventDefault();
-            if (!items.length) { document.getElementById('basket').focus(); return; }
-            if (!validation.validate()) return;
-            const details = orderDetails(Object.fromEntries(new FormData(form)));
-            const body = orderText(items, details, config);
-            document.getElementById('order-draft-text').value = body;
-            document.getElementById('order-mailto').href = mailtoUrl(config.email, t.orderSubject, body);
-            draft.hidden = false;
-            draft.focus();
-        });
-        document.getElementById('order-copy').addEventListener('click', async () => {
-            const text = document.getElementById('order-draft-text');
-            try {
-                if (!navigator.clipboard) throw new Error('Clipboard unavailable');
-                await navigator.clipboard.writeText(text.value);
-                document.getElementById('order-copy-status').textContent = t.copied;
-            } catch (_) {
-                text.focus(); text.select();
-                document.getElementById('order-copy-status').textContent = t.copyManual;
-            }
+        const attachments = root.SiteForm.initAttachments(form, { text: t, onError: message => submission.showMessage(message) });
+        submission = root.SiteForm.initSubmission(form, {
+            validation, attachments, text: { ...t, emailSubmissionSucceededMsg: t.orderSent },
+            message: document.getElementById('order-message'),
+            canSubmit() {
+                if (items.length) return true;
+                document.getElementById('basket').focus();
+                return false;
+            },
+            prepareData(data) {
+                const snapshot = structuredClone(items);
+                data.set('items', JSON.stringify(snapshot));
+                data.set('locale', config.locale);
+                data.set('catalogVersion', config.catalogVersion);
+                // Reuse the same receipt ID when retrying an unchanged failed request.
+                const fingerprint = JSON.stringify([...data].map(([key, value]) => [key,
+                    typeof value === 'string' ? value : [value.name, value.size, value.size ? value.lastModified : 0]]));
+                if (lastSubmission?.fingerprint !== fingerprint) lastSubmission = {
+                    fingerprint, id: [...root.crypto.getRandomValues(new Uint8Array(16))].map(byte => byte.toString(16).padStart(2, '0')).join(''),
+                };
+                data.set('requestId', lastSubmission.id);
+                return snapshot;
+            },
+            request: data => sendOrder(form.action, data),
+            successText: result => result.customerEmail === 'failed' ? t.orderRecapFailed : t.orderSent,
+            errorText(error) {
+                return ({ attachments_too_large: t.fileTooLarge, invalid_attachment: t.attachmentError,
+                    catalog_changed: t.catalogChanged, rate_limited: t.rateLimited, session_expired: t.sessionExpired })[error.message] || t.orderRetry;
+            },
+            onBusy(busy) {
+                document.getElementById('catalog').inert = busy;
+                document.getElementById('basket').inert = busy;
+            },
+            onSuccess(result, snapshot) {
+                // Preserve additions made in another tab while SMTP was in progress.
+                try {
+                    const stored = localStorage.getItem(STORAGE_KEY);
+                    if (stored !== null) items = normaliseBasket(JSON.parse(stored), config.products);
+                } catch (_) { /* Keep the current in-memory order if storage is unavailable. */ }
+                items = removeSubmittedItems(items, snapshot);
+                persist();
+                lastSubmission = null;
+            },
+            afterSubmit: render,
         });
         render();
     }

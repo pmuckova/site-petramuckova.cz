@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 from bs4 import BeautifulSoup
 
-from build_shop import ROOT, build_shop, load_catalog, money, product_card, standard_options
+from build_shop import ROOT, build_order_catalog, build_shop, load_catalog, money, product_card, standard_options
 
 
 def css_rules(path):
@@ -51,6 +51,30 @@ class ShopBuildTests(unittest.TestCase):
                 self.assertTrue(soup.select_one('#catalog-title.shop-sr-only'))
                 self.assertFalse(soup.select('#catalog > .shop-section-heading'))
                 self.assertFalse(soup.select('.shop-intro, .shop-product-code'))
+
+    def test_customer_email_copy_must_be_complete_in_every_language(self):
+        translations = json.loads((ROOT / 'shop/translations.json').read_text())
+        original = json.loads((ROOT / 'shop/order-email-translations.json').read_text())
+        for change in ('language', 'key', 'empty'):
+            copy = json.loads(json.dumps(original))
+            if change == 'language': del copy['fr']
+            elif change == 'key': del copy['fr']['nextStep']
+            else: copy['fr']['nextStep'] = ''
+            with self.subTest(change=change), self.assertRaisesRegex(ValueError, 'Incomplete order email'):
+                build_order_catalog(self.catalog, translations, copy, self.output)
+
+    def test_frontend_only_build_matches_pages_without_touching_backend(self):
+        with tempfile.TemporaryDirectory(prefix='muckova-frontend-build-') as directory:
+            target = Path(directory)
+            with patch('build_shop.build_order_catalog', side_effect=AssertionError('Backend generation is disabled')), contextlib.redirect_stdout(io.StringIO()):
+                build_shop(languages=['cs'], output_root=target, include_backend=False)
+                self.assertFalse((target / 'backend').exists())
+                self.assertEqual((target / 'cs/shop.html').read_bytes(), (self.output / 'cs/shop.html').read_bytes())
+                backend = target / 'backend/order_catalog.php'
+                backend.parent.mkdir()
+                backend.write_text('private backend catalogue', encoding='utf-8')
+                build_shop(languages=['cs'], output_root=target, include_backend=False)
+                self.assertEqual(backend.read_text(encoding='utf-8'), 'private backend catalogue')
 
     def test_catalog_information_precedes_products_without_changing_copy(self):
         for lang, soup in self.pages():
@@ -772,16 +796,16 @@ class ShopBuildTests(unittest.TestCase):
                 self.assertNotIn('blog-card', order['class'])
                 intro = order.select_one(':scope > .contact-intro')
                 self.assertEqual(intro.h2['id'], order['aria-labelledby'])
-                self.assertTrue(intro.select_one('p.contact-sub-1'))
+                self.assertEqual([node.name for node in intro.find_all(recursive=False)], ['h2'])
                 self.assertTrue(order.select_one(':scope > .contact-intro + form.terminal-form'))
                 self.assertEqual(len(order.select('.terminal-form')), 1)
                 self.assertFalse(order.select('.blog-card, .shop-order-heading'))
                 self.assertIsNone(intro.find_parent('form'))
                 self.assertFalse(order.select('form .contact-intro'))
 
-    def test_order_intro_retains_shared_heading_and_paragraph_styles(self):
+    def test_order_intro_retains_shared_heading_styles(self):
         _, soup = next(self.pages())
-        intro_nodes = soup.select('#order > .contact-intro, #order > .contact-intro > h2, #order > .contact-intro > p')
+        intro_nodes = soup.select('#order > .contact-intro, #order > .contact-intro > h2')
         shared_properties = {'margin', 'margin-top', 'margin-bottom', 'margin-block',
                              'font-size', 'line-height', 'text-align', 'color'}
         for selector, declarations in css_rules(ROOT / 'shop.css'):
@@ -797,7 +821,9 @@ class ShopBuildTests(unittest.TestCase):
                 main = BeautifulSoup((ROOT / lang / 'index.html').read_text(), 'html.parser')
                 text = json.loads(soup.select_one('#shop-config').string)['text']
                 self.assertEqual(soup.select_one('#order-title').get_text(), text['checkout'])
-                self.assertEqual(soup.select_one('#order .contact-sub-1').get_text(), text['confirmation'])
+                self.assertEqual(soup.select_one('#order-prepare').get_text(), text['prepare'])
+                self.assertFalse(soup.select('#order .contact-sub-1'))
+                self.assertNotIn(text['confirmation'], soup.select_one('#order').get_text())
                 self.assertEqual(soup.select_one('#shop-order-form .mandatory-note').get_text(),
                                  main.select_one('#inquiryForm .mandatory-note').get_text())
                 self.assertEqual(text['orderSubject'], 'Mücková / Mück — ' + text['checkout'])
@@ -811,6 +837,7 @@ class ShopBuildTests(unittest.TestCase):
                     self.assertNotIn('*', label.get_text())
                 if lang == 'cs':
                     self.assertEqual(text['checkout'], 'Objednávka')
+                    self.assertEqual(text['prepare'], 'Objednat')
                     self.assertEqual(text['confirmation'],
                                      'Jde o nezávaznou objednávku, nikoliv o platbu nebo uzavření smlouvy na dálku.')
                     self.assertNotIn('Poptávka objednávky', soup.get_text())
@@ -859,7 +886,7 @@ class ShopBuildTests(unittest.TestCase):
                 main = BeautifulSoup((ROOT / lang / 'index.html').read_text(), 'html.parser')
                 main_heading = main.select_one('#inquiryForm h4.form-section-title')
                 headings = soup.select('#shop-order-form h4.form-section-title')
-                self.assertEqual(len(headings), 3)
+                self.assertEqual(len(headings), 4)
                 self.assertEqual(headings[0].get_text(), main_heading.get_text())
                 for heading in headings:
                     self.assertEqual(heading.name, main_heading.name)
@@ -915,9 +942,30 @@ class ShopBuildTests(unittest.TestCase):
         for filename in ('index.js', 'shop.js'):
             source = (ROOT / filename).read_text()
             self.assertIn('SiteForm.initValidation(form)', source)
-            self.assertIn('validation.validate()', source)
+            self.assertIn('SiteForm.initSubmission(form,', source)
             self.assertNotIn('form.reportValidity()', source)
             self.assertNotIn('function validateInput(', source)
+
+    def test_live_order_form_reuses_main_attachment_controls(self):
+        for lang, soup in self.pages():
+            with self.subTest(lang=lang):
+                main = BeautifulSoup((ROOT / lang / 'index.html').read_text(), 'html.parser')
+                form = soup.select_one('#shop-order-form')
+                self.assertEqual(form['action'], '/backend/order_form_handler.php')
+                self.assertEqual(form['method'], 'post')
+                self.assertEqual(form['enctype'], 'multipart/form-data')
+                self.assertEqual(len(form.select('input[type=file][name="attachment[]"]')), 3)
+                self.assertEqual(form.select_one('#order-attachments-title').get_text(),
+                                 main.select_one('.file-upload-input').find_previous('h4').get_text())
+                for attachment in form.select('.file-upload-wrapper'):
+                    for selector in ('.file-msg', '.btn-txt'):
+                        self.assertEqual(attachment.select_one(selector).get_text(), main.select_one(selector).get_text())
+                self.assertTrue(form.select_one('.hidden [name="bot-field"][tabindex="-1"]'))
+                self.assertTrue(form.select_one('#order-message.form-message[aria-live="polite"]'))
+                self.assertFalse(soup.select('#order-draft, #order-copy, #order-mailto'))
+                config = json.loads(soup.select_one('#shop-config').string)
+                self.assertRegex(config['catalogVersion'], r'^[a-f0-9]{64}$')
+                self.assertIn('orderSent', config['text'])
 
     def test_basket_has_no_clear_all_action(self):
         for lang, soup in self.pages():
@@ -1044,23 +1092,33 @@ class ShopBuildTests(unittest.TestCase):
                     self.assertIsNotNone(barcode)
                     self.assertFalse(barcode.has_attr('title'))
 
-    def test_navigation_and_original_article_anchors_remain(self):
+    def test_navigation_keeps_remaining_articles_without_spare_parts_post(self):
         for lang in self.catalog['languages']:
             for page in ('index', 'blog'):
                 soup = BeautifulSoup((ROOT / lang / f'{page}.html').read_text(), 'html.parser')
                 self.assertTrue(soup.select(f'a[href="/{lang}/shop"]'))
                 if page == 'blog':
-                    self.assertTrue(soup.select_one('#post-1-title'))
-                    link = soup.select_one('#article-1 .blog-shop-link.link-ext')
-                    self.assertIsNotNone(link)
-                    self.assertFalse(link.select('span'))  # The shared link style supplies its arrow.
-                    self.assertFalse(soup.select_one('#article-1 table'))
-                    self.assertEqual(len(soup.select('.blog-card')), 8)
+                    self.assertFalse(soup.select('#article-1, #post-1-title, a[href="#post-1-title"]'))
+                    self.assertNotIn(self.catalog['copy'][lang]['title'], soup.get_text())
+                    expected = [f'post-{number}-title' for number in range(2, 9)]
+                    self.assertEqual([heading['id'] for heading in soup.select('.blog-card h1')], expected)
+                    self.assertEqual(len(soup.select('.blog-card')), 7)
+                    for selector in ('.toc-nav a', '.mobile-menu-list a[href^="#post-"]'):
+                        links = soup.select(selector)
+                        self.assertEqual([link['href'] for link in links], [f'#{anchor}' for anchor in expected])
+                        self.assertEqual([link.get_text().split('.')[0] for link in links], list(map(str, range(1, 8))))
+                    for link in soup.select('a[href^="#post-"]'):
+                        self.assertIsNotNone(soup.find(id=link['href'][1:]))
 
     def test_shop_reuses_blog_header_footer_and_language_navigation(self):
         for lang, soup in self.pages():
             with self.subTest(lang=lang):
                 blog = BeautifulSoup((ROOT / lang / 'blog.html').read_text(), 'html.parser')
+                self.assertFalse(soup.select('a[href$="/blog#post-1-title"]'))
+                article_links = soup.select('.mobile-menu-list a[href*="/blog#post-"]')
+                self.assertEqual([link['href'] for link in article_links],
+                                 [f'/{lang}/blog#post-{number}-title' for number in range(2, 9)])
+                self.assertEqual([link.get_text().split('.')[0] for link in article_links], list(map(str, range(1, 8))))
                 nav_items = lambda page: [(a['href'], a.get_text()) for a in page.select('#navLinks > li > a')]
                 self.assertEqual(nav_items(soup), nav_items(blog))
                 self.assertEqual(soup.select_one('#navLinks > li > a.active-link')['href'], f'/{lang}/shop')

@@ -56,9 +56,9 @@
     <section id="order" class="section shop-order" aria-labelledby="order-title">
       <div class="contact-intro">
         <h2 id="order-title">$checkout</h2>
-        <p class="contact-sub-1">$confirmation</p>
       </div>
-      <form id="shop-order-form" class="terminal-form shop-order-form" method="post" novalidate>
+      <form id="shop-order-form" class="terminal-form shop-order-form" action="/backend/order_form_handler.php" method="post" enctype="multipart/form-data" novalidate>
+        <div class="hidden" aria-hidden="true"><input type="text" name="bot-field" tabindex="-1" autocomplete="off"></div>
         <p class="mandatory-note">$requiredFields</p>
         <h4 class="form-section-title">$contactHeading</h4>
         <div class="form-row">
@@ -101,19 +101,14 @@
         </fieldset>
         <h4 id="order-notes-title" class="form-section-title">$notes</h4>
         <textarea id="order-notes" name="notes" rows="5" maxlength="1500" aria-labelledby="order-notes-title"></textarea>
+        <h4 id="order-attachments-title" class="form-section-title">$attachmentsHeading</h4>
+        $attachments_html
         <p class="disclaimer">$deliveryNotice</p>
         <p id="order-empty-note" class="shop-notice">$empty</p>
         <button type="submit" id="order-prepare" class="btn-submit" disabled>$prepare</button>
         <p class="disclaimer">$privacy</p>
+        <div id="order-message" class="form-message" role="status" aria-live="polite" aria-atomic="true"></div>
       </form>
-      <section id="order-draft" class="shop-draft" aria-labelledby="draft-title" tabindex="-1" hidden>
-        <h3 id="draft-title">$draft</h3>
-        <p>$draftNotice</p>
-        <label class="shop-sr-only" for="order-draft-text">$draft</label>
-        <textarea id="order-draft-text" rows="14" readonly spellcheck="false"></textarea>
-        <div class="shop-draft-actions"><a id="order-mailto" class="shop-button">$openEmail ↗</a><button type="button" id="order-copy" class="shop-secondary-button">$copy</button></div>
-        <p id="order-copy-status" role="status"></p>
-      </section>
     </section>
     </div>
     </div>

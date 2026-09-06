@@ -5,7 +5,7 @@ import sys
 import re
 import datetime
 import html
-from urllib.parse import parse_qsl, quote, urlencode, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 # --- 1. VIRTUAL ENVIRONMENT CHECK ---
 VENV_DIR_NAME = ".venv"
@@ -87,17 +87,7 @@ FILES_TO_COPY = [
   'BingSiteAuth.xml'
 ]
 
-# Files stored outside the public root in the source tree, but copied to the
-# release root. Only .htaccess is templated; .user.ini is copied unchanged.
-RELEASE_ROOT_FILE_MAPPINGS = {
-  os.path.join('backend', '.htaccess'): '.htaccess',
-  os.path.join('backend', '.user.ini'): '.user.ini'
-}
-
-RELEASE_VERSION_PLACEHOLDER = '{{RELEASE_VERSION}}'
-RELEASE_VERSION_URL_PLACEHOLDER = '{{RELEASE_VERSION_URL}}'
-
-# 2. Directories to COPY entirely (Structure + Content preserved)
+# 2. Static directories to COPY, excluding server-side files at every depth.
 STATIC_DIRS = [
   'assets'
 ]
@@ -336,9 +326,23 @@ def run_npm_in_dir(directory, npm_executable, environment):
     print(f"   ❌ Error: Command failed in {directory}.")
     sys.exit(1)
 
+def is_backend_path(path):
+  """Keep backend directories, PHP and server configuration out of releases."""
+  for part in os.path.normpath(os.fspath(path)).lower().split(os.sep):
+    if part == 'backend' or part in ('.htaccess', '.user.ini'):
+      return True
+    if re.search(r'\.(?:php\d*|phtml|phar)(?:\.|$)', part):
+      return True
+  return False
+
+
+def ignore_backend_files(directory, names):
+  return [name for name in names if is_backend_path(os.path.join(directory, name))]
+
+
 def create_release_dir():
-  """Copies files to the release directory."""
-  print(f"\n📦 Creating release directory: ./{RELEASE_DIR}...")
+  """Copies frontend files only; the backend is deployed separately."""
+  print(f"\n📦 Creating frontend release directory: ./{RELEASE_DIR}...")
 
   # 1. Clean and Create Release Directory
   if os.path.exists(RELEASE_DIR):
@@ -349,6 +353,8 @@ def create_release_dir():
   # 2. EXPLICITLY CREATE LANGUAGE DIRECTORIES
   print("   + Creating language structure...")
   for lang in CONTENT_DIRS:
+    if is_backend_path(lang):
+      continue
     lang_path = os.path.join(RELEASE_DIR, lang)
     if not os.path.exists(lang_path):
       os.makedirs(lang_path)
@@ -356,6 +362,8 @@ def create_release_dir():
   # 3. Copy Root Files
   print("   + Copying root files...")
   for filename in FILES_TO_COPY:
+    if is_backend_path(filename):
+      continue
     if os.path.exists(filename):
       dest = os.path.join(RELEASE_DIR, filename)
       shutil.copy2(filename, dest)
@@ -363,34 +371,29 @@ def create_release_dir():
     else:
       print(f"     ⚠️  Warning: Source file not found: {filename}")
 
-  # 4. Copy mapped files to the release root
-  print("   + Copying release-root configuration files...")
-  for source, destination in RELEASE_ROOT_FILE_MAPPINGS.items():
-    if os.path.exists(source):
-      dest = os.path.join(RELEASE_DIR, destination)
-      shutil.copy2(source, dest)
-      print(f"     -> Copied: {source} -> {destination}")
-    else:
-      print(f"     ⚠️  Warning: Source file not found: {source}")
-
-  # 5. Copy Static Directories
+  # 4. Copy Static Directories
   print("   + Copying static directories...")
   for directory in STATIC_DIRS:
+    if is_backend_path(directory):
+      continue
     if os.path.exists(directory):
       dest_dir = os.path.join(RELEASE_DIR, directory)
-      shutil.copytree(directory, dest_dir)
+      shutil.copytree(directory, dest_dir, ignore=ignore_backend_files)
       print(f"     -> Copied whole directory: {directory}/")
     else:
       print(f"     ⚠️  Warning: Static directory not found: {directory}/")
 
-  # 6. Process Content Directories
+  # 5. Process Content Directories
   print("   + Processing content directories...")
   for directory in CONTENT_DIRS:
+    if is_backend_path(directory):
+      continue
     if os.path.exists(directory):
       print(f"     -> Processing: {directory}/")
 
       # Walk through the source directory
       for root, dirs, files in os.walk(directory):
+        dirs[:] = [name for name in dirs if not is_backend_path(os.path.join(root, name))]
         relative_path = os.path.relpath(root, os.getcwd())
         target_dir = os.path.join(RELEASE_DIR, relative_path)
 
@@ -399,62 +402,14 @@ def create_release_dir():
 
         for file in files:
           source_file = os.path.join(root, file)
+          if is_backend_path(source_file):
+            continue
           dest_file = os.path.join(target_dir, file)
           shutil.copy2(source_file, dest_file)
     else:
       pass
 
   print(f"\n🎉 Success! Files copied to: {os.path.abspath(RELEASE_DIR)}")
-
-def render_release_htaccess(version=None):
-  """Replaces release metadata placeholders in the copied .htaccess file."""
-  print("\n🏷️  Rendering release metadata in .htaccess...")
-
-  htaccess_path = os.path.join(RELEASE_DIR, '.htaccess')
-  if not os.path.isfile(htaccess_path):
-    print(f"   ❌ Error: Release configuration not found: {htaccess_path}")
-    sys.exit(1)
-
-  with open(htaccess_path, 'r', encoding='utf-8') as f:
-    content = f.read()
-
-  if not version:
-    filtered_lines = [
-      line for line in content.splitlines()
-      if RELEASE_VERSION_PLACEHOLDER not in line
-    ]
-    rendered_content = '\n'.join(filtered_lines) + '\n'
-    rendered_content = rendered_content.replace(
-      f'?v={RELEASE_VERSION_URL_PLACEHOLDER}',
-      ''
-    )
-    print("   ℹ️  No target version provided; the release header was omitted and redirects remain unversioned.")
-  else:
-    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/+@-]*', version):
-      print(f"   ❌ Error: Invalid target version for .htaccess metadata: {version!r}")
-      sys.exit(1)
-
-    missing_placeholders = [
-      placeholder for placeholder in (
-        RELEASE_VERSION_PLACEHOLDER,
-        RELEASE_VERSION_URL_PLACEHOLDER
-      )
-      if placeholder not in content
-    ]
-    if missing_placeholders:
-      print("   ❌ Error: Required release-version placeholders are missing from backend/.htaccess.")
-      sys.exit(1)
-
-    rendered_content = content.replace(RELEASE_VERSION_PLACEHOLDER, version)
-    rendered_content = rendered_content.replace(
-      RELEASE_VERSION_URL_PLACEHOLDER,
-      quote(version, safe='')
-    )
-    print(f"   ✅ Added X-Site-Release: {version}")
-    print(f"   ✅ Added version '{version}' to all root language redirects")
-
-  with open(htaccess_path, 'w', encoding='utf-8') as f:
-    f.write(rendered_content)
 
 def update_asset_paths(asset_ref=None):
   """Updates /assets/ paths to jsDelivr CDN URLs in HTML and CSS files."""
@@ -707,18 +662,15 @@ def parse_release_arguments():
 if __name__ == "__main__":
   asset_ref, site_version = parse_release_arguments()
 
-  # Validate and render the shared catalogue before replacing the release.
+  # Render frontend pages without reading or regenerating private backend files.
   from build_shop import build_shop
-  build_shop()
+  build_shop(include_backend=False)
 
   # Resolve Node.js/npm before replacing an existing release.
   npm_executable, node_environment = ensure_node_tooling()
 
   # 1. Create Release Folder
   create_release_dir()
-
-  # Render the release version into the copied server configuration.
-  render_release_htaccess(site_version)
 
   # 2. Run CSS Build
   run_npm_in_dir(CSS_DIR, npm_executable, node_environment)

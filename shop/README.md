@@ -2,8 +2,9 @@
 
 The shop is a static, general-purpose catalogue at `/{language}/shop`. It contains
 13 catalogue cards, including configurable Škoda OHV and TAZ camshaft products.
-No application framework, accounts, payment provider, server basket or new
-dependencies were introduced.
+No application framework, accounts, payment provider or server basket is used.
+The final order form submits to PHP using the contact form's existing server-side
+PHPMailer installation and SMTP account.
 
 ## Editing the offer
 
@@ -127,9 +128,9 @@ The basket, final order form, blog
 and main page retain their original typography. Keep font-family resets and
 white focus outlines off these fields and the Choices controls;
 other keyboard-operated controls still have a visible focus outline.
-The order section uses the main page's `.section`, `.contact-intro` and
-`.contact-sub-1` styling: a separate centered heading and explanation above one
-`.terminal-form` panel, without an enclosing blog card. Its required-field note
+The order section uses the main page's `.section` and `.contact-intro` styling:
+a separate centered heading above one `.terminal-form` panel, without a subheading
+or an enclosing blog card. Its required-field note
 matches the corresponding main-page language; optional fields remain optional
 without an extra label suffix.
 The entire order form reuses `main.css` directly, including its actual
@@ -173,9 +174,14 @@ Regenerate after any catalogue, template, JavaScript or CSS edit:
 .venv/bin/python build_shop.py
 ```
 
-`release.py` runs this automatically. The existing two release arguments retain
+`release.py` runs the frontend-only build automatically, without generating or
+changing `backend/order_catalog.php`. For the same page-only build, use
+`.venv/bin/python build_shop.py --frontend-only`.
+The existing two release arguments retain
 their meanings. The release includes the shop stylesheet, script, HTML pages,
-sitemap entries and Apache extensionless route. Release navigation links to the
+sitemap entries and assets, but no backend or server configuration. Apache
+extensionless routes, root redirects and the `X-Site-Release` header are managed
+separately on the server, not rendered by the release pipeline. Release navigation links to the
 main, blog and shop pages all receive the site-version query parameter, including
 extensionless, trailing-slash and `.html` URLs. Existing query parameters and
 section anchors are preserved. Canonical/hreflang links and sitemap URLs stay
@@ -202,25 +208,81 @@ positive numbers are canonicalized (including decimal-comma values in restored d
 Each product/variant/specification combination is one order line: identical
 specifications accumulate quantity; different specifications remain independently
 editable/removable. Structured line keys preserve punctuation in free-text spacing.
-All specifications appear in the order panel and email draft. Quote-only gasket
+All specifications appear in the order panel and submitted email. Quote-only gasket
 options never inherit the standard gasket price or contribute to the indicative total.
 Legacy rotor rows without a variant cannot be mapped unambiguously; the page
 asks the customer to select a new option and preserves their other order items.
 Configured products also store a unique `lineId` and the validated `configuration`
 described below, with an implicit quantity of one and no quantity controls.
-No contact details, address or draft email are stored by the site.
-Company and phone are optional fields included in the prepared email only when
+No contact details, address, attachment or email body are saved in browser storage.
+Company and phone are optional fields included in the order email only when
 filled in. Street and house number remain required; the former address-extra
 field is no longer collected. Delivery and notes headings share the main form's
 section-title styling while preserving the delivery fieldset and legend.
 
-Checkout currently prepares an **email enquiry**, not a submitted/confirmed order.
-The customer reviews the draft and sends it from their email application to
-`info@petramuckova.cz`, or copies the text into webmail. It does not reuse the
-existing PHP contact handler: that handler's implementation is absent from this
-repository. No network submission, payment, availability guarantee, shipping tariff
-or binding checkout terms are invented. Changing the basket or form invalidates
-the prepared draft. Preparing an email never clears the basket.
+Checkout sends an order directly to `/backend/order_form_handler.php` using
+`multipart/form-data`, without opening an email application. Both this form and the
+main contact form use `SiteForm.initValidation`, `initAttachments` and
+`initSubmission` for inline validation, upload controls, the disabled sending state,
+and success/error feedback. The main form keeps its existing contact endpoint.
+Three optional attachment controls reuse the main form's localized labels and
+styling, with an **8 MiB combined limit** (displayed as 8 MB). Photos, PDFs, plain
+text/CSV/Markdown, Office documents, RTF and ZIP/7z/RAR archives are supported.
+The server checks upload errors, actual sizes, extensions and detected MIME types;
+it never executes, extracts or permanently stores uploaded files. MIME checks are
+not antivirus scanning; attachments still need normal mailbox security controls.
+
+After the business email is accepted by SMTP, the form resets and only the submitted
+basket lines and quantities are removed. Other-tab additions are retained. If the
+business email fails, the contact data, attachments and order stay available for
+retry. The request ID is reused for an unchanged retry; the PHP session serializes
+submissions and remembers receipts and the separate customer-recap delivery flag for
+up to 24 hours (maximum 50 receipts). If only the recap fails, the response remains
+successful with `customerEmail: "failed"`: the customer is told that the order was
+received, to wait for our reply, and not to submit it again. An identical retry only
+attempts the missing recap, never the already-sent business email. Both initial and
+recap-only attempts are rate limited. Completed retries resend neither message.
+Legacy receipts count as a business email already sent. This prevents duplicate
+mail on ordinary retries in the same session, but is not a durable order database,
+background retry queue or an exactly-once guarantee across SMTP failures/session loss.
+SMTP acceptance does not guarantee inbox delivery; later bounces need normal mailbox
+handling.
+
+The handler obtains a same-origin CSRF token, checks a honeypot, limits order size
+and quantities, and throttles valid attempts to five per IP per 15 minutes. The
+browser sends product/variant IDs and configuration values, never an authoritative
+price or HTML email. `build_shop.py` generates `backend/order_catalog.php` alongside
+the pages. PHP independently resolves every selected product, current price and
+required specification from this catalogue. A catalogue-version mismatch rejects
+an outdated page rather than silently changing the order's prices.
+
+`backend/order_mail.php` defines a simple Czech HTML email for the business and a
+plain-text alternative: customer contact, postal address, product table with
+quantities/configurations/unit and line prices, indicative total,
+notes and an order ID. The source form language is included. The business email
+omits the customer-facing delivery and non-binding-order notices. Quote-only,
+starting-price and approximate items are explicitly labelled and excluded from the
+fixed-price total. All customer content is escaped in HTML. Files are normal email
+attachments. Mail is sent from the authenticated company address to
+`info@petramuckova.cz`, with the customer in Reply-To, not the From header.
+
+Only after the business email succeeds, a **separate recap** is sent to the validated
+customer address. It uses the form language, including localized product names,
+configuration labels and notices, with the company address in From and Reply-To.
+`shop/order-email-translations.json` defines its subject, headings, thank-you text,
+and bold next-step paragraph asking the customer to **wait for our reply** to confirm
+the order, availability, selected delivery and final price. These two introductory
+paragraphs appear before the recap heading in HTML and plain text. There is no
+warning box or separate delivery/non-binding-order notice. A short reply invitation
+is followed by a separate five-line company footer (name, IČ, address, email, phone),
+defined in `ORDER_COMPANY_FOOTER` in `backend/order_mail.php`.
+It includes the same reference, contact/delivery details, items, specifications,
+prices, caveats and notes, in HTML and plain text. Uploads are sent only to the
+business, not reattached to the customer recap. Each message has its own stable
+Message-ID; the recap includes automatic-message headers to discourage auto-reply
+loops. Email-only translations and the localized authoritative catalogue are bundled
+into `backend/order_catalog.php` by the builder; no extra runtime JSON file is needed.
+There is no online payment, stock reservation or fixed delivery tariff.
 
 Postal delivery is represented as:
 
@@ -229,10 +291,53 @@ Postal delivery is represented as:
 ```
 
 Future delivery methods should define their own method identifier and required
-fields. If a server order endpoint is added, it must independently validate IDs,
-variants, quantities, prices, delivery costs and customer data; client totals are
-not an authority for charging or fulfillment. Confirm actual delivery, payment and
-customer-facing terms before enabling direct orders.
+fields in both the page and PHP validator. Actual availability, delivery and final
+pricing remain confirmed by email.
+
+### Hosting / release
+
+The release pipeline is **frontend-only**. It never copies `backend/`, PHP files,
+`.user.ini` or `.htaccess`, including files nested inside asset or language
+directories. It does not require the private PHP source files, read server
+configuration or regenerate the backend catalogue. Existing backend source files
+are left unchanged. The next release build recreates `release/` without any stale
+server-side files from earlier builds.
+
+Manage the backend separately on the server. When updating order processing,
+deploy these private files to its `backend/` directory:
+
+- `order_form_handler.php` — public GET-token / POST-order endpoint.
+- `order_mail.php` — validation and email template functions (no direct output).
+- `order_catalog.php` — authoritative catalogue generated with
+  `.venv/bin/python build_shop.py` (no direct output).
+
+After changing products, variants or prices, generate and separately deploy the
+updated `order_catalog.php` alongside the frontend update, so their catalogue
+versions match. Mail-copy changes also require regenerating and separately
+deploying the backend catalogue.
+
+When uploading a frontend release, **preserve** the existing production `backend/`,
+`.htaccess` and `.user.ini`; do not use a deployment mode that deletes files absent
+from the release. As with the supplied contact handler, the library must exist at
+`backend/lib/PHPMailer/src/{Exception,PHPMailer,SMTP}.php` and
+`PETRAMUCKOVA_CZ_SMTP_PASSWORD` must be configured on the server (environment,
+Apache variable, or its `REDIRECT_` equivalent). No password is added to PHP source.
+The SMTP host remains `smtp.svethostingu.cz`, SMTPS port 465. TLS verification is not
+disabled. PHP needs fileinfo, mbstring, OpenSSL, sessions, writable temporary/session
+directories and outbound SMTP access. The existing `.user.ini` 16 MB POST/upload
+limits accommodate the 8 MB attachment total plus form fields.
+
+The host must execute PHP; **`python3 -m http.server` cannot submit orders**. For local
+UI and PHP tests use the isolated test harness below, which replaces PHPMailer with
+a recorder and uses a dummy password. Do not submit a real order merely to test a
+deployment. A safe initial production check is GET `/backend/order_form_handler.php`:
+it must return JSON with `status: "ready"` and a token, not PHP source. This checks
+PHP/session availability only; SMTP delivery still needs a separately approved test.
+Session receipts store hashes, timestamps and a recap delivery flag, not contact details. Private temporary
+throttle files store hashed IP keys and request timestamps; stale throttle files are
+occasionally cleaned up. Contact details and attachments are delivered to the business
+mailbox and should follow its normal access/retention policy. The customer's own
+contact details and order recap are also emailed to the address they supplied.
 
 ## Configured camshaft items
 
@@ -337,3 +442,20 @@ node --test tests/*.test.js
 .venv/bin/python -m unittest discover -s tests -p 'test_*.py'
 .venv/bin/python tests/smoke_release.py
 ```
+
+`tests/test_order_handler.py` also runs real PHP multipart HTTP tests in a temporary
+directory with a fake PHPMailer. Set `PHP_BIN` if PHP is not on PATH. The tests cover
+all products/profiles, authoritative pricing, HTML escaping, required custom fields,
+CSRF, MIME/size limits, retry deduplication, rate limits and simulated SMTP failures.
+They also check localized customer recaps in all ten languages, separate recipients
+and Reply-To headers, no customer attachments, and recap-only retries after a
+partial delivery failure.
+`tests/submission.test.js` covers the shared browser submission lifecycle and protocol.
+With Playwright and a Chromium browser installed, run
+`.venv/bin/python tests/smoke_order_browser.py` for the actual browser-to-PHP flow
+and a regression check against the main contact form. `PLAYWRIGHT_MODULE` and
+`BROWSER_EXECUTABLE` can point to existing local installations. An optional output
+directory argument retains desktop/mobile screenshots and both sample HTML emails.
+`tests/smoke_release.py` runs the real release build in an isolated tree and verifies
+that no backend, PHP or server configuration is included and that private backend
+fixtures remain unchanged; it never changes the working `release/` directory.
