@@ -657,7 +657,7 @@ class ShopBuildTests(unittest.TestCase):
                     if 'height' in declarations:
                         self.assertEqual(declarations['height'], 'auto', selector)
 
-    def test_gallery_photos_use_a_fixed_landscape_crop_without_affecting_enlargement(self):
+    def test_gallery_photos_default_to_a_fixed_landscape_crop_without_affecting_enlargement(self):
         rules = dict(css_rules(ROOT / 'shop.css'))
         frame_selector = '.shop-photo-gallery .shop-photo-viewport'
         image_selector = '.shop-photo-gallery .shop-photo-link img'
@@ -680,6 +680,27 @@ class ShopBuildTests(unittest.TestCase):
                                   for image in product.get('images', []) if image['src'] == photo['src'])
                     self.assertEqual((int(photo['width']), int(photo['height'])),
                                      (source['width'], source['height']))
+
+    def test_gasket_and_cylinder_kit_previews_and_thumbnails_show_complete_photos(self):
+        rules = dict(css_rules(ROOT / 'shop.css'))
+        selector = ':is(#head-gasket, #cylinder-piston-kit) .shop-photo img'
+        self.assertEqual(rules[selector], {'object-fit': 'contain'})
+        expected_products = {'head-gasket', 'cylinder-piston-kit'}
+        for lang, soup in self.pages():
+            with self.subTest(lang=lang):
+                previews = soup.select(selector)
+                self.assertEqual(len(previews), 4)
+                self.assertEqual({photo.find_parent('article')['id'] for photo in previews}, expected_products)
+                # Thumbnail buttons are created at runtime inside each gallery.
+                for gallery in soup.select('.shop-photo-gallery'):
+                    button = soup.new_tag('button', attrs={'class': 'shop-photo-thumbnail'})
+                    button.append(soup.new_tag('img'))
+                    gallery.append(button)
+                thumbnails = [photo for photo in soup.select(selector)
+                              if photo.parent.get('class') == ['shop-photo-thumbnail']]
+                self.assertEqual(len(thumbnails), 2)
+                self.assertEqual({photo.find_parent('article')['id'] for photo in thumbnails}, expected_products)
+                self.assertFalse(soup.select_one('#shop-lightbox').select(selector))
 
     def test_imageless_products_render_no_photo_markup_or_placeholder(self):
         for lang, soup in self.pages():

@@ -103,6 +103,8 @@
 .shop-photo-gallery .shop-photo-link img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 /* Keep mixed portrait/landscape thumbnails in a compact strip. */
 .shop-photo-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+/* Keep the complete gaskets and cylinder kits visible in previews and thumbnails. */
+:is(#head-gasket, #cylinder-piston-kit) .shop-photo img { object-fit: contain; }
 /* The blog's formula panels also work as concise operation explanations. */
 .shop-description-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
 .shop-description-wide { grid-column: 1 / -1; }
