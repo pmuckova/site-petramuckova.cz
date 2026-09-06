@@ -13,6 +13,10 @@ Edit `shop/catalog.json`:
 - `products`: stable ID, customer price in whole CZK, variants, photo path, and
   names/descriptions for the ten existing languages. Legacy dealer reference values
   in the source catalogue are not rendered or used in basket totals.
+- `category`: `camshafts`, `exhaust`, `engineParts`, `ignition`, or `fuel`.
+  Its localized label is the first blog-style tag. `tags` supplies additional
+  language-neutral model, brand or specification tags. These presentation fields
+  do not enter the order data or change the backend catalogue version.
 - `variants`: stable IDs and labels, with optional `price` / `priceType` overrides and localized
   labels in `translations`. By default, each variant becomes a radio-table option;
   a product with no variants still has one selectable option. `descriptions` adds
@@ -55,16 +59,20 @@ Edit `shop/catalog.json`:
   `blog-article1-1.jpg` in the desktop, 1200 and 800 asset directories).
 - `images`: optional ordered gallery entries with `src`, actual `width`/`height`,
   and `alt` text for each language. Keep `image` equal to the first gallery entry's
-  `src`. Gallery photos share a fixed 16:9 frame with faded edges; thumbnails switch
+  `src`. Gallery photos share a fixed 16:9 viewport inside the blog's red-corner frame; thumbnails switch
   the selected photo. They open individually, uncropped, in the lightbox.
   Use a one-entry array for a single photo with explicit dimensions as well;
   only arrays with multiple images create the thumbnail gallery.
   Additional gallery images load lazily; visible captions are not added.
 - `photoMaxHeight`: optional positive pixel height for a single-photo product with
-  explicit image dimensions. The coil, rotor, distributor-parts collage and
+  explicit image dimensions. The rotor, distributor-parts collage and
   distributor overhaul use 360px previews. The whole frame scales proportionally
   and remains centered, without cropping, stretching or empty bars. Full-size
   lightbox images are unchanged; other products retain their existing sizing.
+- `photoMaxWidth`: optional positive pixel width for a single-photo product with
+  explicit image dimensions. The resonance exhaust and coil use 435px previews,
+  matching the tuned manifold photo. Height scales automatically with the original
+  aspect ratio. The clockwise-rotated coil photo is `zapalovaci-civka.jpg`.
 - `copy`: original article wording and price-list notes. The source price list is
   dated 5 November 2025. The camshaft configurator has separate prices from the
   supplied CSV. The remaining product descriptions, options and prices were revised
@@ -94,10 +102,14 @@ indicative price, delivery notices and order button stay visible. Quantity edits
 preserve the list's scroll position. Below the blog's 1400px breakpoint it stays
 inline between the catalogue and order form, with normal page scrolling.
 
-The catalogue always has one product per row. Every card uses the same photo-led
-layout: left-aligned heading with the main team names' uppercase type and thin red
-underline, photo/gallery, description, then an option table. Photo, text and table
-share the same inner edges. Standard tables have an option column (44%) and a
+The catalogue always has one product per row. Every card reuses the blog's
+`.blog-card`, `.article-header`, `.meta-tags`, `.article-title`, `.lead` and
+`.tech-divider` components. Existing introductory copy becomes the lead; products
+with no description omit it rather than inventing a subheading. The photo/gallery
+and remaining description use `.article-body`, followed by the unchanged option
+form as a sibling, outside the article body. This prevents blog table styles from
+affecting the ordering controls. Card padding and heading/lead typography follow
+the blog's desktop and mobile rules. Standard tables have an option column (44%) and a
 right-aligned price column; like the camshaft tables, they have internal dividers
 but no outer border. Every standard table retains both the option and price
 headings, including single-option products. Selecting a radio moves one shared subform directly beneath
@@ -118,12 +130,12 @@ button keeps its original main-page styling.
 Specification dropdowns reuse the main form's pinned Choices.js component and
 shared styling, retaining native selection if the CDN script is unavailable.
 Text fields, textareas and quantity inputs also inherit the main page's field
-families, control sizing and red focus border/glow from `main.css`. Product cards
-use a scoped 14px (`.875rem`) Fira Code base: descriptions, field labels, inputs,
-quantity buttons and native/enhanced dropdowns all follow that size. Prices and
-supporting links use 13px, while small option labels and warnings stay at 12px.
-The Chakra Petch product headings, form-section headings and submit text retain
-their relative hierarchy at 1.8, 1.1 and 1.2 times the smaller base respectively.
+families, control sizing and red focus border/glow from `main.css`. Product ordering
+tables retain a scoped 14px (`.875rem`) Fira Code base, including their inputs,
+quantity buttons and native/enhanced dropdowns. Secondary field labels use 13px,
+and small option labels and warnings stay at 12px. Submit text uses 1.2 times the
+base (the base size on small screens). Product headings, leads and descriptive
+body text instead inherit the blog's responsive typography directly.
 The basket, final order form, blog
 and main page retain their original typography. Keep font-family resets and
 white focus outlines off these fields and the Choices controls;
@@ -149,9 +161,9 @@ The release build minifies `form.js` alongside the page scripts and includes it
 in the release root. It is served from the website, just like `index.js` and
 `shop.js`; only catalogue imagery uses the jsDelivr asset reference.
 
-Product photos precede the description. Photos reuse
-the main equipment section's `.tech-frame` soft-edge shading, which clears on
-hover or keyboard focus. Single-photo products keep their natural proportions,
+Product photos follow the header lead and precede the detailed description. Photos
+reuse the blog's `.blog-figure`, `.blog-img-frame` red corners and `.blog-img`
+border, without the former equipment-section fade overlay. Single-photo products keep their natural proportions,
 scale down to fit the card's inner width and are horizontally centered. The frame
 reserves the declared photo width before lazy loading, capped to the available
 width, so it cannot collapse or introduce empty strips beside smaller images.
@@ -164,9 +176,8 @@ button or press Escape to close it. Focus returns to the photo, and image links
 work without JavaScript.
 Mouse/touch photo interactions suppress focus outlines, including when Escape
 closes the viewer. Escape preserves the current input mode; Tab navigation and
-keyboard activation retain visible focus. Restored pointer focus also preserves
-the faded edges instead of leaving the thumbnail's shading cleared. Actual hover
-and keyboard focus still reveal the photo normally.
+keyboard activation retain visible focus. The decorative blog frame remains
+visible after the viewer closes; hovering animates its red corners as on the blog.
 
 Regenerate after any catalogue, template, JavaScript or CSS edit:
 
@@ -345,21 +356,24 @@ contact details and order recap are also emailed to the address they supplied.
 photographs copied unchanged to `assets/desktop/skoda-ohv-1.jpeg` through
 `skoda-ohv-4.jpeg`; TAZ uses three photographs, `assets/desktop/taz-01.jpeg` through
 `taz-03.jpeg`. The images
-appear in a gallery under a left-aligned, red-underlined heading. The main photo
-and thumbnails align with the inner text and form edges, using the same responsive
-side inset (28px on desktop, 18px on small screens).
+appear in a gallery under the blog-style tags, heading and lead. The main photo
+and thumbnails align with the inner text and form edges, using the blog card's
+responsive padding (50px on desktop, 20px horizontally below 1400px).
 Thumbnail buttons switch the large photo; clicking the large photo retains the
 existing magnifier and fullscreen viewer. Without JavaScript, all linked photos
 remain visible one below the other. Main gallery photos use a fixed 16:9 frame
 with a center crop, so switching between landscape and portrait photos never
 changes the gallery's height. Thumbnails also use a center crop. Enlarged photos
 keep their original proportions and show the complete image.
-The description follows the gallery, with an introductory paragraph,
-side-by-side regrinding/manufacturing sections and installation instructions below.
-These sections stack on small screens. The catalogue's `descriptionGroups` maps
+The introduction appears in the header. Detailed copy follows the gallery with
+side-by-side regrinding/manufacturing sections using `.tech-math-block` and
+`.equation-display` from the blog's formula panels, followed by installation
+instructions. Supporting requirements use the blog's `.tech-list` red-arrow bullets.
+The operation panels stack on small screens. The catalogue's `descriptionGroups` maps
 the existing translated paragraphs into these sections without rewriting or
-dropping their contents. Standard product cards use the same photo-led layout,
-with their existing description paragraphs followed by a quantity-based option table.
+dropping their contents. Standard product cards use the same blog-style layout,
+with the first description paragraph as the lead and any remaining notes as a
+technical list, followed by the unchanged quantity-based option table.
 The Škoda product has six
 description paragraphs and six profiles; the TAZ product has four paragraphs and four
 profiles. All content is translated for all ten languages. Profile duration, lift,

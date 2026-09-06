@@ -119,6 +119,8 @@
   "products": [
     {
       "id": "skoda-ohv-camshaft",
+      "category": "camshafts",
+      "tags": ["ŠKODA OHV"],
       "kind": "wizard",
       "descriptionGroups": [
         {"kind": "lead", "paragraphs": [0]},
@@ -203,7 +205,7 @@
       "translations": {
         "cs": {
           "name": "Vačková hřídel Škoda OHV",
-          "description": "Přebroušení nebo výroba nové hřídele pro Škodu Favorit / Felicie / 105-136.\n\nPřebroušení je určeno pro sportovnější jízdu v běžném provozu.\n\nPro závodní účely doporučujeme novou hřídel, která je vyráběna z plného kusu.\n\nK přebroušení dodejte čistou hřídel Škoda Felicia 1,3 50 kW.\n\nSoučástí dodávky u nové hřídele je pevnostní šroub imbus M10x25 s levým závitem.\n\nSoučástí dodávky jsou montážní instrukce – doporučený stupeň komprese, ventilové vůle, časování."
+          "description": "Přebroušení nebo výroba nové hřídele pro Škodu 105-136 / Favorit / Felicie.\n\nPřebroušení je určeno pro sportovnější jízdu v běžném provozu.\n\nPro závodní účely doporučujeme novou hřídel, která je vyráběna z plného kusu.\n\nK přebroušení dodejte čistou hřídel Škoda Felicia 1,3 50 kW.\n\nSoučástí dodávky u nové hřídele je pevnostní šroub imbus M10x25 s levým závitem.\n\nSoučástí dodávky jsou montážní instrukce – doporučený stupeň komprese, ventilové vůle, časování."
         },
         "en": {
           "name": "Škoda OHV camshaft",
@@ -420,12 +422,14 @@
     },
     {
       "id": "taz-camshaft",
+      "category": "camshafts",
+      "tags": ["TAZ"],
       "kind": "wizard",
       "descriptionGroups": [
         {"kind": "lead", "paragraphs": [0]},
-        {"kind": "regrind", "paragraphs": [2]},
+        {"kind": "regrind", "paragraphs": [2, 3]},
         {"kind": "new", "paragraphs": [1]},
-        {"kind": "instructions", "paragraphs": [3]}
+        {"kind": "instructions", "paragraphs": [4]}
       ],
       "price": null,
       "priceType": "configured",
@@ -487,43 +491,43 @@
       "translations": {
         "cs": {
           "name": "Vačková hřídel TAZ",
-          "description": "Přebroušení nebo výroba nové hřídele TAZ.\n\nNové hřídele jsou vyráběny z plného kusu a jsou přímo určeny pro požární sport.\n\nK přebroušení dodejte čistou hřídel TAZ 1500 a bez opotřebení na vrcholu palců. Při velkém opotřebení je nutná nitridace – cena na dotaz.\n\nSoučástí dodávky jsou montážní instrukce – doporučený stupeň komprese, ventilové vůle, časování."
+          "description": "Přebroušení nebo výroba nové hřídele TAZ.\n\nNové hřídele jsou vyráběny z plného kusu a jsou přímo určeny pro požární sport.\n\nK přebroušení dodejte čistou hřídel TAZ 1500 a bez opotřebení na vrcholu palců.\n\nPři velkém opotřebení je nutná nitridace – cena na dotaz.\n\nSoučástí dodávky jsou montážní instrukce – doporučený stupeň komprese, ventilové vůle, časování."
         },
         "en": {
           "name": "TAZ camshaft",
-          "description": "Regrinding or manufacture of a new TAZ camshaft.\n\nNew camshafts are machined from solid stock and intended specifically for fire sport.\n\nFor regrinding, supply a clean TAZ 1500 camshaft with no wear at the cam-lobe tips. If wear is severe, nitriding is required – price on request.\n\nDelivery includes installation instructions: recommended compression ratio, valve clearances and timing."
+          "description": "Regrinding or manufacture of a new TAZ camshaft.\n\nNew camshafts are machined from solid stock and intended specifically for fire sport.\n\nFor regrinding, supply a clean TAZ 1500 camshaft with no wear at the cam-lobe tips.\n\nIf wear is severe, nitriding is required – price on request.\n\nDelivery includes installation instructions: recommended compression ratio, valve clearances and timing."
         },
         "de": {
           "name": "TAZ-Nockenwelle",
-          "description": "Umschleifen oder Neuanfertigung einer TAZ-Nockenwelle.\n\nNeue Nockenwellen werden aus dem Vollen gefertigt und sind speziell für den Feuerwehrsport bestimmt.\n\nZum Umschleifen liefern Sie bitte eine saubere TAZ-1500-Nockenwelle ohne Verschleiß an den Nockenspitzen. Bei starkem Verschleiß ist eine Nitrierung erforderlich – Preis auf Anfrage.\n\nDie Lieferung enthält Montageanweisungen: empfohlenes Verdichtungsverhältnis, Ventilspiel und Steuerzeiten."
+          "description": "Umschleifen oder Neuanfertigung einer TAZ-Nockenwelle.\n\nNeue Nockenwellen werden aus dem Vollen gefertigt und sind speziell für den Feuerwehrsport bestimmt.\n\nZum Umschleifen liefern Sie bitte eine saubere TAZ-1500-Nockenwelle ohne Verschleiß an den Nockenspitzen.\n\nBei starkem Verschleiß ist eine Nitrierung erforderlich – Preis auf Anfrage.\n\nDie Lieferung enthält Montageanweisungen: empfohlenes Verdichtungsverhältnis, Ventilspiel und Steuerzeiten."
         },
         "fr": {
           "name": "Arbre à cames TAZ",
-          "description": "Rectification ou fabrication d’un arbre à cames TAZ neuf.\n\nLes arbres neufs sont usinés dans la masse et spécialement destinés au sport incendie.\n\nPour la rectification, fournissez un arbre TAZ 1500 propre et sans usure au sommet des cames. En cas d’usure importante, une nitruration est nécessaire – prix sur demande.\n\nLa livraison comprend les instructions de montage : rapport volumétrique recommandé, jeux aux soupapes et calage."
+          "description": "Rectification ou fabrication d’un arbre à cames TAZ neuf.\n\nLes arbres neufs sont usinés dans la masse et spécialement destinés au sport incendie.\n\nPour la rectification, fournissez un arbre TAZ 1500 propre et sans usure au sommet des cames.\n\nEn cas d’usure importante, une nitruration est nécessaire – prix sur demande.\n\nLa livraison comprend les instructions de montage : rapport volumétrique recommandé, jeux aux soupapes et calage."
         },
         "it": {
           "name": "Albero a camme TAZ",
-          "description": "Riprofilatura o produzione di un nuovo albero a camme TAZ.\n\nGli alberi nuovi sono ricavati dal pieno e destinati specificamente allo sport antincendio.\n\nPer la riprofilatura, fornire un albero TAZ 1500 pulito e senza usura sulla sommità delle camme. In caso di forte usura è necessaria la nitrurazione – prezzo su richiesta.\n\nLa fornitura comprende istruzioni di montaggio: rapporto di compressione consigliato, giochi valvole e fasatura."
+          "description": "Riprofilatura o produzione di un nuovo albero a camme TAZ.\n\nGli alberi nuovi sono ricavati dal pieno e destinati specificamente allo sport antincendio.\n\nPer la riprofilatura, fornire un albero TAZ 1500 pulito e senza usura sulla sommità delle camme.\n\nIn caso di forte usura è necessaria la nitrurazione – prezzo su richiesta.\n\nLa fornitura comprende istruzioni di montaggio: rapporto di compressione consigliato, giochi valvole e fasatura."
         },
         "es": {
           "name": "Árbol de levas TAZ",
-          "description": "Rectificado o fabricación de un árbol de levas TAZ nuevo.\n\nLos árboles nuevos se mecanizan a partir de material macizo y están destinados específicamente al deporte de bomberos.\n\nPara el rectificado, entregue un árbol TAZ 1500 limpio y sin desgaste en la parte superior de las levas. Si el desgaste es elevado, se requiere nitruración – precio a consultar.\n\nLa entrega incluye instrucciones de montaje: relación de compresión recomendada, holguras de válvulas y calado."
+          "description": "Rectificado o fabricación de un árbol de levas TAZ nuevo.\n\nLos árboles nuevos se mecanizan a partir de material macizo y están destinados específicamente al deporte de bomberos.\n\nPara el rectificado, entregue un árbol TAZ 1500 limpio y sin desgaste en la parte superior de las levas.\n\nSi el desgaste es elevado, se requiere nitruración – precio a consultar.\n\nLa entrega incluye instrucciones de montaje: relación de compresión recomendada, holguras de válvulas y calado."
         },
         "pl": {
           "name": "Wałek rozrządu TAZ",
-          "description": "Szlifowanie lub wykonanie nowego wałka rozrządu TAZ.\n\nNowe wałki są wykonywane z pełnego materiału i przeznaczone bezpośrednio do sportów pożarniczych.\n\nDo szlifowania należy dostarczyć czysty wałek TAZ 1500 bez zużycia na wierzchołkach krzywek. Przy dużym zużyciu konieczne jest azotowanie – cena na zapytanie.\n\nDostawa obejmuje instrukcję montażu: zalecany stopień sprężania, luzy zaworowe i ustawienie rozrządu."
+          "description": "Szlifowanie lub wykonanie nowego wałka rozrządu TAZ.\n\nNowe wałki są wykonywane z pełnego materiału i przeznaczone bezpośrednio do sportów pożarniczych.\n\nDo szlifowania należy dostarczyć czysty wałek TAZ 1500 bez zużycia na wierzchołkach krzywek.\n\nPrzy dużym zużyciu konieczne jest azotowanie – cena na zapytanie.\n\nDostawa obejmuje instrukcję montażu: zalecany stopień sprężania, luzy zaworowe i ustawienie rozrządu."
         },
         "ru": {
           "name": "Распределительный вал TAZ",
-          "description": "Перешлифовка или изготовление нового распределительного вала TAZ.\n\nНовые валы изготавливаются из цельной заготовки и предназначены специально для пожарного спорта.\n\nДля перешлифовки предоставьте чистый вал TAZ 1500 без износа на вершинах кулачков. При сильном износе требуется азотирование – цена по запросу.\n\nВ поставку входит инструкция по монтажу: рекомендуемая степень сжатия, зазоры клапанов и фазы газораспределения."
+          "description": "Перешлифовка или изготовление нового распределительного вала TAZ.\n\nНовые валы изготавливаются из цельной заготовки и предназначены специально для пожарного спорта.\n\nДля перешлифовки предоставьте чистый вал TAZ 1500 без износа на вершинах кулачков.\n\nПри сильном износе требуется азотирование – цена по запросу.\n\nВ поставку входит инструкция по монтажу: рекомендуемая степень сжатия, зазоры клапанов и фазы газораспределения."
         },
         "ja": {
           "name": "TAZ カムシャフト",
-          "description": "TAZ カムシャフトの再研磨または新規製作。\n\n新品のカムシャフトは無垢材から削り出し、消防スポーツ専用に製作します。\n\n再研磨の場合は、カム山頂部に摩耗のない洗浄済み TAZ 1500 カムシャフトをご支給ください。摩耗が大きい場合は窒化処理が必要です（価格はお問い合わせください）。\n\n推奨圧縮比、バルブクリアランス、タイミングを記載した取り付け説明書が付属します。"
+          "description": "TAZ カムシャフトの再研磨または新規製作。\n\n新品のカムシャフトは無垢材から削り出し、消防スポーツ専用に製作します。\n\n再研磨の場合は、カム山頂部に摩耗のない洗浄済み TAZ 1500 カムシャフトをご支給ください。\n\n摩耗が大きい場合は窒化処理が必要です（価格はお問い合わせください）。\n\n推奨圧縮比、バルブクリアランス、タイミングを記載した取り付け説明書が付属します。"
         },
         "zh": {
           "name": "TAZ 凸轮轴",
-          "description": "TAZ 凸轮轴重磨或全新制造。\n\n新凸轮轴由整块实心材料加工而成，专为消防运动设计。\n\n重磨时，请提供清洁且凸轮顶部无磨损的 TAZ 1500 凸轮轴。磨损严重时需要进行氮化处理，价格请咨询。\n\n随附安装说明，包括推荐压缩比、气门间隙和正时。"
+          "description": "TAZ 凸轮轴重磨或全新制造。\n\n新凸轮轴由整块实心材料加工而成，专为消防运动设计。\n\n重磨时，请提供清洁且凸轮顶部无磨损的 TAZ 1500 凸轮轴。\n\n磨损严重时需要进行氮化处理，价格请咨询。\n\n随附安装说明，包括推荐压缩比、气门间隙和正时。"
         }
       },
       "wizard": {
@@ -641,6 +645,8 @@
     },
     {
       "id": "exhaust-headers",
+      "category": "exhaust",
+      "tags": ["TAZ"],
       "price": 6600,
       "priceType": "fixed",
       "image": "/assets/desktop/svody-ladene-01.jpeg",
@@ -746,9 +752,12 @@
     },
     {
       "id": "resonance-exhaust",
+      "category": "exhaust",
+      "tags": ["TAZ"],
       "price": 2700,
       "priceType": "fixed",
       "image": "/assets/desktop/rezonancni-vyfuk-01.jpg",
+      "photoMaxWidth": 435,
       "variants": [],
       "translations": {
         "cs": {
@@ -826,6 +835,8 @@
     },
     {
       "id": "connecting-rod",
+      "category": "engineParts",
+      "tags": ["TAZ"],
       "price": 12500,
       "priceType": "fixed",
       "image": "/assets/desktop/ojnice-h-kovana-01.jpeg",
@@ -958,15 +969,17 @@
     },
     {
       "id": "ignition-coil",
+      "category": "ignition",
+      "tags": ["TAZ"],
       "price": 780,
       "priceType": "fixed",
-      "image": "/assets/desktop/zapalovaci-civka-01.jpg",
-      "photoMaxHeight": 360,
+      "image": "/assets/desktop/zapalovaci-civka.jpg",
+      "photoMaxWidth": 435,
       "images": [
         {
-          "src": "/assets/desktop/zapalovaci-civka-01.jpg",
-          "width": 4000,
-          "height": 2252,
+          "src": "/assets/desktop/zapalovaci-civka.jpg",
+          "width": 2252,
+          "height": 4000,
           "alt": {
             "cs": "Zapalovací cívka",
             "en": "Ignition coil",
@@ -1074,6 +1087,8 @@
     },
     {
       "id": "distributor-rotor",
+      "category": "ignition",
+      "tags": ["BOSCH / FACET / EPS"],
       "price": null,
       "priceType": "quote",
       "image": "/assets/desktop/palec-rozdelovace-omezovac-01.jpeg",
@@ -1205,6 +1220,8 @@
     },
     {
       "id": "distributor-parts",
+      "category": "ignition",
+      "tags": ["TAZ"],
       "price": 260,
       "priceType": "fixed",
       "image": "/assets/desktop/rozdelovace-01.jpeg",
@@ -1365,6 +1382,8 @@
     },
     {
       "id": "head-gasket",
+      "category": "engineParts",
+      "tags": ["TAZ"],
       "price": 620,
       "priceType": "fixed",
       "image": "/assets/desktop/tesneni-valce-01.jpeg",
@@ -1540,6 +1559,8 @@
     },
     {
       "id": "cylinder-piston-kit",
+      "category": "engineParts",
+      "tags": ["Ø82 mm"],
       "price": 18000,
       "priceType": "fixed",
       "image": "/assets/desktop/sada-valce-02.jpeg",
@@ -1677,6 +1698,8 @@
     },
     {
       "id": "carburetor-38-38",
+      "category": "fuel",
+      "tags": ["38/38"],
       "price": 7900,
       "priceType": "fixed",
       "image": "/assets/desktop/karburator.jpeg",
@@ -1745,6 +1768,8 @@
     },
     {
       "id": "copper-rings",
+      "category": "engineParts",
+      "tags": ["TAZ"],
       "price": 40,
       "priceType": "from",
       "image": null,
@@ -1816,6 +1841,8 @@
     },
     {
       "id": "distributor-overhaul",
+      "category": "ignition",
+      "tags": ["CZ"],
       "price": 1600,
       "priceType": "approx",
       "image": "/assets/desktop/repas-rozdelovac-01.jpeg",

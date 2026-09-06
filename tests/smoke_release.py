@@ -87,19 +87,25 @@ def main():
                 'skoda-ohv-camshaft': [5600, 5600, 11400, 11400, 13200, 11400],
                 'taz-camshaft': [4400, 4400, 11500, 15500],
             }
-            assert soup.select_one('.shop-product > h3.shop-product-title')
+            assert soup.select_one('.shop-product > .article-header > h3.article-title.shop-product-title')
             for card in soup.select('.shop-product'):
                 source_product = next(product for product in catalog['products'] if product['id'] == card['id'])
                 wizard = card.select_one('form[data-wizard]')
                 has_description = bool(source_product['translations'][language]['description'])
                 has_photo = bool(source_product.get('image'))
-                assert len(card.find_all(recursive=False)) == 2 + has_photo + bool(has_description or card['id'] == 'exhaust-headers')
-                assert card.find(recursive=False).name == 'h3'
-                assert bool(card.select_one(':scope > .shop-photo img')) == has_photo
+                paragraphs = [p for p in source_product['translations'][language]['description'].split('\n\n') if p.strip()]
+                has_body = bool(has_photo or len(paragraphs) > 1 or card['id'] == 'exhaust-headers')
+                assert len(card.find_all(recursive=False)) == 3 + has_body
+                assert card.find(recursive=False).name == 'header'
+                assert card.select_one(':scope > header > .meta-tags > .sys-tag')
+                assert card.select_one(':scope > .tech-divider')
+                assert bool(card.select_one(':scope > .article-body > .shop-photo img')) == has_photo
                 assert ('shop-no-photo' in card['class']) == (not has_photo)
                 if not has_photo:
                     assert not card.select('figure, img, .shop-photo-link, .tech-frame, figcaption')
-                assert bool(card.select_one(':scope > .shop-product-content > .shop-product-body .shop-description')) == has_description
+                assert bool(card.select_one(':scope > header .lead')) == has_description
+                assert len(card.select('.shop-description')) == len(paragraphs)
+                assert not card.select('.article-body form, .tech-table')
                 if wizard:
                     assert len(wizard.select('input[name=profile]')) == len(source_product['wizard']['profiles'])
                     expected_fields = source_product['wizard']['fields']
@@ -166,7 +172,7 @@ def main():
                 photo_links = card.select('.shop-photo-link')
                 for photo_link in photo_links:
                     assert photo_link['href'] == photo_link.img['src']
-                    assert photo_link.select_one(':scope > .tech-frame > img')
+                    assert photo_link.select_one(':scope > .blog-img-frame > .shop-photo-viewport > img.blog-img')
                 if source_product.get('images'):
                     assert bool(card.select_one('.shop-photo-gallery')) == (len(source_product['images']) > 1)
                     assert len(photo_links) == len(source_product['images'])
@@ -176,7 +182,8 @@ def main():
                         assert (int(photo_link.img['width']), int(photo_link.img['height'])) == (source_image['width'], source_image['height'])
                         relative_path = source_image['src'].lstrip('/')
                         assert (release / relative_path).read_bytes() == (ROOT / relative_path).read_bytes()
-                assert not card.select('.blog-img-frame')
+                assert len(card.select('.blog-img-frame')) == len(photo_links)
+                assert not card.select('.tech-frame')
             assert soup.select_one('dialog#shop-lightbox.lightbox-modal .lightbox-img')
             assert soup.select_one('script[src*="choices.js@11.1.0"][defer]')
             assert soup.select_one('link[href*="choices.js@11.1.0"]')

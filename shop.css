@@ -8,8 +8,8 @@
 /* Modal focus restoration must not leave a keyboard-style ring after a photo click. */
 .shop-page .shop-photo-pointer-focus:focus, .shop-page .shop-photo-pointer-focus :focus { outline: none !important; }
 /* The entire order section retains the main contact form's typography and spacing. */
-.shop-layout :is(h1, h2, h3, p, figure):not(:where(.shop-order *, .shop-wizard-form *)) { margin: 0; }
-.shop-layout :is(h1, h2, h3):not(:where(.shop-order *)) { line-height: 1.2; }
+.shop-layout :is(h1, h2, h3, p, figure):not(:where(.shop-order *, .shop-product *)) { margin: 0; }
+.shop-layout :is(h1, h2, h3):not(:where(.shop-order *, .shop-product *)) { line-height: 1.2; }
 .shop-layout a:hover { color: #ff7777; }
 /* Keep shared field styling; product cards have a smaller, locally scoped type scale. */
 .shop-page button:not(.btn-submit) { font: inherit; }
@@ -26,18 +26,15 @@
 .shop-section-heading h1, .shop-section-heading h2 { font-size: 1.4rem; border: 0; padding: 0; background: none; box-shadow: none; }
 .shop-section-heading > span { color: var(--shop-muted); font-size: .875rem; white-space: nowrap; }
 .shop-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
-/* The title has its own row; photo and description share the next row's start. */
-.shop-product { --shop-product-font-size: .875rem; --shop-product-small-font-size: .8125rem; --shop-product-caption-font-size: .75rem; font-size: var(--shop-product-font-size); padding: 22px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); grid-template-areas: ". title" "photo content"; align-items: start; gap: 18px 24px; min-width: 0; scroll-margin-top: calc(var(--navbar-height) + 40px); }
-.shop-product-content { grid-area: content; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
-/* Photo-led product cards: gallery, copy and order form share the same inner width. */
-.shop-wizard-product { --shop-wizard-padding: 28px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "photo" "content" "wizard"; gap: 26px; padding: 0; }
-.shop-option-product.shop-no-description { grid-template-areas: "title" "photo" "wizard"; }
-.shop-wizard-product.shop-no-photo { grid-template-areas: "title" "content" "wizard"; }
-.shop-option-product.shop-no-photo.shop-no-description { grid-template-areas: "title" "wizard"; }
-.shop-wizard-product > .shop-product-title { justify-self: start; text-align: left; font-size: calc(var(--shop-product-font-size) * 2.1); margin: var(--shop-wizard-padding) var(--shop-wizard-padding) 0; max-width: calc(100% - 2 * var(--shop-wizard-padding)); hyphens: none; }
-.shop-wizard-product > .shop-product-content { padding-inline: var(--shop-wizard-padding); }
-.shop-wizard-product > .shop-photo { margin-inline: var(--shop-wizard-padding); }
-.shop-wizard-product > .shop-wizard-form { margin: 0 var(--shop-wizard-padding) var(--shop-wizard-padding); }
+/* Product stories share the blog's card, header, lead and body components.
+   Keep the ordering form outside .article-body so its compact table is unchanged. */
+.shop-product { --shop-product-font-size: .875rem; --shop-product-small-font-size: .8125rem; --shop-product-caption-font-size: .75rem; font-size: var(--shop-product-font-size); min-width: 0; scroll-margin-top: calc(var(--navbar-height) + 40px); }
+.shop-product-title { max-width: 100%; hyphens: none; overflow-wrap: anywhere; }
+.shop-product-header .lead { margin-block: 0; }
+.shop-product-header .lead + .lead { margin-top: 16px; }
+.shop-product-body { min-width: 0; margin-bottom: 30px; }
+.shop-product-body > :first-child { margin-top: 0; }
+.shop-product-body > :last-child { margin-bottom: 0; }
 .shop-photo-gallery .shop-photo-link { width: 100%; }
 .shop-wizard-form { grid-area: wizard; min-width: 0; line-height: 1.6; }
 .shop-wizard-form .form-group { min-width: 0; }
@@ -75,7 +72,7 @@
 .shop-basket-configuration > div + div { margin-top: 8px; }
 .shop-basket-configuration dt { color: #888; }
 .shop-basket-configuration dd { margin: 0; }
-.shop-photo { grid-area: photo; align-self: start; min-width: 0; }
+.shop-photo { min-width: 0; }
 .shop-photo-gallery { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
 .shop-photo-thumbnails { display: flex; flex-wrap: wrap; gap: 10px; }
 .shop-photo-thumbnail { display: block; width: 96px; height: 60px; margin: 0; padding: 3px; border: 1px solid #484848; border-radius: 0; background: #050505; }
@@ -84,34 +81,26 @@
 .shop-photo-thumbnail[aria-pressed="true"]:hover { border-color: var(--accent); }
 /* Reserve a real width before lazy images decode; fit-content can collapse to zero. */
 .shop-photo-link { display: block; width: var(--shop-photo-width); max-width: 100%; margin-inline: auto; cursor: zoom-in; }
-/* Reuse the equipment section's soft edges without clipping the link's focus outline. */
-.shop-photo .tech-frame { display: block; }
+/* Reuse the blog's red-corner image frames, without the equipment fade overlay. */
+.shop-photo .blog-img-frame, .shop-photo-viewport { display: block; }
 /* Single-photo products keep their natural proportions. */
 .shop-photo img { display: block; width: 100%; max-width: 100%; height: auto; }
+.shop-photo .blog-img { max-height: none; }
 /* Gallery photos share a stable landscape frame; enlargement still shows the full image. */
-.shop-photo-gallery .shop-photo-link .tech-frame { aspect-ratio: 16 / 9; }
+.shop-photo-gallery .shop-photo-viewport { position: relative; aspect-ratio: 16 / 9; }
 .shop-photo-gallery .shop-photo-link img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 /* Keep mixed portrait/landscape thumbnails in a compact strip. */
 .shop-photo-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
-/* Restored focus after mouse/touch zoom must not leave the faded edges cleared. */
-.shop-photo-link:not(.shop-photo-pointer-focus):focus-visible .tech-frame::after { opacity: 0; }
-@media (hover: hover) {
-  .shop-photo-link:hover .tech-frame::after { opacity: 0; }
-}
-.shop-product-body { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-.shop-product-body.shop-description-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 32px; }
+/* The blog's formula panels also work as concise operation explanations. */
+.shop-description-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
 .shop-description-wide { grid-column: 1 / -1; }
 .shop-description-section { min-width: 0; }
-.shop-description-section h4 { margin: 0 0 10px; font-size: calc(var(--shop-product-font-size) * 1.3); font-weight: 600; color: var(--accent); text-transform: none; line-height: 1.3; }
-.shop-wizard-product .shop-description { text-align: left; hyphens: none; }
-.shop-description-section .shop-description + .shop-description { margin-top: 12px; font-size: var(--shop-product-small-font-size); }
-.shop-description-section[data-description-group="lead"] .shop-description { color: #eee; font-weight: 500; }
-.shop-description-section[data-description-group="instructions"] h4 { color: #eee; font-size: calc(var(--shop-product-font-size) * 1.1); }
-.shop-description-section[data-description-group="instructions"] .shop-description { font-size: var(--shop-product-small-font-size); }
-/* Keep the main team-name treatment, scaled to the card's 14px body text. */
-.shop-product-title { grid-area: title; justify-self: center; align-self: center; max-width: 100%; display: inline-block; font-size: calc(var(--shop-product-font-size) * 1.8); color: white; border-bottom: 1px solid var(--accent); padding-bottom: 5px; text-align: center; overflow-wrap: anywhere; }
-.shop-description { color: #bbb; font-size: var(--shop-product-font-size); text-align: justify; hyphens: auto; overflow-wrap: anywhere; }
-.shop-product-body > a { color: #ff7272; font-size: var(--shop-product-small-font-size); }
+.shop-description-section.tech-math-block { margin: 0; }
+.shop-description-section > .equation-display { font-family: inherit; text-transform: none; white-space: normal; }
+.shop-description-section .shop-description { text-align: left; }
+.shop-description-section > :last-child { margin-bottom: 0; }
+.shop-description-heading { color: white; font-size: 1.2rem; margin-bottom: 0; }
+.shop-description { hyphens: none; overflow-wrap: anywhere; }
 .shop-prices { margin: 0; font-size: var(--shop-product-small-font-size); }
 .shop-product-order { min-width: 0; }
 /* Preserve the section spacing without decorative separator lines. */
@@ -203,10 +192,7 @@
   .shop-draft { padding: 20px; }
 }
 @media (max-width: 680px) {
-  .shop-product { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "photo" "content"; gap: 20px; }
-  .shop-wizard-product { --shop-wizard-padding: 18px; grid-template-areas: "title" "photo" "content" "wizard"; }
-  .shop-wizard-product > .shop-product-title { font-size: calc(var(--shop-product-font-size) * 1.9); }
-  .shop-product-body.shop-description-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .shop-description-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .shop-profile-operation-column { width: 40%; }
   .shop-profile-price-column { width: 20%; }
   .shop-profile-option label, .shop-profile-table th { padding-inline: .25rem; }

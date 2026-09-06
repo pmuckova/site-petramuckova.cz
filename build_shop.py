@@ -60,6 +60,10 @@ def load_catalog(root=ROOT):
             if (type(product['photoMaxHeight']) is not int or product['photoMaxHeight'] <= 0
                     or len(product.get('images', [])) != 1):
                 raise ValueError(f'Photo height limit requires one image and positive whole pixels: {product_id}')
+        if 'photoMaxWidth' in product:
+            if (type(product['photoMaxWidth']) is not int or product['photoMaxWidth'] <= 0
+                    or len(product.get('images', [])) != 1):
+                raise ValueError(f'Photo width limit requires one image and positive whole pixels: {product_id}')
         if wizard:
             validate_wizard(product, data['languages'])
         else:
@@ -104,6 +108,11 @@ def load_catalog(root=ROOT):
         for lang in data['languages']:
             if not product['translations'].get(lang, {}).get('name'):
                 raise ValueError(f'Missing {lang} name: {product_id}')
+        if (product.get('category') not in ('camshafts', 'exhaust', 'engineParts', 'ignition', 'fuel')
+                or not isinstance(product.get('tags'), list)
+                or not product['tags']
+                or any(not isinstance(tag, str) or not tag.strip() for tag in product['tags'])):
+            raise ValueError(f'Invalid product presentation tags: {product_id}')
         if 'descriptionGroups' in product:
             groups = product['descriptionGroups']
             if (not isinstance(groups, list) or any(not isinstance(group, dict) for group in groups)
@@ -378,18 +387,18 @@ def product_photos(product, lang, t, position):
         alt = image['alt'][lang]
         link_label = t['enlargePhoto'] + ': ' + (alt if len(images) > 1 else name)
         loading = 'eager' if position < 2 and index == 0 else 'lazy'
-        preview_width = image['width']
+        preview_width = min(image['width'], product.get('photoMaxWidth', image['width']))
         if product.get('photoMaxHeight'):
-            # Size the whole frame proportionally, including its faded edges.
+            # Size the preview proportionally, including its decorative frame.
             # Keep a nonzero width before lazy decoding and the original zoom source.
             preview_width = min(preview_width, product['photoMaxHeight'] * image['width'] / image['height'])
         links.append(f'''<a class="shop-photo-link" id="photo-{escape(product['id'])}-{index + 1}" href="{escape(image['src'])}" style="--shop-photo-width: {preview_width:g}px" aria-haspopup="dialog" aria-label="{escape(link_label)}">
-        <span class="tech-frame">
-          <img src="{escape(image['src'])}" alt="{escape(alt)}" width="{image['width']}" height="{image['height']}" loading="{loading}" decoding="async">
+        <span class="blog-img-frame">
+          <span class="shop-photo-viewport"><img class="blog-img" src="{escape(image['src'])}" alt="{escape(alt)}" width="{image['width']}" height="{image['height']}" loading="{loading}" decoding="async"></span>
         </span>
       </a>''')
     gallery_class = ' shop-photo-gallery' if len(images) > 1 else ''
-    return f'''<figure class="shop-photo{gallery_class}">
+    return f'''<figure class="blog-figure shop-photo{gallery_class}">
       {''.join(links)}
     </figure>'''
 
@@ -398,40 +407,72 @@ def wizard_description(product, lang, t):
     paragraphs = product['translations'][lang]['description'].split('\n\n')
     groups = product.get('descriptionGroups')
     if not groups:
-        return ''.join(f'<p class="shop-description">{escape(paragraph)}</p>' for paragraph in paragraphs)
+        return description_list(paragraphs[1:])
     headings = {'regrind': t['manufactureRegrind'], 'new': t['manufactureNew'], 'instructions': t['installationInstructions']}
     sections = []
     for group in groups:
         kind = group['kind']
-        classes = 'shop-description-section' + (' shop-description-wide' if kind in ('lead', 'instructions') else '')
-        heading = f'<h4>{escape(headings[kind])}</h4>' if kind in headings else ''
-        content = ''.join(f'<p class="shop-description">{escape(paragraphs[index])}</p>' for index in group['paragraphs'])
+        if kind == 'lead':
+            continue  # The opening copy belongs to the article header.
+        classes = 'shop-description-section'
+        if kind == 'instructions':
+            classes += ' shop-description-wide'
+            heading = f'<h4 class="shop-description-heading">{escape(headings[kind])}</h4>'
+            content = description_list([paragraphs[index] for index in group['paragraphs']])
+        else:
+            classes += ' tech-math-block'
+            heading = f'<h4 class="equation-display">{escape(headings[kind])}</h4>'
+            content = f'<p class="shop-description">{escape(paragraphs[group["paragraphs"][0]])}</p>'
+            content += description_list([paragraphs[index] for index in group['paragraphs'][1:]])
         sections.append(f'<section class="{classes}" data-description-group="{kind}">{heading}{content}</section>')
     return ''.join(sections)
+
+
+def description_list(paragraphs):
+    if not paragraphs:
+        return ''
+    return '<ul class="tech-list">' + ''.join(
+        f'<li class="shop-description">{escape(paragraph)}</li>' for paragraph in paragraphs
+    ) + '</ul>'
+
+
+def product_header(product, lang, t):
+    text = product['translations'][lang]
+    paragraphs = [paragraph for paragraph in text['description'].split('\n\n') if paragraph.strip()]
+    groups = product.get('descriptionGroups')
+    lead_indices = next(group['paragraphs'] for group in groups if group['kind'] == 'lead') if groups else [0]
+    lead = ''.join(f'<p class="lead shop-description">{escape(paragraphs[index])}</p>'
+                   for index in lead_indices if index < len(paragraphs))
+    lead = f'<div data-description-group="lead">{lead}</div>' if lead else ''
+    tags = [t['tag' + product['category'][0].upper() + product['category'][1:]], *product['tags']]
+    return f'''<header class="article-header shop-product-header">
+        <div class="meta-tags">{''.join(f'<span class="sys-tag">{escape(tag)}</span>' for tag in tags)}</div>
+        <h3 class="article-title shop-product-title" id="name-{escape(product['id'])}">{escape(text['name'])}</h3>
+        {lead}
+      </header>'''
 
 
 def product_card(product, lang, t, position):
     text = product['translations'][lang]
     product_id = escape(product['id'])
-    name = escape(text['name'])
-    description = ''.join(f'<p class="shop-description">{escape(paragraph)}</p>' for paragraph in text['description'].split('\n\n') if paragraph.strip())
+    paragraphs = [paragraph for paragraph in text['description'].split('\n\n') if paragraph.strip()]
     is_wizard = product.get('kind') == 'wizard'
     photo = product_photos(product, lang, t, position)
     photo_class = ' shop-no-photo' if not photo else ''
     if is_wizard:
-        return f'''<article class="blog-card shop-product shop-wizard-product{photo_class}" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
-      <h3 class="shop-product-title" id="name-{product_id}">{name}</h3>
-      {photo}
-      <div class="shop-product-content"><div class="shop-product-body shop-description-layout">{wizard_description(product, lang, t)}</div></div>
-      {wizard_form(product, lang, t)}
-    </article>'''
-    article_link = f'<a href="/{lang}/blog#post-2-title">{escape(t["blog"])}: TAZ 1.43 / PS12 ↗</a>' if product['id'] == 'exhaust-headers' else ''
-    content = f'<div class="shop-product-content"><div class="shop-product-body">{description}{article_link}</div></div>' if description or article_link else ''
-    card = f'''<article class="blog-card shop-product shop-wizard-product shop-option-product{photo_class}{' shop-no-description' if not content else ''}" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
-      <h3 class="shop-product-title" id="name-{product_id}">{name}</h3>
-      {photo}
+        description = f'<div class="shop-description-layout">{wizard_description(product, lang, t)}</div>'
+        form = wizard_form(product, lang, t)
+    else:
+        description = description_list(paragraphs[1:])
+        form = order_item_form(product, lang, t)
+    if product['id'] == 'exhaust-headers':
+        description += f'<p><a class="link-ext" href="/{lang}/blog#post-2-title">{escape(t["blog"])}: TAZ 1.43 / PS12</a></p>'
+    content = f'<div class="article-body shop-product-body">{photo}{description}</div>' if photo or description else ''
+    card = f'''<article class="blog-card shop-product shop-wizard-product{'' if is_wizard else ' shop-option-product'}{photo_class}{' shop-no-description' if not paragraphs else ''}" id="{product_id}" data-product="{product_id}" aria-labelledby="name-{product_id}">
+      {product_header(product, lang, t)}
+      <hr class="tech-divider">
       {content}
-      {order_item_form(product, lang, t)}
+      {form}
     </article>'''
     return '\n'.join(line.rstrip() for line in card.splitlines())
 
